@@ -1,7 +1,7 @@
 three
 =========================
 
-Haskell bindings to the [three.js](threejs.org) JavaScript library.
+Haskell bindings to the [three.js](https://threejs.org) JavaScript library.
 
 ### Build
 
