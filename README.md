@@ -59,7 +59,7 @@ $ nix-shell --run 'cabal build'
 
 #### Core
   - [ ] [BufferAttribute](https://threejs.org/docs/#api/en/core/BufferAttribute)
-  - [ ] [BufferAttributeTypes](https://threejs.org/docs/#api/en/core/BufferAttributeTypes)
+  - [ ] [BufferAttributeTypes](https://threejs.org/docs/#api/en/core/bufferAttributeTypes/BufferAttributeTypes)
   - [ ] [BufferGeometry](https://threejs.org/docs/#api/en/core/BufferGeometry)
   - [ ] [Clock](https://threejs.org/docs/#api/en/core/Clock)
   - [ ] [EventDispatcher](https://threejs.org/docs/#api/en/core/EventDispatcher)
@@ -145,10 +145,10 @@ $ nix-shell --run 'cabal build'
   - [ ] [LightProbe](https://threejs.org/docs/#api/en/lights/LightProbe)
   - [ ] [PointLight](https://threejs.org/docs/#api/en/lights/PointLight)
   - [ ] [RectAreaLight](https://threejs.org/docs/#api/en/lights/RectAreaLight)
-  - [ ] [DirectionalLightShadow](https://threejs.org/docs/#api/en/lights/DirectionalLightShadow)
-  - [ ] [LightShadow](https://threejs.org/docs/#api/en/lights/LightShadow)
-  - [ ] [PointLightShadow](https://threejs.org/docs/#api/en/lights/PointLightShadow)
-  - [ ] [SpotLightShadow](https://threejs.org/docs/#api/en/lights/SpotLightShadow)
+  - [ ] [DirectionalLightShadow](https://threejs.org/docs/#api/en/lights/shadows/DirectionalLightShadow)
+  - [ ] [LightShadow](https://threejs.org/docs/#api/en/lights/shadows/LightShadow)
+  - [ ] [PointLightShadow](https://threejs.org/docs/#api/en/lights/shadows/PointLightShadow)
+  - [ ] [SpotLightShadow](https://threejs.org/docs/#api/en/lights/shadows/SpotLightShadow)
   - [ ] [SpotLight](https://threejs.org/docs/#api/en/lights/SpotLight)
 
 #### Loaders
@@ -164,8 +164,8 @@ $ nix-shell --run 'cabal build'
   - [ ] [ImageLoader](https://threejs.org/docs/#api/en/loaders/ImageLoader)
   - [ ] [Loader](https://threejs.org/docs/#api/en/loaders/Loader)
   - [ ] [LoaderUtils](https://threejs.org/docs/#api/en/loaders/LoaderUtils)
-  - [ ] [DefaultLoadingManager](https://threejs.org/docs/#api/en/loaders/DefaultLoadingManager)
-  - [ ] [LoadingManager](https://threejs.org/docs/#api/en/loaders/LoadingManager)
+  - [ ] [DefaultLoadingManager](https://threejs.org/docs/#api/en/loaders/managers/DefaultLoadingManager)
+  - [ ] [LoadingManager](https://threejs.org/docs/#api/en/loaders/managers/LoadingManager)
   - [ ] [MaterialLoader](https://threejs.org/docs/#api/en/loaders/MaterialLoader)
   - [ ] [ObjectLoader](https://threejs.org/docs/#api/en/loaders/ObjectLoader)
   - [ ] [TextureLoader](https://threejs.org/docs/#api/en/loaders/TextureLoader)
