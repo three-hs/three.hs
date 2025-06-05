@@ -1,0 +1,40 @@
+cabal-version:      3.0
+name:               three
+version:            0.1.0.0
+synopsis:           Haskell bindings to three.js
+description:        Three.JS support for Haskell
+homepage:           https://github.com/dmjio/three
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             dmjio
+maintainer:         code@dmj.io
+copyright:          dmjio @ 2025
+category:           Graphics
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+
+common warnings
+  ghc-options: -Wall
+
+library
+  import:
+    warnings
+  exposed-modules:
+    THREE.BoxGeometry
+    THREE.Scene
+    THREE.PerspectiveCamera
+    THREE.MeshBasicMaterial
+    THREE.Mesh
+    THREE.WebGLRenderer
+    Stats
+  other-modules:
+    THREE.Internal
+  build-depends:
+    base < 5,
+    containers,
+    jsaddle,
+    mtl
+  hs-source-dirs:
+    src
+  default-language:
+    Haskell2010
