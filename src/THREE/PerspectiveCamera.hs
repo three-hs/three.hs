@@ -17,7 +17,7 @@ import qualified THREE.Internal as THREE
 -- | https://threejs.org/docs/#api/en/cameras/PerspectiveCamera
 newtype PerspectiveCamera
   = PerspectiveCamera
-  { unPerspectiveCameraCamera :: JSVal
+  { unPerspectiveCamera :: JSVal
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 new :: JSM PerspectiveCamera

@@ -14,10 +14,10 @@ import           Language.Javascript.JSaddle hiding (new)
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/BoxGeometry
+-- | https://threejs.org/docs/#api/en/geometries/BoxGeometry
 newtype BoxGeometry
   = BoxGeometry
-  { unBoxGeometryCamera :: JSVal
+  { unBoxGeometry :: JSVal
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 new :: JSM BoxGeometry

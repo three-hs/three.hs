@@ -21,7 +21,7 @@ new f name args = do
   v <- jsg ("THREE" :: JSString) ! name
   f <$> J.new v args
 
--- | https://threejs.org/docs/#api/en/materials/Geometry
+-- | https://threejs.org/docs/#api/en/core/BufferGeometry
 class Geometry geometry
 
 -- | https://threejs.org/docs/#api/en/materials/Material
