@@ -14,10 +14,10 @@ import           Language.Javascript.JSaddle hiding (new)
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/WebGLRenderer
+-- | https://threejs.org/docs/?q=webgl#api/en/renderers/WebGLRenderer
 newtype WebGLRenderer
   = WebGLRenderer
-  { unWebGLRendererCamera :: JSVal
+  { unWebGLRenderer :: JSVal
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 new :: JSM WebGLRenderer

@@ -26,7 +26,7 @@ library
     THREE.MeshBasicMaterial
     THREE.Mesh
     THREE.WebGLRenderer
-    Stats
+    -- Stats
   other-modules:
     THREE.Internal
   build-depends:
