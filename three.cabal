@@ -20,13 +20,243 @@ library
   import:
     warnings
   exposed-modules:
-    THREE.BoxGeometry
-    THREE.Scene
+    -- Animation
+    THREE.AnimationAction
+    THREE.AnimationClip
+    THREE.AnimationMixer
+    THREE.AnimationObjectGroup
+    THREE.AnimationUtils
+    THREE.KeyframeTrack
+    THREE.PropertyBinding
+    THREE.PropertyMixer
+    THREE.BooleanKeyframeTrack
+    THREE.ColorKeyframeTrack
+    THREE.NumberKeyframeTrack
+    THREE.QuaternionKeyframeTrack
+    THREE.StringKeyframeTrack
+    THREE.VectorKeyframeTrack
+    -- Audio
+    THREE.AudioAnalyser
+    THREE.AudioContext
+    THREE.Audio
+    THREE.AudioListener
+    THREE.PositionalAudio
+    -- Cameras
+    THREE.ArrayCamera
+    THREE.Camera
+    THREE.CubeCamera
+    THREE.OrthographicCamera
     THREE.PerspectiveCamera
+    THREE.StereoCamera
+    -- Constants
+    THREE.Constants.Animation
+    THREE.Constants.BufferAttributeUsage
+    THREE.Constants.Core
+    THREE.Constants.CustomBlendingEquations
+    THREE.Constants.Materials
+    THREE.Constants.Renderer
+    THREE.Constants.Textures
+    -- Core
+    THREE.BufferAttribute
+    THREE.BufferAttributeTypes
+    THREE.BufferGeometry
+    THREE.Clock
+    THREE.EventDispatcher
+    THREE.GLBufferAttribute
+    THREE.InstancedBufferAttribute
+    THREE.InstancedBufferGeometry
+    THREE.InstancedInterleavedBuffer
+    THREE.InterleavedBufferAttribute
+    THREE.InterleavedBuffer
+    THREE.Layers
+    -- THREE.Object3D
+    THREE.Raycaster
+    THREE.Uniform
+    -- Extras
+    THREE.Controls
+    THREE.Curve
+    THREE.CurvePath
+    THREE.Interpolations
+    THREE.Path
+    THREE.Shape
+    THREE.ShapePath
+    THREE.ArcCurve
+    THREE.CatmullRomCurve3
+    THREE.CubicBezierCurve3
+    THREE.CubicBezierCurve
+    THREE.EllipseCurve
+    THREE.LineCurve3
+    THREE.LineCurve
+    THREE.QuadraticBezierCurve3
+    THREE.QuadraticBezierCurve
+    THREE.SplineCurve
+    THREE.DataUtils
+    THREE.Earcut
+    THREE.ImageUtils
+    THREE.PMREMGenerator
+    THREE.ShapeUtils
+    THREE.TextureUtils
+    -- Geometries
+    THREE.BoxGeometry
+    THREE.CapsuleGeometry
+    THREE.CircleGeometry
+    THREE.ConeGeometry
+    THREE.CylinderGeometry
+    THREE.DodecahedronGeometry
+    THREE.EdgesGeometry
+    THREE.ExtrudeGeometry
+    THREE.IcosahedronGeometry
+    THREE.LatheGeometry
+    THREE.OctahedronGeometry
+    THREE.PlaneGeometry
+    THREE.PolyhedronGeometry
+    THREE.RingGeometry
+    THREE.ShapeGeometry
+    THREE.SphereGeometry
+    THREE.TetrahedronGeometry
+    THREE.TorusGeometry
+    THREE.TorusKnotGeometry
+    THREE.TubeGeometry
+    THREE.WireframeGeometry
+    -- Helpers
+    THREE.ArrowHelper
+    THREE.AxesHelper
+    THREE.Box3Helper
+    THREE.BoxHelper
+    THREE.CameraHelper
+    THREE.DirectionalLightHelper
+    THREE.GridHelper
+    THREE.HemisphereLightHelper
+    THREE.PlaneHelper
+    THREE.PointLightHelper
+    THREE.PolarGridHelper
+    THREE.SkeletonHelper
+    THREE.SpotLightHelper
+    -- Lights
+    THREE.AmbientLight
+    THREE.DirectionalLight
+    THREE.HemisphereLight
+    THREE.Light
+    THREE.LightProbe
+    THREE.PointLight
+    THREE.RectAreaLight
+    THREE.DirectionalLightShadow
+    THREE.LightShadow
+    THREE.PointLightShadow
+    THREE.SpotLightShadow
+    THREE.SpotLight
+    -- Loaders
+    THREE.AnimationLoader
+    THREE.AudioLoader
+    THREE.BufferGeometryLoader
+    THREE.Cache
+    THREE.CompressedTextureLoader
+    THREE.CubeTextureLoader
+    THREE.DataTextureLoader
+    THREE.FileLoader
+    THREE.ImageBitmapLoader
+    THREE.ImageLoader
+    THREE.Loader
+    THREE.LoaderUtils
+    THREE.DefaultLoadingManager
+    THREE.LoadingManager
+    THREE.MaterialLoader
+    THREE.ObjectLoader
+    THREE.TextureLoader
+    -- Materials
+    THREE.LineBasicMaterial
+    THREE.LineDashedMaterial
+    -- THREE.Material
     THREE.MeshBasicMaterial
+    THREE.MeshDepthMaterial
+    THREE.MeshDistanceMaterial
+    THREE.MeshLambertMaterial
+    THREE.MeshMatcapMaterial
+    THREE.MeshNormalMaterial
+    THREE.MeshPhongMaterial
+    THREE.MeshPhysicalMaterial
+    THREE.MeshStandardMaterial
+    THREE.MeshToonMaterial
+    THREE.PointsMaterial
+    THREE.RawShaderMaterial
+    THREE.ShaderMaterial
+    THREE.ShadowMaterial
+    THREE.SpriteMaterial
+    -- Math
+    THREE.Box2
+    THREE.Box3
+    THREE.Color
+    THREE.Cylindrical
+    THREE.Euler
+    THREE.Frustum
+    THREE.Interpolant
+    THREE.CubicInterpolant
+    THREE.DiscreteInterpolant
+    THREE.LinearInterpolant
+    THREE.QuaternionLinearInterpolant
+    THREE.Line3
+    THREE.MathUtils
+    THREE.Matrix2
+    THREE.Matrix3
+    THREE.Matrix4
+    THREE.Plane
+    THREE.Quaternion
+    THREE.Ray
+    THREE.Sphere
+    THREE.SphericalHarmonics3
+    THREE.Spherical
+    THREE.Triangle
+    THREE.Vector2
+    THREE.Vector3
+    THREE.Vector4
+    -- Objects
+    THREE.BatchedMesh
+    THREE.Bone
+    THREE.ClippingGroup
+    THREE.Group
+    THREE.InstancedMesh
+    THREE.Line
+    THREE.LineLoop
+    THREE.LineSegments
+    THREE.LOD
     THREE.Mesh
+    THREE.Points
+    THREE.Skeleton
+    THREE.SkinnedMesh
+    THREE.Sprite
+    -- Renderers
+    THREE.ShaderChunk
+    THREE.ShaderLib
+    THREE.UniformsLib
+    THREE.UniformsUtils
+    THREE.WebGLProgram
+    THREE.WebGL3DRenderTarget
+    THREE.WebGLArrayRenderTarget
+    THREE.WebGLCubeRenderTarget
     THREE.WebGLRenderer
-    Stats
+    THREE.WebGLRenderTarget
+    THREE.WebXRManager
+    -- Scenes
+    THREE.FogExp2
+    THREE.Fog
+    THREE.Scene
+    THREE.Template
+    -- Textures
+    THREE.CanvasTexture
+    THREE.CompressedArrayTexture
+    THREE.CompressedTexture
+    THREE.CubeTexture
+    THREE.Data3DTexture
+    THREE.DataArrayTexture
+    THREE.DataTexture
+    THREE.DepthTexture
+    THREE.FramebufferTexture
+    THREE.Source
+    THREE.Texture
+    THREE.VideoFrameTexture
+    THREE.VideoTexture
+    -- Stats.js
+    THREE.Stats
   other-modules:
     THREE.Internal
   build-depends:

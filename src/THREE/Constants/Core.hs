@@ -1,0 +1,26 @@
+-----------------------------------------------------------------------------
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+-----------------------------------------------------------------------------
+module THREE.Constants.Core
+  ( -- * Types
+    Core (..)
+    -- * Methods
+  , newCore
+    -- * Properties
+  ) where
+-----------------------------------------------------------------------------
+import           Language.Javascript.JSaddle
+-----------------------------------------------------------------------------
+import qualified THREE.Internal as THREE
+-----------------------------------------------------------------------------
+-- | https://threejs.org/docs/#api/en/scenes/Core
+newtype Core
+  = Core
+  { unCoreCamera :: JSVal
+  } deriving (MakeObject)
+-----------------------------------------------------------------------------
+-- | https://threejs.org/docs/#api/en/cameras/Core
+newCore :: JSM Core
+newCore = THREE.new Core "Core" ([] :: [JSString])
+-----------------------------------------------------------------------------
