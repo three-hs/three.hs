@@ -14,7 +14,7 @@ import           Language.Javascript.JSaddle hiding (new)
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/MeshBasicMaterial
+-- | https://threejs.org/docs/#api/en/materials/MeshBasicMaterial
 newtype MeshBasicMaterial
   = MeshBasicMaterial
   { unMeshBasicMaterial :: JSVal
