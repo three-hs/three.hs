@@ -17,7 +17,7 @@ import qualified THREE.Internal as THREE
 -- | https://threejs.org/docs/#api/en/cameras/Mesh
 newtype Mesh
   = Mesh
-  { unMeshCamera :: JSVal
+  { unMesh :: JSVal
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 new :: JSM Mesh

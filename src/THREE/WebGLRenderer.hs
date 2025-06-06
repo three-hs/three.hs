@@ -17,7 +17,7 @@ import qualified THREE.Internal as THREE
 -- | https://threejs.org/docs/#api/en/cameras/WebGLRenderer
 newtype WebGLRenderer
   = WebGLRenderer
-  { unWebGLRendererCamera :: JSVal
+  { unWebGLRenderer :: JSVal
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 new :: JSM WebGLRenderer
