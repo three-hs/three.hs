@@ -1,26 +1,49 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.TextureLoader
   ( -- * Types
     TextureLoader (..)
-    -- * Methods
-  , newTextureLoader
+    -- * Constructors
+  , THREE.TextureLoader.new
+    -- * Read-only Properties
     -- * Properties
+    -- * Optional properties
+    -- * Methods
+  , load
+    -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.Internal as THREE
+import           THREE.Loader as THREE
+import           THREE.Texture as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/TextureLoader
+-- | https://threejs.org/docs/#api/en/loaders/TextureLoader
 newtype TextureLoader
   = TextureLoader
-  { unTextureLoaderCamera :: JSVal
-  } deriving (MakeObject)
+  { unTextureLoader :: JSVal
+  } deriving (MakeArgs, MakeObject, ToJSVal) 
+    deriving newtype LoaderC
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/TextureLoader
-newTextureLoader :: JSM TextureLoader
-newTextureLoader = THREE.new TextureLoader "TextureLoader" ([] :: [JSString])
+-- Constructors
+-----------------------------------------------------------------------------
+new :: JSM TextureLoader
+new = THREE.new' TextureLoader "TextureLoader" ()
+-----------------------------------------------------------------------------
+-- Read-only properties
+-----------------------------------------------------------------------------
+-- Properties
+-----------------------------------------------------------------------------
+-- Optional properties
+-----------------------------------------------------------------------------
+-- Methods
+-----------------------------------------------------------------------------
+load :: JSString -> TextureLoader -> JSM Texture
+load url (TextureLoader v) = Texture <$> (v # ("load" :: JSString) $ [url])
+-----------------------------------------------------------------------------
+-- Helper functions
 -----------------------------------------------------------------------------

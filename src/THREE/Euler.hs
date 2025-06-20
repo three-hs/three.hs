@@ -1,26 +1,77 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.Euler
   ( -- * Types
     Euler (..)
-    -- * Methods
-  , newEuler
+    -- * Constructors
+    -- * Read-only properties
     -- * Properties
+  , getX
+  , setX
+  , modifyX
+  , getY
+  , setY
+  , modifyY
+  , getZ
+  , setZ
+  , modifyZ
+    -- * Optional properties
+    -- * Methods
+    -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Language.Javascript.JSaddle hiding (new)
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/Euler
-newtype Euler
+-- | https://threejs.org/docs/#api/en/math/Euler
+newtype Euler 
   = Euler
-  { unEulerCamera :: JSVal
-  } deriving (MakeObject)
+  { unEuler :: JSVal
+  } deriving (MakeObject, ToJSVal, MakeArgs)
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/Euler
-newEuler :: JSM Euler
-newEuler = THREE.new Euler "Euler" ([] :: [JSString])
+instance FromJSVal Euler where
+  fromJSVal = pure .Just . Euler
 -----------------------------------------------------------------------------
+-- constructors
+-----------------------------------------------------------------------------
+-- read-only properties
+-----------------------------------------------------------------------------
+-- properties
+-----------------------------------------------------------------------------
+getX :: Euler -> JSM Double
+getX = mkGet "x"
+-----------------------------------------------------------------------------
+setX :: Double -> Euler -> JSM ()
+setX = mkSet "x"
+-----------------------------------------------------------------------------
+modifyX :: (Double -> JSM Double) -> Euler -> JSM Double
+modifyX = mkModify "x"
+-----------------------------------------------------------------------------
+getY :: Euler -> JSM Double
+getY = mkGet "y"
+-----------------------------------------------------------------------------
+setY :: Double -> Euler -> JSM ()
+setY = mkSet "y"
+-----------------------------------------------------------------------------
+modifyY :: (Double -> JSM Double) -> Euler -> JSM Double
+modifyY = mkModify "y"
+-----------------------------------------------------------------------------
+getZ :: Euler -> JSM Double
+getZ = mkGet "z"
+-----------------------------------------------------------------------------
+setZ :: Double -> Euler -> JSM ()
+setZ = mkSet "z"
+-----------------------------------------------------------------------------
+modifyZ :: (Double -> JSM Double) -> Euler -> JSM Double
+modifyZ = mkModify "z"
+-----------------------------------------------------------------------------
+-- optional properties
+-----------------------------------------------------------------------------
+-- methods
+-----------------------------------------------------------------------------
+-- helper functions
+-----------------------------------------------------------------------------
+

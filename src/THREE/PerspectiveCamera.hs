@@ -1,25 +1,47 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.PerspectiveCamera
   ( -- * Types
     PerspectiveCamera (..)
+    -- * Constructors
+  , THREE.PerspectiveCamera.new
+    -- * Read-only Properties
+    -- * Properties
+    -- * Optional properties
     -- * Methods
-  , new
-    -- * Methods
+    -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle hiding (new)
+import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.Camera as THREE
+import           THREE.Internal as THREE
+import           THREE.Object3D as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/PerspectiveCamera
 newtype PerspectiveCamera
   = PerspectiveCamera
   { unPerspectiveCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (MakeArgs, MakeObject, ToJSVal) 
+    deriving newtype CameraC
+    deriving Object3DC via JSVal
 -----------------------------------------------------------------------------
-new :: JSM PerspectiveCamera
-new = THREE.new PerspectiveCamera "PerspectiveCamera" ([] :: [JSString])
+-- Constructors
+-----------------------------------------------------------------------------
+new :: Double -> Double -> Double -> Double -> JSM PerspectiveCamera
+new fov' aspect' near' far' = 
+  new' PerspectiveCamera "PerspectiveCamera" (fov', aspect', near', far')
+-----------------------------------------------------------------------------
+-- Read-only properties
+-----------------------------------------------------------------------------
+-- Properties
+-----------------------------------------------------------------------------
+-- Optional properties
+-----------------------------------------------------------------------------
+-- Methods
+-----------------------------------------------------------------------------
+-- Helper functions
 -----------------------------------------------------------------------------

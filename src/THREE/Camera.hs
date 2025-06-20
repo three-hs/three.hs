@@ -1,26 +1,36 @@
 -----------------------------------------------------------------------------
+{-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 -----------------------------------------------------------------------------
 module THREE.Camera
   ( -- * Types
-    Camera (..)
-    -- * Methods
-  , newCamera
+    CameraC (..)
+    -- * Constructors
+    -- * Read-only Properties
     -- * Properties
+    -- * Optional properties
+    -- * Methods
+    -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
------------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/Camera
-newtype Camera
-  = Camera
-  { unCameraCamera :: JSVal
-  } deriving (MakeObject)
+import           THREE.Internal as THREE
+import           THREE.Object3D as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Camera
-newCamera :: JSM Camera
-newCamera = THREE.new Camera "Camera" ([] :: [JSString])
+class Object3DC a => CameraC a where
+  -- read-only properties
+  isCamera :: a -> JSM Bool
+  -- properties
+  -- optional properties
+  -- methods
 -----------------------------------------------------------------------------
+instance CameraC JSVal where
+  -- read-only properties
+  isCamera = mkGet "isCamera"
+  -- properties
+  -- optional properties
+  -- methods
+-----------------------------------------------------------------------------
+

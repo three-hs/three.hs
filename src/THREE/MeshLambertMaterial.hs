@@ -1,26 +1,53 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.MeshLambertMaterial
   ( -- * Types
     MeshLambertMaterial (..)
-    -- * Methods
-  , newMeshLambertMaterial
+    -- * Constructors
+  , THREE.MeshLambertMaterial.new
+    -- * Read-only Properties
     -- * Properties
+    -- * Optional properties
+  , getMatOpt
+  , setMat
+    -- * Methods
+    -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.Internal as THREE
+import           THREE.Material as THREE
+import           THREE.Texture as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/MeshLambertMaterial
+-- | https://threejs.org/docs/#api/en/materials/MeshLambertMaterial
 newtype MeshLambertMaterial
   = MeshLambertMaterial
-  { unMeshLambertMaterialCamera :: JSVal
-  } deriving (MakeObject)
+  { unMeshLambertMaterial :: JSVal
+  } deriving (MakeArgs, MakeObject, ToJSVal) 
+    deriving newtype MaterialC
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/MeshLambertMaterial
-newMeshLambertMaterial :: JSM MeshLambertMaterial
-newMeshLambertMaterial = THREE.new MeshLambertMaterial "MeshLambertMaterial" ([] :: [JSString])
+-- Constructors
+-----------------------------------------------------------------------------
+new :: JSM MeshLambertMaterial
+new = THREE.new' MeshLambertMaterial "MeshLambertMaterial" ()
+-----------------------------------------------------------------------------
+-- Read-only properties
+-----------------------------------------------------------------------------
+-- Properties
+-----------------------------------------------------------------------------
+-- Optional properties
+-----------------------------------------------------------------------------
+getMatOpt :: MeshLambertMaterial -> JSM (Maybe Texture)
+getMatOpt = mkGetOpt "map"
+-----------------------------------------------------------------------------
+setMat :: Texture -> MeshLambertMaterial -> JSM ()
+setMat = mkSet "map"
+-----------------------------------------------------------------------------
+-- Methods
+-----------------------------------------------------------------------------
+-- Helper functions
 -----------------------------------------------------------------------------

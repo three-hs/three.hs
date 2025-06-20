@@ -3,44 +3,50 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
-module THREE.PointLight
+module THREE.Material
   ( -- * Types
-    PointLight (..)
+    MaterialC (..)
+  , Material (..)
     -- * Constructors
-  , THREE.PointLight.new
+  , THREE.Material.new
     -- * Read-only Properties
     -- * Properties
     -- * Optional properties
     -- * Methods
-    -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
 import           THREE.Internal as THREE
-import           THREE.Light as THREE
-import           THREE.Object3D as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/lights/PointLight
-newtype PointLight
-  = PointLight
-  { unPointLight :: JSVal
+-- | https://threejs.org/docs/#api/en/materials/Material
+class MaterialC a where
+  -- read-only properties
+  isMaterial :: a -> JSM Bool
+  -- properties
+  -- optional properties
+  -- methods
+-----------------------------------------------------------------------------
+instance MaterialC JSVal where
+  -- read-only properties
+  isMaterial = mkGet "isMaterial"
+  -- properties
+  -- optional properties
+  -- methods
+-----------------------------------------------------------------------------
+-- | Generic material
+newtype Material 
+  = Material 
+  { unMaterial :: JSVal
   } deriving (MakeArgs, MakeObject, ToJSVal) 
-    deriving newtype LightC
-    deriving Object3DC via JSVal
+    deriving newtype MaterialC
+-----------------------------------------------------------------------------
+instance FromJSVal Material where
+  fromJSVal = pure .Just . Material
 -----------------------------------------------------------------------------
 -- Constructors
 -----------------------------------------------------------------------------
-new :: JSM PointLight
-new = THREE.new' PointLight "PointLight" ()
------------------------------------------------------------------------------
--- Read-only properties
------------------------------------------------------------------------------
--- Properties
------------------------------------------------------------------------------
--- Optional properties
------------------------------------------------------------------------------
--- Methods
------------------------------------------------------------------------------
--- Helper functions
+-- | Generic material constructor
+new :: JSM Material
+new = new' Material "Material" ()
 -----------------------------------------------------------------------------
