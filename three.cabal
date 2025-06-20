@@ -69,6 +69,7 @@ library
     THREE.InterleavedBufferAttribute
     THREE.InterleavedBuffer
     THREE.Layers
+    THREE.Object3D
     THREE.Raycaster
     THREE.Uniform
     -- Extras
@@ -165,6 +166,7 @@ library
     -- Materials
     THREE.LineBasicMaterial
     THREE.LineDashedMaterial
+    THREE.Material
     THREE.MeshBasicMaterial
     THREE.MeshDepthMaterial
     THREE.MeshDistanceMaterial

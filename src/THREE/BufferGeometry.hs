@@ -1,26 +1,49 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.BufferGeometry
   ( -- * Types
-    BufferGeometry (..)
-    -- * Methods
-  , newBufferGeometry
+    BufferGeometryC (..)
+  , BufferGeometry (..)
+    -- * Constructors
+    -- * Read-only properties
     -- * Properties
+    -- * Optional properties
+    -- * Methods
+    -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Language.Javascript.JSaddle hiding (new)
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/BufferGeometry
-newtype BufferGeometry
+-- | https://threejs.org/docs/#api/en/core/BufferGeometry
+class BufferGeometryC a where
+  -- read-only properties
+  isBufferGeometry :: a -> JSM Bool
+-----------------------------------------------------------------------------
+instance BufferGeometryC JSVal where
+  -- read-only properties
+  isBufferGeometry = mkGet "isBufferGeometry"
+-----------------------------------------------------------------------------
+newtype BufferGeometry 
   = BufferGeometry
-  { unBufferGeometryCamera :: JSVal
-  } deriving (MakeObject)
+  { unBufferGeometry :: JSVal
+  } deriving (MakeObject, ToJSVal, MakeArgs)
+    deriving newtype BufferGeometryC
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/BufferGeometry
-newBufferGeometry :: JSM BufferGeometry
-newBufferGeometry = THREE.new BufferGeometry "BufferGeometry" ([] :: [JSString])
+-- constructors
 -----------------------------------------------------------------------------
+-- read-only properties
+-----------------------------------------------------------------------------
+-- properties
+-----------------------------------------------------------------------------
+-- optional properties
+-----------------------------------------------------------------------------
+-- methods
+-----------------------------------------------------------------------------
+-- helper functions
+-----------------------------------------------------------------------------
+

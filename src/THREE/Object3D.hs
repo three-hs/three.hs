@@ -1,36 +1,48 @@
 -----------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
-module THREE.Loader
+module THREE.Object3D
   ( -- * Types
-    LoaderC (..)
+    Object3DC (..)
     -- * Constructors
     -- * Read-only Properties
     -- * Properties
     -- * Optional properties
     -- * Methods
-    -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
+import           Control.Monad (void)
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
+import           THREE.Euler as THREE
 import           THREE.Internal as THREE
+import           THREE.Material as THREE
+import           THREE.Vector3 as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/loaders/Loader
-class LoaderC a where
+-- | https://threejs.org/docs/#api/en/core/Object3D
+class Object3DC a where
   -- read-only properties
+  id :: a -> JSM Bool
   -- properties
-  getPath :: a -> JSM JSString
-  setPath :: JSString -> a -> JSM ()
-  -- TODO modifyPath?
+  getPosition :: a -> JSM Vector3
+  -- TODO setPosition
+  getRotation :: a -> JSM Euler
+  -- TODO setRotation
   -- optional properties
+  getCustomDistanceMaterialOpt :: a -> JSM (Maybe Material)
+  -- TODO  setCustomDistanceMaterial
   -- methods
+  add :: (Object3DC b, MakeArgs b) => a -> b -> JSM ()
 -----------------------------------------------------------------------------
-instance LoaderC JSVal where
+instance Object3DC JSVal where
   -- read-only properties
+  id = mkGet "id"
   -- properties
-  getPath = mkGet "path"
-  setPath = mkSet "path"
+  getPosition = mkGet "position"
+  getRotation = mkGet "rotation"
   -- optional properties
+  getCustomDistanceMaterialOpt = mkGetOpt "customDistanceMaterial"
   -- methods
+  add v x = void $ v # ("add" :: JSString) $ x
 -----------------------------------------------------------------------------
+

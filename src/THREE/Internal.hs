@@ -1,12 +1,15 @@
 {-# LANGUAGE OverloadedStrings #-}
+
 module THREE.Internal
   ( new
-  , Geometry
-  , Material
-  , Object3D (..)
+  , new'
+  , mkGet
+  , mkGetOpt
+  , mkModify
+  , mkModifyOpt
+  , mkSet
   ) where
 
-import           Control.Monad
 import qualified Language.Javascript.JSaddle as J
 import           Language.Javascript.JSaddle hiding (new)
 
@@ -21,21 +24,45 @@ new f name args = do
   v <- jsg ("THREE" :: JSString) ! name
   f <$> J.new v args
 
--- | https://threejs.org/docs/#api/en/core/BufferGeometry
-class Geometry geometry
+-- | Smart constructor for THREE namespace objects
+new' 
+  :: MakeArgs a 
+  => (JSVal -> b) 
+  -> JSString 
+  -> a 
+  -> JSM b
+new' f name args = do
+  v <- jsg ("THREE" :: JSString) ! name
+  f <$> J.new v args
 
--- | https://threejs.org/docs/#api/en/materials/Material
-class Material material
+-- | Getting the value of a property.
+mkGet :: (MakeObject a, FromJSVal b) => JSString -> a -> JSM b
+mkGet name v = fromJSValUnchecked =<< v ! name
 
--- | dmj: these need to be fleshed out / updated, might be off.
--- only derive against newtypes that are truly Object3D
-class Object3D object where
-  add :: ToJSVal a => object -> a -> JSM ()
-  rotateX :: object -> Float -> JSM ()
-  rotateY :: object -> Float -> JSM ()
+-- | Getting the value of an optional property.
+mkGetOpt :: (MakeObject a, FromJSVal b) => JSString -> a -> JSM (Maybe b)
+mkGetOpt name v = fromJSVal =<< v ! name
 
+-- | Setting the value of a property.
+mkSet :: (MakeObject a, ToJSVal b) => JSString -> b -> a -> JSM ()
+mkSet name x v = v <# name $ x
 
-instance Object3D JSVal where
-  add object v = void $ object # ("add" :: JSString) $ [v]
-  rotateX object x = (object <# ("rotateX" :: JSString)) x
-  rotateY object x = (object <# ("rotateY" :: JSString)) x
+-- | Modifying a property.
+mkModify :: (MakeObject a, ToJSVal b, FromJSVal b) => JSString -> (b -> JSM b) -> a -> JSM b
+mkModify name f v = do
+  x <- fromJSValUnchecked =<< v ! name
+  y <- f x
+  v <# name $ y
+  pure y
+
+-- | Modifying an optional property.
+mkModifyOpt :: (MakeObject a, ToJSVal b, FromJSVal b) => JSString -> (b -> JSM b) -> a -> JSM (Maybe b)
+mkModifyOpt name f v = do
+  mx <- fromJSVal =<< v ! name
+  case mx of
+    Nothing -> pure Nothing
+    Just x -> do
+      y <- f x
+      v <# name $ y
+      pure $ Just y
+

@@ -1,26 +1,44 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.SphereGeometry
   ( -- * Types
     SphereGeometry (..)
-    -- * Methods
-  , newSphereGeometry
+    -- * Constructors
+  , THREE.SphereGeometry.new
+    -- * Read-only Properties
     -- * Properties
+    -- * Optional properties
+    -- * Methods
+    -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.BufferGeometry as THREE
+import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/SphereGeometry
+-- | https://threejs.org/docs/#api/en/geometries/SphereGeometry
 newtype SphereGeometry
   = SphereGeometry
-  { unSphereGeometryCamera :: JSVal
-  } deriving (MakeObject)
+  { unSphereGeometry :: JSVal
+  } deriving (MakeArgs, MakeObject, ToJSVal) 
+    deriving newtype BufferGeometryC
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/SphereGeometry
-newSphereGeometry :: JSM SphereGeometry
-newSphereGeometry = THREE.new SphereGeometry "SphereGeometry" ([] :: [JSString])
+-- Constructors
+-----------------------------------------------------------------------------
+new :: JSM SphereGeometry
+new = THREE.new' SphereGeometry "SphereGeometry" ()
+-----------------------------------------------------------------------------
+-- Read-only properties
+-----------------------------------------------------------------------------
+-- Properties
+-----------------------------------------------------------------------------
+-- Optional properties
+-----------------------------------------------------------------------------
+-- Methods
+-----------------------------------------------------------------------------
+-- Helper functions
 -----------------------------------------------------------------------------
