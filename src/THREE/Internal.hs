@@ -154,7 +154,7 @@ prop1 !. prop2 = Property setter getter
 --   object ^. position ..! setXYZ 1 1 1
 -- @
 --
-infixr 4 (!..)
+infixr 4 !..
 (!..)
   :: Three field
   -> (field -> Three result)
