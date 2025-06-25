@@ -69,12 +69,7 @@ optional
 optional
   = Property
   { setProperty = \object -> (object <# name)
-  , getProperty = \object -> do
-      result <- fromJSValUnchecked =<< do
-        object # ("hasOwnProperty" :: JSString) $ [name]
-      if result
-        then fromJSValUnchecked =<< object ! name
-        else pure Nothing
+  , getProperty = \object -> fromJSVal =<< object ! name
   } where
       name = symbolVal (Proxy @name)
 -----------------------------------------------------------------------------
