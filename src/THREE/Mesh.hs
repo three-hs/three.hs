@@ -15,10 +15,10 @@ module THREE.Mesh
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Language.Javascript.JSaddle hiding (new)
 -----------------------------------------------------------------------------
-import           THREE.BufferGeometry as THREE
-import           THREE.Internal as THREE
+import           THREE.BufferGeometry (BufferGeometryClass)
+import qualified THREE.Internal as THREE
 import           THREE.Material as THREE
 import           THREE.Object3D as THREE
 -----------------------------------------------------------------------------
@@ -32,7 +32,7 @@ newtype Mesh
 -- Constructors
 -----------------------------------------------------------------------------
 new
-  :: (BufferGeometry geometry, Material material)
+  :: (BufferGeometryClass geometry, Material material)
   => geometry
   -> material
   -> THREE.Three Mesh
