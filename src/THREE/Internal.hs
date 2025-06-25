@@ -23,6 +23,7 @@ module THREE.Internal
   , (%=)
   , (*=)
   , (!.)
+  , (!..)
   , property
   , method
   , readonly
@@ -146,6 +147,18 @@ prop1 !. prop2 = Property setter getter
       setter record target = do
         field_ <- getProperty prop1 record
         setProperty prop2 field_ target
+-----------------------------------------------------------------------------
+-- | This is how we invoke a function on a 'Property'
+--
+-- @
+--   object ^. position ..! setXYZ (1,1,1)
+-- @
+--
+(!..)
+  :: Three field
+  -> (field -> Three result)
+  -> Three result
+(!..) = (>>=)
 -----------------------------------------------------------------------------
 class MakeObject object => X object where
   x :: Property object "x" Double
