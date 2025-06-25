@@ -1,4 +1,4 @@
-three
+three.hs
 =========================
 
 Haskell bindings to the [three.js](https://threejs.org) JavaScript library.
