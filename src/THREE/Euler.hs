@@ -9,9 +9,6 @@ module THREE.Euler
     -- * Constructors
     -- * Read-only properties
     -- * Properties
-  , x
-  , y
-  , z
   -- * Optional properties
   -- * Methods
   -- * Helper functions
@@ -25,7 +22,7 @@ import           THREE.Internal as THREE
 newtype Euler 
   = Euler
   { unEuler :: JSVal
-  } deriving (MakeObject, ToJSVal, MakeArgs)
+  } deriving (MakeObject, X, Y, Z)
 -----------------------------------------------------------------------------
 instance FromJSVal Euler where
   fromJSVal = pure . Just . Euler
@@ -35,15 +32,6 @@ instance FromJSVal Euler where
 -- read-only properties
 -----------------------------------------------------------------------------
 -- properties
------------------------------------------------------------------------------
-x :: THREE.Property Euler "x" Double
-x = property
------------------------------------------------------------------------------
-y :: THREE.Property Euler "y" Double
-y = property
------------------------------------------------------------------------------
-z :: THREE.Property Euler "z" Double
-z = property
 -----------------------------------------------------------------------------
 -- optional properties
 -----------------------------------------------------------------------------

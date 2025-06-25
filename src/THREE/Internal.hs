@@ -11,6 +11,10 @@ module THREE.Internal
   ( -- * Types
     Three
   , Property (..)
+  , W (..)
+  , X (..)
+  , Y (..)
+  , Z (..)
     -- * Combinators
   , (^.)
   , (.=)
@@ -52,19 +56,19 @@ infixr 4 +=
 (+=)
   :: forall object name field
   . Num field => Property object name field -> field -> object -> Three ()
-(+=) (Property setter getter) x object = setter object =<< (+x) <$> getter object
+(+=) (Property setter getter) i object = setter object =<< (+i) <$> getter object
 -----------------------------------------------------------------------------
 infixr 4 -=
 (-=)
   :: forall object name field
   . Num field => Property object name field -> field -> object -> Three ()
-(-=) (Property setter getter) x object = setter object =<< subtract x <$> getter object
+(-=) (Property setter getter) i object = setter object =<< subtract i <$> getter object
 -----------------------------------------------------------------------------
 infixr 4 *=
 (*=)
   :: forall object name field
   . Num field => Property object name field -> field -> object -> Three ()
-(*=) (Property setter getter) x object = setter object =<< (*x) <$> getter object
+(*=) (Property setter getter) i object = setter object =<< (*i) <$> getter object
 -----------------------------------------------------------------------------
 data Property object (name :: Symbol) field
   = Property
@@ -142,4 +146,28 @@ prop1 !. prop2 = Property setter getter
       setter record target = do
         field_ <- getProperty prop1 record
         setProperty prop2 field_ target
+-----------------------------------------------------------------------------
+class MakeObject object => X object where
+  x :: Property object "x" Double
+  x = property
+-----------------------------------------------------------------------------
+instance X JSVal
+-----------------------------------------------------------------------------
+class MakeObject object => Y object where
+  y :: Property object "y" Double
+  y = property
+-----------------------------------------------------------------------------
+instance Y JSVal
+-----------------------------------------------------------------------------
+class MakeObject object => Z object where
+  z :: Property object "z" Double
+  z = property
+-----------------------------------------------------------------------------
+instance Z JSVal
+-----------------------------------------------------------------------------
+class MakeObject object => W object where
+  w :: Property object "w" Double
+  w = property
+-----------------------------------------------------------------------------
+instance W JSVal
 -----------------------------------------------------------------------------

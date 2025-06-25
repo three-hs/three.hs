@@ -18,7 +18,7 @@ import qualified THREE.Internal as THREE
 newtype Vector4
   = Vector4
   { unVector4Camera :: JSVal
-  } deriving (MakeObject)
+  } deriving (MakeObject, THREE.X, THREE.Y, THREE.Z, THREE.W)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Vector4
 new :: THREE.Three Vector4

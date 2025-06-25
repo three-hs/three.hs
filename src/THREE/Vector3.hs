@@ -10,12 +10,8 @@ module THREE.Vector3
   , THREE.Vector3.new
     -- * Read-only properties
     -- * Properties
-  , x
-  , y
-  , z
     -- * Optional properties
     -- * Methods
-  , setXYZ 
     -- * Helper functions
   , vector3ToXYZ
   ) where
@@ -29,7 +25,7 @@ import           THREE.Internal as THREE
 newtype Vector3 
   = Vector3
   { unVector3 :: JSVal
-  } deriving (MakeObject, ToJSVal, MakeArgs)
+  } deriving (MakeObject, ToJSVal, MakeArgs, X, Y, Z)
 -----------------------------------------------------------------------------
 instance FromJSVal Vector3 where
   fromJSVal = pure .Just . Vector3
@@ -42,15 +38,6 @@ new x_ y_ z_ = THREE.new Vector3 "Vector3" (x_, y_, z_)
 -- read-only properties
 -----------------------------------------------------------------------------
 -- properties
------------------------------------------------------------------------------
-x :: THREE.Property Vector3 "x" Double
-x = property
------------------------------------------------------------------------------
-y :: THREE.Property Vector3 "y" Double
-y = property
------------------------------------------------------------------------------
-z :: THREE.Property Vector3 "z" Double
-z = property
 -----------------------------------------------------------------------------
 -- optional properties
 -----------------------------------------------------------------------------
