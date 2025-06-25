@@ -17,6 +17,7 @@ module THREE.PerspectiveCamera
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
+import           THREE.Camera as THREE
 import           THREE.Internal as THREE
 import           THREE.Object3D as THREE
 -----------------------------------------------------------------------------
@@ -25,6 +26,7 @@ newtype PerspectiveCamera
   = PerspectiveCamera
   { unPerspectiveCamera :: JSVal
   } deriving (MakeArgs, MakeObject, ToJSVal) 
+    deriving newtype Camera
     deriving Object3D via JSVal
 -----------------------------------------------------------------------------
 -- Constructors
