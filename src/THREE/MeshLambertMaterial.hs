@@ -1,4 +1,5 @@
 -----------------------------------------------------------------------------
+{-# LANGUAGE DataKinds #-}
 {-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE OverloadedStrings #-}
@@ -12,13 +13,16 @@ module THREE.MeshLambertMaterial
     -- * Properties
     -- * Optional properties
     -- * Methods
+  , map
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
+import           Prelude hiding (map)
 -----------------------------------------------------------------------------
 import           THREE.Internal as THREE
 import           THREE.Material as THREE
+import           THREE.Texture as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/materials/MeshLambertMaterial
 newtype MeshLambertMaterial
@@ -39,6 +43,9 @@ new = THREE.new MeshLambertMaterial "MeshLambertMaterial" ()
 -- Optional properties
 -----------------------------------------------------------------------------
 -- Methods
+-----------------------------------------------------------------------------
+map :: THREE.Property MeshLambertMaterial "map" (Maybe THREE.Texture)
+map = optional
 -----------------------------------------------------------------------------
 -- Helper functions
 -----------------------------------------------------------------------------
