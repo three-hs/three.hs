@@ -257,7 +257,6 @@ library
     THREE.VideoTexture
     -- Stats.js
     THREE.Stats
-  other-modules:
     THREE.Internal
   build-depends:
     base < 5,
