@@ -14,6 +14,8 @@ module THREE.Internal
     -- * Combinators
   , (^.)
   , (.=)
+  , (+=)
+  , (-=)
   , (%=)
   , (!.)
   , property
@@ -44,6 +46,18 @@ infixr 4 %=
   :: forall object name field
   . Property object name field -> (field -> field) -> object -> Three ()
 (%=) (Property setter getter) f object = setter object =<< f <$> getter object
+-----------------------------------------------------------------------------
+infixr 4 +=
+(+=)
+  :: forall object name field
+  . Num field => Property object name field -> field -> object -> Three ()
+(+=) (Property setter getter) x object = setter object =<< (+x) <$> getter object
+-----------------------------------------------------------------------------
+infixr 4 -=
+(-=)
+  :: forall object name field
+  . Num field => Property object name field -> field -> object -> Three ()
+(-=) (Property setter getter) x object = setter object =<< subtract x <$> getter object
 -----------------------------------------------------------------------------
 data Property object (name :: Symbol) field
   = Property
