@@ -14,6 +14,7 @@ module THREE.Vector3
     -- * Methods
     -- * Helper functions
   , vector3ToXYZ
+  , setXYZ
   ) where
 -----------------------------------------------------------------------------
 import           Control.Monad (void)
