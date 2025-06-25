@@ -17,6 +17,7 @@ module THREE.Internal
   , (+=)
   , (-=)
   , (%=)
+  , (*=)
   , (!.)
   , property
   , method
@@ -58,6 +59,12 @@ infixr 4 -=
   :: forall object name field
   . Num field => Property object name field -> field -> object -> Three ()
 (-=) (Property setter getter) x object = setter object =<< subtract x <$> getter object
+-----------------------------------------------------------------------------
+infixr 4 *=
+(*=)
+  :: forall object name field
+  . Num field => Property object name field -> field -> object -> Three ()
+(*=) (Property setter getter) x object = setter object =<< (*x) <$> getter object
 -----------------------------------------------------------------------------
 data Property object (name :: Symbol) field
   = Property
