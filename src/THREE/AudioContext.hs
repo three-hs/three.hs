@@ -6,7 +6,7 @@ module THREE.AudioContext
   ( -- * Types
     AudioContext (..)
     -- * Methods
-  , newAudioContext
+  , THREE.AudioContext.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype AudioContext
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AudioContext
-newAudioContext :: JSM AudioContext
-newAudioContext = THREE.new AudioContext "AudioContext" ([] :: [JSString])
+new :: THREE.Three AudioContext
+new = THREE.new AudioContext "AudioContext" ([] :: [JSString])
 -----------------------------------------------------------------------------

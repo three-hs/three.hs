@@ -6,7 +6,7 @@ module THREE.WebXRManager
   ( -- * Types
     WebXRManager (..)
     -- * Methods
-  , newWebXRManager
+  , THREE.WebXRManager.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype WebXRManager
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/WebXRManager
-newWebXRManager :: JSM WebXRManager
-newWebXRManager = THREE.new WebXRManager "WebXRManager" ([] :: [JSString])
+new :: THREE.Three WebXRManager
+new = THREE.new WebXRManager "WebXRManager" ([] :: [JSString])
 -----------------------------------------------------------------------------

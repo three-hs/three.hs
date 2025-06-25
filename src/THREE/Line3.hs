@@ -6,7 +6,7 @@ module THREE.Line3
   ( -- * Types
     Line3 (..)
     -- * Methods
-  , newLine3
+  , THREE.Line3.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Line3
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Line3
-newLine3 :: JSM Line3
-newLine3 = THREE.new Line3 "Line3" ([] :: [JSString])
+new :: THREE.Three Line3
+new = THREE.new Line3 "Line3" ([] :: [JSString])
 -----------------------------------------------------------------------------

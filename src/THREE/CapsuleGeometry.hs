@@ -6,7 +6,7 @@ module THREE.CapsuleGeometry
   ( -- * Types
     CapsuleGeometry (..)
     -- * Methods
-  , newCapsuleGeometry
+  , THREE.CapsuleGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype CapsuleGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CapsuleGeometry
-newCapsuleGeometry :: JSM CapsuleGeometry
-newCapsuleGeometry = THREE.new CapsuleGeometry "CapsuleGeometry" ([] :: [JSString])
+new :: THREE.Three CapsuleGeometry
+new = THREE.new CapsuleGeometry "CapsuleGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

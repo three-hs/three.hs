@@ -6,7 +6,7 @@ module THREE.MeshPhongMaterial
   ( -- * Types
     MeshPhongMaterial (..)
     -- * Methods
-  , newMeshPhongMaterial
+  , THREE.MeshPhongMaterial.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype MeshPhongMaterial
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/MeshPhongMaterial
-newMeshPhongMaterial :: JSM MeshPhongMaterial
-newMeshPhongMaterial = THREE.new MeshPhongMaterial "MeshPhongMaterial" ([] :: [JSString])
+new :: THREE.Three MeshPhongMaterial
+new = THREE.new MeshPhongMaterial "MeshPhongMaterial" ([] :: [JSString])
 -----------------------------------------------------------------------------

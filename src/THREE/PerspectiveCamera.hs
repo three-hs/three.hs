@@ -17,7 +17,6 @@ module THREE.PerspectiveCamera
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import           THREE.Camera as THREE
 import           THREE.Internal as THREE
 import           THREE.Object3D as THREE
 -----------------------------------------------------------------------------
@@ -26,14 +25,23 @@ newtype PerspectiveCamera
   = PerspectiveCamera
   { unPerspectiveCamera :: JSVal
   } deriving (MakeArgs, MakeObject, ToJSVal) 
-    deriving newtype CameraC
-    deriving Object3DC via JSVal
+    deriving Object3D via JSVal
 -----------------------------------------------------------------------------
 -- Constructors
 -----------------------------------------------------------------------------
-new :: Double -> Double -> Double -> Double -> JSM PerspectiveCamera
-new fov' aspect' near' far' = 
-  new' PerspectiveCamera "PerspectiveCamera" (fov', aspect', near', far')
+new
+  :: Double
+  -- ^ Field of View
+  -> Double
+  -- ^ Aspect
+  -> Double
+  -- ^ Near
+  -> Double
+  -- ^ Far
+  -> THREE.Three PerspectiveCamera
+new fov aspect near far = 
+  THREE.new PerspectiveCamera "PerspectiveCamera"
+    (fov, aspect, near, far)
 -----------------------------------------------------------------------------
 -- Read-only properties
 -----------------------------------------------------------------------------

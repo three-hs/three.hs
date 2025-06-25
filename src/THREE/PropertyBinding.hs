@@ -6,7 +6,7 @@ module THREE.PropertyBinding
   ( -- * Types
     PropertyBinding (..)
     -- * Methods
-  , newPropertyBinding
+  , THREE.PropertyBinding.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype PropertyBinding
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/PropertyBinding
-newPropertyBinding :: JSM PropertyBinding
-newPropertyBinding = THREE.new PropertyBinding "PropertyBinding" ([] :: [JSString])
+new :: THREE.Three PropertyBinding
+new = THREE.new PropertyBinding "PropertyBinding" ([] :: [JSString])
 -----------------------------------------------------------------------------

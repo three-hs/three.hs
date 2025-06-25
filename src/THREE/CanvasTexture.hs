@@ -6,7 +6,7 @@ module THREE.CanvasTexture
   ( -- * Types
     CanvasTexture (..)
     -- * Methods
-  , newCanvasTexture
+  , THREE.CanvasTexture.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype CanvasTexture
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CanvasTexture
-newCanvasTexture :: JSM CanvasTexture
-newCanvasTexture = THREE.new CanvasTexture "CanvasTexture" ([] :: [JSString])
+new :: THREE.Three CanvasTexture
+new = THREE.new CanvasTexture "CanvasTexture" ([] :: [JSString])
 -----------------------------------------------------------------------------

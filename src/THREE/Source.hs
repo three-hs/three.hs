@@ -6,7 +6,7 @@ module THREE.Source
   ( -- * Types
     Source (..)
     -- * Methods
-  , newSource
+  , THREE.Source.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Source
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Source
-newSource :: JSM Source
-newSource = THREE.new Source "Source" ([] :: [JSString])
+new :: THREE.Three Source
+new = THREE.new Source "Source" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.EdgesGeometry
   ( -- * Types
     EdgesGeometry (..)
     -- * Methods
-  , newEdgesGeometry
+  , THREE.EdgesGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype EdgesGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/EdgesGeometry
-newEdgesGeometry :: JSM EdgesGeometry
-newEdgesGeometry = THREE.new EdgesGeometry "EdgesGeometry" ([] :: [JSString])
+new :: THREE.Three EdgesGeometry
+new = THREE.new EdgesGeometry "EdgesGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

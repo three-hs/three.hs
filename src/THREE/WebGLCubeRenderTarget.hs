@@ -6,7 +6,7 @@ module THREE.WebGLCubeRenderTarget
   ( -- * Types
     WebGLCubeRenderTarget (..)
     -- * Methods
-  , newWebGLCubeRenderTarget
+  , THREE.WebGLCubeRenderTarget.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype WebGLCubeRenderTarget
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/WebGLCubeRenderTarget
-newWebGLCubeRenderTarget :: JSM WebGLCubeRenderTarget
-newWebGLCubeRenderTarget = THREE.new WebGLCubeRenderTarget "WebGLCubeRenderTarget" ([] :: [JSString])
+new :: THREE.Three WebGLCubeRenderTarget
+new = THREE.new WebGLCubeRenderTarget "WebGLCubeRenderTarget" ([] :: [JSString])
 -----------------------------------------------------------------------------

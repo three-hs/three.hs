@@ -6,7 +6,7 @@ module THREE.LineBasicMaterial
   ( -- * Types
     LineBasicMaterial (..)
     -- * Methods
-  , newLineBasicMaterial
+  , THREE.LineBasicMaterial.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype LineBasicMaterial
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LineBasicMaterial
-newLineBasicMaterial :: JSM LineBasicMaterial
-newLineBasicMaterial = THREE.new LineBasicMaterial "LineBasicMaterial" ([] :: [JSString])
+new :: THREE.Three LineBasicMaterial
+new = THREE.new LineBasicMaterial "LineBasicMaterial" ([] :: [JSString])
 -----------------------------------------------------------------------------

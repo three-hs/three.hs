@@ -6,7 +6,7 @@ module THREE.Earcut
   ( -- * Types
     Earcut (..)
     -- * Methods
-  , newEarcut
+  , THREE.Earcut.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Earcut
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Earcut
-newEarcut :: JSM Earcut
-newEarcut = THREE.new Earcut "Earcut" ([] :: [JSString])
+new :: THREE.Three Earcut
+new = THREE.new Earcut "Earcut" ([] :: [JSString])
 -----------------------------------------------------------------------------

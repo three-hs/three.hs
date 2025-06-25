@@ -1,3 +1,4 @@
+{-# LANGUAGE DataKinds #-}
 -----------------------------------------------------------------------------
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE OverloadedStrings #-}
@@ -9,15 +10,9 @@ module THREE.Vector3
   , THREE.Vector3.new
     -- * Read-only properties
     -- * Properties
-  , getX
-  , setX
-  , modifyX
-  , getY
-  , setY
-  , modifyY
-  , getZ
-  , setZ
-  , modifyZ
+  , x
+  , y
+  , z
     -- * Optional properties
     -- * Methods
   , setXYZ 
@@ -41,54 +36,37 @@ instance FromJSVal Vector3 where
 -----------------------------------------------------------------------------
 -- constructors
 -----------------------------------------------------------------------------
-new :: Double -> Double -> Double -> JSM Vector3
-new x y z = new' Vector3 "Vector3" (x, y, z)
+new :: Double -> Double -> Double -> THREE.Three Vector3
+new x_ y_ z_ = THREE.new Vector3 "Vector3" (x_, y_, z_)
 -----------------------------------------------------------------------------
 -- read-only properties
 -----------------------------------------------------------------------------
 -- properties
 -----------------------------------------------------------------------------
-getX :: Vector3 -> JSM Double
-getX = mkGet "x"
+x :: THREE.Property Vector3 "x" Double
+x = field
 -----------------------------------------------------------------------------
-setX :: Double -> Vector3 -> JSM ()
-setX = mkSet "x"
+y :: THREE.Property Vector3 "y" Double
+y = field
 -----------------------------------------------------------------------------
-modifyX :: (Double -> JSM Double) -> Vector3 -> JSM Double
-modifyX = mkModify "x"
------------------------------------------------------------------------------
-getY :: Vector3 -> JSM Double
-getY = mkGet "y"
------------------------------------------------------------------------------
-setY :: Double -> Vector3 -> JSM ()
-setY = mkSet "y"
------------------------------------------------------------------------------
-modifyY :: (Double -> JSM Double) -> Vector3 -> JSM Double
-modifyY = mkModify "y"
------------------------------------------------------------------------------
-getZ :: Vector3 -> JSM Double
-getZ = mkGet "z"
------------------------------------------------------------------------------
-setZ :: Double -> Vector3 -> JSM ()
-setZ = mkSet "z"
------------------------------------------------------------------------------
-modifyZ :: (Double -> JSM Double) -> Vector3 -> JSM Double
-modifyZ = mkModify "z"
+z :: THREE.Property Vector3 "z" Double
+z = field
 -----------------------------------------------------------------------------
 -- optional properties
 -----------------------------------------------------------------------------
 -- methods
 -----------------------------------------------------------------------------
-setXYZ :: Double -> Double -> Double -> Vector3 -> JSM ()
-setXYZ x y z (Vector3 v) = void $ v # ("set" :: JSString) $ (x, y, z)
+setXYZ :: Double -> Double -> Double -> Vector3 -> THREE.Three ()
+setXYZ x_ y_ z_ (Vector3 v) = LiftJSM $
+  void $ v # ("set" :: JSString) $ (x_, y_, z_)
 -----------------------------------------------------------------------------
 -- helper functions
 -----------------------------------------------------------------------------
 vector3ToXYZ :: Vector3 -> JSM (Double, Double, Double)
 vector3ToXYZ (Vector3 v) = do
-  x <- fromJSValUnchecked =<< v ! ("x" :: JSString)
-  y <- fromJSValUnchecked =<< v ! ("y" :: JSString)
-  z <- fromJSValUnchecked =<< v ! ("z" :: JSString)
-  pure (x, y, z)
+  x_ <- fromJSValUnchecked =<< v ! ("x" :: JSString)
+  y_ <- fromJSValUnchecked =<< v ! ("y" :: JSString)
+  z_ <- fromJSValUnchecked =<< v ! ("z" :: JSString)
+  pure (x_, y_, z_)
 -----------------------------------------------------------------------------
 

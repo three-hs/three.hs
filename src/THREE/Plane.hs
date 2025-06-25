@@ -6,7 +6,7 @@ module THREE.Plane
   ( -- * Types
     Plane (..)
     -- * Methods
-  , newPlane
+  , THREE.Plane.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Plane
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Plane
-newPlane :: JSM Plane
-newPlane = THREE.new Plane "Plane" ([] :: [JSString])
+new :: THREE.Three Plane
+new = THREE.new Plane "Plane" ([] :: [JSString])
 -----------------------------------------------------------------------------

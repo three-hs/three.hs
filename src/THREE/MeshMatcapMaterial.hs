@@ -6,7 +6,7 @@ module THREE.MeshMatcapMaterial
   ( -- * Types
     MeshMatcapMaterial (..)
     -- * Methods
-  , newMeshMatcapMaterial
+  , THREE.MeshMatcapMaterial.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype MeshMatcapMaterial
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/MeshMatcapMaterial
-newMeshMatcapMaterial :: JSM MeshMatcapMaterial
-newMeshMatcapMaterial = THREE.new MeshMatcapMaterial "MeshMatcapMaterial" ([] :: [JSString])
+new :: THREE.Three MeshMatcapMaterial
+new = THREE.new MeshMatcapMaterial "MeshMatcapMaterial" ([] :: [JSString])
 -----------------------------------------------------------------------------

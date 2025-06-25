@@ -6,7 +6,7 @@ module THREE.WireframeGeometry
   ( -- * Types
     WireframeGeometry (..)
     -- * Methods
-  , newWireframeGeometry
+  , THREE.WireframeGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype WireframeGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/WireframeGeometry
-newWireframeGeometry :: JSM WireframeGeometry
-newWireframeGeometry = THREE.new WireframeGeometry "WireframeGeometry" ([] :: [JSString])
+new :: THREE.Three WireframeGeometry
+new = THREE.new WireframeGeometry "WireframeGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

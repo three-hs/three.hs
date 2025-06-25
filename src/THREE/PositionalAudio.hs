@@ -6,7 +6,7 @@ module THREE.PositionalAudio
   ( -- * Types
     PositionalAudio (..)
     -- * Methods
-  , newPositionalAudio
+  , THREE.PositionalAudio.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype PositionalAudio
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/PositionalAudio
-newPositionalAudio :: JSM PositionalAudio
-newPositionalAudio = THREE.new PositionalAudio "PositionalAudio" ([] :: [JSString])
+new :: THREE.Three PositionalAudio
+new = THREE.new PositionalAudio "PositionalAudio" ([] :: [JSString])
 -----------------------------------------------------------------------------

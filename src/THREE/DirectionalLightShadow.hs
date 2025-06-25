@@ -6,7 +6,7 @@ module THREE.DirectionalLightShadow
   ( -- * Types
     DirectionalLightShadow (..)
     -- * Methods
-  , newDirectionalLightShadow
+  , THREE.DirectionalLightShadow.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype DirectionalLightShadow
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/DirectionalLightShadow
-newDirectionalLightShadow :: JSM DirectionalLightShadow
-newDirectionalLightShadow = THREE.new DirectionalLightShadow "DirectionalLightShadow" ([] :: [JSString])
+new :: THREE.Three DirectionalLightShadow
+new = THREE.new DirectionalLightShadow "DirectionalLightShadow" ([] :: [JSString])
 -----------------------------------------------------------------------------

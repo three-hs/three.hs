@@ -6,7 +6,7 @@ module THREE.LineSegments
   ( -- * Types
     LineSegments (..)
     -- * Methods
-  , newLineSegments
+  , THREE.LineSegments.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype LineSegments
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LineSegments
-newLineSegments :: JSM LineSegments
-newLineSegments = THREE.new LineSegments "LineSegments" ([] :: [JSString])
+new :: THREE.Three LineSegments
+new = THREE.new LineSegments "LineSegments" ([] :: [JSString])
 -----------------------------------------------------------------------------

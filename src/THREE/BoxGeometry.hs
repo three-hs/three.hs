@@ -25,12 +25,12 @@ newtype BoxGeometry
   = BoxGeometry
   { unBoxGeometry :: JSVal
   } deriving (MakeArgs, MakeObject, ToJSVal) 
-    deriving newtype BufferGeometryC
+    deriving newtype BufferGeometry
 -----------------------------------------------------------------------------
 -- Constructors
 -----------------------------------------------------------------------------
-new :: JSM BoxGeometry
-new = THREE.new' BoxGeometry "BoxGeometry" ()
+new :: THREE.Three BoxGeometry
+new = THREE.new BoxGeometry "BoxGeometry" ()
 -----------------------------------------------------------------------------
 -- Read-only properties
 -----------------------------------------------------------------------------

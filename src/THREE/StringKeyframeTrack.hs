@@ -6,7 +6,7 @@ module THREE.StringKeyframeTrack
   ( -- * Types
     StringKeyframeTrack (..)
     -- * Methods
-  , newStringKeyframeTrack
+  , THREE.StringKeyframeTrack.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype StringKeyframeTrack
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/StringKeyframeTrack
-newStringKeyframeTrack :: JSM StringKeyframeTrack
-newStringKeyframeTrack = THREE.new StringKeyframeTrack "StringKeyframeTrack" ([] :: [JSString])
+new :: THREE.Three StringKeyframeTrack
+new = THREE.new StringKeyframeTrack "StringKeyframeTrack" ([] :: [JSString])
 -----------------------------------------------------------------------------

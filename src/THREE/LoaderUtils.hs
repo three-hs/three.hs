@@ -6,7 +6,7 @@ module THREE.LoaderUtils
   ( -- * Types
     LoaderUtils (..)
     -- * Methods
-  , newLoaderUtils
+  , THREE.LoaderUtils.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype LoaderUtils
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LoaderUtils
-newLoaderUtils :: JSM LoaderUtils
-newLoaderUtils = THREE.new LoaderUtils "LoaderUtils" ([] :: [JSString])
+new :: THREE.Three LoaderUtils
+new = THREE.new LoaderUtils "LoaderUtils" ([] :: [JSString])
 -----------------------------------------------------------------------------

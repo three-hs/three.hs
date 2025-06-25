@@ -6,7 +6,7 @@ module THREE.FramebufferTexture
   ( -- * Types
     FramebufferTexture (..)
     -- * Methods
-  , newFramebufferTexture
+  , THREE.FramebufferTexture.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype FramebufferTexture
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/FramebufferTexture
-newFramebufferTexture :: JSM FramebufferTexture
-newFramebufferTexture = THREE.new FramebufferTexture "FramebufferTexture" ([] :: [JSString])
+new :: THREE.Three FramebufferTexture
+new = THREE.new FramebufferTexture "FramebufferTexture" ([] :: [JSString])
 -----------------------------------------------------------------------------

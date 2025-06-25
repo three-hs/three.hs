@@ -6,7 +6,7 @@ module THREE.AmbientLight
   ( -- * Types
     AmbientLight (..)
     -- * Methods
-  , newAmbientLight
+  , THREE.AmbientLight.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype AmbientLight
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AmbientLight
-newAmbientLight :: JSM AmbientLight
-newAmbientLight = THREE.new AmbientLight "AmbientLight" ([] :: [JSString])
+new :: THREE.Three AmbientLight
+new = THREE.new AmbientLight "AmbientLight" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.InstancedBufferAttribute
   ( -- * Types
     InstancedBufferAttribute (..)
     -- * Methods
-  , newInstancedBufferAttribute
+  , THREE.InstancedBufferAttribute.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype InstancedBufferAttribute
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/InstancedBufferAttribute
-newInstancedBufferAttribute :: JSM InstancedBufferAttribute
-newInstancedBufferAttribute = THREE.new InstancedBufferAttribute "InstancedBufferAttribute" ([] :: [JSString])
+new :: THREE.Three InstancedBufferAttribute
+new = THREE.new InstancedBufferAttribute "InstancedBufferAttribute" ([] :: [JSString])
 -----------------------------------------------------------------------------

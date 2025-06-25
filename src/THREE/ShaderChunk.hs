@@ -6,7 +6,7 @@ module THREE.ShaderChunk
   ( -- * Types
     ShaderChunk (..)
     -- * Methods
-  , newShaderChunk
+  , THREE.ShaderChunk.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ShaderChunk
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ShaderChunk
-newShaderChunk :: JSM ShaderChunk
-newShaderChunk = THREE.new ShaderChunk "ShaderChunk" ([] :: [JSString])
+new :: THREE.Three ShaderChunk
+new = THREE.new ShaderChunk "ShaderChunk" ([] :: [JSString])
 -----------------------------------------------------------------------------

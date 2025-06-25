@@ -6,7 +6,7 @@ module THREE.TorusKnotGeometry
   ( -- * Types
     TorusKnotGeometry (..)
     -- * Methods
-  , newTorusKnotGeometry
+  , THREE.TorusKnotGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype TorusKnotGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/TorusKnotGeometry
-newTorusKnotGeometry :: JSM TorusKnotGeometry
-newTorusKnotGeometry = THREE.new TorusKnotGeometry "TorusKnotGeometry" ([] :: [JSString])
+new :: THREE.Three TorusKnotGeometry
+new = THREE.new TorusKnotGeometry "TorusKnotGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

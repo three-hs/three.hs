@@ -6,7 +6,7 @@ module THREE.CompressedArrayTexture
   ( -- * Types
     CompressedArrayTexture (..)
     -- * Methods
-  , newCompressedArrayTexture
+  , THREE.CompressedArrayTexture.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype CompressedArrayTexture
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CompressedArrayTexture
-newCompressedArrayTexture :: JSM CompressedArrayTexture
-newCompressedArrayTexture = THREE.new CompressedArrayTexture "CompressedArrayTexture" ([] :: [JSString])
+new :: THREE.Three CompressedArrayTexture
+new = THREE.new CompressedArrayTexture "CompressedArrayTexture" ([] :: [JSString])
 -----------------------------------------------------------------------------

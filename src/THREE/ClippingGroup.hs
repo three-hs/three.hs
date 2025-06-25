@@ -6,7 +6,7 @@ module THREE.ClippingGroup
   ( -- * Types
     ClippingGroup (..)
     -- * Methods
-  , newClippingGroup
+  , THREE.ClippingGroup.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ClippingGroup
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ClippingGroup
-newClippingGroup :: JSM ClippingGroup
-newClippingGroup = THREE.new ClippingGroup "ClippingGroup" ([] :: [JSString])
+new :: THREE.Three ClippingGroup
+new = THREE.new ClippingGroup "ClippingGroup" ([] :: [JSString])
 -----------------------------------------------------------------------------

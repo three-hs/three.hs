@@ -6,7 +6,7 @@ module THREE.AudioAnalyser
   ( -- * Types
     AudioAnalyser (..)
     -- * Methods
-  , newAudioAnalyser
+  , THREE.AudioAnalyser.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype AudioAnalyser
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AudioAnalyser
-newAudioAnalyser :: JSM AudioAnalyser
-newAudioAnalyser = THREE.new AudioAnalyser "AudioAnalyser" ([] :: [JSString])
+new :: THREE.Three AudioAnalyser
+new = THREE.new AudioAnalyser "AudioAnalyser" ([] :: [JSString])
 -----------------------------------------------------------------------------

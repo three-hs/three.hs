@@ -6,7 +6,7 @@ module THREE.StereoCamera
   ( -- * Types
     StereoCamera (..)
     -- * Methods
-  , newStereoCamera
+  , THREE.StereoCamera.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype StereoCamera
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/StereoCamera
-newStereoCamera :: JSM StereoCamera
-newStereoCamera = THREE.new StereoCamera "StereoCamera" ([] :: [JSString])
+new :: THREE.Three StereoCamera
+new = THREE.new StereoCamera "StereoCamera" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.DiscreteInterpolant
   ( -- * Types
     DiscreteInterpolant (..)
     -- * Methods
-  , newDiscreteInterpolant
+  , THREE.DiscreteInterpolant.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype DiscreteInterpolant
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/DiscreteInterpolant
-newDiscreteInterpolant :: JSM DiscreteInterpolant
-newDiscreteInterpolant = THREE.new DiscreteInterpolant "DiscreteInterpolant" ([] :: [JSString])
+new :: THREE.Three DiscreteInterpolant
+new = THREE.new DiscreteInterpolant "DiscreteInterpolant" ([] :: [JSString])
 -----------------------------------------------------------------------------

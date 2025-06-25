@@ -6,7 +6,7 @@ module THREE.PointLightHelper
   ( -- * Types
     PointLightHelper (..)
     -- * Methods
-  , newPointLightHelper
+  , THREE.PointLightHelper.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype PointLightHelper
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/PointLightHelper
-newPointLightHelper :: JSM PointLightHelper
-newPointLightHelper = THREE.new PointLightHelper "PointLightHelper" ([] :: [JSString])
+new :: THREE.Three PointLightHelper
+new = THREE.new PointLightHelper "PointLightHelper" ([] :: [JSString])
 -----------------------------------------------------------------------------

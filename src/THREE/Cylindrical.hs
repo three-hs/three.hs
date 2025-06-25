@@ -6,7 +6,7 @@ module THREE.Cylindrical
   ( -- * Types
     Cylindrical (..)
     -- * Methods
-  , newCylindrical
+  , THREE.Cylindrical.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Cylindrical
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Cylindrical
-newCylindrical :: JSM Cylindrical
-newCylindrical = THREE.new Cylindrical "Cylindrical" ([] :: [JSString])
+new :: THREE.Three Cylindrical
+new = THREE.new Cylindrical "Cylindrical" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.Data3DTexture
   ( -- * Types
     Data3DTexture (..)
     -- * Methods
-  , newData3DTexture
+  , THREE.Data3DTexture.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Data3DTexture
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Data3DTexture
-newData3DTexture :: JSM Data3DTexture
-newData3DTexture = THREE.new Data3DTexture "Data3DTexture" ([] :: [JSString])
+new :: THREE.Three Data3DTexture
+new = THREE.new Data3DTexture "Data3DTexture" ([] :: [JSString])
 -----------------------------------------------------------------------------

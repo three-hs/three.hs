@@ -6,7 +6,7 @@ module THREE.Box3Helper
   ( -- * Types
     Box3Helper (..)
     -- * Methods
-  , newBox3Helper
+  , THREE.Box3Helper.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Box3Helper
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Box3Helper
-newBox3Helper :: JSM Box3Helper
-newBox3Helper = THREE.new Box3Helper "Box3Helper" ([] :: [JSString])
+new :: THREE.Three Box3Helper
+new = THREE.new Box3Helper "Box3Helper" ([] :: [JSString])
 -----------------------------------------------------------------------------

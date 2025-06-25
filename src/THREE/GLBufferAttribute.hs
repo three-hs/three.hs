@@ -6,7 +6,7 @@ module THREE.GLBufferAttribute
   ( -- * Types
     GLBufferAttribute (..)
     -- * Methods
-  , newGLBufferAttribute
+  , THREE.GLBufferAttribute.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype GLBufferAttribute
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/GLBufferAttribute
-newGLBufferAttribute :: JSM GLBufferAttribute
-newGLBufferAttribute = THREE.new GLBufferAttribute "GLBufferAttribute" ([] :: [JSString])
+new :: THREE.Three GLBufferAttribute
+new = THREE.new GLBufferAttribute "GLBufferAttribute" ([] :: [JSString])
 -----------------------------------------------------------------------------

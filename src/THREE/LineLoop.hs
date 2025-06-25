@@ -6,7 +6,7 @@ module THREE.LineLoop
   ( -- * Types
     LineLoop (..)
     -- * Methods
-  , newLineLoop
+  , THREE.LineLoop.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype LineLoop
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LineLoop
-newLineLoop :: JSM LineLoop
-newLineLoop = THREE.new LineLoop "LineLoop" ([] :: [JSString])
+new :: THREE.Three LineLoop
+new = THREE.new LineLoop "LineLoop" ([] :: [JSString])
 -----------------------------------------------------------------------------

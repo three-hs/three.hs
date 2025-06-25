@@ -6,7 +6,7 @@ module THREE.DataUtils
   ( -- * Types
     DataUtils (..)
     -- * Methods
-  , newDataUtils
+  , THREE.DataUtils.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype DataUtils
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/DataUtils
-newDataUtils :: JSM DataUtils
-newDataUtils = THREE.new DataUtils "DataUtils" ([] :: [JSString])
+new :: THREE.Three DataUtils
+new = THREE.new DataUtils "DataUtils" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.Matrix4
   ( -- * Types
     Matrix4 (..)
     -- * Methods
-  , newMatrix4
+  , THREE.Matrix4.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Matrix4
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Matrix4
-newMatrix4 :: JSM Matrix4
-newMatrix4 = THREE.new Matrix4 "Matrix4" ([] :: [JSString])
+new :: THREE.Three Matrix4
+new = THREE.new Matrix4 "Matrix4" ([] :: [JSString])
 -----------------------------------------------------------------------------

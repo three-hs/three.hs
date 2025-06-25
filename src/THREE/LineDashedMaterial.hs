@@ -6,7 +6,7 @@ module THREE.LineDashedMaterial
   ( -- * Types
     LineDashedMaterial (..)
     -- * Methods
-  , newLineDashedMaterial
+  , THREE.LineDashedMaterial.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype LineDashedMaterial
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LineDashedMaterial
-newLineDashedMaterial :: JSM LineDashedMaterial
-newLineDashedMaterial = THREE.new LineDashedMaterial "LineDashedMaterial" ([] :: [JSString])
+new :: THREE.Three LineDashedMaterial
+new = THREE.new LineDashedMaterial "LineDashedMaterial" ([] :: [JSString])
 -----------------------------------------------------------------------------

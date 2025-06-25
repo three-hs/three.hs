@@ -6,7 +6,7 @@ module THREE.ShapePath
   ( -- * Types
     ShapePath (..)
     -- * Methods
-  , newShapePath
+  , THREE.ShapePath.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ShapePath
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ShapePath
-newShapePath :: JSM ShapePath
-newShapePath = THREE.new ShapePath "ShapePath" ([] :: [JSString])
+new :: THREE.Three ShapePath
+new = THREE.new ShapePath "ShapePath" ([] :: [JSString])
 -----------------------------------------------------------------------------

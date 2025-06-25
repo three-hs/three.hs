@@ -6,7 +6,7 @@ module THREE.CircleGeometry
   ( -- * Types
     CircleGeometry (..)
     -- * Methods
-  , newCircleGeometry
+  , THREE.CircleGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype CircleGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CircleGeometry
-newCircleGeometry :: JSM CircleGeometry
-newCircleGeometry = THREE.new CircleGeometry "CircleGeometry" ([] :: [JSString])
+new :: THREE.Three CircleGeometry
+new = THREE.new CircleGeometry "CircleGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.DodecahedronGeometry
   ( -- * Types
     DodecahedronGeometry (..)
     -- * Methods
-  , newDodecahedronGeometry
+  , THREE.DodecahedronGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype DodecahedronGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/DodecahedronGeometry
-newDodecahedronGeometry :: JSM DodecahedronGeometry
-newDodecahedronGeometry = THREE.new DodecahedronGeometry "DodecahedronGeometry" ([] :: [JSString])
+new :: THREE.Three DodecahedronGeometry
+new = THREE.new DodecahedronGeometry "DodecahedronGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

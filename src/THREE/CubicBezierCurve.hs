@@ -6,7 +6,7 @@ module THREE.CubicBezierCurve
   ( -- * Types
     CubicBezierCurve (..)
     -- * Methods
-  , newCubicBezierCurve
+  , THREE.CubicBezierCurve.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype CubicBezierCurve
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CubicBezierCurve
-newCubicBezierCurve :: JSM CubicBezierCurve
-newCubicBezierCurve = THREE.new CubicBezierCurve "CubicBezierCurve" ([] :: [JSString])
+new :: THREE.Three CubicBezierCurve
+new = THREE.new CubicBezierCurve "CubicBezierCurve" ([] :: [JSString])
 -----------------------------------------------------------------------------

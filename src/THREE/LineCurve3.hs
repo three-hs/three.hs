@@ -6,7 +6,7 @@ module THREE.LineCurve3
   ( -- * Types
     LineCurve3 (..)
     -- * Methods
-  , newLineCurve3
+  , THREE.LineCurve3.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype LineCurve3
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LineCurve3
-newLineCurve3 :: JSM LineCurve3
-newLineCurve3 = THREE.new LineCurve3 "LineCurve3" ([] :: [JSString])
+new :: THREE.Three LineCurve3
+new = THREE.new LineCurve3 "LineCurve3" ([] :: [JSString])
 -----------------------------------------------------------------------------

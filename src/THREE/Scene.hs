@@ -1,7 +1,8 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE DerivingVia #-}
+{-# LANGUAGE DataKinds                  #-}
+{-# LANGUAGE DerivingVia                #-}
+{-# LANGUAGE OverloadedStrings          #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
-{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.Scene
   ( -- * Types
@@ -26,17 +27,17 @@ newtype Scene
   = Scene
   { unScene :: JSVal
   } deriving (MakeArgs, MakeObject, ToJSVal) 
-    deriving Object3DC via JSVal
+    deriving Object3D via JSVal
 -----------------------------------------------------------------------------
 -- Constructors
 -----------------------------------------------------------------------------
-new :: JSM Scene
-new = THREE.new' Scene "Scene" ()
+new :: THREE.Three Scene
+new = THREE.new Scene "Scene" ()
 -----------------------------------------------------------------------------
 -- Read-only properties
 -----------------------------------------------------------------------------
-isScene :: Scene -> JSM Bool
-isScene = mkGet "isScene"
+isScene :: Property Scene "isScene" Bool
+isScene = field
 -----------------------------------------------------------------------------
 -- Properties
 -----------------------------------------------------------------------------

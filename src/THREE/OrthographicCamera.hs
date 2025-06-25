@@ -6,7 +6,7 @@ module THREE.OrthographicCamera
   ( -- * Types
     OrthographicCamera (..)
     -- * Methods
-  , newOrthographicCamera
+  , THREE.OrthographicCamera.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype OrthographicCamera
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/OrthographicCamera
-newOrthographicCamera :: JSM OrthographicCamera
-newOrthographicCamera = THREE.new OrthographicCamera "OrthographicCamera" ([] :: [JSString])
+new :: THREE.Three OrthographicCamera
+new = THREE.new OrthographicCamera "OrthographicCamera" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.Raycaster
   ( -- * Types
     Raycaster (..)
     -- * Methods
-  , newRaycaster
+  , THREE.Raycaster.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Raycaster
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Raycaster
-newRaycaster :: JSM Raycaster
-newRaycaster = THREE.new Raycaster "Raycaster" ([] :: [JSString])
+new :: THREE.Three Raycaster
+new = THREE.new Raycaster "Raycaster" ([] :: [JSString])
 -----------------------------------------------------------------------------

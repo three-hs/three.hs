@@ -6,7 +6,7 @@ module THREE.BufferAttributeTypes
   ( -- * Types
     BufferAttributeTypes (..)
     -- * Methods
-  , newBufferAttributeTypes
+  , THREE.BufferAttributeTypes.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype BufferAttributeTypes
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/BufferAttributeTypes
-newBufferAttributeTypes :: JSM BufferAttributeTypes
-newBufferAttributeTypes = THREE.new BufferAttributeTypes "BufferAttributeTypes" ([] :: [JSString])
+new :: THREE.Three BufferAttributeTypes
+new = THREE.new BufferAttributeTypes "BufferAttributeTypes" ([] :: [JSString])
 -----------------------------------------------------------------------------

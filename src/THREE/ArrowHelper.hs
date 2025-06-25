@@ -6,7 +6,7 @@ module THREE.ArrowHelper
   ( -- * Types
     ArrowHelper (..)
     -- * Methods
-  , newArrowHelper
+  , THREE.ArrowHelper.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ArrowHelper
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ArrowHelper
-newArrowHelper :: JSM ArrowHelper
-newArrowHelper = THREE.new ArrowHelper "ArrowHelper" ([] :: [JSString])
+new :: THREE.Three ArrowHelper
+new = THREE.new ArrowHelper "ArrowHelper" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.QuadraticBezierCurve
   ( -- * Types
     QuadraticBezierCurve (..)
     -- * Methods
-  , newQuadraticBezierCurve
+  , THREE.QuadraticBezierCurve.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype QuadraticBezierCurve
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/QuadraticBezierCurve
-newQuadraticBezierCurve :: JSM QuadraticBezierCurve
-newQuadraticBezierCurve = THREE.new QuadraticBezierCurve "QuadraticBezierCurve" ([] :: [JSString])
+new :: THREE.Three QuadraticBezierCurve
+new = THREE.new QuadraticBezierCurve "QuadraticBezierCurve" ([] :: [JSString])
 -----------------------------------------------------------------------------

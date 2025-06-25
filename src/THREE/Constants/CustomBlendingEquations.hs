@@ -6,7 +6,7 @@ module THREE.Constants.CustomBlendingEquations
   ( -- * Types
     CustomBlendingEquations (..)
     -- * Methods
-  , newCustomBlendingEquations
+  , THREE.Constants.CustomBlendingEquations.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype CustomBlendingEquations
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CustomBlendingEquations
-newCustomBlendingEquations :: JSM CustomBlendingEquations
-newCustomBlendingEquations = THREE.new CustomBlendingEquations "CustomBlendingEquations" ([] :: [JSString])
+new :: THREE.Three CustomBlendingEquations
+new = THREE.new CustomBlendingEquations "CustomBlendingEquations" ([] :: [JSString])
 -----------------------------------------------------------------------------

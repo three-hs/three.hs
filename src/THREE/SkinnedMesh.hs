@@ -6,7 +6,7 @@ module THREE.SkinnedMesh
   ( -- * Types
     SkinnedMesh (..)
     -- * Methods
-  , newSkinnedMesh
+  , THREE.SkinnedMesh.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype SkinnedMesh
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/SkinnedMesh
-newSkinnedMesh :: JSM SkinnedMesh
-newSkinnedMesh = THREE.new SkinnedMesh "SkinnedMesh" ([] :: [JSString])
+new :: THREE.Three SkinnedMesh
+new = THREE.new SkinnedMesh "SkinnedMesh" ([] :: [JSString])
 -----------------------------------------------------------------------------

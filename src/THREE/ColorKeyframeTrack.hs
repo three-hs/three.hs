@@ -6,7 +6,7 @@ module THREE.ColorKeyframeTrack
   ( -- * Types
     ColorKeyframeTrack (..)
     -- * Methods
-  , newColorKeyframeTrack
+  , THREE.ColorKeyframeTrack.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ColorKeyframeTrack
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ColorKeyframeTrack
-newColorKeyframeTrack :: JSM ColorKeyframeTrack
-newColorKeyframeTrack = THREE.new ColorKeyframeTrack "ColorKeyframeTrack" ([] :: [JSString])
+new :: THREE.Three ColorKeyframeTrack
+new = THREE.new ColorKeyframeTrack "ColorKeyframeTrack" ([] :: [JSString])
 -----------------------------------------------------------------------------

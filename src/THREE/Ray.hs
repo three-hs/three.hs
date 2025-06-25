@@ -6,7 +6,7 @@ module THREE.Ray
   ( -- * Types
     Ray (..)
     -- * Methods
-  , newRay
+  , THREE.Ray.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Ray
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Ray
-newRay :: JSM Ray
-newRay = THREE.new Ray "Ray" ([] :: [JSString])
+new :: THREE.Three Ray
+new = THREE.new Ray "Ray" ([] :: [JSString])
 -----------------------------------------------------------------------------

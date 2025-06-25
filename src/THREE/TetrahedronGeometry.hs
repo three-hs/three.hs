@@ -6,7 +6,7 @@ module THREE.TetrahedronGeometry
   ( -- * Types
     TetrahedronGeometry (..)
     -- * Methods
-  , newTetrahedronGeometry
+  , THREE.TetrahedronGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype TetrahedronGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/TetrahedronGeometry
-newTetrahedronGeometry :: JSM TetrahedronGeometry
-newTetrahedronGeometry = THREE.new TetrahedronGeometry "TetrahedronGeometry" ([] :: [JSString])
+new :: THREE.Three TetrahedronGeometry
+new = THREE.new TetrahedronGeometry "TetrahedronGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

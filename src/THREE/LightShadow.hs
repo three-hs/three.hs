@@ -6,7 +6,7 @@ module THREE.LightShadow
   ( -- * Types
     LightShadow (..)
     -- * Methods
-  , newLightShadow
+  , THREE.LightShadow.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype LightShadow
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LightShadow
-newLightShadow :: JSM LightShadow
-newLightShadow = THREE.new LightShadow "LightShadow" ([] :: [JSString])
+new :: THREE.Three LightShadow
+new = THREE.new LightShadow "LightShadow" ([] :: [JSString])
 -----------------------------------------------------------------------------

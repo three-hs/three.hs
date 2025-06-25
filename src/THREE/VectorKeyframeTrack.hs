@@ -6,7 +6,7 @@ module THREE.VectorKeyframeTrack
   ( -- * Types
     VectorKeyframeTrack (..)
     -- * Methods
-  , newVectorKeyframeTrack
+  , THREE.VectorKeyframeTrack.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype VectorKeyframeTrack
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/VectorKeyframeTrack
-newVectorKeyframeTrack :: JSM VectorKeyframeTrack
-newVectorKeyframeTrack = THREE.new VectorKeyframeTrack "VectorKeyframeTrack" ([] :: [JSString])
+new :: THREE.Three VectorKeyframeTrack
+new = THREE.new VectorKeyframeTrack "VectorKeyframeTrack" ([] :: [JSString])
 -----------------------------------------------------------------------------

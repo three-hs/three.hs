@@ -26,13 +26,13 @@ newtype PointLight
   = PointLight
   { unPointLight :: JSVal
   } deriving (MakeArgs, MakeObject, ToJSVal) 
-    deriving newtype LightC
-    deriving Object3DC via JSVal
+    deriving newtype Light
+    deriving Object3D via JSVal
 -----------------------------------------------------------------------------
 -- Constructors
 -----------------------------------------------------------------------------
-new :: JSM PointLight
-new = THREE.new' PointLight "PointLight" ()
+new :: THREE.Three PointLight
+new = THREE.new PointLight "PointLight" ()
 -----------------------------------------------------------------------------
 -- Read-only properties
 -----------------------------------------------------------------------------

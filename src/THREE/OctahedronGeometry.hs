@@ -6,7 +6,7 @@ module THREE.OctahedronGeometry
   ( -- * Types
     OctahedronGeometry (..)
     -- * Methods
-  , newOctahedronGeometry
+  , THREE.OctahedronGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype OctahedronGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/OctahedronGeometry
-newOctahedronGeometry :: JSM OctahedronGeometry
-newOctahedronGeometry = THREE.new OctahedronGeometry "OctahedronGeometry" ([] :: [JSString])
+new :: THREE.Three OctahedronGeometry
+new = THREE.new OctahedronGeometry "OctahedronGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

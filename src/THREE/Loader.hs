@@ -1,9 +1,10 @@
 -----------------------------------------------------------------------------
+{-# LANGUAGE DataKinds #-}
 {-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.Loader
   ( -- * Types
-    LoaderC (..)
+    Loader (..)
     -- * Constructors
     -- * Read-only Properties
     -- * Properties
@@ -17,20 +18,17 @@ import           Language.Javascript.JSaddle
 import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/loaders/Loader
-class LoaderC a where
+class ToJSVal loader => Loader loader where
   -- read-only properties
   -- properties
-  getPath :: a -> JSM JSString
-  setPath :: JSString -> a -> JSM ()
-  -- TODO modifyPath?
+  path :: Property loader "path" JSString
   -- optional properties
   -- methods
 -----------------------------------------------------------------------------
-instance LoaderC JSVal where
+instance Loader JSVal where
   -- read-only properties
   -- properties
-  getPath = mkGet "path"
-  setPath = mkSet "path"
+  path = field
   -- optional properties
   -- methods
 -----------------------------------------------------------------------------

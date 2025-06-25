@@ -6,7 +6,7 @@ module THREE.RingGeometry
   ( -- * Types
     RingGeometry (..)
     -- * Methods
-  , newRingGeometry
+  , THREE.RingGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype RingGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/RingGeometry
-newRingGeometry :: JSM RingGeometry
-newRingGeometry = THREE.new RingGeometry "RingGeometry" ([] :: [JSString])
+new :: THREE.Three RingGeometry
+new = THREE.new RingGeometry "RingGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

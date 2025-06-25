@@ -6,7 +6,7 @@ module THREE.NumberKeyframeTrack
   ( -- * Types
     NumberKeyframeTrack (..)
     -- * Methods
-  , newNumberKeyframeTrack
+  , THREE.NumberKeyframeTrack.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype NumberKeyframeTrack
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/NumberKeyframeTrack
-newNumberKeyframeTrack :: JSM NumberKeyframeTrack
-newNumberKeyframeTrack = THREE.new NumberKeyframeTrack "NumberKeyframeTrack" ([] :: [JSString])
+new :: THREE.Three NumberKeyframeTrack
+new = THREE.new NumberKeyframeTrack "NumberKeyframeTrack" ([] :: [JSString])
 -----------------------------------------------------------------------------

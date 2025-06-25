@@ -6,7 +6,7 @@ module THREE.GridHelper
   ( -- * Types
     GridHelper (..)
     -- * Methods
-  , newGridHelper
+  , THREE.GridHelper.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype GridHelper
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/GridHelper
-newGridHelper :: JSM GridHelper
-newGridHelper = THREE.new GridHelper "GridHelper" ([] :: [JSString])
+new :: THREE.Three GridHelper
+new = THREE.new GridHelper "GridHelper" ([] :: [JSString])
 -----------------------------------------------------------------------------

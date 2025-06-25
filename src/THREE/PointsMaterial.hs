@@ -6,7 +6,7 @@ module THREE.PointsMaterial
   ( -- * Types
     PointsMaterial (..)
     -- * Methods
-  , newPointsMaterial
+  , THREE.PointsMaterial.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype PointsMaterial
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/PointsMaterial
-newPointsMaterial :: JSM PointsMaterial
-newPointsMaterial = THREE.new PointsMaterial "PointsMaterial" ([] :: [JSString])
+new :: THREE.Three PointsMaterial
+new = THREE.new PointsMaterial "PointsMaterial" ([] :: [JSString])
 -----------------------------------------------------------------------------

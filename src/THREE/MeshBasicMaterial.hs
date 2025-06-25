@@ -1,3 +1,4 @@
+{-# LANGUAGE DataKinds #-}
 -----------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
@@ -7,7 +8,8 @@ module THREE.MeshBasicMaterial
     MeshBasicMaterial (..)
     -- * Methods
   , new
-    -- * Methods
+    -- * Properties
+  , color
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle hiding (new)
@@ -20,6 +22,9 @@ newtype MeshBasicMaterial
   { unMeshBasicMaterial :: JSVal
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
-new :: JSM MeshBasicMaterial
-new = THREE.new MeshBasicMaterial "MeshBasicMaterial" ([] :: [JSString])
+new :: THREE.Three MeshBasicMaterial
+new = THREE.new MeshBasicMaterial "MeshBasicMaterial" ()
+-----------------------------------------------------------------------------
+color :: THREE.Property MeshBasicMaterial "color" JSString
+color = THREE.field
 -----------------------------------------------------------------------------

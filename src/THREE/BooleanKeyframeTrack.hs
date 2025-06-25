@@ -6,7 +6,7 @@ module THREE.BooleanKeyframeTrack
   ( -- * Types
     BooleanKeyframeTrack (..)
     -- * Methods
-  , newBooleanKeyframeTrack
+  , THREE.BooleanKeyframeTrack.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype BooleanKeyframeTrack
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/BooleanKeyframeTrack
-newBooleanKeyframeTrack :: JSM BooleanKeyframeTrack
-newBooleanKeyframeTrack = THREE.new BooleanKeyframeTrack "BooleanKeyframeTrack" ([] :: [JSString])
+new :: THREE.Three BooleanKeyframeTrack
+new = THREE.new BooleanKeyframeTrack "BooleanKeyframeTrack" ([] :: [JSString])
 -----------------------------------------------------------------------------

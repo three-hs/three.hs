@@ -6,7 +6,7 @@ module THREE.CubeTexture
   ( -- * Types
     CubeTexture (..)
     -- * Methods
-  , newCubeTexture
+  , THREE.CubeTexture.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype CubeTexture
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CubeTexture
-newCubeTexture :: JSM CubeTexture
-newCubeTexture = THREE.new CubeTexture "CubeTexture" ([] :: [JSString])
+new :: THREE.Three CubeTexture
+new = THREE.new CubeTexture "CubeTexture" ([] :: [JSString])
 -----------------------------------------------------------------------------

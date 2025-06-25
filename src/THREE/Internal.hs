@@ -1,68 +1,134 @@
-{-# LANGUAGE OverloadedStrings #-}
-
+-----------------------------------------------------------------------------
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE ScopedTypeVariables        #-}
+{-# LANGUAGE TypeApplications           #-}
+{-# LANGUAGE OverloadedStrings          #-}
+{-# LANGUAGE KindSignatures             #-}
+{-# LANGUAGE DataKinds                  #-}
+{-# LANGUAGE GADTs                      #-}
+-----------------------------------------------------------------------------
 module THREE.Internal
-  ( new
-  , new'
-  , mkGet
-  , mkGetOpt
-  , mkModify
-  , mkModifyOpt
-  , mkSet
+  ( -- * Types
+    Three (..)
+  , Property (..)
+    -- * Combinators
+  , (^.)
+  , (.=)
+  , (!.)
+  , field
+  , new
+  -- * Evaluation
+  , interpret
   ) where
-
-import qualified Language.Javascript.JSaddle as J
+-----------------------------------------------------------------------------
+import           Control.Monad
+import           Control.Monad.IO.Class (MonadIO(liftIO))
+import           Data.Kind
+import           Data.Proxy
+import           GHC.TypeLits
 import           Language.Javascript.JSaddle hiding (new)
-
--- | Smart constructor for THREE namespace objects
-new
-  :: ToJSVal a
-  => (JSVal -> b)
-  -> JSString
-  -> [a]
-  -> JSM b
-new f name args = do
-  v <- jsg ("THREE" :: JSString) ! name
-  f <$> J.new v args
-
--- | Smart constructor for THREE namespace objects
-new' 
+import qualified Language.Javascript.JSaddle as J
+-----------------------------------------------------------------------------
+data Three :: Type -> Type where
+  Pure        :: a -> Three a
+  Bind        :: Three a -> (a -> Three b) -> Three b
+  LiftIO      :: IO a -> Three a
+  LiftJSM     :: JSM a -> Three a
+  SetProperty :: Property object name field -> field -> object -> Three ()
+  GetProperty :: object -> Property object name field -> Three field
+-----------------------------------------------------------------------------
+instance Functor Three where
+  fmap = liftM
+-----------------------------------------------------------------------------
+instance Applicative Three where
+  (<*>) = ap
+  pure = Pure
+-----------------------------------------------------------------------------
+instance Monad Three where
+  (>>=) = Bind
+  return = pure
+-----------------------------------------------------------------------------
+instance MonadIO Three where
+  liftIO = LiftIO
+-----------------------------------------------------------------------------
+infixr 4 ^.
+(^.) :: object -> Property object name field -> Three field
+(^.) = GetProperty
+-----------------------------------------------------------------------------
+infixr 4 .=
+(.=) :: Property object name field -> field -> object -> Three ()
+(.=) = SetProperty
+-----------------------------------------------------------------------------
+data Property object (name :: Symbol) field
+  = Property
+  { setProperty :: object -> field -> JSM ()
+  , getProperty :: object -> JSM field
+  }
+-----------------------------------------------------------------------------
+field
+  :: forall object name field
+  . (KnownSymbol name, MakeObject object, ToJSVal field, FromJSVal field)
+  => Property object name field
+field
+  = Property
+  { setProperty = \object -> (object <# name)
+  , getProperty = \object -> fromJSValUnchecked =<< object ! name
+  } where
+      name = symbolVal (Proxy @name)
+-----------------------------------------------------------------------------
+new 
   :: MakeArgs a 
   => (JSVal -> b) 
   -> JSString 
   -> a 
-  -> JSM b
-new' f name args = do
+  -> Three b
+new f name args = LiftJSM $ do
   v <- jsg ("THREE" :: JSString) ! name
   f <$> J.new v args
+-----------------------------------------------------------------------------
+-- | Evaluate 'Three' DSL
+interpret
+  :: Three a
+  -> JSM a
+interpret (Pure m)
+  = pure m
+interpret (Bind m f)
+  = interpret m >>= interpret . f
+interpret (LiftIO io)
+  = liftIO io
+interpret (LiftJSM jsm)
+  = liftJSM jsm
+interpret (GetProperty object lens_)
+  = getProperty lens_ object
+interpret (SetProperty lens field_ object)
+  = setProperty lens object field_
+-----------------------------------------------------------------------------
+-- | This is how we compose 'Property', can be used for getting and setting fields
+--
+-- @
+--   object & position .! x .= 100
+-- @
+--
+(!.)
+  :: forall a b c fa fb
+  . ( MakeObject a
+    , MakeObject b
+    , KnownSymbol fa
+    , KnownSymbol fb
+    )
+  => Property a fa b
+  -> Property b fb c
+  -> Property a fb c
+prop1 !. prop2 = prop3
+    where
+      prop3 :: Property a fb c
+      prop3 = Property setter getter
 
--- | Getting the value of a property.
-mkGet :: (MakeObject a, FromJSVal b) => JSString -> a -> JSM b
-mkGet name v = fromJSValUnchecked =<< v ! name
+      getter :: a -> JSM c
+      getter = getProperty prop2 <=< getProperty prop1
 
--- | Getting the value of an optional property.
-mkGetOpt :: (MakeObject a, FromJSVal b) => JSString -> a -> JSM (Maybe b)
-mkGetOpt name v = fromJSVal =<< v ! name
-
--- | Setting the value of a property.
-mkSet :: (MakeObject a, ToJSVal b) => JSString -> b -> a -> JSM ()
-mkSet name x v = v <# name $ x
-
--- | Modifying a property.
-mkModify :: (MakeObject a, ToJSVal b, FromJSVal b) => JSString -> (b -> JSM b) -> a -> JSM b
-mkModify name f v = do
-  x <- fromJSValUnchecked =<< v ! name
-  y <- f x
-  v <# name $ y
-  pure y
-
--- | Modifying an optional property.
-mkModifyOpt :: (MakeObject a, ToJSVal b, FromJSVal b) => JSString -> (b -> JSM b) -> a -> JSM (Maybe b)
-mkModifyOpt name f v = do
-  mx <- fromJSVal =<< v ! name
-  case mx of
-    Nothing -> pure Nothing
-    Just x -> do
-      y <- f x
-      v <# name $ y
-      pure $ Just y
-
+      setter :: a -> c -> JSM ()
+      setter record target = do
+        field_ <- getProperty prop1 record
+        setProperty prop2 field_ target
+-----------------------------------------------------------------------------

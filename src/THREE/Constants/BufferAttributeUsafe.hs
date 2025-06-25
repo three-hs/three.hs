@@ -6,7 +6,7 @@ module THREE.Constants.BufferAttributeUsafe
   ( -- * Types
     BufferAttributeUsafe (..)
     -- * Methods
-  , newBufferAttributeUsafe
+  , THREE.Constants.BufferAttributeUsafe.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype BufferAttributeUsafe
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/BufferAttributeUsafe
-newBufferAttributeUsafe :: JSM BufferAttributeUsafe
-newBufferAttributeUsafe = THREE.new BufferAttributeUsafe "BufferAttributeUsafe" ([] :: [JSString])
+new :: THREE.Three BufferAttributeUsafe
+new = THREE.new BufferAttributeUsafe "BufferAttributeUsafe" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.MathUtils
   ( -- * Types
     MathUtils (..)
     -- * Methods
-  , newMathUtils
+  , THREE.MathUtils.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype MathUtils
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/MathUtils
-newMathUtils :: JSM MathUtils
-newMathUtils = THREE.new MathUtils "MathUtils" ([] :: [JSString])
+new :: THREE.Three MathUtils
+new = THREE.new MathUtils "MathUtils" ([] :: [JSString])
 -----------------------------------------------------------------------------

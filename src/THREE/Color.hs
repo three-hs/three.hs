@@ -6,7 +6,7 @@ module THREE.Color
   ( -- * Types
     Color (..)
     -- * Methods
-  , newColor
+  , THREE.Color.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Color
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Color
-newColor :: JSM Color
-newColor = THREE.new Color "Color" ([] :: [JSString])
+new :: THREE.Three Color
+new = THREE.new Color "Color" ([] :: [JSString])
 -----------------------------------------------------------------------------

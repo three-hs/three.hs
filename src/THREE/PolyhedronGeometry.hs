@@ -6,7 +6,7 @@ module THREE.PolyhedronGeometry
   ( -- * Types
     PolyhedronGeometry (..)
     -- * Methods
-  , newPolyhedronGeometry
+  , THREE.PolyhedronGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype PolyhedronGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/PolyhedronGeometry
-newPolyhedronGeometry :: JSM PolyhedronGeometry
-newPolyhedronGeometry = THREE.new PolyhedronGeometry "PolyhedronGeometry" ([] :: [JSString])
+new :: THREE.Three PolyhedronGeometry
+new = THREE.new PolyhedronGeometry "PolyhedronGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

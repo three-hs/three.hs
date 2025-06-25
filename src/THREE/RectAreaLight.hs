@@ -6,7 +6,7 @@ module THREE.RectAreaLight
   ( -- * Types
     RectAreaLight (..)
     -- * Methods
-  , newRectAreaLight
+  , THREE.RectAreaLight.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype RectAreaLight
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/RectAreaLight
-newRectAreaLight :: JSM RectAreaLight
-newRectAreaLight = THREE.new RectAreaLight "RectAreaLight" ([] :: [JSString])
+new :: THREE.Three RectAreaLight
+new = THREE.new RectAreaLight "RectAreaLight" ([] :: [JSString])
 -----------------------------------------------------------------------------

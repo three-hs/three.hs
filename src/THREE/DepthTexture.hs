@@ -6,7 +6,7 @@ module THREE.DepthTexture
   ( -- * Types
     DepthTexture (..)
     -- * Methods
-  , newDepthTexture
+  , THREE.DepthTexture.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype DepthTexture
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/DepthTexture
-newDepthTexture :: JSM DepthTexture
-newDepthTexture = THREE.new DepthTexture "DepthTexture" ([] :: [JSString])
+new :: THREE.Three DepthTexture
+new = THREE.new DepthTexture "DepthTexture" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.DataArrayTexture
   ( -- * Types
     DataArrayTexture (..)
     -- * Methods
-  , newDataArrayTexture
+  , THREE.DataArrayTexture.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype DataArrayTexture
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/DataArrayTexture
-newDataArrayTexture :: JSM DataArrayTexture
-newDataArrayTexture = THREE.new DataArrayTexture "DataArrayTexture" ([] :: [JSString])
+new :: THREE.Three DataArrayTexture
+new = THREE.new DataArrayTexture "DataArrayTexture" ([] :: [JSString])
 -----------------------------------------------------------------------------

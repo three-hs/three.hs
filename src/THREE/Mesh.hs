@@ -27,12 +27,16 @@ newtype Mesh
   = Mesh
   { unMesh :: JSVal
   } deriving (MakeArgs, MakeObject, ToJSVal) 
-    deriving newtype Object3DC
+    deriving Object3D via JSVal
 -----------------------------------------------------------------------------
 -- Constructors
 -----------------------------------------------------------------------------
-new:: (ToJSVal a, ToJSVal b, BufferGeometryC a, MaterialC b) => a -> b -> JSM Mesh
-new geometry' material' = new' Mesh "Mesh" (geometry', material')
+new
+  :: (BufferGeometry geometry, Material material)
+  => geometry
+  -> material
+  -> THREE.Three Mesh
+new geometry material = THREE.new Mesh "Mesh" (geometry, material)
 -----------------------------------------------------------------------------
 -- Read-only properties
 -----------------------------------------------------------------------------

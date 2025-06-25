@@ -6,7 +6,7 @@ module THREE.Interpolations
   ( -- * Types
     Interpolations (..)
     -- * Methods
-  , newInterpolations
+  , THREE.Interpolations.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Interpolations
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Interpolations
-newInterpolations :: JSM Interpolations
-newInterpolations = THREE.new Interpolations "Interpolations" ([] :: [JSString])
+new :: THREE.Three Interpolations
+new = THREE.new Interpolations "Interpolations" ()
 -----------------------------------------------------------------------------

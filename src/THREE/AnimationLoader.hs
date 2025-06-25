@@ -6,7 +6,7 @@ module THREE.AnimationLoader
   ( -- * Types
     AnimationLoader (..)
     -- * Methods
-  , newAnimationLoader
+  , THREE.AnimationLoader.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype AnimationLoader
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AnimationLoader
-newAnimationLoader :: JSM AnimationLoader
-newAnimationLoader = THREE.new AnimationLoader "AnimationLoader" ([] :: [JSString])
+new :: THREE.Three AnimationLoader
+new = THREE.new AnimationLoader "AnimationLoader" ([] :: [JSString])
 -----------------------------------------------------------------------------

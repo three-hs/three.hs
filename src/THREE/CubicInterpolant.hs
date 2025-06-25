@@ -6,7 +6,7 @@ module THREE.CubicInterpolant
   ( -- * Types
     CubicInterpolant (..)
     -- * Methods
-  , newCubicInterpolant
+  , THREE.CubicInterpolant.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype CubicInterpolant
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CubicInterpolant
-newCubicInterpolant :: JSM CubicInterpolant
-newCubicInterpolant = THREE.new CubicInterpolant "CubicInterpolant" ([] :: [JSString])
+new :: THREE.Three CubicInterpolant
+new = THREE.new CubicInterpolant "CubicInterpolant" ([] :: [JSString])
 -----------------------------------------------------------------------------

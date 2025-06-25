@@ -6,7 +6,7 @@ module THREE.FileLoader
   ( -- * Types
     FileLoader (..)
     -- * Methods
-  , newFileLoader
+  , THREE.FileLoader.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype FileLoader
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/FileLoader
-newFileLoader :: JSM FileLoader
-newFileLoader = THREE.new FileLoader "FileLoader" ([] :: [JSString])
+new :: THREE.Three FileLoader
+new = THREE.new FileLoader "FileLoader" ([] :: [JSString])
 -----------------------------------------------------------------------------

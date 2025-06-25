@@ -6,7 +6,7 @@ module THREE.ImageBitmapLoader
   ( -- * Types
     ImageBitmapLoader (..)
     -- * Methods
-  , newImageBitmapLoader
+  , THREE.ImageBitmapLoader.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ImageBitmapLoader
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ImageBitmapLoader
-newImageBitmapLoader :: JSM ImageBitmapLoader
-newImageBitmapLoader = THREE.new ImageBitmapLoader "ImageBitmapLoader" ([] :: [JSString])
+new :: THREE.Three ImageBitmapLoader
+new = THREE.new ImageBitmapLoader "ImageBitmapLoader" ([] :: [JSString])
 -----------------------------------------------------------------------------

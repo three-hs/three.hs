@@ -6,7 +6,7 @@ module THREE.RawShaderMaterial
   ( -- * Types
     RawShaderMaterial (..)
     -- * Methods
-  , newRawShaderMaterial
+  , THREE.RawShaderMaterial.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype RawShaderMaterial
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/RawShaderMaterial
-newRawShaderMaterial :: JSM RawShaderMaterial
-newRawShaderMaterial = THREE.new RawShaderMaterial "RawShaderMaterial" ([] :: [JSString])
+new :: THREE.Three RawShaderMaterial
+new = THREE.new RawShaderMaterial "RawShaderMaterial" ([] :: [JSString])
 -----------------------------------------------------------------------------

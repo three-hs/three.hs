@@ -6,7 +6,7 @@ module THREE.ArcCurve
   ( -- * Types
     ArcCurve (..)
     -- * Methods
-  , newArcCurve
+  , THREE.ArcCurve.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ArcCurve
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ArcCurve
-newArcCurve :: JSM ArcCurve
-newArcCurve = THREE.new ArcCurve "ArcCurve" ([] :: [JSString])
+new :: THREE.Three ArcCurve
+new = THREE.new ArcCurve "ArcCurve" ([] :: [JSString])
 -----------------------------------------------------------------------------

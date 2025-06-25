@@ -6,7 +6,7 @@ module THREE.Curve
   ( -- * Types
     Curve (..)
     -- * Methods
-  , newCurve
+  , THREE.Curve.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Curve
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Curve
-newCurve :: JSM Curve
-newCurve = THREE.new Curve "Curve" ([] :: [JSString])
+new :: THREE.Three Curve
+new = THREE.new Curve "Curve" ([] :: [JSString])
 -----------------------------------------------------------------------------

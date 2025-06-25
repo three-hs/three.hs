@@ -6,7 +6,7 @@ module THREE.Layers
   ( -- * Types
     Layers (..)
     -- * Methods
-  , newLayers
+  , THREE.Layers.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Layers
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Layers
-newLayers :: JSM Layers
-newLayers = THREE.new Layers "Layers" ([] :: [JSString])
+new :: THREE.Three Layers
+new = THREE.new Layers "Layers" ()
 -----------------------------------------------------------------------------

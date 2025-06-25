@@ -6,7 +6,7 @@ module THREE.TorusGeometry
   ( -- * Types
     TorusGeometry (..)
     -- * Methods
-  , newTorusGeometry
+  , THREE.TorusGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype TorusGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/TorusGeometry
-newTorusGeometry :: JSM TorusGeometry
-newTorusGeometry = THREE.new TorusGeometry "TorusGeometry" ([] :: [JSString])
+new :: THREE.Three TorusGeometry
+new = THREE.new TorusGeometry "TorusGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

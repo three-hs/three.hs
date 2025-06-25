@@ -6,7 +6,7 @@ module THREE.AnimationUtils
   ( -- * Types
     AnimationUtils (..)
     -- * Methods
-  , newAnimationUtils
+  , THREE.AnimationUtils.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype AnimationUtils
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AnimationUtils
-newAnimationUtils :: JSM AnimationUtils
-newAnimationUtils = THREE.new AnimationUtils "AnimationUtils" ([] :: [JSString])
+new :: THREE.Three AnimationUtils
+new = THREE.new AnimationUtils "AnimationUtils" ([] :: [JSString])
 -----------------------------------------------------------------------------

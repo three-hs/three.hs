@@ -6,7 +6,7 @@ module THREE.BatchedMesh
   ( -- * Types
     BatchedMesh (..)
     -- * Methods
-  , newBatchedMesh
+  , THREE.BatchedMesh.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype BatchedMesh
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/BatchedMesh
-newBatchedMesh :: JSM BatchedMesh
-newBatchedMesh = THREE.new BatchedMesh "BatchedMesh" ([] :: [JSString])
+new :: THREE.Three BatchedMesh
+new = THREE.new BatchedMesh "BatchedMesh" ([] :: [JSString])
 -----------------------------------------------------------------------------

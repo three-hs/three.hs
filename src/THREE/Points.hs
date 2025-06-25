@@ -6,7 +6,7 @@ module THREE.Points
   ( -- * Types
     Points (..)
     -- * Methods
-  , newPoints
+  , THREE.Points.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Points
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Points
-newPoints :: JSM Points
-newPoints = THREE.new Points "Points" ([] :: [JSString])
+new :: THREE.Three Points
+new = THREE.new Points "Points" ([] :: [JSString])
 -----------------------------------------------------------------------------

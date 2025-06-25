@@ -6,7 +6,7 @@ module THREE.Shape
   ( -- * Types
     Shape (..)
     -- * Methods
-  , newShape
+  , THREE.Shape.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Shape
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Shape
-newShape :: JSM Shape
-newShape = THREE.new Shape "Shape" ([] :: [JSString])
+new :: THREE.Three Shape
+new = THREE.new Shape "Shape" ([] :: [JSString])
 -----------------------------------------------------------------------------

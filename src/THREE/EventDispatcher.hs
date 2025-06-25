@@ -6,7 +6,7 @@ module THREE.EventDispatcher
   ( -- * Types
     EventDispatcher (..)
     -- * Methods
-  , newEventDispatcher
+  , THREE.EventDispatcher.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype EventDispatcher
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/EventDispatcher
-newEventDispatcher :: JSM EventDispatcher
-newEventDispatcher = THREE.new EventDispatcher "EventDispatcher" ([] :: [JSString])
+new :: THREE.Three EventDispatcher
+new = THREE.new EventDispatcher "EventDispatcher" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.PointLightShadow
   ( -- * Types
     PointLightShadow (..)
     -- * Methods
-  , newPointLightShadow
+  , THREE.PointLightShadow.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype PointLightShadow
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/PointLightShadow
-newPointLightShadow :: JSM PointLightShadow
-newPointLightShadow = THREE.new PointLightShadow "PointLightShadow" ([] :: [JSString])
+new :: THREE.Three PointLightShadow
+new = THREE.new PointLightShadow "PointLightShadow" ([] :: [JSString])
 -----------------------------------------------------------------------------

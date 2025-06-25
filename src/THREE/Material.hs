@@ -1,14 +1,13 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE DerivingVia #-}
+{-# LANGUAGE DataKinds                  #-}
+{-# LANGUAGE DerivingVia                #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings          #-}
 -----------------------------------------------------------------------------
 module THREE.Material
   ( -- * Types
-    MaterialC (..)
-  , Material (..)
+    Material (..)
     -- * Constructors
-  , THREE.Material.new
     -- * Read-only Properties
     -- * Properties
     -- * Optional properties
@@ -20,33 +19,22 @@ import           Language.Javascript.JSaddle
 import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/materials/Material
-class MaterialC a where
+class ToJSVal material => Material material where
   -- read-only properties
-  isMaterial :: a -> JSM Bool
+  isMaterial :: Property material "isMaterial" Bool
   -- properties
   -- optional properties
   -- methods
 -----------------------------------------------------------------------------
-instance MaterialC JSVal where
-  -- read-only properties
-  isMaterial = mkGet "isMaterial"
+instance Material JSVal where
+  isMaterial = field
+--   -- read-only properties
+--   isMaterial (Material m) =
+--     LiftJSM $
+--       fromJSValUnchecked =<<
+--         m ! ("isMaterial" :: JSString)
   -- properties
   -- optional properties
   -- methods
 -----------------------------------------------------------------------------
--- | Generic material
-newtype Material 
-  = Material 
-  { unMaterial :: JSVal
-  } deriving (MakeArgs, MakeObject, ToJSVal) 
-    deriving newtype MaterialC
------------------------------------------------------------------------------
-instance FromJSVal Material where
-  fromJSVal = pure .Just . Material
------------------------------------------------------------------------------
--- Constructors
------------------------------------------------------------------------------
--- | Generic material constructor
-new :: JSM Material
-new = new' Material "Material" ()
------------------------------------------------------------------------------
+

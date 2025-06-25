@@ -6,7 +6,7 @@ module THREE.PMREMGenerator
   ( -- * Types
     PMREMGenerator (..)
     -- * Methods
-  , newPMREMGenerator
+  , THREE.PMREMGenerator.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype PMREMGenerator
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/PMREMGenerator
-newPMREMGenerator :: JSM PMREMGenerator
-newPMREMGenerator = THREE.new PMREMGenerator "PMREMGenerator" ([] :: [JSString])
+new :: THREE.Three PMREMGenerator
+new = THREE.new PMREMGenerator "PMREMGenerator" ([] :: [JSString])
 -----------------------------------------------------------------------------

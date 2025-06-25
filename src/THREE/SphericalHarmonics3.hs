@@ -6,7 +6,7 @@ module THREE.SphericalHarmonics3
   ( -- * Types
     SphericalHarmonics3 (..)
     -- * Methods
-  , newSphericalHarmonics3
+  , THREE.SphericalHarmonics3.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype SphericalHarmonics3
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/SphericalHarmonics3
-newSphericalHarmonics3 :: JSM SphericalHarmonics3
-newSphericalHarmonics3 = THREE.new SphericalHarmonics3 "SphericalHarmonics3" ([] :: [JSString])
+new :: THREE.Three SphericalHarmonics3
+new = THREE.new SphericalHarmonics3 "SphericalHarmonics3" ([] :: [JSString])
 -----------------------------------------------------------------------------

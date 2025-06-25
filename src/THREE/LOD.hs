@@ -6,7 +6,7 @@ module THREE.LOD
   ( -- * Types
     LOD (..)
     -- * Methods
-  , newLOD
+  , THREE.LOD.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype LOD
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LOD
-newLOD :: JSM LOD
-newLOD = THREE.new LOD "LOD" ([] :: [JSString])
+new :: THREE.Three LOD
+new = THREE.new LOD "LOD" ([] :: [JSString])
 -----------------------------------------------------------------------------

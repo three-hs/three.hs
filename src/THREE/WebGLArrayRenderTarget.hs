@@ -6,7 +6,7 @@ module THREE.WebGLArrayRenderTarget
   ( -- * Types
     WebGLArrayRenderTarget (..)
     -- * Methods
-  , newWebGLArrayRenderTarget
+  , THREE.WebGLArrayRenderTarget.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype WebGLArrayRenderTarget
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/WebGLArrayRenderTarget
-newWebGLArrayRenderTarget :: JSM WebGLArrayRenderTarget
-newWebGLArrayRenderTarget = THREE.new WebGLArrayRenderTarget "WebGLArrayRenderTarget" ([] :: [JSString])
+new :: THREE.Three WebGLArrayRenderTarget
+new = THREE.new WebGLArrayRenderTarget "WebGLArrayRenderTarget" ([] :: [JSString])
 -----------------------------------------------------------------------------

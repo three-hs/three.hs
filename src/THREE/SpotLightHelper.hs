@@ -6,7 +6,7 @@ module THREE.SpotLightHelper
   ( -- * Types
     SpotLightHelper (..)
     -- * Methods
-  , newSpotLightHelper
+  , THREE.SpotLightHelper.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype SpotLightHelper
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/SpotLightHelper
-newSpotLightHelper :: JSM SpotLightHelper
-newSpotLightHelper = THREE.new SpotLightHelper "SpotLightHelper" ([] :: [JSString])
+new :: THREE.Three SpotLightHelper
+new = THREE.new SpotLightHelper "SpotLightHelper" ([] :: [JSString])
 -----------------------------------------------------------------------------

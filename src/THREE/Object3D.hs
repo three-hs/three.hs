@@ -1,9 +1,10 @@
+{-# LANGUAGE DataKinds #-}
 -----------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.Object3D
   ( -- * Types
-    Object3DC (..)
+    Object3D (..)
     -- * Constructors
     -- * Read-only Properties
     -- * Properties
@@ -16,33 +17,25 @@ import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
 import           THREE.Euler as THREE
 import           THREE.Internal as THREE
-import           THREE.Material as THREE
 import           THREE.Vector3 as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/core/Object3D
-class Object3DC a where
+class ToJSVal object => Object3D object where
   -- read-only properties
-  id :: a -> JSM Bool
+  id :: THREE.Property object "id" Bool
   -- properties
-  getPosition :: a -> JSM Vector3
-  -- TODO setPosition
-  getRotation :: a -> JSM Euler
-  -- TODO setRotation
-  -- optional properties
-  getCustomDistanceMaterialOpt :: a -> JSM (Maybe Material)
-  -- TODO  setCustomDistanceMaterial
+  position :: THREE.Property object "position" THREE.Vector3
+  rotation :: THREE.Property object "rotation" THREE.Euler
   -- methods
-  add :: (Object3DC b, MakeArgs b) => a -> b -> JSM ()
+  add :: MakeArgs b => object -> b -> THREE.Three ()
 -----------------------------------------------------------------------------
-instance Object3DC JSVal where
+instance Object3D JSVal where
   -- read-only properties
-  id = mkGet "id"
+  id = field
   -- properties
-  getPosition = mkGet "position"
-  getRotation = mkGet "rotation"
-  -- optional properties
-  getCustomDistanceMaterialOpt = mkGetOpt "customDistanceMaterial"
+  position = field
+  rotation = field
   -- methods
-  add v x = void $ v # ("add" :: JSString) $ x
+  add v x_ = LiftJSM (void $ v # ("add" :: JSString) $ x_)
 -----------------------------------------------------------------------------
 

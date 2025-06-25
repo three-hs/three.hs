@@ -6,7 +6,7 @@ module THREE.Clock
   ( -- * Types
     Clock (..)
     -- * Methods
-  , newClock
+  , THREE.Clock.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Clock
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Clock
-newClock :: JSM Clock
-newClock = THREE.new Clock "Clock" ([] :: [JSString])
+new :: THREE.Three Clock
+new = THREE.new Clock "Clock" ([] :: [JSString])
 -----------------------------------------------------------------------------

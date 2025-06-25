@@ -6,7 +6,7 @@ module THREE.WebGLProgram
   ( -- * Types
     WebGLProgram (..)
     -- * Methods
-  , newWebGLProgram
+  , THREE.WebGLProgram.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype WebGLProgram
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/WebGLProgram
-newWebGLProgram :: JSM WebGLProgram
-newWebGLProgram = THREE.new WebGLProgram "WebGLProgram" ([] :: [JSString])
+new :: THREE.Three WebGLProgram
+new = THREE.new WebGLProgram "WebGLProgram" ([] :: [JSString])
 -----------------------------------------------------------------------------

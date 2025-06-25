@@ -6,7 +6,7 @@ module THREE.CatmullRomCurve3
   ( -- * Types
     CatmullRomCurve3 (..)
     -- * Methods
-  , newCatmullRomCurve3
+  , THREE.CatmullRomCurve3.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype CatmullRomCurve3
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CatmullRomCurve3
-newCatmullRomCurve3 :: JSM CatmullRomCurve3
-newCatmullRomCurve3 = THREE.new CatmullRomCurve3 "CatmullRomCurve3" ([] :: [JSString])
+new :: THREE.Three CatmullRomCurve3
+new = THREE.new CatmullRomCurve3 "CatmullRomCurve3" ([] :: [JSString])
 -----------------------------------------------------------------------------

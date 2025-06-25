@@ -6,7 +6,7 @@ module THREE.ObjectLoader
   ( -- * Types
     ObjectLoader (..)
     -- * Methods
-  , newObjectLoader
+  , THREE.ObjectLoader.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ObjectLoader
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ObjectLoader
-newObjectLoader :: JSM ObjectLoader
-newObjectLoader = THREE.new ObjectLoader "ObjectLoader" ([] :: [JSString])
+new :: THREE.Three ObjectLoader
+new = THREE.new ObjectLoader "ObjectLoader" ([] :: [JSString])
 -----------------------------------------------------------------------------

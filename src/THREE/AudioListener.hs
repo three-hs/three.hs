@@ -6,7 +6,7 @@ module THREE.AudioListener
   ( -- * Types
     AudioListener (..)
     -- * Methods
-  , newAudioListener
+  , THREE.AudioListener.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype AudioListener
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AudioListener
-newAudioListener :: JSM AudioListener
-newAudioListener = THREE.new AudioListener "AudioListener" ([] :: [JSString])
+new :: THREE.Three AudioListener
+new = THREE.new AudioListener "AudioListener" ([] :: [JSString])
 -----------------------------------------------------------------------------

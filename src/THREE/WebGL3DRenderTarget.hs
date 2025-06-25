@@ -6,7 +6,7 @@ module THREE.WebGL3DRenderTarget
   ( -- * Types
     WebGL3DRenderTarget (..)
     -- * Methods
-  , newWebGL3DRenderTarget
+  , THREE.WebGL3DRenderTarget.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype WebGL3DRenderTarget
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/WebGL3DRenderTarget
-newWebGL3DRenderTarget :: JSM WebGL3DRenderTarget
-newWebGL3DRenderTarget = THREE.new WebGL3DRenderTarget "WebGL3DRenderTarget" ([] :: [JSString])
+new :: THREE.Three WebGL3DRenderTarget
+new = THREE.new WebGL3DRenderTarget "WebGL3DRenderTarget" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.LoadingManager
   ( -- * Types
     LoadingManager (..)
     -- * Methods
-  , newLoadingManager
+  , THREE.LoadingManager.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype LoadingManager
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LoadingManager
-newLoadingManager :: JSM LoadingManager
-newLoadingManager = THREE.new LoadingManager "LoadingManager" ([] :: [JSString])
+new :: THREE.Three LoadingManager
+new = THREE.new LoadingManager "LoadingManager" ([] :: [JSString])
 -----------------------------------------------------------------------------

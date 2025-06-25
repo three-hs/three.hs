@@ -6,7 +6,7 @@ module THREE.Fog
   ( -- * Types
     Fog (..)
     -- * Methods
-  , newFog
+  , THREE.Fog.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Fog
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Fog
-newFog :: JSM Fog
-newFog = THREE.new Fog "Fog" ([] :: [JSString])
+new :: THREE.Three Fog
+new = THREE.new Fog "Fog" ([] :: [JSString])
 -----------------------------------------------------------------------------
