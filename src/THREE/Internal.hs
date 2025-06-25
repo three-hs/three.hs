@@ -148,12 +148,13 @@ prop1 !. prop2 = Property setter getter
         field_ <- getProperty prop1 record
         setProperty prop2 field_ target
 -----------------------------------------------------------------------------
--- | This is how we invoke a function on a 'Property'
+-- | This is how we invoke a function
 --
 -- @
---   object ^. position ..! setXYZ (1,1,1)
+--   object ^. position ..! setXYZ 1 1 1
 -- @
 --
+infixr 4 (!..)
 (!..)
   :: Three field
   -> (field -> Three result)
