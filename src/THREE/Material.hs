@@ -27,14 +27,6 @@ class ToJSVal material => Material material where
   -- methods
 -----------------------------------------------------------------------------
 instance Material JSVal where
-  isMaterial = field
---   -- read-only properties
---   isMaterial (Material m) =
---     LiftJSM $
---       fromJSValUnchecked =<<
---         m ! ("isMaterial" :: JSString)
-  -- properties
-  -- optional properties
-  -- methods
+  isMaterial = property
 -----------------------------------------------------------------------------
 

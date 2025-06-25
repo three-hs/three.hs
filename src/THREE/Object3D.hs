@@ -1,5 +1,6 @@
-{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE TypeApplications #-}
 -----------------------------------------------------------------------------
+{-# LANGUAGE DataKinds #-}
 {-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.Object3D
@@ -12,7 +13,7 @@ module THREE.Object3D
     -- * Methods
   ) where
 -----------------------------------------------------------------------------
-import           Control.Monad (void)
+import           Data.Proxy (Proxy(Proxy))
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
 import           THREE.Euler as THREE
@@ -27,15 +28,15 @@ class ToJSVal object => Object3D object where
   position :: THREE.Property object "position" THREE.Vector3
   rotation :: THREE.Property object "rotation" THREE.Euler
   -- methods
-  add :: MakeArgs b => object -> b -> THREE.Three ()
+  add :: MakeArgs args => object -> args -> THREE.Three ()
 -----------------------------------------------------------------------------
 instance Object3D JSVal where
   -- read-only properties
-  id = field
+  id = property
   -- properties
-  position = field
-  rotation = field
+  position = property
+  rotation = property
   -- methods
-  add v x_ = LiftJSM (void $ v # ("add" :: JSString) $ x_)
+  add = method (Proxy @"add")
 -----------------------------------------------------------------------------
 

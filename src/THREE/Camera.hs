@@ -27,7 +27,7 @@ class ToJSVal camera => Camera camera where
   -- methods
 -----------------------------------------------------------------------------
 instance Camera JSVal where
-  isCamera = field
+  isCamera = property
   -- read-only properties
   -- isCamera = mkGet "isCamera"
   -- properties

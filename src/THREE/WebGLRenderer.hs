@@ -57,7 +57,7 @@ render
   -> camera
   -> Three ()
 render (WebGLRenderer v) object camera =
-  LiftJSM (void $ v # ("render" :: JSString) $ (object, camera))
+  void $ v # ("render" :: JSString) $ (object, camera)
 -----------------------------------------------------------------------------
 setAnimationLoop :: WebGLRenderer -> JSCallAsFunction -> JSM ()
 setAnimationLoop (WebGLRenderer v) f =

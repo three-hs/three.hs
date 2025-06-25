@@ -22,7 +22,7 @@ import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/textures/Texture
 isTexture :: Property Texture "isTexture" Bool
-isTexture = field
+isTexture = property
   -- properties
   -- optional properties
   -- methods

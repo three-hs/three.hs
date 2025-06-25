@@ -24,7 +24,7 @@ class ToJSVal geometry => BufferGeometry geometry where
   isBufferGeometry :: Property geometry "isBufferGeometry" Bool
 -----------------------------------------------------------------------------
 instance BufferGeometry JSVal where
-  isBufferGeometry = field
+  isBufferGeometry = property
 -----------------------------------------------------------------------------
 -- constructors
 -----------------------------------------------------------------------------

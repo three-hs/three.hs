@@ -44,20 +44,20 @@ new x_ y_ z_ = THREE.new Vector3 "Vector3" (x_, y_, z_)
 -- properties
 -----------------------------------------------------------------------------
 x :: THREE.Property Vector3 "x" Double
-x = field
+x = property
 -----------------------------------------------------------------------------
 y :: THREE.Property Vector3 "y" Double
-y = field
+y = property
 -----------------------------------------------------------------------------
 z :: THREE.Property Vector3 "z" Double
-z = field
+z = property
 -----------------------------------------------------------------------------
 -- optional properties
 -----------------------------------------------------------------------------
 -- methods
 -----------------------------------------------------------------------------
 setXYZ :: Double -> Double -> Double -> Vector3 -> THREE.Three ()
-setXYZ x_ y_ z_ (Vector3 v) = LiftJSM $
+setXYZ x_ y_ z_ (Vector3 v) =
   void $ v # ("set" :: JSString) $ (x_, y_, z_)
 -----------------------------------------------------------------------------
 -- helper functions

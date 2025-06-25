@@ -28,7 +28,7 @@ class ToJSVal loader => Loader loader where
 instance Loader JSVal where
   -- read-only properties
   -- properties
-  path = field
+  path = property
   -- optional properties
   -- methods
 -----------------------------------------------------------------------------

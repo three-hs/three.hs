@@ -30,9 +30,9 @@ class Object3D light => Light light where
 -----------------------------------------------------------------------------
 instance Light JSVal where
   -- read-only properties
-  isLight = field
+  isLight = property
   -- properties
-  intensity = field
+  intensity = property
   -- optional properties
   -- methods
 -----------------------------------------------------------------------------

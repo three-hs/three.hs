@@ -26,5 +26,5 @@ new :: THREE.Three MeshBasicMaterial
 new = THREE.new MeshBasicMaterial "MeshBasicMaterial" ()
 -----------------------------------------------------------------------------
 color :: THREE.Property MeshBasicMaterial "color" JSString
-color = THREE.field
+color = THREE.property
 -----------------------------------------------------------------------------
