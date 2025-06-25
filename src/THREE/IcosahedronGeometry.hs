@@ -6,7 +6,7 @@ module THREE.IcosahedronGeometry
   ( -- * Types
     IcosahedronGeometry (..)
     -- * Methods
-  , newIcosahedronGeometry
+  , THREE.IcosahedronGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype IcosahedronGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/IcosahedronGeometry
-newIcosahedronGeometry :: JSM IcosahedronGeometry
-newIcosahedronGeometry = THREE.new IcosahedronGeometry "IcosahedronGeometry" ([] :: [JSString])
+new :: THREE.Three IcosahedronGeometry
+new = THREE.new IcosahedronGeometry "IcosahedronGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

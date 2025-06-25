@@ -6,7 +6,7 @@ module THREE.SplineCurve
   ( -- * Types
     SplineCurve (..)
     -- * Methods
-  , newSplineCurve
+  , THREE.SplineCurve.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype SplineCurve
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/SplineCurve
-newSplineCurve :: JSM SplineCurve
-newSplineCurve = THREE.new SplineCurve "SplineCurve" ([] :: [JSString])
+new :: THREE.Three SplineCurve
+new = THREE.new SplineCurve "SplineCurve" ([] :: [JSString])
 -----------------------------------------------------------------------------

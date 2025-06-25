@@ -6,7 +6,7 @@ module THREE.MaterialLoader
   ( -- * Types
     MaterialLoader (..)
     -- * Methods
-  , newMaterialLoader
+  , THREE.MaterialLoader.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype MaterialLoader
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/MaterialLoader
-newMaterialLoader :: JSM MaterialLoader
-newMaterialLoader = THREE.new MaterialLoader "MaterialLoader" ([] :: [JSString])
+new :: THREE.Three MaterialLoader
+new = THREE.new MaterialLoader "MaterialLoader" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.Sphere
   ( -- * Types
     Sphere (..)
     -- * Methods
-  , newSphere
+  , THREE.Sphere.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Sphere
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Sphere
-newSphere :: JSM Sphere
-newSphere = THREE.new Sphere "Sphere" ([] :: [JSString])
+new :: THREE.Three Sphere
+new = THREE.new Sphere "Sphere" ([] :: [JSString])
 -----------------------------------------------------------------------------

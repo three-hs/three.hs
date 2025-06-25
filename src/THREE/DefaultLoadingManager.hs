@@ -6,7 +6,7 @@ module THREE.DefaultLoadingManager
   ( -- * Types
     DefaultLoadingManager (..)
     -- * Methods
-  , newDefaultLoadingManager
+  , THREE.DefaultLoadingManager.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype DefaultLoadingManager
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/DefaultLoadingManager
-newDefaultLoadingManager :: JSM DefaultLoadingManager
-newDefaultLoadingManager = THREE.new DefaultLoadingManager "DefaultLoadingManager" ([] :: [JSString])
+new :: THREE.Three DefaultLoadingManager
+new = THREE.new DefaultLoadingManager "DefaultLoadingManager" ([] :: [JSString])
 -----------------------------------------------------------------------------

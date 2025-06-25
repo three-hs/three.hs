@@ -6,7 +6,7 @@ module THREE.LightProbe
   ( -- * Types
     LightProbe (..)
     -- * Methods
-  , newLightProbe
+  , THREE.LightProbe.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype LightProbe
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LightProbe
-newLightProbe :: JSM LightProbe
-newLightProbe = THREE.new LightProbe "LightProbe" ([] :: [JSString])
+new :: THREE.Three LightProbe
+new = THREE.new LightProbe "LightProbe" ()
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.SkeletonHelper
   ( -- * Types
     SkeletonHelper (..)
     -- * Methods
-  , newSkeletonHelper
+  , THREE.SkeletonHelper.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype SkeletonHelper
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/SkeletonHelper
-newSkeletonHelper :: JSM SkeletonHelper
-newSkeletonHelper = THREE.new SkeletonHelper "SkeletonHelper" ([] :: [JSString])
+new :: THREE.Three SkeletonHelper
+new = THREE.new SkeletonHelper "SkeletonHelper" ([] :: [JSString])
 -----------------------------------------------------------------------------

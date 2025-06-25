@@ -6,7 +6,7 @@ module THREE.ExtrudeGeometry
   ( -- * Types
     ExtrudeGeometry (..)
     -- * Methods
-  , newExtrudeGeometry
+  , THREE.ExtrudeGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ExtrudeGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ExtrudeGeometry
-newExtrudeGeometry :: JSM ExtrudeGeometry
-newExtrudeGeometry = THREE.new ExtrudeGeometry "ExtrudeGeometry" ([] :: [JSString])
+new :: THREE.Three ExtrudeGeometry
+new = THREE.new ExtrudeGeometry "ExtrudeGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.AudioLoader
   ( -- * Types
     AudioLoader (..)
     -- * Methods
-  , newAudioLoader
+  , THREE.AudioLoader.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype AudioLoader
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AudioLoader
-newAudioLoader :: JSM AudioLoader
-newAudioLoader = THREE.new AudioLoader "AudioLoader" ([] :: [JSString])
+new :: THREE.Three AudioLoader
+new = THREE.new AudioLoader "AudioLoader" ([] :: [JSString])
 -----------------------------------------------------------------------------

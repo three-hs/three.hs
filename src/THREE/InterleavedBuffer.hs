@@ -6,7 +6,7 @@ module THREE.InterleavedBuffer
   ( -- * Types
     InterleavedBuffer (..)
     -- * Methods
-  , newInterleavedBuffer
+  , THREE.InterleavedBuffer.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype InterleavedBuffer
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/InterleavedBuffer
-newInterleavedBuffer :: JSM InterleavedBuffer
-newInterleavedBuffer = THREE.new InterleavedBuffer "InterleavedBuffer" ([] :: [JSString])
+new :: THREE.Three InterleavedBuffer
+new = THREE.new InterleavedBuffer "InterleavedBuffer" ()
 -----------------------------------------------------------------------------

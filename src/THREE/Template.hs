@@ -6,7 +6,7 @@ module THREE.Template
   ( -- * Types
     Template (..)
     -- * Methods
-  , newTemplate
+  , THREE.Template.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Template
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Template
-newTemplate :: JSM Template
-newTemplate = THREE.new Template "Template" ([] :: [JSString])
+new :: THREE.Three Template
+new = THREE.new Template "Template" ([] :: [JSString])
 -----------------------------------------------------------------------------

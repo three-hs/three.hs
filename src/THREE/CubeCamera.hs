@@ -6,7 +6,7 @@ module THREE.CubeCamera
   ( -- * Types
     CubeCamera (..)
     -- * Methods
-  , newCubeCamera
+  , THREE.CubeCamera.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype CubeCamera
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CubeCamera
-newCubeCamera :: JSM CubeCamera
-newCubeCamera = THREE.new CubeCamera "CubeCamera" ([] :: [JSString])
+new :: THREE.Three CubeCamera
+new = THREE.new CubeCamera "CubeCamera" ([] :: [JSString])
 -----------------------------------------------------------------------------

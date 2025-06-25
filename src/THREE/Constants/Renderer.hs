@@ -6,7 +6,7 @@ module THREE.Constants.Renderer
   ( -- * Types
     Renderer (..)
     -- * Methods
-  , newRenderer
+  , THREE.Constants.Renderer.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Renderer
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Renderer
-newRenderer :: JSM Renderer
-newRenderer = THREE.new Renderer "Renderer" ([] :: [JSString])
+new :: THREE.Three Renderer
+new = THREE.new Renderer "Renderer" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -34,8 +34,8 @@ newtype WebGLRenderer
 -----------------------------------------------------------------------------
 -- Constructors
 -----------------------------------------------------------------------------
-new :: JSM WebGLRenderer
-new = THREE.new' WebGLRenderer "WebGLRenderer" ()
+new :: Three WebGLRenderer
+new = THREE.new WebGLRenderer "WebGLRenderer" ()
 -----------------------------------------------------------------------------
 -- Read-only properties
 -----------------------------------------------------------------------------
@@ -51,8 +51,11 @@ domElement (WebGLRenderer v) = v ! ("domElement" :: JSString)
 -- Methods
 -----------------------------------------------------------------------------
 render
-  :: (ToJSVal a, Object3DC a, ToJSVal b, CameraC b) 
-  => WebGLRenderer -> a -> b -> JSM ()
+  :: (Object3D object, Camera camera) 
+  => WebGLRenderer
+  -> object
+  -> camera
+  -> Three ()
 render (WebGLRenderer v) object camera =
   void $ v # ("render" :: JSString) $ (object, camera)
 -----------------------------------------------------------------------------

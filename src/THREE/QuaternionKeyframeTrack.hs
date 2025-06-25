@@ -6,7 +6,7 @@ module THREE.QuaternionKeyframeTrack
   ( -- * Types
     QuaternionKeyframeTrack (..)
     -- * Methods
-  , newQuaternionKeyframeTrack
+  , THREE.QuaternionKeyframeTrack.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype QuaternionKeyframeTrack
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/QuaternionKeyframeTrack
-newQuaternionKeyframeTrack :: JSM QuaternionKeyframeTrack
-newQuaternionKeyframeTrack = THREE.new QuaternionKeyframeTrack "QuaternionKeyframeTrack" ([] :: [JSString])
+new :: THREE.Three QuaternionKeyframeTrack
+new = THREE.new QuaternionKeyframeTrack "QuaternionKeyframeTrack" ([] :: [JSString])
 -----------------------------------------------------------------------------

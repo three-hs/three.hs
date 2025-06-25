@@ -6,7 +6,7 @@ module THREE.DirectionalLightHelper
   ( -- * Types
     DirectionalLightHelper (..)
     -- * Methods
-  , newDirectionalLightHelper
+  , THREE.DirectionalLightHelper.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype DirectionalLightHelper
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/DirectionalLightHelper
-newDirectionalLightHelper :: JSM DirectionalLightHelper
-newDirectionalLightHelper = THREE.new DirectionalLightHelper "DirectionalLightHelper" ([] :: [JSString])
+new :: THREE.Three DirectionalLightHelper
+new = THREE.new DirectionalLightHelper "DirectionalLightHelper" ([] :: [JSString])
 -----------------------------------------------------------------------------

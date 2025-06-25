@@ -6,7 +6,7 @@ module THREE.SpriteMaterial
   ( -- * Types
     SpriteMaterial (..)
     -- * Methods
-  , newSpriteMaterial
+  , THREE.SpriteMaterial.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype SpriteMaterial
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/SpriteMaterial
-newSpriteMaterial :: JSM SpriteMaterial
-newSpriteMaterial = THREE.new SpriteMaterial "SpriteMaterial" ([] :: [JSString])
+new :: THREE.Three SpriteMaterial
+new = THREE.new SpriteMaterial "SpriteMaterial" ([] :: [JSString])
 -----------------------------------------------------------------------------

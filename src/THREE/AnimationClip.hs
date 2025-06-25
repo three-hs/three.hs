@@ -6,7 +6,7 @@ module THREE.AnimationClip
   ( -- * Types
     AnimationClip (..)
     -- * Methods
-  , newAnimationClip
+  , THREE.AnimationClip.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype AnimationClip
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AnimationClip
-newAnimationClip :: JSM AnimationClip
-newAnimationClip = THREE.new AnimationClip "AnimationClip" ([] :: [JSString])
+new :: THREE.Three AnimationClip
+new = THREE.new AnimationClip "AnimationClip" ([] :: [JSString])
 -----------------------------------------------------------------------------

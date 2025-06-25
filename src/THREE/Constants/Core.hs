@@ -6,7 +6,7 @@ module THREE.Constants.Core
   ( -- * Types
     Core (..)
     -- * Methods
-  , newCore
+  , THREE.Constants.Core.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Core
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Core
-newCore :: JSM Core
-newCore = THREE.new Core "Core" ([] :: [JSString])
+new :: THREE.Three Core
+new = THREE.new Core "Core" ([] :: [JSString])
 -----------------------------------------------------------------------------

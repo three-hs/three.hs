@@ -6,7 +6,7 @@ module THREE.Constants.BufferAttributeUsage
   ( -- * Types
     BufferAttributeUsage (..)
     -- * Methods
-  , newBufferAttributeUsage
+  , THREE.Constants.BufferAttributeUsage.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype BufferAttributeUsage
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/BufferAttributeUsage
-newBufferAttributeUsage :: JSM BufferAttributeUsage
-newBufferAttributeUsage = THREE.new BufferAttributeUsage "BufferAttributeUsage" ([] :: [JSString])
+new :: THREE.Three BufferAttributeUsage
+new = THREE.new BufferAttributeUsage "BufferAttributeUsage" ([] :: [JSString])
 -----------------------------------------------------------------------------

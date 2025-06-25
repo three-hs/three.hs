@@ -6,7 +6,7 @@ module THREE.UniformsUtils
   ( -- * Types
     UniformsUtils (..)
     -- * Methods
-  , newUniformsUtils
+  , THREE.UniformsUtils.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype UniformsUtils
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/UniformsUtils
-newUniformsUtils :: JSM UniformsUtils
-newUniformsUtils = THREE.new UniformsUtils "UniformsUtils" ([] :: [JSString])
+new :: THREE.Three UniformsUtils
+new = THREE.new UniformsUtils "UniformsUtils" ([] :: [JSString])
 -----------------------------------------------------------------------------

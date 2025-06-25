@@ -6,7 +6,7 @@ module THREE.AnimationMixer
   ( -- * Types
     AnimationMixer (..)
     -- * Methods
-  , newAnimationMixer
+  , THREE.AnimationMixer.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype AnimationMixer
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AnimationMixer
-newAnimationMixer :: JSM AnimationMixer
-newAnimationMixer = THREE.new AnimationMixer "AnimationMixer" ([] :: [JSString])
+new :: THREE.Three AnimationMixer
+new = THREE.new AnimationMixer "AnimationMixer" ([] :: [JSString])
 -----------------------------------------------------------------------------

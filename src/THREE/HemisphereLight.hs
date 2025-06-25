@@ -6,7 +6,7 @@ module THREE.HemisphereLight
   ( -- * Types
     HemisphereLight (..)
     -- * Methods
-  , newHemisphereLight
+  , THREE.HemisphereLight.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype HemisphereLight
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/HemisphereLight
-newHemisphereLight :: JSM HemisphereLight
-newHemisphereLight = THREE.new HemisphereLight "HemisphereLight" ([] :: [JSString])
+new :: THREE.Three HemisphereLight
+new = THREE.new HemisphereLight "HemisphereLight" ([] :: [JSString])
 -----------------------------------------------------------------------------

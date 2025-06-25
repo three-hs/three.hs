@@ -6,7 +6,7 @@ module THREE.EllipseCurve
   ( -- * Types
     EllipseCurve (..)
     -- * Methods
-  , newEllipseCurve
+  , THREE.EllipseCurve.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype EllipseCurve
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/EllipseCurve
-newEllipseCurve :: JSM EllipseCurve
-newEllipseCurve = THREE.new EllipseCurve "EllipseCurve" ([] :: [JSString])
+new :: THREE.Three EllipseCurve
+new = THREE.new EllipseCurve "EllipseCurve" ([] :: [JSString])
 -----------------------------------------------------------------------------

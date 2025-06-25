@@ -6,7 +6,7 @@ module THREE.MeshPhysicalMaterial
   ( -- * Types
     MeshPhysicalMaterial (..)
     -- * Methods
-  , newMeshPhysicalMaterial
+  , THREE.MeshPhysicalMaterial.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype MeshPhysicalMaterial
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/MeshPhysicalMaterial
-newMeshPhysicalMaterial :: JSM MeshPhysicalMaterial
-newMeshPhysicalMaterial = THREE.new MeshPhysicalMaterial "MeshPhysicalMaterial" ([] :: [JSString])
+new :: THREE.Three MeshPhysicalMaterial
+new = THREE.new MeshPhysicalMaterial "MeshPhysicalMaterial" ([] :: [JSString])
 -----------------------------------------------------------------------------

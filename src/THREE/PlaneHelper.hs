@@ -6,7 +6,7 @@ module THREE.PlaneHelper
   ( -- * Types
     PlaneHelper (..)
     -- * Methods
-  , newPlaneHelper
+  , THREE.PlaneHelper.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype PlaneHelper
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/PlaneHelper
-newPlaneHelper :: JSM PlaneHelper
-newPlaneHelper = THREE.new PlaneHelper "PlaneHelper" ([] :: [JSString])
+new :: THREE.Three PlaneHelper
+new = THREE.new PlaneHelper "PlaneHelper" ([] :: [JSString])
 -----------------------------------------------------------------------------

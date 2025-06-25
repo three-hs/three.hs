@@ -6,7 +6,7 @@ module THREE.Bone
   ( -- * Types
     Bone (..)
     -- * Methods
-  , newBone
+  , THREE.Bone.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Bone
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Bone
-newBone :: JSM Bone
-newBone = THREE.new Bone "Bone" ([] :: [JSString])
+new :: THREE.Three Bone
+new = THREE.new Bone "Bone" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.Interpolant
   ( -- * Types
     Interpolant (..)
     -- * Methods
-  , newInterpolant
+  , THREE.Interpolant.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Interpolant
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Interpolant
-newInterpolant :: JSM Interpolant
-newInterpolant = THREE.new Interpolant "Interpolant" ([] :: [JSString])
+new :: THREE.Three Interpolant
+new = THREE.new Interpolant "Interpolant" ()
 -----------------------------------------------------------------------------

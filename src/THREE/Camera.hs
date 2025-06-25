@@ -1,10 +1,11 @@
 -----------------------------------------------------------------------------
+{-# LANGUAGE DataKinds #-}
 {-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.Camera
   ( -- * Types
-    CameraC (..)
+    Camera (..)
     -- * Constructors
     -- * Read-only Properties
     -- * Properties
@@ -16,19 +17,19 @@ module THREE.Camera
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
 import           THREE.Internal as THREE
-import           THREE.Object3D as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Camera
-class Object3DC a => CameraC a where
+class ToJSVal camera => Camera camera where
   -- read-only properties
-  isCamera :: a -> JSM Bool
+  isCamera :: Property camera "isCamera" Bool
   -- properties
   -- optional properties
   -- methods
 -----------------------------------------------------------------------------
-instance CameraC JSVal where
+instance Camera JSVal where
+  isCamera = property
   -- read-only properties
-  isCamera = mkGet "isCamera"
+  -- isCamera = mkGet "isCamera"
   -- properties
   -- optional properties
   -- methods

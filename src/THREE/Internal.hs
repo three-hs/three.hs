@@ -1,68 +1,122 @@
-{-# LANGUAGE OverloadedStrings #-}
-
+-----------------------------------------------------------------------------
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE ScopedTypeVariables        #-}
+{-# LANGUAGE TypeApplications           #-}
+{-# LANGUAGE OverloadedStrings          #-}
+{-# LANGUAGE KindSignatures             #-}
+{-# LANGUAGE DataKinds                  #-}
+{-# LANGUAGE GADTs                      #-}
+-----------------------------------------------------------------------------
 module THREE.Internal
-  ( new
-  , new'
-  , mkGet
-  , mkGetOpt
-  , mkModify
-  , mkModifyOpt
-  , mkSet
+  ( -- * Types
+    Three
+  , Property (..)
+    -- * Combinators
+  , (^.)
+  , (.=)
+  , (!.)
+  , property
+  , method
+  , readonly
+  , optional
+  , new
   ) where
-
-import qualified Language.Javascript.JSaddle as J
+-----------------------------------------------------------------------------
+import           Control.Monad
+import           Data.Proxy
+import           GHC.TypeLits
 import           Language.Javascript.JSaddle hiding (new)
-
--- | Smart constructor for THREE namespace objects
-new
-  :: ToJSVal a
-  => (JSVal -> b)
-  -> JSString
-  -> [a]
-  -> JSM b
+import qualified Language.Javascript.JSaddle as J
+-----------------------------------------------------------------------------
+type Three = JSM
+-----------------------------------------------------------------------------
+infixr 4 ^.
+(^.) :: object -> Property object name field -> Three field
+(^.) object (Property _ getter) = getter object
+-----------------------------------------------------------------------------
+infixr 4 .=
+(.=) :: Property object name field -> field -> object -> Three ()
+(.=) (Property setter _) field_ object = setter object field_
+-----------------------------------------------------------------------------
+data Property object (name :: Symbol) field
+  = Property
+  { setProperty :: object -> field -> JSM ()
+  , getProperty :: object -> JSM field
+  }
+-----------------------------------------------------------------------------
+property
+  :: forall object name field
+  . (KnownSymbol name, MakeObject object, ToJSVal field, FromJSVal field)
+  => Property object name field
+property
+  = Property
+  { setProperty = \object -> (object <# name)
+  , getProperty = \object -> fromJSValUnchecked =<< object ! name
+  } where
+      name = symbolVal (Proxy @name)
+-----------------------------------------------------------------------------
+optional
+  :: forall object name field
+  . (KnownSymbol name, MakeObject object, ToJSVal field, FromJSVal field)
+  => Property object name (Maybe field)
+optional
+  = Property
+  { setProperty = \object -> (object <# name)
+  , getProperty = \object -> do
+      result <- fromJSValUnchecked =<< do
+        object # ("hasOwnProperty" :: JSString) $ [name]
+      if result
+        then fromJSValUnchecked =<< object ! name
+        else pure Nothing
+  } where
+      name = symbolVal (Proxy @name)
+-----------------------------------------------------------------------------
+method
+  :: forall object name return args
+  . (KnownSymbol name, FromJSVal return, MakeArgs args, MakeObject object)
+  => Proxy name -> object -> args -> Three return
+method name object args = fromJSValUnchecked =<< do
+  object # symbolVal name $ args
+-----------------------------------------------------------------------------
+readonly
+  :: forall object name return
+  . (KnownSymbol name, FromJSVal return, MakeObject object)
+  => Proxy name -> object -> Three return
+readonly name object = fromJSValUnchecked =<< (object ! symbolVal name)
+-----------------------------------------------------------------------------
+new 
+  :: MakeArgs args
+  => (JSVal -> con) 
+  -> JSString 
+  -> args
+  -> Three con
 new f name args = do
   v <- jsg ("THREE" :: JSString) ! name
   f <$> J.new v args
+-----------------------------------------------------------------------------
+-- | This is how we compose 'Property', can be used for getting and setting fields
+--
+-- @
+--   object & position .! x .= 100
+-- @
+--
+(!.)
+  :: forall a b c fa fb
+  . ( MakeObject a
+    , MakeObject b
+    , KnownSymbol fa
+    , KnownSymbol fb
+    )
+  => Property a fa b
+  -> Property b fb c
+  -> Property a fb c
+prop1 !. prop2 = Property setter getter
+    where
+      getter :: a -> JSM c
+      getter = getProperty prop2 <=< getProperty prop1
 
--- | Smart constructor for THREE namespace objects
-new' 
-  :: MakeArgs a 
-  => (JSVal -> b) 
-  -> JSString 
-  -> a 
-  -> JSM b
-new' f name args = do
-  v <- jsg ("THREE" :: JSString) ! name
-  f <$> J.new v args
-
--- | Getting the value of a property.
-mkGet :: (MakeObject a, FromJSVal b) => JSString -> a -> JSM b
-mkGet name v = fromJSValUnchecked =<< v ! name
-
--- | Getting the value of an optional property.
-mkGetOpt :: (MakeObject a, FromJSVal b) => JSString -> a -> JSM (Maybe b)
-mkGetOpt name v = fromJSVal =<< v ! name
-
--- | Setting the value of a property.
-mkSet :: (MakeObject a, ToJSVal b) => JSString -> b -> a -> JSM ()
-mkSet name x v = v <# name $ x
-
--- | Modifying a property.
-mkModify :: (MakeObject a, ToJSVal b, FromJSVal b) => JSString -> (b -> JSM b) -> a -> JSM b
-mkModify name f v = do
-  x <- fromJSValUnchecked =<< v ! name
-  y <- f x
-  v <# name $ y
-  pure y
-
--- | Modifying an optional property.
-mkModifyOpt :: (MakeObject a, ToJSVal b, FromJSVal b) => JSString -> (b -> JSM b) -> a -> JSM (Maybe b)
-mkModifyOpt name f v = do
-  mx <- fromJSVal =<< v ! name
-  case mx of
-    Nothing -> pure Nothing
-    Just x -> do
-      y <- f x
-      v <# name $ y
-      pure $ Just y
-
+      setter :: a -> c -> JSM ()
+      setter record target = do
+        field_ <- getProperty prop1 record
+        setProperty prop2 field_ target
+-----------------------------------------------------------------------------

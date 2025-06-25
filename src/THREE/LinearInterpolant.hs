@@ -6,7 +6,7 @@ module THREE.LinearInterpolant
   ( -- * Types
     LinearInterpolant (..)
     -- * Methods
-  , newLinearInterpolant
+  , THREE.LinearInterpolant.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype LinearInterpolant
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LinearInterpolant
-newLinearInterpolant :: JSM LinearInterpolant
-newLinearInterpolant = THREE.new LinearInterpolant "LinearInterpolant" ([] :: [JSString])
+new :: THREE.Three LinearInterpolant
+new = THREE.new LinearInterpolant "LinearInterpolant" ([] :: [JSString])
 -----------------------------------------------------------------------------

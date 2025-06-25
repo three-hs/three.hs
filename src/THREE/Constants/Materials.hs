@@ -6,7 +6,7 @@ module THREE.Constants.Materials
   ( -- * Types
     Materials (..)
     -- * Methods
-  , newMaterials
+  , THREE.Constants.Materials.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Materials
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Materials
-newMaterials :: JSM Materials
-newMaterials = THREE.new Materials "Materials" ([] :: [JSString])
+new :: THREE.Three Materials
+new = THREE.new Materials "Materials" ([] :: [JSString])
 -----------------------------------------------------------------------------

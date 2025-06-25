@@ -6,7 +6,7 @@ module THREE.Skeleton
   ( -- * Types
     Skeleton (..)
     -- * Methods
-  , newSkeleton
+  , THREE.Skeleton.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Skeleton
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Skeleton
-newSkeleton :: JSM Skeleton
-newSkeleton = THREE.new Skeleton "Skeleton" ([] :: [JSString])
+new :: THREE.Three Skeleton
+new = THREE.new Skeleton "Skeleton" ([] :: [JSString])
 -----------------------------------------------------------------------------

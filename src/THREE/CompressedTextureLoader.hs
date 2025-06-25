@@ -6,7 +6,7 @@ module THREE.CompressedTextureLoader
   ( -- * Types
     CompressedTextureLoader (..)
     -- * Methods
-  , newCompressedTextureLoader
+  , THREE.CompressedTextureLoader.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype CompressedTextureLoader
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CompressedTextureLoader
-newCompressedTextureLoader :: JSM CompressedTextureLoader
-newCompressedTextureLoader = THREE.new CompressedTextureLoader "CompressedTextureLoader" ([] :: [JSString])
+new :: THREE.Three CompressedTextureLoader
+new = THREE.new CompressedTextureLoader "CompressedTextureLoader" ([] :: [JSString])
 -----------------------------------------------------------------------------

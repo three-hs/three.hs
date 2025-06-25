@@ -6,7 +6,7 @@ module THREE.VideoFrameTexture
   ( -- * Types
     VideoFrameTexture (..)
     -- * Methods
-  , newVideoFrameTexture
+  , THREE.VideoFrameTexture.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype VideoFrameTexture
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/VideoFrameTexture
-newVideoFrameTexture :: JSM VideoFrameTexture
-newVideoFrameTexture = THREE.new VideoFrameTexture "VideoFrameTexture" ([] :: [JSString])
+new :: THREE.Three VideoFrameTexture
+new = THREE.new VideoFrameTexture "VideoFrameTexture" ([] :: [JSString])
 -----------------------------------------------------------------------------

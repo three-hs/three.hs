@@ -6,7 +6,7 @@ module THREE.InterleavedBufferAttribute
   ( -- * Types
     InterleavedBufferAttribute (..)
     -- * Methods
-  , newInterleavedBufferAttribute
+  , THREE.InterleavedBufferAttribute.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype InterleavedBufferAttribute
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/InterleavedBufferAttribute
-newInterleavedBufferAttribute :: JSM InterleavedBufferAttribute
-newInterleavedBufferAttribute = THREE.new InterleavedBufferAttribute "InterleavedBufferAttribute" ([] :: [JSString])
+new :: THREE.Three InterleavedBufferAttribute
+new = THREE.new InterleavedBufferAttribute "InterleavedBufferAttribute" ()
 -----------------------------------------------------------------------------

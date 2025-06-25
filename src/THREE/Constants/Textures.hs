@@ -6,7 +6,7 @@ module THREE.Constants.Textures
   ( -- * Types
     Textures (..)
     -- * Methods
-  , newTextures
+  , THREE.Constants.Textures.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Textures
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Textures
-newTextures :: JSM Textures
-newTextures = THREE.new Textures "Textures" ([] :: [JSString])
+new :: THREE.Three Textures
+new = THREE.new Textures "Textures" ([] :: [JSString])
 -----------------------------------------------------------------------------

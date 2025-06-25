@@ -6,7 +6,7 @@ module THREE.ImageLoader
   ( -- * Types
     ImageLoader (..)
     -- * Methods
-  , newImageLoader
+  , THREE.ImageLoader.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ImageLoader
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ImageLoader
-newImageLoader :: JSM ImageLoader
-newImageLoader = THREE.new ImageLoader "ImageLoader" ([] :: [JSString])
+new :: THREE.Three ImageLoader
+new = THREE.new ImageLoader "ImageLoader" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.TubeGeometry
   ( -- * Types
     TubeGeometry (..)
     -- * Methods
-  , newTubeGeometry
+  , THREE.TubeGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype TubeGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/TubeGeometry
-newTubeGeometry :: JSM TubeGeometry
-newTubeGeometry = THREE.new TubeGeometry "TubeGeometry" ([] :: [JSString])
+new :: THREE.Three TubeGeometry
+new = THREE.new TubeGeometry "TubeGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

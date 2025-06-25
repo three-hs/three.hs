@@ -6,7 +6,7 @@ module THREE.MeshToonMaterial
   ( -- * Types
     MeshToonMaterial (..)
     -- * Methods
-  , newMeshToonMaterial
+  , THREE.MeshToonMaterial.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype MeshToonMaterial
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/MeshToonMaterial
-newMeshToonMaterial :: JSM MeshToonMaterial
-newMeshToonMaterial = THREE.new MeshToonMaterial "MeshToonMaterial" ([] :: [JSString])
+new :: THREE.Three MeshToonMaterial
+new = THREE.new MeshToonMaterial "MeshToonMaterial" ([] :: [JSString])
 -----------------------------------------------------------------------------

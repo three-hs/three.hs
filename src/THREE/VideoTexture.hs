@@ -6,7 +6,7 @@ module THREE.VideoTexture
   ( -- * Types
     VideoTexture (..)
     -- * Methods
-  , newVideoTexture
+  , THREE.VideoTexture.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype VideoTexture
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/VideoTexture
-newVideoTexture :: JSM VideoTexture
-newVideoTexture = THREE.new VideoTexture "VideoTexture" ([] :: [JSString])
+new :: THREE.Three VideoTexture
+new = THREE.new VideoTexture "VideoTexture" ([] :: [JSString])
 -----------------------------------------------------------------------------

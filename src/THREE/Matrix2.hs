@@ -6,7 +6,7 @@ module THREE.Matrix2
   ( -- * Types
     Matrix2 (..)
     -- * Methods
-  , newMatrix2
+  , THREE.Matrix2.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Matrix2
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Matrix2
-newMatrix2 :: JSM Matrix2
-newMatrix2 = THREE.new Matrix2 "Matrix2" ([] :: [JSString])
+new :: THREE.Three Matrix2
+new = THREE.new Matrix2 "Matrix2" ([] :: [JSString])
 -----------------------------------------------------------------------------

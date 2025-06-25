@@ -6,7 +6,7 @@ module THREE.Audio
   ( -- * Types
     Audio (..)
     -- * Methods
-  , newAudio
+  , THREE.Audio.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Audio
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Audio
-newAudio :: JSM Audio
-newAudio = THREE.new Audio "Audio" ([] :: [JSString])
+new :: THREE.Three Audio
+new = THREE.new Audio "Audio" ([] :: [JSString])
 -----------------------------------------------------------------------------

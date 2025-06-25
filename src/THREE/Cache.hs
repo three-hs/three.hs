@@ -6,7 +6,7 @@ module THREE.Cache
   ( -- * Types
     Cache (..)
     -- * Methods
-  , newCache
+  , THREE.Cache.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Cache
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Cache
-newCache :: JSM Cache
-newCache = THREE.new Cache "Cache" ([] :: [JSString])
+new :: THREE.Three Cache
+new = THREE.new Cache "Cache" ()
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.QuaternionLinearInterpolant
   ( -- * Types
     QuaternionLinearInterpolant (..)
     -- * Methods
-  , newQuaternionLinearInterpolant
+  , THREE.QuaternionLinearInterpolant.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype QuaternionLinearInterpolant
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/QuaternionLinearInterpolant
-newQuaternionLinearInterpolant :: JSM QuaternionLinearInterpolant
-newQuaternionLinearInterpolant = THREE.new QuaternionLinearInterpolant "QuaternionLinearInterpolant" ([] :: [JSString])
+new :: THREE.Three QuaternionLinearInterpolant
+new = THREE.new QuaternionLinearInterpolant "QuaternionLinearInterpolant" ([] :: [JSString])
 -----------------------------------------------------------------------------

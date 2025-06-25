@@ -6,7 +6,7 @@ module THREE.ShapeGeometry
   ( -- * Types
     ShapeGeometry (..)
     -- * Methods
-  , newShapeGeometry
+  , THREE.ShapeGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ShapeGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ShapeGeometry
-newShapeGeometry :: JSM ShapeGeometry
-newShapeGeometry = THREE.new ShapeGeometry "ShapeGeometry" ([] :: [JSString])
+new :: THREE.Three ShapeGeometry
+new = THREE.new ShapeGeometry "ShapeGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

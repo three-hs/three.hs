@@ -6,7 +6,7 @@ module THREE.InstancedMesh
   ( -- * Types
     InstancedMesh (..)
     -- * Methods
-  , newInstancedMesh
+  , THREE.InstancedMesh.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype InstancedMesh
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/InstancedMesh
-newInstancedMesh :: JSM InstancedMesh
-newInstancedMesh = THREE.new InstancedMesh "InstancedMesh" ([] :: [JSString])
+new :: THREE.Three InstancedMesh
+new = THREE.new InstancedMesh "InstancedMesh" ()
 -----------------------------------------------------------------------------

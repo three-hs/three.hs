@@ -6,7 +6,7 @@ module THREE.Spherical
   ( -- * Types
     Spherical (..)
     -- * Methods
-  , newSpherical
+  , THREE.Spherical.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Spherical
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Spherical
-newSpherical :: JSM Spherical
-newSpherical = THREE.new Spherical "Spherical" ([] :: [JSString])
+new :: THREE.Three Spherical
+new = THREE.new Spherical "Spherical" ([] :: [JSString])
 -----------------------------------------------------------------------------

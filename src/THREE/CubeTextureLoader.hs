@@ -6,7 +6,7 @@ module THREE.CubeTextureLoader
   ( -- * Types
     CubeTextureLoader (..)
     -- * Methods
-  , newCubeTextureLoader
+  , THREE.CubeTextureLoader.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype CubeTextureLoader
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CubeTextureLoader
-newCubeTextureLoader :: JSM CubeTextureLoader
-newCubeTextureLoader = THREE.new CubeTextureLoader "CubeTextureLoader" ([] :: [JSString])
+new :: THREE.Three CubeTextureLoader
+new = THREE.new CubeTextureLoader "CubeTextureLoader" ([] :: [JSString])
 -----------------------------------------------------------------------------

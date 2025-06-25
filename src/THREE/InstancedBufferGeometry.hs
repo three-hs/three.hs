@@ -6,7 +6,7 @@ module THREE.InstancedBufferGeometry
   ( -- * Types
     InstancedBufferGeometry (..)
     -- * Methods
-  , newInstancedBufferGeometry
+  , THREE.InstancedBufferGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype InstancedBufferGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/InstancedBufferGeometry
-newInstancedBufferGeometry :: JSM InstancedBufferGeometry
-newInstancedBufferGeometry = THREE.new InstancedBufferGeometry "InstancedBufferGeometry" ([] :: [JSString])
+new :: THREE.Three InstancedBufferGeometry
+new = THREE.new InstancedBufferGeometry "InstancedBufferGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

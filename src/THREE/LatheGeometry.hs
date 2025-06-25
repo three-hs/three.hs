@@ -6,7 +6,7 @@ module THREE.LatheGeometry
   ( -- * Types
     LatheGeometry (..)
     -- * Methods
-  , newLatheGeometry
+  , THREE.LatheGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype LatheGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LatheGeometry
-newLatheGeometry :: JSM LatheGeometry
-newLatheGeometry = THREE.new LatheGeometry "LatheGeometry" ([] :: [JSString])
+new :: THREE.Three LatheGeometry
+new = THREE.new LatheGeometry "LatheGeometry" ()
 -----------------------------------------------------------------------------

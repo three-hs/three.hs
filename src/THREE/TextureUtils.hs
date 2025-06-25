@@ -6,7 +6,7 @@ module THREE.TextureUtils
   ( -- * Types
     TextureUtils (..)
     -- * Methods
-  , newTextureUtils
+  , THREE.TextureUtils.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype TextureUtils
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/TextureUtils
-newTextureUtils :: JSM TextureUtils
-newTextureUtils = THREE.new TextureUtils "TextureUtils" ([] :: [JSString])
+new :: THREE.Three TextureUtils
+new = THREE.new TextureUtils "TextureUtils" ([] :: [JSString])
 -----------------------------------------------------------------------------

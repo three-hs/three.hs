@@ -6,7 +6,7 @@ module THREE.Vector2
   ( -- * Types
     Vector2 (..)
     -- * Methods
-  , newVector2
+  , THREE.Vector2.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Vector2
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Vector2
-newVector2 :: JSM Vector2
-newVector2 = THREE.new Vector2 "Vector2" ([] :: [JSString])
+new :: THREE.Three Vector2
+new = THREE.new Vector2 "Vector2" ([] :: [JSString])
 -----------------------------------------------------------------------------

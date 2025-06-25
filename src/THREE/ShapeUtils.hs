@@ -6,7 +6,7 @@ module THREE.ShapeUtils
   ( -- * Types
     ShapeUtils (..)
     -- * Methods
-  , newShapeUtils
+  , THREE.ShapeUtils.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ShapeUtils
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ShapeUtils
-newShapeUtils :: JSM ShapeUtils
-newShapeUtils = THREE.new ShapeUtils "ShapeUtils" ([] :: [JSString])
+new :: THREE.Three ShapeUtils
+new = THREE.new ShapeUtils "ShapeUtils" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.Path
   ( -- * Types
     Path (..)
     -- * Methods
-  , newPath
+  , THREE.Path.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Path
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Path
-newPath :: JSM Path
-newPath = THREE.new Path "Path" ([] :: [JSString])
+new :: THREE.Three Path
+new = THREE.new Path "Path" ([] :: [JSString])
 -----------------------------------------------------------------------------

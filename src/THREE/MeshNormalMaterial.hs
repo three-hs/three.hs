@@ -6,7 +6,7 @@ module THREE.MeshNormalMaterial
   ( -- * Types
     MeshNormalMaterial (..)
     -- * Methods
-  , newMeshNormalMaterial
+  , THREE.MeshNormalMaterial.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype MeshNormalMaterial
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/MeshNormalMaterial
-newMeshNormalMaterial :: JSM MeshNormalMaterial
-newMeshNormalMaterial = THREE.new MeshNormalMaterial "MeshNormalMaterial" ([] :: [JSString])
+new :: THREE.Three MeshNormalMaterial
+new = THREE.new MeshNormalMaterial "MeshNormalMaterial" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.Quaternion
   ( -- * Types
     Quaternion (..)
     -- * Methods
-  , newQuaternion
+  , THREE.Quaternion.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Quaternion
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Quaternion
-newQuaternion :: JSM Quaternion
-newQuaternion = THREE.new Quaternion "Quaternion" ([] :: [JSString])
+new :: THREE.Three Quaternion
+new = THREE.new Quaternion "Quaternion" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.ArrayCamera
   ( -- * Types
     ArrayCamera (..)
     -- * Methods
-  , newArrayCamera
+  , THREE.ArrayCamera.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ArrayCamera
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ArrayCamera
-newArrayCamera :: JSM ArrayCamera
-newArrayCamera = THREE.new ArrayCamera "ArrayCamera" ([] :: [JSString])
+new :: THREE.Three ArrayCamera
+new = THREE.new ArrayCamera "ArrayCamera" ([] :: [JSString])
 -----------------------------------------------------------------------------

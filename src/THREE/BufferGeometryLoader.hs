@@ -6,7 +6,7 @@ module THREE.BufferGeometryLoader
   ( -- * Types
     BufferGeometryLoader (..)
     -- * Methods
-  , newBufferGeometryLoader
+  , THREE.BufferGeometryLoader.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype BufferGeometryLoader
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/BufferGeometryLoader
-newBufferGeometryLoader :: JSM BufferGeometryLoader
-newBufferGeometryLoader = THREE.new BufferGeometryLoader "BufferGeometryLoader" ([] :: [JSString])
+new :: THREE.Three BufferGeometryLoader
+new = THREE.new BufferGeometryLoader "BufferGeometryLoader" ([] :: [JSString])
 -----------------------------------------------------------------------------

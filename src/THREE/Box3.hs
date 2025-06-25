@@ -6,7 +6,7 @@ module THREE.Box3
   ( -- * Types
     Box3 (..)
     -- * Methods
-  , newBox3
+  , THREE.Box3.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Box3
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Box3
-newBox3 :: JSM Box3
-newBox3 = THREE.new Box3 "Box3" ([] :: [JSString])
+new :: THREE.Three Box3
+new = THREE.new Box3 "Box3" ([] :: [JSString])
 -----------------------------------------------------------------------------

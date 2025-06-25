@@ -25,12 +25,12 @@ newtype SphereGeometry
   = SphereGeometry
   { unSphereGeometry :: JSVal
   } deriving (MakeArgs, MakeObject, ToJSVal) 
-    deriving newtype BufferGeometryC
+    deriving newtype BufferGeometry
 -----------------------------------------------------------------------------
 -- Constructors
 -----------------------------------------------------------------------------
-new :: JSM SphereGeometry
-new = THREE.new' SphereGeometry "SphereGeometry" ()
+new :: THREE.Three SphereGeometry
+new = THREE.new SphereGeometry "SphereGeometry" ()
 -----------------------------------------------------------------------------
 -- Read-only properties
 -----------------------------------------------------------------------------

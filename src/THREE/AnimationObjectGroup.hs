@@ -6,7 +6,7 @@ module THREE.AnimationObjectGroup
   ( -- * Types
     AnimationObjectGroup (..)
     -- * Methods
-  , newAnimationObjectGroup
+  , THREE.AnimationObjectGroup.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype AnimationObjectGroup
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AnimationObjectGroup
-newAnimationObjectGroup :: JSM AnimationObjectGroup
-newAnimationObjectGroup = THREE.new AnimationObjectGroup "AnimationObjectGroup" ([] :: [JSString])
+new :: THREE.Three AnimationObjectGroup
+new = THREE.new AnimationObjectGroup "AnimationObjectGroup" ([] :: [JSString])
 -----------------------------------------------------------------------------

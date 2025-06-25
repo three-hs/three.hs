@@ -6,7 +6,7 @@ module THREE.Sprite
   ( -- * Types
     Sprite (..)
     -- * Methods
-  , newSprite
+  , THREE.Sprite.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Sprite
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Sprite
-newSprite :: JSM Sprite
-newSprite = THREE.new Sprite "Sprite" ([] :: [JSString])
+new :: THREE.Three Sprite
+new = THREE.new Sprite "Sprite" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -1,12 +1,12 @@
 -----------------------------------------------------------------------------
+{-# LANGUAGE DataKinds #-}
 {-# LANGUAGE DerivingVia #-}
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 -----------------------------------------------------------------------------
 module THREE.BufferGeometry
   ( -- * Types
-    BufferGeometryC (..)
-  , BufferGeometry (..)
+    BufferGeometry (..)
     -- * Constructors
     -- * Read-only properties
     -- * Properties
@@ -20,19 +20,11 @@ import           Language.Javascript.JSaddle hiding (new)
 import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/core/BufferGeometry
-class BufferGeometryC a where
-  -- read-only properties
-  isBufferGeometry :: a -> JSM Bool
+class ToJSVal geometry => BufferGeometry geometry where
+  isBufferGeometry :: Property geometry "isBufferGeometry" Bool
 -----------------------------------------------------------------------------
-instance BufferGeometryC JSVal where
-  -- read-only properties
-  isBufferGeometry = mkGet "isBufferGeometry"
------------------------------------------------------------------------------
-newtype BufferGeometry 
-  = BufferGeometry
-  { unBufferGeometry :: JSVal
-  } deriving (MakeObject, ToJSVal, MakeArgs)
-    deriving newtype BufferGeometryC
+instance BufferGeometry JSVal where
+  isBufferGeometry = property
 -----------------------------------------------------------------------------
 -- constructors
 -----------------------------------------------------------------------------

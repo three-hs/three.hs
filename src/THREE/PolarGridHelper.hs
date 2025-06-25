@@ -6,7 +6,7 @@ module THREE.PolarGridHelper
   ( -- * Types
     PolarGridHelper (..)
     -- * Methods
-  , newPolarGridHelper
+  , THREE.PolarGridHelper.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype PolarGridHelper
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/PolarGridHelper
-newPolarGridHelper :: JSM PolarGridHelper
-newPolarGridHelper = THREE.new PolarGridHelper "PolarGridHelper" ([] :: [JSString])
+new :: THREE.Three PolarGridHelper
+new = THREE.new PolarGridHelper "PolarGridHelper" ([] :: [JSString])
 -----------------------------------------------------------------------------

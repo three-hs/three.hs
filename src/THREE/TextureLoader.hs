@@ -27,12 +27,12 @@ newtype TextureLoader
   = TextureLoader
   { unTextureLoader :: JSVal
   } deriving (MakeArgs, MakeObject, ToJSVal) 
-    deriving newtype LoaderC
+    deriving newtype Loader
 -----------------------------------------------------------------------------
 -- Constructors
 -----------------------------------------------------------------------------
-new :: JSM TextureLoader
-new = THREE.new' TextureLoader "TextureLoader" ()
+new :: THREE.Three TextureLoader
+new = THREE.new TextureLoader "TextureLoader" ()
 -----------------------------------------------------------------------------
 -- Read-only properties
 -----------------------------------------------------------------------------

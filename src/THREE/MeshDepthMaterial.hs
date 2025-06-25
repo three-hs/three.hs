@@ -6,7 +6,7 @@ module THREE.MeshDepthMaterial
   ( -- * Types
     MeshDepthMaterial (..)
     -- * Methods
-  , newMeshDepthMaterial
+  , THREE.MeshDepthMaterial.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype MeshDepthMaterial
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/MeshDepthMaterial
-newMeshDepthMaterial :: JSM MeshDepthMaterial
-newMeshDepthMaterial = THREE.new MeshDepthMaterial "MeshDepthMaterial" ([] :: [JSString])
+new :: THREE.Three MeshDepthMaterial
+new = THREE.new MeshDepthMaterial "MeshDepthMaterial" ([] :: [JSString])
 -----------------------------------------------------------------------------

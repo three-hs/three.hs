@@ -6,7 +6,7 @@ module THREE.Triangle
   ( -- * Types
     Triangle (..)
     -- * Methods
-  , newTriangle
+  , THREE.Triangle.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Triangle
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Triangle
-newTriangle :: JSM Triangle
-newTriangle = THREE.new Triangle "Triangle" ([] :: [JSString])
+new :: THREE.Three Triangle
+new = THREE.new Triangle "Triangle" ([] :: [JSString])
 -----------------------------------------------------------------------------

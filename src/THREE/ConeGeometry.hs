@@ -6,7 +6,7 @@ module THREE.ConeGeometry
   ( -- * Types
     ConeGeometry (..)
     -- * Methods
-  , newConeGeometry
+  , THREE.ConeGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ConeGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ConeGeometry
-newConeGeometry :: JSM ConeGeometry
-newConeGeometry = THREE.new ConeGeometry "ConeGeometry" ([] :: [JSString])
+new :: THREE.Three ConeGeometry
+new = THREE.new ConeGeometry "ConeGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

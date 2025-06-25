@@ -6,7 +6,7 @@ module THREE.CylinderGeometry
   ( -- * Types
     CylinderGeometry (..)
     -- * Methods
-  , newCylinderGeometry
+  , THREE.CylinderGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype CylinderGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CylinderGeometry
-newCylinderGeometry :: JSM CylinderGeometry
-newCylinderGeometry = THREE.new CylinderGeometry "CylinderGeometry" ([] :: [JSString])
+new :: THREE.Three CylinderGeometry
+new = THREE.new CylinderGeometry "CylinderGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

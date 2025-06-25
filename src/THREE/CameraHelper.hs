@@ -6,7 +6,7 @@ module THREE.CameraHelper
   ( -- * Types
     CameraHelper (..)
     -- * Methods
-  , newCameraHelper
+  , THREE.CameraHelper.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype CameraHelper
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CameraHelper
-newCameraHelper :: JSM CameraHelper
-newCameraHelper = THREE.new CameraHelper "CameraHelper" ([] :: [JSString])
+new :: THREE.Three CameraHelper
+new = THREE.new CameraHelper "CameraHelper" ([] :: [JSString])
 -----------------------------------------------------------------------------

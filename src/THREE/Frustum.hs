@@ -6,7 +6,7 @@ module THREE.Frustum
   ( -- * Types
     Frustum (..)
     -- * Methods
-  , newFrustum
+  , THREE.Frustum.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Frustum
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Frustum
-newFrustum :: JSM Frustum
-newFrustum = THREE.new Frustum "Frustum" ([] :: [JSString])
+new :: THREE.Three Frustum
+new = THREE.new Frustum "Frustum" ([] :: [JSString])
 -----------------------------------------------------------------------------

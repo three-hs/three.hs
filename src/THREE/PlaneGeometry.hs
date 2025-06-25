@@ -6,7 +6,7 @@ module THREE.PlaneGeometry
   ( -- * Types
     PlaneGeometry (..)
     -- * Methods
-  , newPlaneGeometry
+  , THREE.PlaneGeometry.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype PlaneGeometry
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/PlaneGeometry
-newPlaneGeometry :: JSM PlaneGeometry
-newPlaneGeometry = THREE.new PlaneGeometry "PlaneGeometry" ([] :: [JSString])
+new :: THREE.Three PlaneGeometry
+new = THREE.new PlaneGeometry "PlaneGeometry" ([] :: [JSString])
 -----------------------------------------------------------------------------

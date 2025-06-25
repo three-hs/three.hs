@@ -6,7 +6,7 @@ module THREE.CurvePath
   ( -- * Types
     CurvePath (..)
     -- * Methods
-  , newCurvePath
+  , THREE.CurvePath.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype CurvePath
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CurvePath
-newCurvePath :: JSM CurvePath
-newCurvePath = THREE.new CurvePath "CurvePath" ([] :: [JSString])
+new :: THREE.Three CurvePath
+new = THREE.new CurvePath "CurvePath" ([] :: [JSString])
 -----------------------------------------------------------------------------

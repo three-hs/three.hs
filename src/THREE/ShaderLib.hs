@@ -6,7 +6,7 @@ module THREE.ShaderLib
   ( -- * Types
     ShaderLib (..)
     -- * Methods
-  , newShaderLib
+  , THREE.ShaderLib.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ShaderLib
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ShaderLib
-newShaderLib :: JSM ShaderLib
-newShaderLib = THREE.new ShaderLib "ShaderLib" ([] :: [JSString])
+new :: THREE.Three ShaderLib
+new = THREE.new ShaderLib "ShaderLib" ([] :: [JSString])
 -----------------------------------------------------------------------------

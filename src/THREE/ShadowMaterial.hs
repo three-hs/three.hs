@@ -6,7 +6,7 @@ module THREE.ShadowMaterial
   ( -- * Types
     ShadowMaterial (..)
     -- * Methods
-  , newShadowMaterial
+  , THREE.ShadowMaterial.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ShadowMaterial
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ShadowMaterial
-newShadowMaterial :: JSM ShadowMaterial
-newShadowMaterial = THREE.new ShadowMaterial "ShadowMaterial" ([] :: [JSString])
+new :: THREE.Three ShadowMaterial
+new = THREE.new ShadowMaterial "ShadowMaterial" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.FogExp2
   ( -- * Types
     FogExp2 (..)
     -- * Methods
-  , newFogExp2
+  , THREE.FogExp2.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype FogExp2
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/FogExp2
-newFogExp2 :: JSM FogExp2
-newFogExp2 = THREE.new FogExp2 "FogExp2" ([] :: [JSString])
+new :: THREE.Three FogExp2
+new = THREE.new FogExp2 "FogExp2" ([] :: [JSString])
 -----------------------------------------------------------------------------

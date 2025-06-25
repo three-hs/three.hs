@@ -6,7 +6,7 @@ module THREE.ImageUtils
   ( -- * Types
     ImageUtils (..)
     -- * Methods
-  , newImageUtils
+  , THREE.ImageUtils.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype ImageUtils
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ImageUtils
-newImageUtils :: JSM ImageUtils
-newImageUtils = THREE.new ImageUtils "ImageUtils" ([] :: [JSString])
+new :: THREE.Three ImageUtils
+new = THREE.new ImageUtils "ImageUtils" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -1,6 +1,7 @@
 -----------------------------------------------------------------------------
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DataKinds #-}
 -----------------------------------------------------------------------------
 module THREE.Euler
   ( -- * Types
@@ -8,18 +9,12 @@ module THREE.Euler
     -- * Constructors
     -- * Read-only properties
     -- * Properties
-  , getX
-  , setX
-  , modifyX
-  , getY
-  , setY
-  , modifyY
-  , getZ
-  , setZ
-  , modifyZ
-    -- * Optional properties
-    -- * Methods
-    -- * Helper functions
+  , x
+  , y
+  , z
+  -- * Optional properties
+  -- * Methods
+  -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle hiding (new)
@@ -33,7 +28,7 @@ newtype Euler
   } deriving (MakeObject, ToJSVal, MakeArgs)
 -----------------------------------------------------------------------------
 instance FromJSVal Euler where
-  fromJSVal = pure .Just . Euler
+  fromJSVal = pure . Just . Euler
 -----------------------------------------------------------------------------
 -- constructors
 -----------------------------------------------------------------------------
@@ -41,32 +36,14 @@ instance FromJSVal Euler where
 -----------------------------------------------------------------------------
 -- properties
 -----------------------------------------------------------------------------
-getX :: Euler -> JSM Double
-getX = mkGet "x"
+x :: THREE.Property Euler "x" Double
+x = property
 -----------------------------------------------------------------------------
-setX :: Double -> Euler -> JSM ()
-setX = mkSet "x"
+y :: THREE.Property Euler "y" Double
+y = property
 -----------------------------------------------------------------------------
-modifyX :: (Double -> JSM Double) -> Euler -> JSM Double
-modifyX = mkModify "x"
------------------------------------------------------------------------------
-getY :: Euler -> JSM Double
-getY = mkGet "y"
------------------------------------------------------------------------------
-setY :: Double -> Euler -> JSM ()
-setY = mkSet "y"
------------------------------------------------------------------------------
-modifyY :: (Double -> JSM Double) -> Euler -> JSM Double
-modifyY = mkModify "y"
------------------------------------------------------------------------------
-getZ :: Euler -> JSM Double
-getZ = mkGet "z"
------------------------------------------------------------------------------
-setZ :: Double -> Euler -> JSM ()
-setZ = mkSet "z"
------------------------------------------------------------------------------
-modifyZ :: (Double -> JSM Double) -> Euler -> JSM Double
-modifyZ = mkModify "z"
+z :: THREE.Property Euler "z" Double
+z = property
 -----------------------------------------------------------------------------
 -- optional properties
 -----------------------------------------------------------------------------

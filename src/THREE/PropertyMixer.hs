@@ -6,7 +6,7 @@ module THREE.PropertyMixer
   ( -- * Types
     PropertyMixer (..)
     -- * Methods
-  , newPropertyMixer
+  , THREE.PropertyMixer.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype PropertyMixer
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/PropertyMixer
-newPropertyMixer :: JSM PropertyMixer
-newPropertyMixer = THREE.new PropertyMixer "PropertyMixer" ([] :: [JSString])
+new :: THREE.Three PropertyMixer
+new = THREE.new PropertyMixer "PropertyMixer" ([] :: [JSString])
 -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@ module THREE.Group
   ( -- * Types
     Group (..)
     -- * Methods
-  , newGroup
+  , THREE.Group.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Group
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Group
-newGroup :: JSM Group
-newGroup = THREE.new Group "Group" ([] :: [JSString])
+new :: THREE.Three Group
+new = THREE.new Group "Group" ([] :: [JSString])
 -----------------------------------------------------------------------------

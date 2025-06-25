@@ -1,10 +1,11 @@
 -----------------------------------------------------------------------------
+{-# LANGUAGE DataKinds #-}
 {-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.Light
   ( -- * Types
-    LightC (..)
+    Light (..)
     -- * Constructors
     -- * Read-only Properties
     -- * Properties
@@ -19,23 +20,19 @@ import           THREE.Internal as THREE
 import           THREE.Object3D as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/lights/Light
-class Object3DC a => LightC a where
+class Object3D light => Light light where
   -- read-only properties
-  isLight :: a -> JSM Bool
+  isLight :: Property light "isLight" Bool
   -- properties
-  getIntensity :: a -> JSM Double
-  setIntensity :: Double -> a -> JSM ()
-  modifyIntensity :: (Double -> JSM Double) -> a -> JSM Double
+  intensity :: Property light "intensity" Double
   -- optional properties
   -- methods
 -----------------------------------------------------------------------------
-instance LightC JSVal where
+instance Light JSVal where
   -- read-only properties
-  isLight = mkGet "isLight"
+  isLight = property
   -- properties
-  getIntensity = mkGet "intensity"
-  setIntensity = mkSet "intensity"
-  modifyIntensity = mkModify "intensity"
+  intensity = property
   -- optional properties
   -- methods
 -----------------------------------------------------------------------------

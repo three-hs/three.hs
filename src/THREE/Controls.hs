@@ -6,7 +6,7 @@ module THREE.Controls
   ( -- * Types
     Controls (..)
     -- * Methods
-  , newControls
+  , THREE.Controls.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Controls
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Controls
-newControls :: JSM Controls
-newControls = THREE.new Controls "Controls" ([] :: [JSString])
+new :: THREE.Three Controls
+new = THREE.new Controls "Controls" ([] :: [JSString])
 -----------------------------------------------------------------------------

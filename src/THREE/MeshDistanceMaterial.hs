@@ -6,7 +6,7 @@ module THREE.MeshDistanceMaterial
   ( -- * Types
     MeshDistanceMaterial (..)
     -- * Methods
-  , newMeshDistanceMaterial
+  , THREE.MeshDistanceMaterial.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype MeshDistanceMaterial
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/MeshDistanceMaterial
-newMeshDistanceMaterial :: JSM MeshDistanceMaterial
-newMeshDistanceMaterial = THREE.new MeshDistanceMaterial "MeshDistanceMaterial" ([] :: [JSString])
+new :: THREE.Three MeshDistanceMaterial
+new = THREE.new MeshDistanceMaterial "MeshDistanceMaterial" ([] :: [JSString])
 -----------------------------------------------------------------------------

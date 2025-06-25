@@ -6,7 +6,7 @@ module THREE.DataTextureLoader
   ( -- * Types
     DataTextureLoader (..)
     -- * Methods
-  , newDataTextureLoader
+  , THREE.DataTextureLoader.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype DataTextureLoader
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/DataTextureLoader
-newDataTextureLoader :: JSM DataTextureLoader
-newDataTextureLoader = THREE.new DataTextureLoader "DataTextureLoader" ([] :: [JSString])
+new :: THREE.Three DataTextureLoader
+new = THREE.new DataTextureLoader "DataTextureLoader" ([] :: [JSString])
 -----------------------------------------------------------------------------

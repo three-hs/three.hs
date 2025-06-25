@@ -6,7 +6,7 @@ module THREE.Stats
   ( -- * Types
     Stats (..)
     -- * Methods
-  , newStats
+  , THREE.Stats.new
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
@@ -21,6 +21,6 @@ newtype Stats
   } deriving (MakeObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Stats
-newStats :: JSM Stats
-newStats = THREE.new Stats "Stats" ([] :: [JSString])
+new :: THREE.Three Stats
+new = THREE.new Stats "Stats" ([] :: [JSString])
 -----------------------------------------------------------------------------
