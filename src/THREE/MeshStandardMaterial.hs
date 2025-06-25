@@ -1,26 +1,34 @@
 -----------------------------------------------------------------------------
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 -----------------------------------------------------------------------------
 module THREE.MeshStandardMaterial
-  ( -- * Types
-    MeshStandardMaterial (..)
-    -- * Methods
+  ( -- * Class
+    MeshStandardMaterialClass
+    -- * Types
+  , MeshStandardMaterial (..)
+    -- * Constructors
   , THREE.MeshStandardMaterial.new
+    -- * Read-only properties
     -- * Properties
+    -- * Optional properties
+    -- * Methods
+    -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Language.Javascript.JSaddle hiding (new)
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/MeshStandardMaterial
-newtype MeshStandardMaterial
-  = MeshStandardMaterial
-  { unMeshStandardMaterialCamera :: JSVal
-  } deriving (MakeObject)
+-- | https://threejs.org/docs/#api/en/core/MeshStandardMaterial
+class ToJSVal geometry => MeshStandardMaterialClass geometry
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/MeshStandardMaterial
+instance MeshStandardMaterialClass JSVal
+-----------------------------------------------------------------------------
+newtype MeshStandardMaterial = MeshStandardMaterial { unMeshStandardMaterial :: JSVal }
+  deriving (MeshStandardMaterialClass, ToJSVal)
+-----------------------------------------------------------------------------
 new :: THREE.Three MeshStandardMaterial
-new = THREE.new MeshStandardMaterial "MeshStandardMaterial" ([] :: [JSString])
------------------------------------------------------------------------------
+new = THREE.new MeshStandardMaterial "MeshStandardMaterial" ()
