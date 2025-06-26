@@ -140,10 +140,6 @@ library
     THREE.LightProbe
     THREE.PointLight
     THREE.RectAreaLight
-    THREE.DirectionalLightShadow
-    THREE.LightShadow
-    THREE.PointLightShadow
-    THREE.SpotLightShadow
     THREE.SpotLight
     -- Loaders
     THREE.AnimationLoader
