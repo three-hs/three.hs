@@ -145,10 +145,6 @@ $ nix-shell --run 'cabal build'
   - [ ] [LightProbe](https://threejs.org/docs/#api/en/lights/LightProbe)
   - [ ] [PointLight](https://threejs.org/docs/#api/en/lights/PointLight)
   - [ ] [RectAreaLight](https://threejs.org/docs/#api/en/lights/RectAreaLight)
-  - [ ] [DirectionalLightShadow](https://threejs.org/docs/#api/en/lights/shadows/DirectionalLightShadow)
-  - [ ] [LightShadow](https://threejs.org/docs/#api/en/lights/shadows/LightShadow)
-  - [ ] [PointLightShadow](https://threejs.org/docs/#api/en/lights/shadows/PointLightShadow)
-  - [ ] [SpotLightShadow](https://threejs.org/docs/#api/en/lights/shadows/SpotLightShadow)
   - [ ] [SpotLight](https://threejs.org/docs/#api/en/lights/SpotLight)
 
 #### Loaders
