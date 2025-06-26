@@ -11,6 +11,8 @@ module THREE.Internal
   ( -- * Types
     Three
   , Property (..)
+  , ReadOnly
+  , Method
   , W (..)
   , X (..)
   , Y (..)
@@ -70,6 +72,10 @@ infixr 4 *=
   :: forall object name field
   . Num field => Property object name field -> field -> object -> Three ()
 (*=) (Property setter getter) i object = setter object =<< (*i) <$> getter object
+-----------------------------------------------------------------------------
+type ReadOnly object (name :: Symbol) field = Proxy name -> object -> Three field
+-----------------------------------------------------------------------------
+type Method object (name :: Symbol) args return = Proxy name -> object -> args -> Three return
 -----------------------------------------------------------------------------
 data Property object (name :: Symbol) field
   = Property

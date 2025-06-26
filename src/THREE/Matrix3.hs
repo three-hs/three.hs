@@ -18,7 +18,10 @@ import qualified THREE.Internal as THREE
 newtype Matrix3
   = Matrix3
   { unMatrix3Camera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToJSVal, MakeObject)
+-----------------------------------------------------------------------------
+instance FromJSVal Matrix3 where
+  fromJSVal = pure . pure . Matrix3
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Matrix3
 new :: THREE.Three Matrix3

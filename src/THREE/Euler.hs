@@ -22,7 +22,7 @@ import           THREE.Internal as THREE
 newtype Euler 
   = Euler
   { unEuler :: JSVal
-  } deriving (ToJSVal, MakeObject, X, Y, Z)
+  } deriving (ToJSVal, MakeArgs, MakeObject, X, Y, Z)
 -----------------------------------------------------------------------------
 instance FromJSVal Euler where
   fromJSVal = pure . Just . Euler
