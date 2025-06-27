@@ -15,8 +15,8 @@ module THREE.Internal
   ( -- * Types
     Three
   , Property (..)
-  , ReadOnly
-  , Method
+  , ReadOnly (..)
+  , Method (..)
   , W (..)
   , X (..)
   , Y (..)
@@ -79,9 +79,9 @@ infixr 4 *=
   . Num field => Property object name field -> field -> object -> Three ()
 (*=) (Property setter getter) i object = setter object =<< (*i) <$> getter object
 -----------------------------------------------------------------------------
-type ReadOnly object (name :: Symbol) field = Proxy name -> object -> Three field
+newtype ReadOnly object (name :: Symbol) field = ReadOnly (Proxy name -> object -> Three field)
 -----------------------------------------------------------------------------
-type Method object (name :: Symbol) args return = Proxy name -> object -> args -> Three return
+newtype Method object (name :: Symbol) args return = Method (Proxy name -> object -> args -> Three return)
 -----------------------------------------------------------------------------
 data Property object (name :: Symbol) field
   = Property
@@ -114,15 +114,17 @@ optional
 method
   :: forall object name return args
   . (KnownSymbol name, FromJSVal return, MakeArgs args, MakeObject object)
-  => Proxy name -> object -> args -> Three return
-method name object args = fromJSValUnchecked =<< do
-  object # symbolVal name $ args
+  => Method object name args return
+method = Method $ \name object args ->
+  fromJSValUnchecked =<< do
+    object # symbolVal name $ args
 -----------------------------------------------------------------------------
 readonly
   :: forall object name return
-  . (KnownSymbol name, FromJSVal return, MakeObject object)
-  => Proxy name -> object -> Three return
-readonly name object = fromJSValUnchecked =<< (object ! symbolVal name)
+   . (KnownSymbol name, FromJSVal return, MakeObject object)
+  => ReadOnly object name return
+readonly = ReadOnly $ \name object ->
+  fromJSValUnchecked =<< (object ! symbolVal name)
 -----------------------------------------------------------------------------
 new
   :: MakeArgs args

@@ -39,8 +39,8 @@ class EventDispatcher object => Object3D object where
   frustumCulled = property
   id :: ReadOnly object "id" Int
   id = readonly
-  isObject3D :: Property object "isObject3D" Bool
-  isObject3D = property
+  isObject3D :: ReadOnly object "isObject3D" Bool
+  isObject3D = readonly
   layers :: Property object "layers" Layers
   layers = property
   matrix :: Property object "matrix" Matrix4
