@@ -36,7 +36,7 @@ module THREE.Internal
   , optional
   , new
   -- * Classes
-  , Thruple (..)
+  , Triplet (..)
   ) where
 -----------------------------------------------------------------------------
 import           Control.Monad
@@ -124,10 +124,10 @@ readonly
   => Proxy name -> object -> Three return
 readonly name object = fromJSValUnchecked =<< (object ! symbolVal name)
 -----------------------------------------------------------------------------
-new 
+new
   :: MakeArgs args
-  => (JSVal -> con) 
-  -> JSString 
+  => (JSVal -> con)
+  -> JSString
   -> args
   -> Three con
 new f name args = do
@@ -197,13 +197,13 @@ class MakeObject object => W object where
 -----------------------------------------------------------------------------
 instance W JSVal
 -----------------------------------------------------------------------------
--- | Class for dealing with overloaded thruple like arguments
+-- | Class for dealing with overloaded triplet like arguments
 -- (e.g. 'Vector3', '(Int,Int,Int)'), see use in 'Object3D', 'lookAt'
-class ToJSVal args => Thruple args where
-  thruple :: args -> JSM JSVal 
+class ToJSVal args => Triplet args where
+  triplet :: args -> JSM JSVal
 -----------------------------------------------------------------------------
-instance ToJSVal (x,y,z) => Thruple (x,y,z) where
-  thruple = toJSVal
+instance ToJSVal (x,y,z) => Triplet (x,y,z) where
+  triplet = toJSVal
 -----------------------------------------------------------------------------
 -- Some orphans, please put these back into `jsaddle`
 -----------------------------------------------------------------------------

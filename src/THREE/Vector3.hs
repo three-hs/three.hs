@@ -45,7 +45,7 @@ vector3ToXYZ (Vector3 v) = do
   z_ <- fromJSValUnchecked =<< v ! ("z" :: JSString)
   pure (x_, y_, z_)
 -----------------------------------------------------------------------------
-instance Thruple Vector3 where
-  thruple (Vector3 j) = pure j
+instance Triplet Vector3 where
+  triplet (Vector3 j) = pure j
 -----------------------------------------------------------------------------
 

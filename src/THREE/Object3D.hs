@@ -127,7 +127,7 @@ class EventDispatcher object => Object3D object where
   getWorldDirection = method
   localToWorld :: Method object "localToWorld" Vector3 Vector3
   localToWorld = method
-  lookAt :: (MakeArgs arg, Thruple arg) => Method object "lookAt" arg ()
+  lookAt :: (MakeArgs arg, Triplet arg) => Method object "lookAt" arg ()
   lookAt = method
   raycast :: Method object "raycast" (Raycaster, JSArray) JSUndefined
   raycast = method
