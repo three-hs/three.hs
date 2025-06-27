@@ -1,5 +1,6 @@
 -----------------------------------------------------------------------------
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE MultiParamTypeClasses      #-}
 {-# LANGUAGE UndecidableInstances       #-}
 {-# LANGUAGE ScopedTypeVariables        #-}
 {-# LANGUAGE TypeApplications           #-}
@@ -41,15 +42,25 @@ module THREE.Internal
 -----------------------------------------------------------------------------
 import           Control.Monad
 import           Data.Proxy
+import           Data.Kind
 import           GHC.TypeLits
 import           Language.Javascript.JSaddle hiding (new)
 import qualified Language.Javascript.JSaddle as J
 -----------------------------------------------------------------------------
 type Three = JSM
 -----------------------------------------------------------------------------
+class GetField (field :: Type -> Symbol -> Type -> Type) object (name :: Symbol) return where
+  getField :: field object name return -> object -> Three return
+-----------------------------------------------------------------------------
+instance GetField Property object name field where
+  getField (Property _ getter) object = getter object
+-----------------------------------------------------------------------------
+instance GetField ReadOnly object name field where
+  getField (ReadOnly getter) object = getter object
+-----------------------------------------------------------------------------
 infixr 4 ^.
-(^.) :: object -> Property object name field -> Three field
-(^.) object (Property _ getter) = getter object
+(^.) :: GetField field object name return => object -> field object name return -> Three return
+(^.) = flip getField
 -----------------------------------------------------------------------------
 infixr 4 .=
 (.=) :: Property object name field -> field -> object -> Three ()
@@ -79,9 +90,9 @@ infixr 4 *=
   . Num field => Property object name field -> field -> object -> Three ()
 (*=) (Property setter getter) i object = setter object =<< (*i) <$> getter object
 -----------------------------------------------------------------------------
-newtype ReadOnly object (name :: Symbol) field = ReadOnly (Proxy name -> object -> Three field)
+newtype ReadOnly object (name :: Symbol) field = ReadOnly (object -> Three field)
 -----------------------------------------------------------------------------
-newtype Method object (name :: Symbol) args return = Method (Proxy name -> object -> args -> Three return)
+newtype Method object (name :: Symbol) args return = Method (object -> args -> Three return)
 -----------------------------------------------------------------------------
 data Property object (name :: Symbol) field
   = Property
@@ -115,16 +126,16 @@ method
   :: forall object name return args
   . (KnownSymbol name, FromJSVal return, MakeArgs args, MakeObject object)
   => Method object name args return
-method = Method $ \name object args ->
+method = Method $ \object args ->
   fromJSValUnchecked =<< do
-    object # symbolVal name $ args
+    object # symbolVal (Proxy @name) $ args
 -----------------------------------------------------------------------------
 readonly
   :: forall object name return
    . (KnownSymbol name, FromJSVal return, MakeObject object)
   => ReadOnly object name return
-readonly = ReadOnly $ \name object ->
-  fromJSValUnchecked =<< (object ! symbolVal name)
+readonly = ReadOnly $ \object ->
+  fromJSValUnchecked =<< object ! symbolVal (Proxy @name)
 -----------------------------------------------------------------------------
 new
   :: MakeArgs args
