@@ -1,4 +1,5 @@
 -----------------------------------------------------------------------------
+{-# LANGUAGE DataKinds #-}
 {-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE OverloadedStrings #-}
@@ -9,7 +10,11 @@ module THREE.PointLight
     -- * Constructors
   , THREE.PointLight.new
     -- * Read-only Properties
+  , isPointLight
     -- * Properties
+  , decay
+  , distance
+  , power
     -- * Optional properties
     -- * Methods
     -- * Helper functions
@@ -31,4 +36,26 @@ newtype PointLight
 -----------------------------------------------------------------------------
 new :: THREE.Three PointLight
 new = THREE.new PointLight "PointLight" ()
+-----------------------------------------------------------------------------
+-- Read-only properties
+-----------------------------------------------------------------------------
+isPointLight :: ReadOnly PointLight "isPointLight" Bool
+isPointLight = readonly
+-----------------------------------------------------------------------------
+-- Properties
+-----------------------------------------------------------------------------
+decay :: Property PointLight "decay" Double
+decay = property
+-----------------------------------------------------------------------------
+distance :: Property PointLight "distance" Double
+distance = property
+-----------------------------------------------------------------------------
+power :: Property PointLight "power" Double
+power = property
+-----------------------------------------------------------------------------
+-- Optional properties
+-----------------------------------------------------------------------------
+-- Methods
+-----------------------------------------------------------------------------
+-- Helper functions
 -----------------------------------------------------------------------------

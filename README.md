@@ -141,9 +141,9 @@ $ nix-shell --run 'cabal build'
   - [ ] [AmbientLight](https://threejs.org/docs/#api/en/lights/AmbientLight)
   - [ ] [DirectionalLight](https://threejs.org/docs/#api/en/lights/DirectionalLight)
   - [ ] [HemisphereLight](https://threejs.org/docs/#api/en/lights/HemisphereLight)
-  - [ ] [Light](https://threejs.org/docs/#api/en/lights/Light)
+  - [x] [Light](https://threejs.org/docs/#api/en/lights/Light)
   - [ ] [LightProbe](https://threejs.org/docs/#api/en/lights/LightProbe)
-  - [ ] [PointLight](https://threejs.org/docs/#api/en/lights/PointLight)
+  - [x] [PointLight](https://threejs.org/docs/#api/en/lights/PointLight)
   - [ ] [RectAreaLight](https://threejs.org/docs/#api/en/lights/RectAreaLight)
   - [ ] [SpotLight](https://threejs.org/docs/#api/en/lights/SpotLight)
 
