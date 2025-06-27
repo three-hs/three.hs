@@ -27,7 +27,8 @@ import           THREE.EventDispatcher as THREE
 newtype Scene
   = Scene
   { unScene :: JSVal
-  } deriving (Object3D, EventDispatcher, MakeArgs, MakeObject, ToJSVal) 
+  } deriving (MakeArgs, MakeObject, ToJSVal)
+    deriving (Object3D, EventDispatcher)
 -----------------------------------------------------------------------------
 new :: THREE.Three Scene
 new = THREE.new Scene "Scene" ()
