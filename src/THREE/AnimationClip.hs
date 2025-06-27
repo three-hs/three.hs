@@ -18,7 +18,10 @@ import qualified THREE.Internal as THREE
 newtype AnimationClip
   = AnimationClip
   { unAnimationClipCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToJSVal, MakeObject)
+-----------------------------------------------------------------------------
+instance FromJSVal AnimationClip where
+  fromJSVal = pure . pure . AnimationClip
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AnimationClip
 new :: THREE.Three AnimationClip

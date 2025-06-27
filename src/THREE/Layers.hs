@@ -18,7 +18,10 @@ import qualified THREE.Internal as THREE
 newtype Layers
   = Layers
   { unLayersCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToJSVal, MakeObject)
+-----------------------------------------------------------------------------
+instance FromJSVal Layers where
+  fromJSVal = pure . pure . Layers
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Layers
 new :: THREE.Three Layers

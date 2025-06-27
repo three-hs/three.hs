@@ -18,7 +18,10 @@ import qualified THREE.Internal as THREE
 newtype Quaternion
   = Quaternion
   { unQuaternionCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToJSVal, MakeObject, MakeArgs)
+-----------------------------------------------------------------------------
+instance FromJSVal Quaternion where
+  fromJSVal = pure . pure . Quaternion
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Quaternion
 new :: THREE.Three Quaternion
