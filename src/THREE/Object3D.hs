@@ -3,33 +3,28 @@
 {-# LANGUAGE TypeApplications        #-}
 {-# LANGUAGE OverloadedStrings       #-}
 {-# LANGUAGE ConstrainedClassMethods #-}
-{-# OPTIONS_GHC -fno-warn-orphans    #-}
 -----------------------------------------------------------------------------
 module THREE.Object3D
-  ( -- * Types
+  ( -- * Class
     Object3D (..)
-    -- * Constructors
-    -- * Read-only Properties
-    -- * Properties
-    -- * Optional properties
-    -- * Methods
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import           THREE.Euler         as THREE
-import           THREE.Internal      as THREE
-import           THREE.Vector3       as THREE
-import           THREE.Matrix3       as THREE
-import           THREE.Quaternion    as THREE
-import           THREE.Matrix4       as THREE
-import           THREE.Material      as THREE
-import           THREE.AnimationClip as THREE
-import           THREE.Layers        as THREE
-import           THREE.Raycaster     as THREE
+import           THREE.Euler           as THREE
+import           THREE.Internal        as THREE
+import           THREE.Vector3         as THREE
+import           THREE.Matrix3         as THREE
+import           THREE.Quaternion      as THREE
+import           THREE.Matrix4         as THREE
+import           THREE.Material        as THREE
+import           THREE.Layers          as THREE
+import           THREE.Raycaster       as THREE
+import           THREE.AnimationClip   as THREE
+import           THREE.EventDispatcher as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/core/Object3D
-class (MakeObject object, ToJSVal object) => Object3D object where
+class EventDispatcher object => Object3D object where
   animations :: Property object "animations" AnimationClip
   animations = property
   castShadow :: Property object "castShadow" Bool
@@ -60,7 +55,7 @@ class (MakeObject object, ToJSVal object) => Object3D object where
   matrixWorldNeedsUpdate = property
   modelViewMatrix :: Property object "modelViewMatrix" Matrix4
   modelViewMatrix = property
-  name :: Property object "name" String
+  name :: Property object "name" JSString
   name = property
   normalMatrix :: Property object "normalMatrix" Matrix3
   normalMatrix = property
@@ -90,7 +85,7 @@ class (MakeObject object, ToJSVal object) => Object3D object where
   up = property
   userData :: Property object "userData" Object
   userData = property
-  uuid :: Property object "uuid" String
+  uuid :: Property object "uuid" JSString
   uuid = property
   visible :: Property object "visible" Bool
   visible = property
@@ -102,7 +97,7 @@ class (MakeObject object, ToJSVal object) => Object3D object where
   defaultMatrixWorldAutoUpdate = property
   add :: (MakeArgs arg, FromJSVal return, Object3D return, Object3D arg) => Method object "add" arg return
   add = method
-  applyMatrix4 :: (FromJSVal return, Object3D return) => Method object "applyMatrix4" Matrix4 return
+  applyMatrix4 :: Method object "applyMatrix4" Matrix4 JSUndefined
   applyMatrix4 = method
   applyQuaternion :: (FromJSVal return, Object3D return) => Method object "applyQuaternion" Quaternion return
   applyQuaternion = method
@@ -116,11 +111,11 @@ class (MakeObject object, ToJSVal object) => Object3D object where
   copy = method
   getObjectById :: (FromJSVal return, Object3D return) => Method object "getObjectById" Int return
   getObjectById = method
-  getObjectByName :: (FromJSVal return, Object3D return) => Method object "getObjectByName" String return
+  getObjectByName :: (FromJSVal return, Object3D return) => Method object "getObjectByName" JSString return
   getObjectByName = method
   getObjectByProperty :: (Object3D return, FromJSVal return) => Method object "getObjectByProperty" (JSString, Object) return
   getObjectByProperty = method
-  getObjectsByProperty :: (FromJSVal return, Object3D return) => Method object "getObjectsByProperty" (String, Object, Object) return
+  getObjectsByProperty :: (FromJSVal return, Object3D return) => Method object "getObjectsByProperty" (JSString, Object, Object) return
   getObjectsByProperty = method
   getWorldPosition :: Method object "getWorldPosition" Vector3 Vector3
   getWorldPosition = method
@@ -132,10 +127,9 @@ class (MakeObject object, ToJSVal object) => Object3D object where
   getWorldDirection = method
   localToWorld :: Method object "localToWorld" Vector3 Vector3
   localToWorld = method
-  -- .lookAt ( vector : Vector3 ) : undefined
-  lookAt :: Method object "lookAt" (Double, Double, Double) ()
+  lookAt :: (MakeArgs arg, Thruple arg) => Method object "lookAt" arg ()
   lookAt = method
-  raycast :: Method object "raycast" (Raycaster, Array) ()
+  raycast :: Method object "raycast" (Raycaster, JSArray) JSUndefined
   raycast = method
   remove :: (Object3D return, FromJSVal return, MakeArgs arg, Object3D arg) => Method object "remove" arg return
   remove = method
@@ -151,13 +145,13 @@ class (MakeObject object, ToJSVal object) => Object3D object where
   rotateY = method
   rotateZ :: (FromJSVal return, Object3D return) => Method object "rotateZ" Double return
   rotateZ = method
-  setRotationFromAxisAngle :: Method object "setRotationFromAxisAngle" (Vector3, Double) ()
+  setRotationFromAxisAngle :: Method object "setRotationFromAxisAngle" (Vector3, Double) JSUndefined
   setRotationFromAxisAngle = method
-  setRotationFromEuler :: Method object "setRotationFromEuler" Euler ()
+  setRotationFromEuler :: Method object "setRotationFromEuler" Euler JSUndefined
   setRotationFromEuler = method
-  setRotationFromMatrix :: Method object "setRotationFromMatrix" Matrix4 ()
+  setRotationFromMatrix :: Method object "setRotationFromMatrix" Matrix4 JSUndefined
   setRotationFromMatrix = method
-  setRotationFromQuaternion :: Method object "setRotationFromQuaternion" Quaternion ()
+  setRotationFromQuaternion :: Method object "setRotationFromQuaternion" Quaternion JSUndefined
   setRotationFromQuaternion = method
   toJSON :: Method object "toJSON" Object Object
   toJSON = method
@@ -169,42 +163,20 @@ class (MakeObject object, ToJSVal object) => Object3D object where
   translateY = method
   translateZ :: (FromJSVal return, Object3D return) => Method object "translateZ" Double return
   translateZ = method
-  traverse :: Method object "traverse" Function ()
+  traverse :: Method object "traverse" Function JSUndefined
   traverse = method
-  traverseVisible :: Method object "traverseVisible" Function ()
+  traverseVisible :: Method object "traverseVisible" Function JSUndefined
   traverseVisible = method
-  traverseAncestors :: Method object "traverseAncestors" Function ()
+  traverseAncestors :: Method object "traverseAncestors" Function JSUndefined
   traverseAncestors = method
-  updateMatrix :: Method object "updateMatrix" () ()
+  updateMatrix :: Method object "updateMatrix" () JSUndefined
   updateMatrix = method
-  updateMatrixWorld :: Method object "updateMatrixWorld" Bool ()
+  updateMatrixWorld :: Method object "updateMatrixWorld" Bool JSUndefined
   updateMatrixWorld = method
-  updateWorldMatrix :: Method object "updateWorldMatrix" (Bool, Bool) ()
+  updateWorldMatrix :: Method object "updateWorldMatrix" (Bool, Bool) JSUndefined
   updateWorldMatrix = method
   worldToLocal :: Method object "worldToLocal" Vector3 Vector3
   worldToLocal = method
------------------------------------------------------------------------------
-type Array = Object
------------------------------------------------------------------------------
--- | This belongs in 'jsaddle'
-instance FromJSVal Function where
-  fromJSVal = pure . pure . Function . Object
------------------------------------------------------------------------------
--- | This belongs in 'jsaddle'
-instance FromJSVal Object where
-  fromJSVal = pure . pure . Object
------------------------------------------------------------------------------
--- | This belongs in 'jsaddle'
-instance MakeArgs Int where
-  makeArgs k = (:[]) <$> toJSVal k
------------------------------------------------------------------------------
--- | This belongs in 'jsaddle'
-instance MakeArgs Object where
-  makeArgs (Object k) = pure [k]
------------------------------------------------------------------------------
--- | This belongs in 'jsaddle'
-instance MakeArgs Function where
-  makeArgs (Function (Object k)) = pure [k]
 -----------------------------------------------------------------------------
 instance Object3D JSVal
 -----------------------------------------------------------------------------
