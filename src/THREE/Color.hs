@@ -14,13 +14,15 @@ import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/Color
+-- | https://threejs.org/docs/index.html#api/en/math/Color
 newtype Color
   = Color
-  { unColorCamera :: JSVal
-  } deriving (MakeObject)
+  { unColor :: JSVal
+  } deriving (MakeObject, ToJSVal, MakeArgs)
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/Color
+instance FromJSVal Color where
+  fromJSVal = pure . Just . Color
+-----------------------------------------------------------------------------
 new :: THREE.Three Color
-new = THREE.new Color "Color" ([] :: [JSString])
+new = THREE.new Color "Color" ()
 -----------------------------------------------------------------------------
