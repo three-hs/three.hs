@@ -17,7 +17,7 @@ module THREE.Internal
     Three
   , Property (..)
   , ReadOnly (..)
-  , Method (..)
+  , Method
   , W (..)
   , X (..)
   , Y (..)
@@ -49,17 +49,17 @@ import qualified Language.Javascript.JSaddle as J
 -----------------------------------------------------------------------------
 type Three = JSM
 -----------------------------------------------------------------------------
-class GetField (field :: Type -> Symbol -> Type -> Type) object (name :: Symbol) return where
+class GetField (field :: Type -> Symbol -> Type -> Type) where
   getField :: field object name return -> object -> Three return
 -----------------------------------------------------------------------------
-instance GetField Property object name field where
+instance GetField Property where
   getField (Property _ getter) object = getter object
 -----------------------------------------------------------------------------
-instance GetField ReadOnly object name field where
+instance GetField ReadOnly where
   getField (ReadOnly getter) object = getter object
 -----------------------------------------------------------------------------
 infixr 4 ^.
-(^.) :: GetField field object name return => object -> field object name return -> Three return
+(^.) :: GetField field => object -> field object name return -> Three return
 (^.) = flip getField
 -----------------------------------------------------------------------------
 infixr 4 .=
@@ -92,7 +92,7 @@ infixr 4 *=
 -----------------------------------------------------------------------------
 newtype ReadOnly object (name :: Symbol) field = ReadOnly (object -> Three field)
 -----------------------------------------------------------------------------
-newtype Method object (name :: Symbol) args return = Method (object -> args -> Three return)
+type Method object (name :: Symbol) args return = args -> object -> Three return
 -----------------------------------------------------------------------------
 data Property object (name :: Symbol) field
   = Property
@@ -125,10 +125,10 @@ optional
 method
   :: forall object name return args
   . (KnownSymbol name, FromJSVal return, MakeArgs args, MakeObject object)
-  => Method object name args return
-method = Method $ \object args ->
+  => Proxy name -> Method object name args return
+method name args object =
   fromJSValUnchecked =<< do
-    object # symbolVal (Proxy @name) $ args
+    object # symbolVal name $ args
 -----------------------------------------------------------------------------
 readonly
   :: forall object name return
@@ -176,7 +176,7 @@ prop1 !. prop2 = Property setter getter
 -- | This is how we invoke a function
 --
 -- @
---   object ^. position ..! setXYZ 1 1 1
+--   object ^. position !.. setXYZ 1 1 1
 -- @
 --
 infixl 1 !..
@@ -218,7 +218,7 @@ class ToJSVal args => Triplet args where
 instance ToJSVal (x,y,z) => Triplet (x,y,z) where
   triplet = toJSVal
 -----------------------------------------------------------------------------
--- Some orphans, please put these back into `jsaddle`
+-- Some orphans, please put these back into `jsaddle`, add checked variants
 -----------------------------------------------------------------------------
 -- | This belongs in 'jsaddle'
 instance FromJSVal Function where
