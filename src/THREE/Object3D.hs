@@ -9,6 +9,7 @@ module THREE.Object3D
     Object3D (..)
   ) where
 -----------------------------------------------------------------------------
+import           Data.Proxy
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
 import           THREE.Euler           as THREE
@@ -96,87 +97,87 @@ class EventDispatcher object => Object3D object where
   defaultMatrixWorldAutoUpdate :: Property object "DEFAULT_MATRIX_WORLD_AUTO_UPDATE" Bool
   defaultMatrixWorldAutoUpdate = property
   add :: (MakeArgs arg, FromJSVal return, Object3D return, Object3D arg) => Method object "add" arg return
-  add = method
+  add = method (Proxy @"add")
   applyMatrix4 :: Method object "applyMatrix4" Matrix4 JSUndefined
-  applyMatrix4 = method
+  applyMatrix4 = method (Proxy @"applyMatrix4")
   applyQuaternion :: (FromJSVal return, Object3D return) => Method object "applyQuaternion" Quaternion return
-  applyQuaternion = method
+  applyQuaternion = method (Proxy @"applyQuaternion")
   attach :: (FromJSVal return, MakeArgs arg, Object3D return) => Method object "attach" arg return
-  attach = method
+  attach = method (Proxy @"attach")
   clear :: (MakeArgs arg, FromJSVal return, Object3D return) => Method object "clear" arg return
-  clear = method
+  clear = method (Proxy @"clear")
   clone :: (FromJSVal return, Object3D return) => Method object "clone" Bool return
-  clone = method
+  clone = method (Proxy @"clone")
   copy :: (FromJSVal return, Object3D return) => Method object "copy" Bool return
-  copy = method
+  copy = method (Proxy @"copy")
   getObjectById :: (FromJSVal return, Object3D return) => Method object "getObjectById" Int return
-  getObjectById = method
+  getObjectById = method (Proxy @"getObjectById")
   getObjectByName :: (FromJSVal return, Object3D return) => Method object "getObjectByName" JSString return
-  getObjectByName = method
+  getObjectByName = method (Proxy @"getObjectByName")
   getObjectByProperty :: (Object3D return, FromJSVal return) => Method object "getObjectByProperty" (JSString, Object) return
-  getObjectByProperty = method
+  getObjectByProperty = method (Proxy @"getObjectByProperty")
   getObjectsByProperty :: (FromJSVal return, Object3D return) => Method object "getObjectsByProperty" (JSString, Object, Object) return
-  getObjectsByProperty = method
+  getObjectsByProperty = method (Proxy @"getObjectsByProperty")
   getWorldPosition :: Method object "getWorldPosition" Vector3 Vector3
-  getWorldPosition = method
+  getWorldPosition = method (Proxy @"getWorldPosition")
   getWorldQuaternion :: Method object "getWorldQuaternion" Quaternion Quaternion
-  getWorldQuaternion = method
+  getWorldQuaternion = method (Proxy @"getWorldQuaternion")
   getWorldScale :: Method object "getWorldScale" Vector3 Vector3
-  getWorldScale = method
+  getWorldScale = method (Proxy @"getWorldScale")
   getWorldDirection :: Method object "getWorldDirection" Vector3 Vector3
-  getWorldDirection = method
+  getWorldDirection = method (Proxy @"getWorldDirection")
   localToWorld :: Method object "localToWorld" Vector3 Vector3
-  localToWorld = method
+  localToWorld = method (Proxy @"localToWorld")
   lookAt :: (MakeArgs arg, Triplet arg) => Method object "lookAt" arg ()
-  lookAt = method
+  lookAt = method (Proxy @"lookAt")
   raycast :: Method object "raycast" (Raycaster, JSArray) JSUndefined
-  raycast = method
+  raycast = method (Proxy @"raycast")
   remove :: (Object3D return, FromJSVal return, MakeArgs arg, Object3D arg) => Method object "remove" arg return
-  remove = method
+  remove = method (Proxy @"remove")
   removeFromParent :: (FromJSVal return, Object3D return) => Method object "removeFromParent" () return
-  removeFromParent = method
+  removeFromParent = method (Proxy @"removeFromParent")
   rotateOnAxis :: (FromJSVal return, Object3D return) => Method object "rotateOnAxis" (Vector3, Double) return
-  rotateOnAxis = method
+  rotateOnAxis = method (Proxy @"rotateOnAxis")
   rotateOnWorldAxis :: (FromJSVal return, Object3D return) => Method object "rotateOnWorldAxis" (Vector3, Double) return
-  rotateOnWorldAxis = method
+  rotateOnWorldAxis = method (Proxy @"rotateOnWorldAxis")
   rotateX :: (FromJSVal return, Object3D return) => Method object "rotateX" Double return
-  rotateX = method
+  rotateX = method (Proxy @"rotateX")
   rotateY :: (FromJSVal return, Object3D return) => Method object "rotateY" Double return
-  rotateY = method
+  rotateY = method (Proxy @"rotateY")
   rotateZ :: (FromJSVal return, Object3D return) => Method object "rotateZ" Double return
-  rotateZ = method
+  rotateZ = method (Proxy @"rotateZ")
   setRotationFromAxisAngle :: Method object "setRotationFromAxisAngle" (Vector3, Double) JSUndefined
-  setRotationFromAxisAngle = method
+  setRotationFromAxisAngle = method (Proxy @"setRotationFromAxisAngle")
   setRotationFromEuler :: Method object "setRotationFromEuler" Euler JSUndefined
-  setRotationFromEuler = method
+  setRotationFromEuler = method (Proxy @"setRotationFromEuler")
   setRotationFromMatrix :: Method object "setRotationFromMatrix" Matrix4 JSUndefined
-  setRotationFromMatrix = method
+  setRotationFromMatrix = method (Proxy @"setRotationFromMatrix")
   setRotationFromQuaternion :: Method object "setRotationFromQuaternion" Quaternion JSUndefined
-  setRotationFromQuaternion = method
+  setRotationFromQuaternion = method (Proxy @"setRotationFromQuaternion")
   toJSON :: Method object "toJSON" Object Object
-  toJSON = method
+  toJSON = method (Proxy @"toJSON")
   translateOnAxis :: (FromJSVal return, Object3D return) => Method object "translateOnAxis" (Vector3, Double) return
-  translateOnAxis = method
+  translateOnAxis = method (Proxy @"translateOnAxis")
   translateX :: (FromJSVal return, Object3D return) => Method object "translateX" Double return
-  translateX = method
+  translateX = method (Proxy @"translateX")
   translateY :: (FromJSVal return, Object3D return) => Method object "translateY" Double return
-  translateY = method
+  translateY = method (Proxy @"translateY")
   translateZ :: (FromJSVal return, Object3D return) => Method object "translateZ" Double return
-  translateZ = method
+  translateZ = method (Proxy @"translateZ")
   traverse :: Method object "traverse" Function JSUndefined
-  traverse = method
+  traverse = method (Proxy @"traverse")
   traverseVisible :: Method object "traverseVisible" Function JSUndefined
-  traverseVisible = method
+  traverseVisible = method (Proxy @"traverseVisible")
   traverseAncestors :: Method object "traverseAncestors" Function JSUndefined
-  traverseAncestors = method
+  traverseAncestors = method (Proxy @"traverseAncestors")
   updateMatrix :: Method object "updateMatrix" () JSUndefined
-  updateMatrix = method
+  updateMatrix = method (Proxy @"updateMatrix")
   updateMatrixWorld :: Method object "updateMatrixWorld" Bool JSUndefined
-  updateMatrixWorld = method
+  updateMatrixWorld = method (Proxy @"updateMatrixWorld")
   updateWorldMatrix :: Method object "updateWorldMatrix" (Bool, Bool) JSUndefined
-  updateWorldMatrix = method
+  updateWorldMatrix = method (Proxy @"updateWorldMatrix")
   worldToLocal :: Method object "worldToLocal" Vector3 Vector3
-  worldToLocal = method
+  worldToLocal = method (Proxy @"worldToLocal")
 -----------------------------------------------------------------------------
 instance Object3D JSVal
 -----------------------------------------------------------------------------
