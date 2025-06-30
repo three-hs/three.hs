@@ -1,7 +1,8 @@
 -----------------------------------------------------------------------------
 {-# LANGUAGE DerivingVia #-}
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE DeriveAnyClass #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 -----------------------------------------------------------------------------
 module THREE.PointLight
   ( -- * Types
@@ -26,8 +27,8 @@ import           THREE.EventDispatcher as THREE
 newtype PointLight
   = PointLight
   { unPointLight :: JSVal
-  } deriving (MakeArgs, MakeObject, ToJSVal)
-    deriving (Light, Object3D, EventDispatcher)
+  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+    deriving anyclass (Light, Object3D, EventDispatcher)
 -----------------------------------------------------------------------------
 new :: THREE.Three PointLight
 new = THREE.new PointLight "PointLight" ()

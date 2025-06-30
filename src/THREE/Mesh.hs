@@ -1,7 +1,8 @@
 -----------------------------------------------------------------------------
 {-# LANGUAGE DerivingVia #-}
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE DeriveAnyClass #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 -----------------------------------------------------------------------------
 module THREE.Mesh
   ( -- * Types
@@ -27,8 +28,8 @@ import           THREE.EventDispatcher as THREE
 newtype Mesh
   = Mesh
   { unMesh :: JSVal
-  } deriving (MakeArgs, MakeObject, ToJSVal) 
-    deriving (Object3D, EventDispatcher)
+  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+    deriving anyclass (Object3D, EventDispatcher)
 -----------------------------------------------------------------------------
 new
   :: (BufferGeometryClass geometry, Material material)
