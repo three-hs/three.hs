@@ -18,9 +18,10 @@ module THREE.Material
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
 import           THREE.Internal as THREE
+import           THREE.EventDispatcher as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/materials/Material
-class (ToJSVal material, MakeObject material) => Material material where
+class (EventDispatcher material, ToJSVal material, MakeObject material) => Material material where
   isMaterial :: ReadOnly material Bool
   isMaterial = THREE.readonly "isMaterial"
 -----------------------------------------------------------------------------
