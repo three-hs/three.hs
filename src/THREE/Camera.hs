@@ -21,8 +21,8 @@ import           THREE.Object3D as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Camera
 class Object3D camera => Camera camera where
-  isCamera :: ReadOnly camera "isCamera" Bool
-  isCamera = readonly
+  isCamera :: ReadOnly camera Bool
+  isCamera = readonly "isCamera"
 -----------------------------------------------------------------------------
 instance Camera JSVal
 -----------------------------------------------------------------------------

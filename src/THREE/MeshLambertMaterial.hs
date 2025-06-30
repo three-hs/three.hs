@@ -44,8 +44,8 @@ new = THREE.new MeshLambertMaterial "MeshLambertMaterial" ()
 -----------------------------------------------------------------------------
 -- Methods
 -----------------------------------------------------------------------------
-map :: THREE.Property MeshLambertMaterial "map" (Maybe THREE.Texture)
-map = optional
+map :: THREE.Property MeshLambertMaterial (Maybe THREE.Texture)
+map = optional "map"
 -----------------------------------------------------------------------------
 -- Helper functions
 -----------------------------------------------------------------------------

@@ -21,8 +21,8 @@ import           Language.Javascript.JSaddle hiding (new)
 import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/textures/Texture
-isTexture :: Property Texture "isTexture" Bool
-isTexture = property
+isTexture :: Property Texture Bool
+isTexture = property "isTexture" 
   -- properties
   -- optional properties
   -- methods
