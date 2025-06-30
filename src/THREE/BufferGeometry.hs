@@ -23,14 +23,14 @@ import           Language.Javascript.JSaddle hiding (new)
 import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/core/BufferGeometry
-class ToJSVal geometry => BufferGeometryClass geometry where
-  isBufferGeometry :: Property geometry "isBufferGeometry" Bool
+class (MakeObject geometry, ToJSVal geometry) => BufferGeometryClass geometry where
+  isBufferGeometry :: Property geometry Bool
+  isBufferGeometry = property "isBufferGeometry"
 -----------------------------------------------------------------------------
-instance BufferGeometryClass JSVal where
-  isBufferGeometry = property
+instance BufferGeometryClass JSVal
 -----------------------------------------------------------------------------
 newtype BufferGeometry = BufferGeometry { unBufferGeometry :: JSVal }
-  deriving (BufferGeometryClass, ToJSVal)
+  deriving (MakeObject, BufferGeometryClass, ToJSVal)
 -----------------------------------------------------------------------------
 new :: THREE.Three BufferGeometry
 new = THREE.new BufferGeometry "BufferGeometry" ()

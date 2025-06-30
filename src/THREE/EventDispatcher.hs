@@ -1,3 +1,4 @@
+{-# LANGUAGE TypeApplications #-}
 -----------------------------------------------------------------------------
 {-# LANGUAGE DataKinds                  #-}
 {-# LANGUAGE OverloadedStrings          #-}
@@ -14,21 +15,21 @@ import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/core/EventDispatcher
 class (MakeObject object, ToJSVal object) => EventDispatcher object where
-  addEventListener :: Method object "addEventListener" (JSString, Function) JSUndefined
+  addEventListener :: Method object (JSString, Function) JSUndefined
   -- ^ Adds a listener to an event type.
-  addEventListener = method
+  addEventListener = method "addEventListener"
 
-  hasEventListener :: Method object "hasEventListener" (JSString, Function) JSUndefined
+  hasEventListener :: Method object (JSString, Function) JSUndefined
   -- ^ Checks if listener is added to an event type.
-  hasEventListener = method
+  hasEventListener = method "hasEventListener"
 
-  removeEventListener :: Method object "removeEventListener" (JSString, Function) JSUndefined
+  removeEventListener :: Method object (JSString, Function) JSUndefined
   -- ^ Removes a listener from an event type.
-  removeEventListener = method
+  removeEventListener = method "removeEventListener"
 
-  dispatchEvent :: Method object "dispatchEvent" Object JSUndefined
+  dispatchEvent :: Method object Object JSUndefined
   -- ^ Dispatches an Event
-  dispatchEvent = method
+  dispatchEvent = method "dispatchEvent"
 -----------------------------------------------------------------------------
 instance EventDispatcher JSVal
 -----------------------------------------------------------------------------

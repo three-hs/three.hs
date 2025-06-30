@@ -25,158 +25,158 @@ import           THREE.EventDispatcher as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/core/Object3D
 class EventDispatcher object => Object3D object where
-  animations :: Property object "animations" AnimationClip
-  animations = property
-  castShadow :: Property object "castShadow" Bool
-  castShadow = property
-  children :: (FromJSVal objects, Object3D objects) => Property object "children" [objects]
-  children = property
-  customDepthMaterial :: (Material material, FromJSVal material)  => Property object "customDepthMaterial" material
-  customDepthMaterial = property
-  customDistanceObject :: Property object "customDistanceObject" Object
-  customDistanceObject = property
-  frustumCulled :: Property object "frustumCulled" Bool
-  frustumCulled = property
-  id :: ReadOnly object "id" Int
-  id = readonly
-  isObject3D :: ReadOnly object "isObject3D" Bool
-  isObject3D = readonly
-  layers :: Property object "layers" Layers
-  layers = property
-  matrix :: Property object "matrix" Matrix4
-  matrix = property
-  matrixAutoUpdate :: Property object "matrixAutoUpdate" Bool
-  matrixAutoUpdate = property
-  matrixWorld :: Property object "matrixWorld" Matrix4
-  matrixWorld = property
-  matrixWorldAutoUpdate :: Property object "matrixWorldAutoUpdate" Bool
-  matrixWorldAutoUpdate = property
-  matrixWorldNeedsUpdate :: Property object "matrixWorldNeedsUpdate" Bool
-  matrixWorldNeedsUpdate = property
-  modelViewMatrix :: Property object "modelViewMatrix" Matrix4
-  modelViewMatrix = property
-  name :: Property object "name" JSString
-  name = property
-  normalMatrix :: Property object "normalMatrix" Matrix3
-  normalMatrix = property
-  onAfterRender :: Property object "onAfterRender" Function
-  onAfterRender = property
-  onAfterShadow :: Property object "onAfterShadow" Function
-  onAfterShadow = property
-  onBeforeRender :: Property object "onBeforeRender" Function
-  onBeforeRender = property
-  onBeforeShadow :: Property object "onBeforeShadow" Function
-  onBeforeShadow = property
-  parent :: (Object3D return, FromJSVal return) => Property object "parent" return
-  parent = property
-  position :: Property object "position" Vector3
-  position = property
-  quaternion :: Property object "quaternion" Quaternion
-  quaternion = property
-  receiveShadow :: Property object "receiveShadow" Bool
-  receiveShadow = property
-  renderOrder :: Property object "renderOrder" Double
-  renderOrder = property
-  rotation :: Property object "rotation" Euler
-  rotation = property
-  scale :: Property object "scale" Vector3
-  scale = property
-  up :: Property object "up" Vector3
-  up = property
-  userData :: Property object "userData" Object
-  userData = property
-  uuid :: Property object "uuid" JSString
-  uuid = property
-  visible :: Property object "visible" Bool
-  visible = property
-  defaultUp :: Property object "DEFAULT_UP" Vector3
-  defaultUp = property
-  defaultMatrixAutoUpdate :: Property object "DEFAULT_MATRIX_AUTO_UPDATE" Bool
-  defaultMatrixAutoUpdate = property
-  defaultMatrixWorldAutoUpdate :: Property object "DEFAULT_MATRIX_WORLD_AUTO_UPDATE" Bool
-  defaultMatrixWorldAutoUpdate = property
-  add :: (MakeArgs arg, FromJSVal object, Object3D arg) => Method object "add" arg object
-  add = method
-  applyMatrix4 :: Method object "applyMatrix4" Matrix4 JSUndefined
-  applyMatrix4 = method
-  applyQuaternion :: (FromJSVal return, Object3D return) => Method object "applyQuaternion" Quaternion return
-  applyQuaternion = method
-  attach :: (FromJSVal return, MakeArgs arg, Object3D return) => Method object "attach" arg return
-  attach = method
-  clear :: (MakeArgs arg, FromJSVal return, Object3D return) => Method object "clear" arg return
-  clear = method
-  clone :: (FromJSVal return, Object3D return) => Method object "clone" Bool return
-  clone = method
-  copy :: (FromJSVal return, Object3D return) => Method object "copy" Bool return
-  copy = method
-  getObjectById :: (FromJSVal return, Object3D return) => Method object "getObjectById" Int return
-  getObjectById = method
-  getObjectByName :: (FromJSVal return, Object3D return) => Method object "getObjectByName" JSString return
-  getObjectByName = method
-  getObjectByProperty :: (Object3D return, FromJSVal return) => Method object "getObjectByProperty" (JSString, Object) return
-  getObjectByProperty = method
-  getObjectsByProperty :: (FromJSVal return, Object3D return) => Method object "getObjectsByProperty" (JSString, Object, Object) return
-  getObjectsByProperty = method
-  getWorldPosition :: Method object "getWorldPosition" Vector3 Vector3
-  getWorldPosition = method
-  getWorldQuaternion :: Method object "getWorldQuaternion" Quaternion Quaternion
-  getWorldQuaternion = method
-  getWorldScale :: Method object "getWorldScale" Vector3 Vector3
-  getWorldScale = method
-  getWorldDirection :: Method object "getWorldDirection" Vector3 Vector3
-  getWorldDirection = method
-  localToWorld :: Method object "localToWorld" Vector3 Vector3
-  localToWorld = method
-  lookAt :: (MakeArgs arg, Triplet arg) => Method object "lookAt" arg ()
-  lookAt = method
-  raycast :: Method object "raycast" (Raycaster, JSArray) JSUndefined
-  raycast = method
-  remove :: (Object3D return, FromJSVal return, MakeArgs arg, Object3D arg) => Method object "remove" arg return
-  remove = method
-  removeFromParent :: (FromJSVal return, Object3D return) => Method object "removeFromParent" () return
-  removeFromParent = method
-  rotateOnAxis :: (FromJSVal return, Object3D return) => Method object "rotateOnAxis" (Vector3, Double) return
-  rotateOnAxis = method
-  rotateOnWorldAxis :: (FromJSVal return, Object3D return) => Method object "rotateOnWorldAxis" (Vector3, Double) return
-  rotateOnWorldAxis = method
-  rotateX :: (FromJSVal return, Object3D return) => Method object "rotateX" Double return
-  rotateX = method
-  rotateY :: (FromJSVal return, Object3D return) => Method object "rotateY" Double return
-  rotateY = method
-  rotateZ :: (FromJSVal return, Object3D return) => Method object "rotateZ" Double return
-  rotateZ = method
-  setRotationFromAxisAngle :: Method object "setRotationFromAxisAngle" (Vector3, Double) JSUndefined
-  setRotationFromAxisAngle = method
-  setRotationFromEuler :: Method object "setRotationFromEuler" Euler JSUndefined
-  setRotationFromEuler = method
-  setRotationFromMatrix :: Method object "setRotationFromMatrix" Matrix4 JSUndefined
-  setRotationFromMatrix = method
-  setRotationFromQuaternion :: Method object "setRotationFromQuaternion" Quaternion JSUndefined
-  setRotationFromQuaternion = method
-  toJSON :: Method object "toJSON" Object Object
-  toJSON = method
-  translateOnAxis :: (FromJSVal return, Object3D return) => Method object "translateOnAxis" (Vector3, Double) return
-  translateOnAxis = method
-  translateX :: (FromJSVal return, Object3D return) => Method object "translateX" Double return
-  translateX = method
-  translateY :: (FromJSVal return, Object3D return) => Method object "translateY" Double return
-  translateY = method
-  translateZ :: (FromJSVal return, Object3D return) => Method object "translateZ" Double return
-  translateZ = method
-  traverse :: Method object "traverse" Function JSUndefined
-  traverse = method
-  traverseVisible :: Method object "traverseVisible" Function JSUndefined
-  traverseVisible = method
-  traverseAncestors :: Method object "traverseAncestors" Function JSUndefined
-  traverseAncestors = method
-  updateMatrix :: Method object "updateMatrix" () JSUndefined
-  updateMatrix = method
-  updateMatrixWorld :: Method object "updateMatrixWorld" Bool JSUndefined
-  updateMatrixWorld = method
-  updateWorldMatrix :: Method object "updateWorldMatrix" (Bool, Bool) JSUndefined
-  updateWorldMatrix = method
-  worldToLocal :: Method object "worldToLocal" Vector3 Vector3
-  worldToLocal = method
+  animations :: Property object AnimationClip
+  animations = property "animations"
+  castShadow :: Property object Bool
+  castShadow = property "castShadow"
+  children :: (FromJSVal objects, Object3D objects) => Property object [objects]
+  children = property "children"
+  customDepthMaterial :: (Material material, FromJSVal material)  => Property object material
+  customDepthMaterial = property "customDepthMaterial"
+  customDistanceObject :: Property object Object
+  customDistanceObject = property "customDistanceObject"
+  frustumCulled :: Property object Bool
+  frustumCulled = property "frustumCulled"
+  id :: ReadOnly object Int
+  id = readonly "id"
+  isObject3D :: ReadOnly object Bool
+  isObject3D = readonly "isObject3D"
+  layers :: Property object Layers
+  layers = property "layers"
+  matrix :: Property object Matrix4
+  matrix = property "matrix"
+  matrixAutoUpdate :: Property object Bool
+  matrixAutoUpdate = property "matrixAutoUpdate"
+  matrixWorld :: Property object Matrix4
+  matrixWorld = property "matrixWorld"
+  matrixWorldAutoUpdate :: Property object Bool
+  matrixWorldAutoUpdate = property "matrixWorldAutoUpdate"
+  matrixWorldNeedsUpdate :: Property object Bool
+  matrixWorldNeedsUpdate = property "matrixWorldNeedsUpdate"
+  modelViewMatrix :: Property object Matrix4
+  modelViewMatrix = property "modelViewMatrix"
+  name :: Property object JSString
+  name = property "name"
+  normalMatrix :: Property object Matrix3
+  normalMatrix = property "normalMatrix"
+  onAfterRender :: Property object Function
+  onAfterRender = property "onAfterRender"
+  onAfterShadow :: Property object Function
+  onAfterShadow = property "onAfterShadow"
+  onBeforeRender :: Property object Function
+  onBeforeRender = property "onBeforeRender"
+  onBeforeShadow :: Property object Function
+  onBeforeShadow = property "onBeforeShadow"
+  parent :: (Object3D return, FromJSVal return) => Property object return
+  parent = property "parent"
+  position :: Property object Vector3
+  position = property "position"
+  quaternion :: Property object Quaternion
+  quaternion = property "quaternion"
+  receiveShadow :: Property object Bool
+  receiveShadow = property "receiveShadow"
+  renderOrder :: Property object Double
+  renderOrder = property "renderOrder"
+  rotation :: Property object Euler
+  rotation = property "rotation"
+  scale :: Property object Vector3
+  scale = property "scale"
+  up :: Property object Vector3
+  up = property "up"
+  userData :: Property object Object
+  userData = property "userData"
+  uuid :: Property object JSString
+  uuid = property "uuid"
+  visible :: Property object Bool
+  visible = property "visible"
+  defaultUp :: Property object Vector3
+  defaultUp = property "DEFAULT_UP"
+  defaultMatrixAutoUpdate :: Property object Bool
+  defaultMatrixAutoUpdate = property "DEFAULT_MATRIX_AUTO_UPDATE"
+  defaultMatrixWorldAutoUpdate :: Property object Bool
+  defaultMatrixWorldAutoUpdate = property "DEFAULT_MATRIX_WORLD_AUTO_UPDATE"
+  add :: (MakeArgs arg, FromJSVal object, Object3D arg) => Method object arg object
+  add = method "add"
+  applyMatrix4 :: Method object Matrix4 JSUndefined
+  applyMatrix4 = method "applyMatrix4"
+  applyQuaternion :: (FromJSVal return, Object3D return) => Method object Quaternion return
+  applyQuaternion = method "applyQuaternion"
+  attach :: (FromJSVal return, MakeArgs arg, Object3D return) => Method object arg return
+  attach = method "attach" 
+  clear :: (MakeArgs arg, FromJSVal return, Object3D return) => Method object arg return
+  clear = method "clear"
+  clone :: (FromJSVal return, Object3D return) => Method object Bool return
+  clone = method "clone" 
+  copy :: (FromJSVal return, Object3D return) => Method object Bool return
+  copy = method "copy"
+  getObjectById :: (FromJSVal return, Object3D return) => Method object Int return
+  getObjectById = method "getObjectById" 
+  getObjectByName :: (FromJSVal return, Object3D return) => Method object JSString return
+  getObjectByName = method "getObjectByName" 
+  getObjectByProperty :: (Object3D return, FromJSVal return) => Method object (JSString, Object) return
+  getObjectByProperty = method  "getObjectByProperty"
+  getObjectsByProperty :: (FromJSVal return, Object3D return) => Method object (JSString, Object, Object) return
+  getObjectsByProperty = method "getObjectsByProperty"
+  getWorldPosition :: Method object Vector3 Vector3
+  getWorldPosition = method "getWorldPosition"
+  getWorldQuaternion :: Method object Quaternion Quaternion
+  getWorldQuaternion = method "getWorldQuaternion"
+  getWorldScale :: Method object Vector3 Vector3
+  getWorldScale = method "getWorldScale"
+  getWorldDirection :: Method object Vector3 Vector3
+  getWorldDirection = method "getWorldDirection"
+  localToWorld :: Method object Vector3 Vector3
+  localToWorld = method "localToWorld"
+  lookAt :: (MakeArgs arg, Triplet arg) => Method object arg ()
+  lookAt = method "lookAt" 
+  raycast :: Method object (Raycaster, JSArray) JSUndefined
+  raycast = method "raycast"
+  remove :: (Object3D return, FromJSVal return, MakeArgs arg, Object3D arg) => Method object arg return
+  remove = method "remove" 
+  removeFromParent :: (FromJSVal return, Object3D return) => Method object () return
+  removeFromParent = method "removeFromParent" 
+  rotateOnAxis :: (FromJSVal return, Object3D return) => Method object (Vector3, Double) return
+  rotateOnAxis = method "rotateOnAxis" 
+  rotateOnWorldAxis :: (FromJSVal return, Object3D return) => Method object (Vector3, Double) return
+  rotateOnWorldAxis = method "rotateOnWorldAxis" 
+  rotateX :: (FromJSVal return, Object3D return) => Method object Double return
+  rotateX = method "rotateX"
+  rotateY :: (FromJSVal return, Object3D return) => Method object Double return
+  rotateY = method "rotateY" 
+  rotateZ :: (FromJSVal return, Object3D return) => Method object Double return
+  rotateZ = method "rotateZ" 
+  setRotationFromAxisAngle :: Method object (Vector3, Double) JSUndefined
+  setRotationFromAxisAngle = method "setRotationFromAxisAngle"
+  setRotationFromEuler :: Method object Euler JSUndefined
+  setRotationFromEuler = method "setRotationFromEuler"
+  setRotationFromMatrix :: Method object Matrix4 JSUndefined
+  setRotationFromMatrix = method "setRotationFromMatrix"
+  setRotationFromQuaternion :: Method object Quaternion JSUndefined
+  setRotationFromQuaternion = method "setRotationFromQuaternion"
+  toJSON :: Method object Object Object
+  toJSON = method "toJSON"
+  translateOnAxis :: (FromJSVal return, Object3D return) => Method object (Vector3, Double) return
+  translateOnAxis = method "translateOnAxis"
+  translateX :: (FromJSVal return, Object3D return) => Method object Double return
+  translateX = method "translateX"
+  translateY :: (FromJSVal return, Object3D return) => Method object Double return
+  translateY = method "translateY"
+  translateZ :: (FromJSVal return, Object3D return) => Method object Double return
+  translateZ = method "translateZ"
+  traverse :: Method object Function JSUndefined
+  traverse = method "traverse"
+  traverseVisible :: Method object Function JSUndefined
+  traverseVisible = method "traverseVisible"
+  traverseAncestors :: Method object Function JSUndefined
+  traverseAncestors = method "traverseAncestors"
+  updateMatrix :: Method object () JSUndefined
+  updateMatrix = method "updateMatrix"
+  updateMatrixWorld :: Method object Bool JSUndefined
+  updateMatrixWorld = method  "updateMatrixWorld"
+  updateWorldMatrix :: Method object (Bool, Bool) JSUndefined
+  updateWorldMatrix = method "updateWorldMatrix"
+  worldToLocal :: Method object Vector3 Vector3
+  worldToLocal = method "worldToLocal" 
 -----------------------------------------------------------------------------
 instance Object3D JSVal
 -----------------------------------------------------------------------------

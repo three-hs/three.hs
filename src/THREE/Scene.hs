@@ -34,6 +34,6 @@ newtype Scene
 new :: THREE.Three Scene
 new = THREE.new Scene "Scene" ()
 -----------------------------------------------------------------------------
-isScene :: Property Scene "isScene" Bool
-isScene = property
+isScene :: Property Scene Bool
+isScene = property "isScene"
 -----------------------------------------------------------------------------
