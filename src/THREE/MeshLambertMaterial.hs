@@ -20,15 +20,16 @@ module THREE.MeshLambertMaterial
 import           Language.Javascript.JSaddle
 import           Prelude hiding (map)
 -----------------------------------------------------------------------------
-import           THREE.Internal as THREE
-import           THREE.Material as THREE
-import           THREE.Texture as THREE
+import           THREE.EventDispatcher as THREE
+import           THREE.Internal        as THREE
+import           THREE.Material        as THREE
+import           THREE.Texture         as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/materials/MeshLambertMaterial
 newtype MeshLambertMaterial
   = MeshLambertMaterial
   { unMeshLambertMaterial :: JSVal
-  } deriving (MakeArgs, MakeObject, ToJSVal) 
+  } deriving (EventDispatcher, MakeArgs, MakeObject, ToJSVal)
     deriving newtype Material
 -----------------------------------------------------------------------------
 -- Constructors
