@@ -1,6 +1,7 @@
 -----------------------------------------------------------------------------
 {-# LANGUAGE DataKinds                  #-}
 {-# LANGUAGE DerivingVia                #-}
+{-# LANGUAGE DeriveAnyClass             #-}
 {-# LANGUAGE OverloadedStrings          #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 -----------------------------------------------------------------------------
@@ -27,8 +28,8 @@ import           THREE.EventDispatcher as THREE
 newtype Scene
   = Scene
   { unScene :: JSVal
-  } deriving (MakeArgs, MakeObject, ToJSVal)
-    deriving (Object3D, EventDispatcher)
+  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+    deriving anyclass (EventDispatcher, Object3D)
 -----------------------------------------------------------------------------
 new :: THREE.Three Scene
 new = THREE.new Scene "Scene" ()

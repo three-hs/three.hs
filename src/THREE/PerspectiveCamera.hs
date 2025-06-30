@@ -1,7 +1,8 @@
 -----------------------------------------------------------------------------
 {-# LANGUAGE DerivingVia #-}
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE DeriveAnyClass #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 -----------------------------------------------------------------------------
 module THREE.PerspectiveCamera
   ( -- * Types
@@ -26,8 +27,8 @@ import           THREE.EventDispatcher as THREE
 newtype PerspectiveCamera
   = PerspectiveCamera
   { unPerspectiveCamera :: JSVal
-  } deriving (MakeArgs, MakeObject, ToJSVal)
-    deriving (Object3D, EventDispatcher, Camera)
+  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+    deriving anyclass (Object3D, EventDispatcher, Camera)
 -----------------------------------------------------------------------------
 new
   :: Double

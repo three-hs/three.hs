@@ -17,21 +17,13 @@ module THREE.Camera
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
 import           THREE.Internal as THREE
+import           THREE.Object3D as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Camera
-class ToJSVal camera => Camera camera where
-  -- read-only properties
-  isCamera :: Property camera "isCamera" Bool
-  -- properties
-  -- optional properties
-  -- methods
+class Object3D camera => Camera camera where
+  isCamera :: ReadOnly camera "isCamera" Bool
+  isCamera = readonly
 -----------------------------------------------------------------------------
-instance Camera JSVal where
-  isCamera = property
-  -- read-only properties
-  -- isCamera = mkGet "isCamera"
-  -- properties
-  -- optional properties
-  -- methods
+instance Camera JSVal
 -----------------------------------------------------------------------------
 
