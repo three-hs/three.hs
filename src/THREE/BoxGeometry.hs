@@ -6,13 +6,7 @@
 module THREE.BoxGeometry
   ( -- * Types
     BoxGeometry (..)
-    -- * Constructors
   , THREE.BoxGeometry.new
-    -- * Read-only Properties
-    -- * Properties
-    -- * Optional properties
-    -- * Methods
-    -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle hiding (new)
@@ -27,18 +21,8 @@ newtype BoxGeometry
   } deriving (MakeArgs, MakeObject, ToJSVal) 
     deriving newtype BufferGeometryClass
 -----------------------------------------------------------------------------
--- Constructors
------------------------------------------------------------------------------
-new :: THREE.Three BoxGeometry
-new = THREE.new BoxGeometry "BoxGeometry" ()
------------------------------------------------------------------------------
--- Read-only properties
------------------------------------------------------------------------------
--- Properties
------------------------------------------------------------------------------
--- Optional properties
------------------------------------------------------------------------------
--- Methods
------------------------------------------------------------------------------
--- Helper functions
+new
+  :: (Double,Double,Double,Maybe Double,Maybe Double,Maybe Double)
+  -> THREE.Three BoxGeometry
+new = THREE.new BoxGeometry "BoxGeometry"
 -----------------------------------------------------------------------------

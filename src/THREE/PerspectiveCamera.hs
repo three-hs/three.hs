@@ -31,16 +31,8 @@ newtype PerspectiveCamera
     deriving anyclass (Object3D, EventDispatcher, Camera)
 -----------------------------------------------------------------------------
 new
-  :: Double
-  -- ^ Field of View
-  -> Double
-  -- ^ Aspect
-  -> Double
-  -- ^ Near
-  -> Double
-  -- ^ Far
+  :: (Double, Double, Double, Double)
+  -- ^ Field of View, Aspect, Near, Far
   -> THREE.Three PerspectiveCamera
-new fov aspect near far =
-  THREE.new PerspectiveCamera "PerspectiveCamera"
-    (fov, aspect, near, far)
+new = THREE.new PerspectiveCamera "PerspectiveCamera"
 -----------------------------------------------------------------------------

@@ -33,8 +33,7 @@ newtype Mesh
 -----------------------------------------------------------------------------
 new
   :: (BufferGeometryClass geometry, Material material)
-  => geometry
-  -> material
+  => (geometry, material)
   -> THREE.Three Mesh
-new geometry material = THREE.new Mesh "Mesh" (geometry, material)
+new = THREE.new Mesh "Mesh"
 -----------------------------------------------------------------------------
