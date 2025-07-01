@@ -33,8 +33,8 @@ class EventDispatcher object => Object3D object where
   children = property "children"
   customDepthMaterial :: (Material material, FromJSVal material)  => Property object material
   customDepthMaterial = property "customDepthMaterial"
-  customDistanceObject :: Property object Object
-  customDistanceObject = property "customDistanceObject"
+  customDistanceMaterial :: (Material material, FromJSVal material) => Property object material
+  customDistanceMaterial = property "customDistanceMaterial"
   frustumCulled :: Property object Bool
   frustumCulled = property "frustumCulled"
   id :: ReadOnly object Int
@@ -97,25 +97,25 @@ class EventDispatcher object => Object3D object where
   defaultMatrixWorldAutoUpdate = property "DEFAULT_MATRIX_WORLD_AUTO_UPDATE"
   add :: (MakeArgs arg, FromJSVal object, Object3D arg) => Method object arg object
   add = method "add"
-  applyMatrix4 :: Method object Matrix4 JSUndefined
+  applyMatrix4 :: Method object Matrix4 ()
   applyMatrix4 = method "applyMatrix4"
-  applyQuaternion :: (FromJSVal return, Object3D return) => Method object Quaternion return
+  applyQuaternion :: (FromJSVal object) => Method object Quaternion object
   applyQuaternion = method "applyQuaternion"
-  attach :: (FromJSVal return, MakeArgs arg, Object3D return) => Method object arg return
+  attach :: (FromJSVal object, MakeArgs arg) => Method object arg object
   attach = method "attach" 
-  clear :: (MakeArgs arg, FromJSVal return, Object3D return) => Method object arg return
+  clear :: (MakeArgs arg, FromJSVal object) => Method object arg object
   clear = method "clear"
-  clone :: (FromJSVal return, Object3D return) => Method object Bool return
+  clone :: (FromJSVal object) => Method object Bool object
   clone = method "clone" 
-  copy :: (FromJSVal return, Object3D return) => Method object Bool return
+  copy :: (MakeArgs object, FromJSVal object) => Method object (object, Bool) object
   copy = method "copy"
   getObjectById :: (FromJSVal return, Object3D return) => Method object Int return
   getObjectById = method "getObjectById" 
   getObjectByName :: (FromJSVal return, Object3D return) => Method object JSString return
   getObjectByName = method "getObjectByName" 
-  getObjectByProperty :: (Object3D return, FromJSVal return) => Method object (JSString, Object) return
+  getObjectByProperty :: (ToJSVal a, Object3D return, FromJSVal return) => Method object (JSString, a) return
   getObjectByProperty = method  "getObjectByProperty"
-  getObjectsByProperty :: (FromJSVal return, Object3D return) => Method object (JSString, Object, Object) return
+  getObjectsByProperty :: (ToJSVal a) => Method object (JSString, a, Maybe [Object]) [Object]
   getObjectsByProperty = method "getObjectsByProperty"
   getWorldPosition :: Method object Vector3 Vector3
   getWorldPosition = method "getWorldPosition"
@@ -129,51 +129,51 @@ class EventDispatcher object => Object3D object where
   localToWorld = method "localToWorld"
   lookAt :: (MakeArgs arg, Triplet arg) => Method object arg ()
   lookAt = method "lookAt" 
-  raycast :: Method object (Raycaster, JSArray) JSUndefined
+  raycast :: Method object (Raycaster, JSArray) ()
   raycast = method "raycast"
-  remove :: (Object3D return, FromJSVal return, MakeArgs arg, Object3D arg) => Method object arg return
+  remove :: (MakeArgs arg, Object3D arg, FromJSVal object) => Method object arg object
   remove = method "remove" 
-  removeFromParent :: (FromJSVal return, Object3D return) => Method object () return
+  removeFromParent :: (FromJSVal object) => Method object () object
   removeFromParent = method "removeFromParent" 
-  rotateOnAxis :: (FromJSVal return, Object3D return) => Method object (Vector3, Double) return
+  rotateOnAxis :: (FromJSVal object) => Method object (Vector3, Double) object
   rotateOnAxis = method "rotateOnAxis" 
-  rotateOnWorldAxis :: (FromJSVal return, Object3D return) => Method object (Vector3, Double) return
+  rotateOnWorldAxis :: (FromJSVal object) => Method object (Vector3, Double) object
   rotateOnWorldAxis = method "rotateOnWorldAxis" 
-  rotateX :: (FromJSVal return, Object3D return) => Method object Double return
+  rotateX :: (FromJSVal object) => Method object Double object
   rotateX = method "rotateX"
-  rotateY :: (FromJSVal return, Object3D return) => Method object Double return
+  rotateY :: (FromJSVal object) => Method object Double object
   rotateY = method "rotateY" 
-  rotateZ :: (FromJSVal return, Object3D return) => Method object Double return
+  rotateZ :: (FromJSVal object) => Method object Double object
   rotateZ = method "rotateZ" 
-  setRotationFromAxisAngle :: Method object (Vector3, Double) JSUndefined
+  setRotationFromAxisAngle :: Method object (Vector3, Double) ()
   setRotationFromAxisAngle = method "setRotationFromAxisAngle"
-  setRotationFromEuler :: Method object Euler JSUndefined
+  setRotationFromEuler :: Method object Euler ()
   setRotationFromEuler = method "setRotationFromEuler"
-  setRotationFromMatrix :: Method object Matrix4 JSUndefined
+  setRotationFromMatrix :: Method object Matrix4 ()
   setRotationFromMatrix = method "setRotationFromMatrix"
-  setRotationFromQuaternion :: Method object Quaternion JSUndefined
+  setRotationFromQuaternion :: Method object Quaternion ()
   setRotationFromQuaternion = method "setRotationFromQuaternion"
   toJSON :: Method object Object Object
   toJSON = method "toJSON"
-  translateOnAxis :: (FromJSVal return, Object3D return) => Method object (Vector3, Double) return
+  translateOnAxis :: (FromJSVal object) => Method object (Vector3, Double) object
   translateOnAxis = method "translateOnAxis"
-  translateX :: (FromJSVal return, Object3D return) => Method object Double return
+  translateX :: (FromJSVal object) => Method object Double object
   translateX = method "translateX"
-  translateY :: (FromJSVal return, Object3D return) => Method object Double return
+  translateY :: (FromJSVal object) => Method object Double object
   translateY = method "translateY"
-  translateZ :: (FromJSVal return, Object3D return) => Method object Double return
+  translateZ :: (FromJSVal object) => Method object Double object
   translateZ = method "translateZ"
-  traverse :: Method object Function JSUndefined
+  traverse :: Method object Function ()
   traverse = method "traverse"
-  traverseVisible :: Method object Function JSUndefined
+  traverseVisible :: Method object Function ()
   traverseVisible = method "traverseVisible"
-  traverseAncestors :: Method object Function JSUndefined
+  traverseAncestors :: Method object Function ()
   traverseAncestors = method "traverseAncestors"
-  updateMatrix :: Method object () JSUndefined
+  updateMatrix :: Method object () ()
   updateMatrix = method "updateMatrix"
-  updateMatrixWorld :: Method object Bool JSUndefined
+  updateMatrixWorld :: Method object Bool ()
   updateMatrixWorld = method  "updateMatrixWorld"
-  updateWorldMatrix :: Method object (Bool, Bool) JSUndefined
+  updateWorldMatrix :: Method object (Bool, Bool) ()
   updateWorldMatrix = method "updateWorldMatrix"
   worldToLocal :: Method object Vector3 Vector3
   worldToLocal = method "worldToLocal" 
