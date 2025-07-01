@@ -231,6 +231,11 @@ instance MakeArgs Object where
   makeArgs (Object k) = pure [k]
 -----------------------------------------------------------------------------
 -- | This belongs in 'jsaddle'
+instance MakeArgs args => MakeArgs (Maybe args) where
+  makeArgs (Just args) = makeArgs args
+  makeArgs Nothing     = pure []
+-----------------------------------------------------------------------------
+-- | This belongs in 'jsaddle'
 instance MakeArgs JSString where
   makeArgs (JSString k) = makeArgs k
 -----------------------------------------------------------------------------

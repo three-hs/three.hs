@@ -31,6 +31,9 @@ newtype Scene
   } deriving newtype (MakeArgs, MakeObject, ToJSVal)
     deriving anyclass (EventDispatcher, Object3D)
 -----------------------------------------------------------------------------
+instance FromJSVal Scene where
+  fromJSVal = pure . pure . Scene
+-----------------------------------------------------------------------------
 new :: THREE.Three Scene
 new = THREE.new Scene "Scene" ()
 -----------------------------------------------------------------------------

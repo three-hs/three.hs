@@ -19,12 +19,15 @@ module THREE.WebGLRenderer
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Control.Monad (void)
-import           Language.Javascript.JSaddle
+import Data.Function ((&))
+import Control.Monad (void)
+import Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import           THREE.Camera as THREE
-import           THREE.Internal as THREE
-import           THREE.Object3D as THREE
+import THREE.Camera as THREE
+import THREE.Internal as THREE
+import THREE.Object3D as THREE
+import qualified THREE.Scene
+import qualified THREE.PerspectiveCamera
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/renderers/WebGLRenderer
 newtype WebGLRenderer
@@ -32,40 +35,38 @@ newtype WebGLRenderer
   { unWebGLRenderer :: JSVal
   } deriving (MakeArgs, MakeObject, ToJSVal) 
 -----------------------------------------------------------------------------
--- Constructors
------------------------------------------------------------------------------
 new :: Three WebGLRenderer
 new = THREE.new WebGLRenderer "WebGLRenderer" ()
------------------------------------------------------------------------------
--- Read-only properties
 -----------------------------------------------------------------------------
 -- | The WebGLRenderer constructor creates a canvas element which can be added
 -- in the DOM.
 domElement :: WebGLRenderer -> JSM JSVal
 domElement (WebGLRenderer v) = v ! ("domElement" :: JSString)
 -----------------------------------------------------------------------------
--- Properties
------------------------------------------------------------------------------
--- Optional properties
------------------------------------------------------------------------------
--- Methods
+rend :: WebGLRenderer
+rend = undefined
+
+zz = rend & render (scene, cam)
+
+scene :: THREE.Scene.Scene
+scene = undefined
+
+cam :: THREE.PerspectiveCamera.PerspectiveCamera
+cam = undefined
 -----------------------------------------------------------------------------
 render
   :: (Object3D object, Camera camera) 
-  => WebGLRenderer
-  -> object
-  -> camera
+  => (object, camera)
+  -> WebGLRenderer
   -> Three ()
-render (WebGLRenderer v) object camera =
-  void $ v # ("render" :: JSString) $ (object, camera)
+render args (WebGLRenderer v) =
+  void $ v # ("render" :: JSString) $ args
 -----------------------------------------------------------------------------
-setAnimationLoop :: WebGLRenderer -> JSCallAsFunction -> JSM ()
-setAnimationLoop (WebGLRenderer v) f =
+setAnimationLoop :: JSCallAsFunction -> WebGLRenderer -> JSM ()
+setAnimationLoop f (WebGLRenderer v) =
   void $  v # ("setAnimationLoop" :: JSString) $ f
 -----------------------------------------------------------------------------
-setSize :: WebGLRenderer -> Int -> Int -> Bool -> JSM ()
-setSize (WebGLRenderer v) width height updateStyle = 
+setSize :: (Int, Int, Bool) -> WebGLRenderer -> JSM ()
+setSize (width, height, updateStyle) (WebGLRenderer v) = 
   void $ v # ("setSize" :: JSString) $ (width, height, updateStyle)
------------------------------------------------------------------------------
--- Helper functions
 -----------------------------------------------------------------------------
