@@ -19,15 +19,12 @@ module THREE.WebGLRenderer
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import Data.Function ((&))
 import Control.Monad (void)
 import Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
 import THREE.Camera as THREE
 import THREE.Internal as THREE
 import THREE.Object3D as THREE
-import qualified THREE.Scene
-import qualified THREE.PerspectiveCamera
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/renderers/WebGLRenderer
 newtype WebGLRenderer
@@ -38,24 +35,13 @@ newtype WebGLRenderer
 instance FromJSVal WebGLRenderer where
   fromJSVal = pure . pure . WebGLRenderer
 -----------------------------------------------------------------------------
-new :: Three WebGLRenderer
-new = THREE.new WebGLRenderer "WebGLRenderer" ()
+new :: Maybe Object -> Three WebGLRenderer
+new = THREE.new WebGLRenderer "WebGLRenderer"
 -----------------------------------------------------------------------------
 -- | The WebGLRenderer constructor creates a canvas element which can be added
 -- in the DOM.
 domElement :: WebGLRenderer -> JSM JSVal
 domElement (WebGLRenderer v) = v ! ("domElement" :: JSString)
------------------------------------------------------------------------------
-rend :: WebGLRenderer
-rend = undefined
-
-zz = rend & render (scene, cam)
-
-scene :: THREE.Scene.Scene
-scene = undefined
-
-cam :: THREE.PerspectiveCamera.PerspectiveCamera
-cam = undefined
 -----------------------------------------------------------------------------
 render
   :: (Object3D object, Camera camera) 
