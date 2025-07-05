@@ -30,6 +30,9 @@ newtype PerspectiveCamera
   } deriving newtype (MakeArgs, MakeObject, ToJSVal)
     deriving anyclass (Object3D, EventDispatcher, Camera)
 -----------------------------------------------------------------------------
+instance FromJSVal PerspectiveCamera where
+  fromJSVal = pure . pure . PerspectiveCamera
+-----------------------------------------------------------------------------
 new
   :: (Double, Double, Double, Double)
   -- ^ Field of View, Aspect, Near, Far

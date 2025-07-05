@@ -31,6 +31,9 @@ newtype Mesh
   } deriving newtype (MakeArgs, MakeObject, ToJSVal)
     deriving anyclass (Object3D, EventDispatcher)
 -----------------------------------------------------------------------------
+instance FromJSVal Mesh where
+  fromJSVal = pure . pure . Mesh
+-----------------------------------------------------------------------------
 new
   :: (BufferGeometryClass geometry, Material material)
   => (geometry, material)

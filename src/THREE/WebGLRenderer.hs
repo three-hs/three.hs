@@ -35,6 +35,9 @@ newtype WebGLRenderer
   { unWebGLRenderer :: JSVal
   } deriving (MakeArgs, MakeObject, ToJSVal) 
 -----------------------------------------------------------------------------
+instance FromJSVal WebGLRenderer where
+  fromJSVal = pure . pure . WebGLRenderer
+-----------------------------------------------------------------------------
 new :: Three WebGLRenderer
 new = THREE.new WebGLRenderer "WebGLRenderer" ()
 -----------------------------------------------------------------------------
