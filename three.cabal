@@ -259,6 +259,8 @@ library
     containers,
     jsaddle,
     mtl
+  js-sources:
+    js/three.js
   hs-source-dirs:
     src
   default-language:

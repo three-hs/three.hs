@@ -1,0 +1,38 @@
+{
+  "name": "three.hs",
+  "version": "1.0.0",
+  "description": "Haskell bindings to three.js",
+  "scripts": {
+    "build": "bun build --outfile=js/three.js index.ts --target=browser"
+  },
+  "keywords": [
+    "haskell",
+    "three.js",
+    "javascript",
+    "typescript"
+  ],
+  "homepage": "https://github.com/three-hs/three.hs#readme",
+  "bugs": {
+    "url": "https://github.com/three-hs/three.hs/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/three-hs/three.hs.git"
+  },
+  "license": "BSD-3-Clause",
+  "author": "dmjio",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "bun-types": "^1.2.18",
+    "three.js": "^0.77.1",
+    "typescript": "^5.8.3",
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "module": "index.ts"
+}
