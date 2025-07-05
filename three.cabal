@@ -1,4 +1,4 @@
-cabal-version:      3.0
+cabal-version:      2.2
 name:               three
 version:            0.1.0.0
 synopsis:           Haskell bindings to three.js
