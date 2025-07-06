@@ -1,1 +1,3 @@
-export * from 'three'
+import * as THREE from 'three';
+
+globalThis['THREE'] = THREE;
