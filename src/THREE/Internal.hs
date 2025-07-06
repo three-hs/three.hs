@@ -46,6 +46,8 @@ module THREE.Internal
 -----------------------------------------------------------------------------
 import           Control.Monad
 import           Data.Kind
+import           GHC.Generics
+import           Unsafe.Coerce (unsafeCoerce)
 import           Language.Javascript.JSaddle hiding (new)
 import qualified Language.Javascript.JSaddle as J
 #ifndef GHCJS_BOTH
@@ -227,11 +229,11 @@ instance ToJSVal (x,y,z) => Triplet (x,y,z) where
 -----------------------------------------------------------------------------
 -- | This belongs in 'jsaddle'
 instance FromJSVal Function where
-  fromJSVal = pure . pure . Function . Object
+  fromJSVal = pure . Just . unsafeCoerce
 -----------------------------------------------------------------------------
 -- | This belongs in 'jsaddle'
 instance FromJSVal Object where
-  fromJSVal = pure . pure . Object
+  fromJSVal = pure . Just . unsafeCoerce
 -----------------------------------------------------------------------------
 -- | This belongs in 'jsaddle'
 instance MakeArgs Int where
@@ -239,7 +241,7 @@ instance MakeArgs Int where
 -----------------------------------------------------------------------------
 -- | This belongs in 'jsaddle'
 instance MakeArgs Object where
-  makeArgs (Object k) = pure [k]
+  makeArgs k = (:[]) <$> toJSVal k
 -----------------------------------------------------------------------------
 -- | This belongs in 'jsaddle'
 instance MakeArgs args => MakeArgs (Maybe args) where
@@ -248,15 +250,11 @@ instance MakeArgs args => MakeArgs (Maybe args) where
 -----------------------------------------------------------------------------
 -- | This belongs in 'jsaddle'
 instance MakeArgs JSString where
-  makeArgs (JSString k) = makeArgs k
+  makeArgs k = (:[]) <$> toJSVal k
 -----------------------------------------------------------------------------
 -- | This belongs in 'jsaddle'
 instance MakeArgs Function where
-  makeArgs (Function (Object k)) = pure [k]
------------------------------------------------------------------------------
--- | This belongs in 'jsaddle'
-instance ToJSVal (SomeJSArray Immutable) where
-  toJSVal (SomeJSArray k) = pure k
+  makeArgs k = (:[]) <$> toJSVal k
 -----------------------------------------------------------------------------
 initialize :: JSM ()
 initialize = do

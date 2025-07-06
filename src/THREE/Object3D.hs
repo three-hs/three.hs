@@ -129,7 +129,7 @@ class EventDispatcher object => Object3D object where
   localToWorld = method "localToWorld"
   lookAt :: (MakeArgs arg, Triplet arg) => Method object arg ()
   lookAt = method "lookAt" 
-  raycast :: Method object (Raycaster, JSArray) ()
+  raycast :: Method object (Raycaster, JSVal) ()
   raycast = method "raycast"
   remove :: (MakeArgs arg, Object3D arg, FromJSVal object) => Method object arg object
   remove = method "remove" 
