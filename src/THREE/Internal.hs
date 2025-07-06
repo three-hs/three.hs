@@ -7,9 +7,12 @@
 {-# LANGUAGE OverloadedStrings          #-}
 {-# LANGUAGE FlexibleInstances          #-}
 {-# LANGUAGE FlexibleContexts           #-}
+{-# LANGUAGE TemplateHaskell            #-}
 {-# LANGUAGE KindSignatures             #-}
 {-# LANGUAGE DataKinds                  #-}
 {-# LANGUAGE GADTs                      #-}
+{-# LANGUAGE CPP                        #-}
+-----------------------------------------------------------------------------
 {-# OPTIONS_GHC -fno-warn-orphans       #-}
 -----------------------------------------------------------------------------
 module THREE.Internal
@@ -38,12 +41,22 @@ module THREE.Internal
   , new
   -- * Classes
   , Triplet (..)
+  -- * Initialization
+  , initialize
   ) where
 -----------------------------------------------------------------------------
 import           Control.Monad
 import           Data.Kind
 import           Language.Javascript.JSaddle hiding (new)
 import qualified Language.Javascript.JSaddle as J
+#ifndef GHCJS_BOTH
+#ifdef WASM
+import qualified Language.Javascript.JSaddle.Wasm.TH as JSaddle.Wasm.TH
+#else
+import           Data.FileEmbed (embedStringFile)
+import           Language.Javascript.JSaddle (eval)
+#endif
+#endif
 -----------------------------------------------------------------------------
 type Three = JSM
 -----------------------------------------------------------------------------
@@ -246,4 +259,15 @@ instance MakeArgs Function where
 -- | This belongs in 'jsaddle'
 instance ToJSVal (SomeJSArray Immutable) where
   toJSVal (SomeJSArray k) = pure k
+-----------------------------------------------------------------------------
+initialize :: JSM ()
+initialize = do
+#ifndef GHCJS_BOTH
+#ifdef WASM
+  $(JSaddle.Wasm.TH.evalFile "js/three.js")
+#else
+  _ <- eval ($(embedStringFile "js/three.js") :: JSString)
+#endif
+#endif
+  pure ()
 -----------------------------------------------------------------------------

@@ -257,6 +257,7 @@ library
   build-depends:
     base < 5,
     containers,
+    file-embed >= 0.0.16.0,
     jsaddle,
     mtl
   js-sources:
