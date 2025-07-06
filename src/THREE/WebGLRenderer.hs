@@ -35,13 +35,17 @@ newtype WebGLRenderer
 instance FromJSVal WebGLRenderer where
   fromJSVal = pure . pure . WebGLRenderer
 -----------------------------------------------------------------------------
-new :: Maybe Object -> Three WebGLRenderer
-new = THREE.new WebGLRenderer "WebGLRenderer"
+new :: Maybe JSVal -> Three WebGLRenderer
+new Nothing = THREE.new WebGLRenderer "WebGLRenderer" ()
+new (Just canvasRef) = do
+  o <- create
+  setProp "canvas" canvasRef o
+  THREE.new WebGLRenderer "WebGLRenderer" o
 -----------------------------------------------------------------------------
 -- | The WebGLRenderer constructor creates a canvas element which can be added
 -- in the DOM.
-domElement :: WebGLRenderer -> JSM JSVal
-domElement (WebGLRenderer v) = v ! ("domElement" :: JSString)
+domElement :: Property WebGLRenderer JSVal
+domElement = property "domElement"
 -----------------------------------------------------------------------------
 render
   :: (Object3D object, Camera camera) 
