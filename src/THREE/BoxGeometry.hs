@@ -22,7 +22,7 @@ newtype BoxGeometry
     deriving newtype BufferGeometryClass
 -----------------------------------------------------------------------------
 new
-  :: (Double,Double,Double,Maybe Double,Maybe Double,Maybe Double)
+  :: (Double,Double,Double)
   -> THREE.Three BoxGeometry
 new = THREE.new BoxGeometry "BoxGeometry"
 -----------------------------------------------------------------------------
