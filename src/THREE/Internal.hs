@@ -7,6 +7,7 @@
 {-# LANGUAGE OverloadedStrings          #-}
 {-# LANGUAGE FlexibleInstances          #-}
 {-# LANGUAGE FlexibleContexts           #-}
+{-# LANGUAGE TemplateHaskell            #-}
 {-# LANGUAGE KindSignatures             #-}
 {-# LANGUAGE DataKinds                  #-}
 {-# LANGUAGE GADTs                      #-}
@@ -40,7 +41,7 @@ module THREE.Internal
   -- * Classes
   , Triplet (..)
   -- * Initialization
-  , load
+  , initialize
   ) where
 -----------------------------------------------------------------------------
 import           Control.Monad
@@ -258,10 +259,8 @@ instance MakeArgs Function where
 instance ToJSVal (SomeJSArray Immutable) where
   toJSVal (SomeJSArray k) = pure k
 -----------------------------------------------------------------------------
--- | Used when compiling with jsaddle to make three.js's JavaScript present in
--- the execution context.
-load :: Three ()
-load = void $ do
+initialize :: JSM ()
+initialize = do
 #ifndef GHCJS_BOTH
 #ifdef WASM
   $(JSaddle.Wasm.TH.evalFile "js/three.js")
