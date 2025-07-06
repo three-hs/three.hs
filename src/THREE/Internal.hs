@@ -53,7 +53,6 @@ import qualified Language.Javascript.JSaddle as J
 import qualified Language.Javascript.JSaddle.Wasm.TH as JSaddle.Wasm.TH
 #else
 import           Data.FileEmbed (embedStringFile)
-import           Language.Javascript.JSaddle (eval)
 #endif
 #endif
 -----------------------------------------------------------------------------
