@@ -48,7 +48,7 @@ common jsaddle
 
 library
   import:
-    warnings, cpp
+    warnings, cpp, jsaddle
   exposed-modules:
     -- Animation
     THREE.AnimationAction
@@ -287,7 +287,6 @@ library
   build-depends:
     base < 5,
     containers,
-    file-embed >= 0.0.16.0,
     jsaddle,
     mtl
   if impl(ghcjs) || arch(javascript) || arch(wasm32)
