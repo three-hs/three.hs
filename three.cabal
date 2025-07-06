@@ -48,7 +48,7 @@ common jsaddle
 
 library
   import:
-    warnings, cpp, common
+    warnings, cpp
   exposed-modules:
     -- Animation
     THREE.AnimationAction
