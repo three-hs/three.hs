@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Haskell bindings to three.js",
   "scripts": {
-    "build": "bun build --outfile=js/three.js --minify index.ts --target=browser"
+    "build": "bun build --outfile=js/three.js index.ts --target=browser"
   },
   "keywords": [
     "haskell",
