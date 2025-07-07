@@ -11,7 +11,7 @@
 {-# LANGUAGE KindSignatures             #-}
 {-# LANGUAGE DataKinds                  #-}
 {-# LANGUAGE GADTs                      #-}
-{-# LANGUAGE CPP                        #-}
+-----------------------------------------------------------------------------
 {-# OPTIONS_GHC -fno-warn-orphans       #-}
 -----------------------------------------------------------------------------
 module THREE.Internal
@@ -40,8 +40,6 @@ module THREE.Internal
   , new
   -- * Classes
   , Triplet (..)
-  -- * Initialization
-  , initialize
   ) where
 -----------------------------------------------------------------------------
 import           Control.Monad
@@ -50,13 +48,6 @@ import           GHC.Generics
 import           Unsafe.Coerce (unsafeCoerce)
 import           Language.Javascript.JSaddle hiding (new)
 import qualified Language.Javascript.JSaddle as J
-#ifndef GHCJS_BOTH
-#ifdef WASM
-import qualified Language.Javascript.JSaddle.Wasm.TH as JSaddle.Wasm.TH
-#else
-import           Data.FileEmbed (embedStringFile)
-#endif
-#endif
 -----------------------------------------------------------------------------
 type Three = JSM
 -----------------------------------------------------------------------------
@@ -255,15 +246,4 @@ instance MakeArgs JSString where
 -- | This belongs in 'jsaddle'
 instance MakeArgs Function where
   makeArgs k = (:[]) <$> toJSVal k
------------------------------------------------------------------------------
-initialize :: JSM ()
-initialize = do
-#ifndef GHCJS_BOTH
-#ifdef WASM
-  $(JSaddle.Wasm.TH.evalFile "js/three.js")
-#else
-  _ <- eval ($(embedStringFile "js/three.js") :: JSString)
-#endif
-#endif
-  pure ()
 -----------------------------------------------------------------------------

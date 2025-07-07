@@ -16,39 +16,9 @@ extra-doc-files:    CHANGELOG.md
 common warnings
   ghc-options: -Wall
 
-common cpp
-  if impl(ghcjs) || arch(javascript)
-    cpp-options:
-      -DGHCJS_BOTH
-  if impl(ghcjs)
-    cpp-options:
-      -DGHCJS_OLD
-  elif arch(javascript)
-    cpp-options:
-      -DGHCJS_NEW
-  elif arch(wasm32)
-    cpp-options:
-      -DWASM
-  else
-    cpp-options:
-      -DNATIVE
-
-common jsaddle
-  if !(impl(ghcjs) || arch(javascript) || arch(wasm32))
-    build-depends:
-      jsaddle-warp < 0.10
-
-  if !(impl(ghcjs) || arch(javascript))
-    build-depends:
-      file-embed < 0.1
-
-  if arch(wasm32)
-    build-depends:
-      jsaddle-wasm >= 0.1.2 && < 0.2
-
 library
   import:
-    warnings, cpp, jsaddle
+    warnings
   exposed-modules:
     -- Animation
     THREE.AnimationAction
@@ -289,9 +259,6 @@ library
     containers,
     jsaddle,
     mtl
-  if impl(ghcjs) || arch(javascript) || arch(wasm32)
-    js-sources:
-      js/three.js
   hs-source-dirs:
     src
   default-language:
