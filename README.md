@@ -263,3 +263,9 @@ $ nix-shell --run 'cabal build'
   - [ ] [Texture](https://threejs.org/docs/#api/en/textures/Texture)
   - [ ] [VideoFrameTexture](https://threejs.org/docs/#api/en/textures/VideoFrameTexture)
   - [ ] [VideoTexture](https://threejs.org/docs/#api/en/textures/VideoTexture)
+
+### Addons coverage
+
+#### Controls
+  - [ ] [OrbitControls](https://threejs.org/docs/#examples/en/controls/OrbitControls)
+

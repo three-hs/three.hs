@@ -254,6 +254,8 @@ library
     -- Stats.js
     THREE.Stats
     THREE.Internal
+    -- Addons
+    THREE.OrbitControls
   build-depends:
     base < 5,
     containers,

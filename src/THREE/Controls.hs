@@ -1,26 +1,21 @@
------------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+------------------------------------------------------------------------------
+{-# LANGUAGE DataKinds               #-}
+{-# LANGUAGE TypeApplications        #-}
+{-# LANGUAGE OverloadedStrings       #-}
+{-# LANGUAGE ConstrainedClassMethods #-}
 -----------------------------------------------------------------------------
 module THREE.Controls
-  ( -- * Types
+  ( -- * Class
     Controls (..)
-    -- * Methods
-  , THREE.Controls.new
-    -- * Properties
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.EventDispatcher as THREE
+import           THREE.Internal        as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/Controls
-newtype Controls
-  = Controls
-  { unControlsCamera :: JSVal
-  } deriving (MakeObject)
------------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/Controls
-new :: THREE.Three Controls
-new = THREE.new Controls "Controls" ([] :: [JSString])
------------------------------------------------------------------------------
+-- | https://threejs.org/docs/#api/en/extras/Controls
+class EventDispatcher controls => Controls controls where
+  enabled :: Property controls Bool
+  enabled = property "enabled"
+ ----------------------------------------------------------------------------
