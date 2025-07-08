@@ -44,7 +44,6 @@ module THREE.Internal
 -----------------------------------------------------------------------------
 import           Control.Monad
 import           Data.Kind
-import           GHC.Generics
 import           Unsafe.Coerce (unsafeCoerce)
 import           Language.Javascript.JSaddle hiding (new)
 import qualified Language.Javascript.JSaddle as J
