@@ -138,14 +138,14 @@ $ nix-shell --run 'cabal build'
   - [ ] [SpotLightHelper](https://threejs.org/docs/#api/en/helpers/SpotLightHelper)
 
 #### Lights
-  - [ ] [AmbientLight](https://threejs.org/docs/#api/en/lights/AmbientLight)
-  - [ ] [DirectionalLight](https://threejs.org/docs/#api/en/lights/DirectionalLight)
-  - [ ] [HemisphereLight](https://threejs.org/docs/#api/en/lights/HemisphereLight)
+  - [x] [AmbientLight](https://threejs.org/docs/#api/en/lights/AmbientLight)
+  - [x] [DirectionalLight](https://threejs.org/docs/#api/en/lights/DirectionalLight)
+  - [x] [HemisphereLight](https://threejs.org/docs/#api/en/lights/HemisphereLight)
   - [x] [Light](https://threejs.org/docs/#api/en/lights/Light)
-  - [ ] [LightProbe](https://threejs.org/docs/#api/en/lights/LightProbe)
+  - [x] [LightProbe](https://threejs.org/docs/#api/en/lights/LightProbe)
   - [x] [PointLight](https://threejs.org/docs/#api/en/lights/PointLight)
-  - [ ] [RectAreaLight](https://threejs.org/docs/#api/en/lights/RectAreaLight)
-  - [ ] [SpotLight](https://threejs.org/docs/#api/en/lights/SpotLight)
+  - [x] [RectAreaLight](https://threejs.org/docs/#api/en/lights/RectAreaLight)
+  - [x] [SpotLight](https://threejs.org/docs/#api/en/lights/SpotLight)
 
 #### Loaders
   - [ ] [AnimationLoader](https://threejs.org/docs/#api/en/loaders/AnimationLoader)

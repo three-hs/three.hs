@@ -1,6 +1,9 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveAnyClass #-}
+{-# LANGUAGE DerivingVia #-}
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.AmbientLight
   ( -- * Types
@@ -8,19 +11,35 @@ module THREE.AmbientLight
     -- * Methods
   , THREE.AmbientLight.new
     -- * Properties
+  , isAmbientLight
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.EventDispatcher as THREE
+import           THREE.Internal as THREE
+import           THREE.Light as THREE
+import           THREE.Object3D as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/lights/AmbientLight
 newtype AmbientLight
   = AmbientLight
-  { unAmbientLightCamera :: JSVal
-  } deriving (MakeObject)
+  { unAmbientLight :: JSVal
+  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+    deriving anyclass (Light, Object3D, EventDispatcher)
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/lights/AmbientLight
-new :: THREE.Three AmbientLight
-new = THREE.new AmbientLight "AmbientLight" ([] :: [JSString])
+instance FromJSVal AmbientLight where
+  fromJSVal = pure . Just . AmbientLight
+-----------------------------------------------------------------------------
+class AmbientLightParams t
+instance AmbientLightParams ()
+instance AmbientLightParams Int
+instance AmbientLightParams (Int, Double)
+new :: (MakeArgs t, AmbientLightParams t) => t -> THREE.Three AmbientLight
+new = THREE.new AmbientLight "AmbientLight"
+-----------------------------------------------------------------------------
+-- Read-only properties
+-----------------------------------------------------------------------------
+isAmbientLight :: ReadOnly AmbientLight Bool
+isAmbientLight = readonly "isAmbientLight" 
 -----------------------------------------------------------------------------

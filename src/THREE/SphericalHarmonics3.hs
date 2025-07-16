@@ -14,13 +14,15 @@ import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/SphericalHarmonics3
+-- | https://threejs.org/docs/#api/en/math/SphericalHarmonics3
 newtype SphericalHarmonics3
   = SphericalHarmonics3
-  { unSphericalHarmonics3Camera :: JSVal
-  } deriving (MakeObject)
+  { unSphericalHarmonics3 :: JSVal
+  } deriving (MakeObject, ToJSVal, MakeArgs)
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/SphericalHarmonics3
+instance FromJSVal SphericalHarmonics3 where
+  fromJSVal = pure . pure . SphericalHarmonics3
+-----------------------------------------------------------------------------
 new :: THREE.Three SphericalHarmonics3
-new = THREE.new SphericalHarmonics3 "SphericalHarmonics3" ([] :: [JSString])
+new = THREE.new SphericalHarmonics3 "SphericalHarmonics3" ()
 -----------------------------------------------------------------------------

@@ -1,26 +1,57 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE DeriveAnyClass #-}
+{-# LANGUAGE DerivingVia #-}
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.LightProbe
   ( -- * Types
     LightProbe (..)
-    -- * Methods
+    -- * Constructors
   , THREE.LightProbe.new
+    -- * Read-only Properties
+  , isLightProbe
     -- * Properties
+  , sh
+    -- * Optional properties
+    -- * Methods
+    -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.EventDispatcher
+import           THREE.Internal as THREE
+import           THREE.Light
+import           THREE.Object3D
+import           THREE.SphericalHarmonics3
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/LightProbe
+-- | https://threejs.org/docs/#api/en/lights/LightProbe
 newtype LightProbe
   = LightProbe
-  { unLightProbeCamera :: JSVal
-  } deriving (MakeObject)
+  { unLightProbe :: JSVal
+  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+    deriving anyclass (Light, Object3D, EventDispatcher)
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/LightProbe
-new :: THREE.Three LightProbe
-new = THREE.new LightProbe "LightProbe" ()
+instance FromJSVal LightProbe where
+  fromJSVal = pure . Just . LightProbe
+-----------------------------------------------------------------------------
+class LightProbeParams t
+instance LightProbeParams ()
+instance LightProbeParams SphericalHarmonics3
+instance LightProbeParams (SphericalHarmonics3, Double)
+new :: (MakeArgs t, LightProbeParams t) => t -> THREE.Three LightProbe
+new = THREE.new LightProbe "LightProbe"
+-----------------------------------------------------------------------------
+-- Read-only properties
+-----------------------------------------------------------------------------
+isLightProbe :: ReadOnly LightProbe Bool
+isLightProbe = readonly "isLightProbe" 
+-----------------------------------------------------------------------------
+-- Properties
+-----------------------------------------------------------------------------
+sh :: Property LightProbe SphericalHarmonics3
+sh = property "sh" 
 -----------------------------------------------------------------------------
