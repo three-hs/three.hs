@@ -1,8 +1,10 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE DataKinds               #-}
-{-# LANGUAGE TypeApplications        #-}
-{-# LANGUAGE OverloadedStrings       #-}
 {-# LANGUAGE ConstrainedClassMethods #-}
+{-# LANGUAGE DataKinds               #-}
+{-# LANGUAGE FlexibleInstances       #-}
+{-# LANGUAGE MultiParamTypeClasses   #-}
+{-# LANGUAGE OverloadedStrings       #-}
+{-# LANGUAGE TypeApplications        #-}
 -----------------------------------------------------------------------------
 module THREE.Object3D
   ( -- * Class
@@ -105,10 +107,11 @@ class EventDispatcher object => Object3D object where
   attach = method "attach" 
   clear :: (MakeArgs arg, FromJSVal object) => Method object arg object
   clear = method "clear"
-  clone :: (FromJSVal object) => Method object Bool object
+  clone :: (FromJSVal object, Object3DCloneParams t, MakeArgs t) => Method object t object
   clone = method "clone" 
-  copy :: (MakeArgs object, FromJSVal object) => Method object (object, Bool) object
+  copy :: (MakeArgs object, FromJSVal object, Object3DCopyParams object t, MakeArgs t) => Method object t object
   copy = method "copy"
+  -- TODO the getObject* methods don't really make sense in Haskell
   getObjectById :: (FromJSVal return, Object3D return) => Method object Int return
   getObjectById = method "getObjectById" 
   getObjectByName :: (FromJSVal return, Object3D return) => Method object JSString return
@@ -180,5 +183,12 @@ class EventDispatcher object => Object3D object where
 -----------------------------------------------------------------------------
 instance Object3D JSVal
 -----------------------------------------------------------------------------
-
+class Object3DCopyParams o t
+instance Object3DCopyParams o o
+instance Object3DCopyParams o (o, Bool)
+-----------------------------------------------------------------------------
+class Object3DCloneParams t
+instance Object3DCloneParams ()
+instance Object3DCloneParams Bool
+-----------------------------------------------------------------------------
 
