@@ -111,15 +111,17 @@ class EventDispatcher object => Object3D object where
   clone = method "clone" 
   copy :: (MakeArgs object, FromJSVal object, Object3DCopyParams object t, MakeArgs t) => Method object t object
   copy = method "copy"
-  -- TODO the getObject* methods don't really make sense in Haskell
-  getObjectById :: (FromJSVal return, Object3D return) => Method object Int return
-  getObjectById = method "getObjectById" 
-  getObjectByName :: (FromJSVal return, Object3D return) => Method object JSString return
-  getObjectByName = method "getObjectByName" 
-  getObjectByProperty :: (ToJSVal a, Object3D return, FromJSVal return) => Method object (JSString, a) return
-  getObjectByProperty = method  "getObjectByProperty"
-  getObjectsByProperty :: (ToJSVal a) => Method object (JSString, a, Maybe [Object]) [Object]
-  getObjectsByProperty = method "getObjectsByProperty"
+  -- The getObject* methods don't really make sense in Haskell. It can break the type safety like:
+  -- myCamera <- mesh1 & getObjectByName "myGeometry" :: Three PerspectiveCamera
+  --
+  -- getObjectById :: (FromJSVal return, Object3D return) => Method object Int return
+  -- getObjectById = method "getObjectById" 
+  -- getObjectByName :: (FromJSVal return, Object3D return) => Method object JSString return
+  -- getObjectByName = method "getObjectByName" 
+  -- getObjectByProperty :: (ToJSVal a, Object3D return, FromJSVal return) => Method object (JSString, a) return
+  -- getObjectByProperty = method  "getObjectByProperty"
+  -- getObjectsByProperty :: (ToJSVal a) => Method object (JSString, a, Maybe [Object]) [Object]
+  -- getObjectsByProperty = method "getObjectsByProperty"
   getWorldPosition :: Method object Vector3 Vector3
   getWorldPosition = method "getWorldPosition"
   getWorldQuaternion :: Method object Quaternion Quaternion
