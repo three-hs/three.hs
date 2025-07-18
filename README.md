@@ -50,11 +50,13 @@ $ nix-shell --run 'cabal build'
 
 #### Constants
   - [ ] [Animation](https://threejs.org/docs/#api/en/constants/Animation)
+  - [x] [BlendingEquations](https://threejs.org/docs/#api/en/constants/CustomBlendingEquations)
   - [ ] [BufferAttributeUsage](https://threejs.org/docs/#api/en/constants/BufferAttributeUsage)
   - [ ] [Core](https://threejs.org/docs/#api/en/constants/Core)
-  - [ ] [CustomBlendingEquations](https://threejs.org/docs/#api/en/constants/CustomBlendingEquations)
+  - [x] [DestinationFactors](https://threejs.org/docs/#api/en/constants/CustomBlendingEquations)
   - [ ] [Materials](https://threejs.org/docs/#api/en/constants/Materials)
   - [ ] [Renderer](https://threejs.org/docs/#api/en/constants/Renderer)
+  - [x] [SourceFactors](https://threejs.org/docs/#api/en/constants/CustomBlendingEquations)
   - [ ] [Textures](https://threejs.org/docs/#api/en/constants/Textures)
 
 #### Core
