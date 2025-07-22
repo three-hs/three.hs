@@ -1,26 +1,65 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE DeriveAnyClass #-}
+{-# LANGUAGE DerivingVia #-}
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.PointsMaterial
   ( -- * Types
     PointsMaterial (..)
-    -- * Methods
+    -- * Constructors
   , THREE.PointsMaterial.new
     -- * Properties
+  , alphaMap
+  , color
+  , fog
+  , THREE.PointsMaterial.map
+  , size
+  , sizeAttenuation
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.Color
+import           THREE.EventDispatcher
+import           THREE.Internal as THREE
+import           THREE.Material
+import           THREE.Texture
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/PointsMaterial
+-- | https://threejs.org/docs/#api/en/materials/PointsMaterial
 newtype PointsMaterial
   = PointsMaterial
-  { unPointsMaterialCamera :: JSVal
-  } deriving (MakeObject)
------------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/PointsMaterial
+  { unPointsMaterial :: JSVal
+  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+    deriving anyclass (Material, EventDispatcher)
+
+instance FromJSVal PointsMaterial where
+  fromJSVal = pure . Just . PointsMaterial
+
+-- Constructor
+
 new :: THREE.Three PointsMaterial
-new = THREE.new PointsMaterial "PointsMaterial" ([] :: [JSString])
------------------------------------------------------------------------------
+new = THREE.new PointsMaterial "PointsMaterial" ()
+
+-- Property
+
+alphaMap :: Property PointsMaterial (Maybe Texture)
+alphaMap = optional "alphaMap"
+
+color :: Property PointsMaterial Color
+color = property "color" 
+
+fog :: Property PointsMaterial Bool
+fog = property "fog"
+
+map :: Property PointsMaterial (Maybe Texture)
+map = optional "map"
+
+size :: Property PointsMaterial Double
+size = property "size"
+
+sizeAttenuation :: Property PointsMaterial Bool
+sizeAttenuation = property "sizeAttenuation"
+
