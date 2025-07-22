@@ -1,5 +1,6 @@
 -----------------------------------------------------------------------------
 {-# LANGUAGE LambdaCase #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/constants/Materials
 module THREE.Constants.Materials
@@ -11,6 +12,7 @@ module THREE.Constants.Materials
   , StencilFunctions (..)
   , StencilOperations (..)
   , NormalMapType (..)
+  , GlslVersion (..)
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
@@ -245,6 +247,29 @@ instance FromJSVal NormalMapType where
       go = \case
         0 -> Just TangentSpaceNormalMap 
         1 -> Just ObjectSpaceNormalMap 
+        _ -> Nothing
+
+-----------------------------------------------------------------------------
+
+data GlslVersion
+  = GLSL1 
+  | GLSL3
+
+instance ToJSVal GlslVersion where
+  toJSVal = toJSVal . go
+    where
+      go :: GlslVersion -> JSString
+      go = \case
+        GLSL1 -> "100"
+        GLSL3 -> "300 es"
+
+instance FromJSVal GlslVersion where
+  fromJSVal = fmap (>>= go) . fromJSVal
+    where
+      go :: JSString -> Maybe GlslVersion
+      go = \case
+        "100"    -> Just GLSL1 
+        "300 es" -> Just GLSL3 
         _ -> Nothing
 
 -----------------------------------------------------------------------------

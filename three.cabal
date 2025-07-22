@@ -57,7 +57,6 @@ library
     THREE.Constants.Core
     THREE.Constants.Materials
     THREE.Constants.Renderer
-    THREE.Constants.SourceFactors
     THREE.Constants.Textures
     THREE.Constants.Textures.MagnificationFilters
     THREE.Constants.Textures.MinificationFilters
