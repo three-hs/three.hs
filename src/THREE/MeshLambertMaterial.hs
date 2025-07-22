@@ -153,10 +153,10 @@ specularMap = optional "specularMap"
 wireframe :: Property MeshLambertMaterial Bool
 wireframe = property "wireframe"
 
-wireframeLinecap :: Property MeshLambertMaterial JSString
+wireframeLinecap :: Property MeshLambertMaterial Linecap
 wireframeLinecap = property "wireframeLinecap"
 
-wireframeLinejoin :: Property MeshLambertMaterial JSString
+wireframeLinejoin :: Property MeshLambertMaterial Linejoin
 wireframeLinejoin = property "wireframeLinejoin"
 
 wireframeLinewidth :: Property MeshLambertMaterial Double

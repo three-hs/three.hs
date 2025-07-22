@@ -128,10 +128,10 @@ normalScale = property "normalScale"
 wireframe :: Property MeshToonMaterial Bool
 wireframe = property "wireframe"
 
-wireframeLinecap :: Property MeshToonMaterial JSString
+wireframeLinecap :: Property MeshToonMaterial Linecap
 wireframeLinecap = property "wireframeLinecap"
 
-wireframeLinejoin :: Property MeshToonMaterial JSString
+wireframeLinejoin :: Property MeshToonMaterial Linejoin
 wireframeLinejoin = property "wireframeLinejoin"
 
 wireframeLinewidth :: Property MeshToonMaterial Double

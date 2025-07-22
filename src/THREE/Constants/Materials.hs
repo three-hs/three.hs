@@ -13,6 +13,8 @@ module THREE.Constants.Materials
   , StencilOperations (..)
   , NormalMapType (..)
   , GlslVersion (..)
+  , Linecap (..)
+  , Linejoin (..)
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
@@ -270,6 +272,58 @@ instance FromJSVal GlslVersion where
       go = \case
         "100"    -> Just GLSL1 
         "300 es" -> Just GLSL3 
+        _ -> Nothing
+
+-----------------------------------------------------------------------------
+
+data Linecap
+  = LinecapButt 
+  | LinecapRound
+  | LinecapSquare
+
+instance ToJSVal Linecap where
+  toJSVal = toJSVal . go
+    where
+      go :: Linecap -> JSString
+      go = \case
+        LinecapButt   -> "butt"
+        LinecapRound  -> "round"
+        LinecapSquare -> "square"
+
+instance FromJSVal Linecap where
+  fromJSVal = fmap (>>= go) . fromJSVal
+    where
+      go :: JSString -> Maybe Linecap
+      go = \case
+        "butt"    -> Just LinecapButt 
+        "round"   -> Just LinecapRound
+        "square"  -> Just LinecapSquare
+        _ -> Nothing
+
+-----------------------------------------------------------------------------
+
+data Linejoin
+  = LinejoinBevel 
+  | LinejoinMiter
+  | LinejoinRound
+
+instance ToJSVal Linejoin where
+  toJSVal = toJSVal . go
+    where
+      go :: Linejoin -> JSString
+      go = \case
+        LinejoinBevel -> "bevel"
+        LinejoinMiter -> "miter"
+        LinejoinRound -> "round"
+
+instance FromJSVal Linejoin where
+  fromJSVal = fmap (>>= go) . fromJSVal
+    where
+      go :: JSString -> Maybe Linejoin
+      go = \case
+        "bevel" -> Just LinejoinBevel 
+        "miter" -> Just LinejoinMiter
+        "round" -> Just LinejoinRound
         _ -> Nothing
 
 -----------------------------------------------------------------------------

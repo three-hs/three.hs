@@ -20,6 +20,7 @@ module THREE.LineBasicMaterial
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
 import           THREE.Color
+import           THREE.Constants.Materials
 import           THREE.EventDispatcher
 import           THREE.Internal as THREE
 import           THREE.Material
@@ -41,10 +42,10 @@ class (Material material) => LineBasicMaterialClass material where
   linewidth :: Property material Double
   linewidth = property "linewidth"
 
-  linecap :: Property material JSString
+  linecap :: Property material Linecap
   linecap = property "linecap"
 
-  linejoin :: Property material JSString
+  linejoin :: Property material Linejoin
   linejoin = property "linejoin"
 
   map :: Property material (Maybe Texture)

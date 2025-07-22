@@ -165,10 +165,10 @@ specularMap = optional "specularMap"
 wireframe :: Property MeshPhongMaterial Bool
 wireframe = property "wireframe"
 
-wireframeLinecap :: Property MeshPhongMaterial JSString   -- TODO define a type ("butt", "round" and "square")
+wireframeLinecap :: Property MeshPhongMaterial Linecap
 wireframeLinecap = property "wireframeLinecap"
 
-wireframeLinejoin :: Property MeshPhongMaterial JSString  -- TODO define type ("round", "bevel" and "miter")
+wireframeLinejoin :: Property MeshPhongMaterial Linejoin
 wireframeLinejoin = property "wireframeLinejoin"
 
 wireframeLinewidth :: Property MeshPhongMaterial Double

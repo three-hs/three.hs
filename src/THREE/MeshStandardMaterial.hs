@@ -122,10 +122,10 @@ class (Material material) => MeshStandardMaterialClass material where
   wireframe :: Property material Bool
   wireframe = property "wireframe"
 
-  wireframeLinecap :: Property material JSString   -- TODO define a type ("butt", "round" and "square")
+  wireframeLinecap :: Property material Linecap
   wireframeLinecap = property "wireframeLinecap"
 
-  wireframeLinejoin :: Property material JSString  -- TODO define type ("round", "bevel" and "miter")
+  wireframeLinejoin :: Property material Linejoin
   wireframeLinejoin = property "wireframeLinejoin"
 
   wireframeLinewidth :: Property material Double

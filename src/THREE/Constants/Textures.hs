@@ -21,7 +21,6 @@ module THREE.Constants.Textures
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
-import           Text.Read (readMaybe)
 -----------------------------------------------------------------------------
 
 data MappingModes
@@ -485,14 +484,139 @@ data InternalFormats
   | DEPTH_COMPONENT32F
   | DEPTH24_STENCIL8
   | DEPTH32F_STENCIL8
-  deriving (Read, Show)
 
--- TODO write custom instances of ToJSVal/FromJSVal instead of using Show/Read?
 instance ToJSVal InternalFormats where
-  toJSVal = toJSVal . show
+  toJSVal = toJSVal . go
+    where
+      go :: InternalFormats -> JSString
+      go = \case
+        ALPHA               -> "ALPHA"
+        RGB                 -> "RGB"
+        RGBA                -> "RGBA"
+        LUMINANCE           -> "LUMINANCE"
+        LUMINANCE_ALPHA     -> "LUMINANCE_ALPHA"
+        RED_INTEGER         -> "RED_INTEGER"
+        R8                  -> "R8"
+        R8_SNORM            -> "R8_SNORM"
+        R8I                 -> "R8I"
+        R8UI                -> "R8UI"
+        R16I                -> "R16I"
+        R16UI               -> "R16UI"
+        R16F                -> "R16F"
+        R32I                -> "R32I"
+        R32UI               -> "R32UI"
+        R32F                -> "R32F"
+        RG8                 -> "RG8"
+        RG8_SNORM           -> "RG8_SNORM"
+        RG8I                -> "RG8I"
+        RG8UI               -> "RG8UI"
+        RG16I               -> "RG16I"
+        RG16UI              -> "RG16UI"
+        RG16F               -> "RG16F"
+        RG32I               -> "RG32I"
+        RG32UI              -> "RG32UI"
+        RG32F               -> "RG32F"
+        RGB565              -> "RGB565"
+        RGB8                -> "RGB8"
+        RGB8_SNORM          -> "RGB8_SNORM"
+        RGB8I               -> "RGB8I"
+        RGB8UI              -> "RGB8UI"
+        RGB16I              -> "RGB16I"
+        RGB16UI             -> "RGB16UI"
+        RGB16F              -> "RGB16F"
+        RGB32I              -> "RGB32I"
+        RGB32UI             -> "RGB32UI"
+        RGB32F              -> "RGB32F"
+        RGB9_E5             -> "RGB9_E5"
+        SRGB8               -> "SRGB8"
+        R11F_G11F_B10F      -> "R11F_G11F_B10F"
+        RGBA4               -> "RGBA4"
+        RGBA8               -> "RGBA8"
+        RGBA8_SNORM         -> "RGBA8_SNORM"
+        RGBA8I              -> "RGBA8I"
+        RGBA8UI             -> "RGBA8UI"
+        RGBA16I             -> "RGBA16I"
+        RGBA16UI            -> "RGBA16UI"
+        RGBA16F             -> "RGBA16F"
+        RGBA32I             -> "RGBA32I"
+        RGBA32UI            -> "RGBA32UI"
+        RGBA32F             -> "RGBA32F"
+        RGB5_A1             -> "RGB5_A1"
+        RGB10_A2            -> "RGB10_A2"
+        RGB10_A2UI          -> "RGB10_A2UI"
+        SRGB8_ALPHA8        -> "SRGB8_ALPHA8"
+        DEPTH_COMPONENT16   -> "DEPTH_COMPONENT16"
+        DEPTH_COMPONENT24   -> "DEPTH_COMPONENT24"
+        DEPTH_COMPONENT32F  -> "DEPTH_COMPONENT32F"
+        DEPTH24_STENCIL8    -> "DEPTH24_STENCIL8"
+        DEPTH32F_STENCIL8   -> "DEPTH32F_STENCIL8"
 
 instance FromJSVal InternalFormats where
-  fromJSVal = fmap (>>= readMaybe) . fromJSVal
+  fromJSVal = fmap (>>= go) . fromJSVal
+    where
+      go :: JSString -> Maybe InternalFormats
+      go = \case
+        "ALPHA"               -> Just ALPHA
+        "RGB"                 -> Just RGB
+        "RGBA"                -> Just RGBA
+        "LUMINANCE"           -> Just LUMINANCE
+        "LUMINANCE_ALPHA"     -> Just LUMINANCE_ALPHA
+        "RED_INTEGER"         -> Just RED_INTEGER
+        "R8"                  -> Just R8
+        "R8_SNORM"            -> Just R8_SNORM
+        "R8I"                 -> Just R8I
+        "R8UI"                -> Just R8UI
+        "R16I"                -> Just R16I
+        "R16UI"               -> Just R16UI
+        "R16F"                -> Just R16F
+        "R32I"                -> Just R32I
+        "R32UI"               -> Just R32UI
+        "R32F"                -> Just R32F
+        "RG8"                 -> Just RG8
+        "RG8_SNORM"           -> Just RG8_SNORM
+        "RG8I"                -> Just RG8I
+        "RG8UI"               -> Just RG8UI
+        "RG16I"               -> Just RG16I
+        "RG16UI"              -> Just RG16UI
+        "RG16F"               -> Just RG16F
+        "RG32I"               -> Just RG32I
+        "RG32UI"              -> Just RG32UI
+        "RG32F"               -> Just RG32F
+        "RGB565"              -> Just RGB565
+        "RGB8"                -> Just RGB8
+        "RGB8_SNORM"          -> Just RGB8_SNORM
+        "RGB8I"               -> Just RGB8I
+        "RGB8UI"              -> Just RGB8UI
+        "RGB16I"              -> Just RGB16I
+        "RGB16UI"             -> Just RGB16UI
+        "RGB16F"              -> Just RGB16F
+        "RGB32I"              -> Just RGB32I
+        "RGB32UI"             -> Just RGB32UI
+        "RGB32F"              -> Just RGB32F
+        "RGB9_E5"             -> Just RGB9_E5
+        "SRGB8"               -> Just SRGB8
+        "R11F_G11F_B10F"      -> Just R11F_G11F_B10F
+        "RGBA4"               -> Just RGBA4
+        "RGBA8"               -> Just RGBA8
+        "RGBA8_SNORM"         -> Just RGBA8_SNORM
+        "RGBA8I"              -> Just RGBA8I
+        "RGBA8UI"             -> Just RGBA8UI
+        "RGBA16I"             -> Just RGBA16I
+        "RGBA16UI"            -> Just RGBA16UI
+        "RGBA16F"             -> Just RGBA16F
+        "RGBA32I"             -> Just RGBA32I
+        "RGBA32UI"            -> Just RGBA32UI
+        "RGBA32F"             -> Just RGBA32F
+        "RGB5_A1"             -> Just RGB5_A1
+        "RGB10_A2"            -> Just RGB10_A2
+        "RGB10_A2UI"          -> Just RGB10_A2UI
+        "SRGB8_ALPHA8"        -> Just SRGB8_ALPHA8
+        "DEPTH_COMPONENT16"   -> Just DEPTH_COMPONENT16
+        "DEPTH_COMPONENT24"   -> Just DEPTH_COMPONENT24
+        "DEPTH_COMPONENT32F"  -> Just DEPTH_COMPONENT32F
+        "DEPTH24_STENCIL8"    -> Just DEPTH24_STENCIL8
+        "DEPTH32F_STENCIL8"   -> Just DEPTH32F_STENCIL8
+        _ -> Nothing
 
 ----------------------------------------------------------------------------
 
