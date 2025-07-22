@@ -185,8 +185,8 @@ $ nix-shell --run 'cabal build'
   - [x] [MeshStandardMaterial](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial)
   - [x] [MeshToonMaterial](https://threejs.org/docs/#api/en/materials/MeshToonMaterial)
   - [x] [PointsMaterial](https://threejs.org/docs/#api/en/materials/PointsMaterial)
-  - [ ] [RawShaderMaterial](https://threejs.org/docs/#api/en/materials/RawShaderMaterial)
-  - [ ] [ShaderMaterial](https://threejs.org/docs/#api/en/materials/ShaderMaterial)
+  - [x] [RawShaderMaterial](https://threejs.org/docs/#api/en/materials/RawShaderMaterial)
+  - [x] [ShaderMaterial](https://threejs.org/docs/#api/en/materials/ShaderMaterial)
   - [x] [ShadowMaterial](https://threejs.org/docs/#api/en/materials/ShadowMaterial)
   - [x] [SpriteMaterial](https://threejs.org/docs/#api/en/materials/SpriteMaterial)
 
