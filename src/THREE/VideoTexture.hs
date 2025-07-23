@@ -25,11 +25,11 @@ import           THREE.Internal as THREE
 import           THREE.Texture
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/textures/VideoTexture
-class (TextureClass videotexture) => VideoTextureClass videotexture where
+class (TextureClass texture) => VideoTextureClass texture where
 
   -- Method
 
-  update :: Method videotexture () ()
+  update :: Method texture () ()
   update = method "updateMatrix"
 
 instance VideoTextureClass JSVal

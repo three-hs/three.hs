@@ -255,8 +255,8 @@ $ nix-shell --run 'cabal build'
 
 #### Textures
   - [x] [CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture)
-  - [ ] [CompressedArrayTexture](https://threejs.org/docs/#api/en/textures/CompressedArrayTexture)
-  - [ ] [CompressedTexture](https://threejs.org/docs/#api/en/textures/CompressedTexture)
+  - [x] [CompressedArrayTexture](https://threejs.org/docs/#api/en/textures/CompressedArrayTexture)
+  - [x] [CompressedTexture](https://threejs.org/docs/#api/en/textures/CompressedTexture)
   - [x] [CubeTexture](https://threejs.org/docs/#api/en/textures/CubeTexture)
   - [x] [Data3DTexture](https://threejs.org/docs/#api/en/textures/Data3DTexture)
   - [x] [DataArrayTexture](https://threejs.org/docs/#api/en/textures/DataArrayTexture)
