@@ -50,14 +50,16 @@ library
     THREE.StereoCamera
     -- Constants
     THREE.Constants.Animation
-    THREE.Constants.BlendingEquations
+    THREE.Constants.CustomBlendingEquations
+    THREE.Constants.CustomBlendingEquations.DestinationFactors
+    THREE.Constants.CustomBlendingEquations.SourceFactors
     THREE.Constants.BufferAttributeUsage
     THREE.Constants.Core
-    THREE.Constants.DestinationFactors
     THREE.Constants.Materials
     THREE.Constants.Renderer
-    THREE.Constants.SourceFactors
     THREE.Constants.Textures
+    THREE.Constants.Textures.MagnificationFilters
+    THREE.Constants.Textures.MinificationFilters
     -- Core
     THREE.BufferAttribute
     THREE.BufferAttributeTypes

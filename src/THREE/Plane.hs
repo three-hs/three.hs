@@ -14,13 +14,15 @@ import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/Plane
+-- | https://threejs.org/docs/#api/en/math/Plane
 newtype Plane
   = Plane
-  { unPlaneCamera :: JSVal
-  } deriving (MakeObject)
+  { unPlane :: JSVal
+  } deriving (MakeObject, ToJSVal, MakeArgs)
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/Plane
+instance FromJSVal Plane where
+  fromJSVal = pure . Just . Plane
+-----------------------------------------------------------------------------
 new :: THREE.Three Plane
-new = THREE.new Plane "Plane" ([] :: [JSString])
+new = THREE.new Plane "Plane" ()
 -----------------------------------------------------------------------------

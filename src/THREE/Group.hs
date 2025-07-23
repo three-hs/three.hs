@@ -18,7 +18,7 @@ import qualified THREE.Internal as THREE
 newtype Group
   = Group
   { unGroupCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (MakeArgs, MakeObject, ToJSVal) 
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Group
 new :: THREE.Three Group

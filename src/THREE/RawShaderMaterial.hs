@@ -1,26 +1,37 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE DeriveAnyClass #-}
+{-# LANGUAGE DerivingVia #-}
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.RawShaderMaterial
   ( -- * Types
     RawShaderMaterial (..)
-    -- * Methods
+    -- * Constructors
   , THREE.RawShaderMaterial.new
-    -- * Properties
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.EventDispatcher
+import           THREE.Internal as THREE
+import           THREE.Material
+import           THREE.ShaderMaterial
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/RawShaderMaterial
+-- | https://threejs.org/docs/#api/en/materials/RawShaderMaterial
 newtype RawShaderMaterial
   = RawShaderMaterial
-  { unRawShaderMaterialCamera :: JSVal
-  } deriving (MakeObject)
------------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/RawShaderMaterial
+  { unRawShaderMaterial :: JSVal
+  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+    deriving anyclass (Material, EventDispatcher, ShaderMaterialClass)
+
+instance FromJSVal RawShaderMaterial where
+  fromJSVal = pure . Just . RawShaderMaterial
+
+-- Constructor
+
 new :: THREE.Three RawShaderMaterial
-new = THREE.new RawShaderMaterial "RawShaderMaterial" ([] :: [JSString])
------------------------------------------------------------------------------
+new = THREE.new RawShaderMaterial "RawShaderMaterial" ()
+

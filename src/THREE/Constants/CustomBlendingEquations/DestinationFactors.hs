@@ -2,15 +2,17 @@
 {-# LANGUAGE LambdaCase #-}
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/index.html#api/en/constants/CustomBlendingEquations
-module THREE.Constants.SourceFactors
+module THREE.Constants.CustomBlendingEquations.DestinationFactors
   ( -- * Types
-    SourceFactors (..)
+    DestinationFactors (..)
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
 
-data SourceFactors
+-- same as SourceFactors, w/o SrcAlphaSaturateFactor
+
+data DestinationFactors
   = ZeroFactor 
   | OneFactor 
   | SrcColorFactor
@@ -21,16 +23,15 @@ data SourceFactors
   | OneMinusDstAlphaFactor 
   | DstColorFactor
   | OneMinusDstColorFactor 
-  | SrcAlphaSaturateFactor
   | ConstantColorFactor
   | OneMinusConstantColorFactor
   | ConstantAlphaFactor
   | OneMinusConstantAlphaFactor
 
-instance ToJSVal SourceFactors where
+instance ToJSVal DestinationFactors where
   toJSVal = toJSVal . go
     where
-      go :: SourceFactors -> Int
+      go :: DestinationFactors -> Int
       go = \case
         ZeroFactor                    -> 200
         OneFactor                     -> 201
@@ -42,16 +43,15 @@ instance ToJSVal SourceFactors where
         OneMinusDstAlphaFactor        -> 207
         DstColorFactor                -> 208
         OneMinusDstColorFactor        -> 209
-        SrcAlphaSaturateFactor        -> 210
         ConstantColorFactor           -> 211
         OneMinusConstantColorFactor   -> 212
         ConstantAlphaFactor           -> 213
         OneMinusConstantAlphaFactor   -> 214
 
-instance FromJSVal SourceFactors where
+instance FromJSVal DestinationFactors where
   fromJSVal = fmap (>>= go) . fromJSVal
     where
-      go :: Int -> Maybe SourceFactors
+      go :: Int -> Maybe DestinationFactors
       go = \case
         200 -> Just ZeroFactor
         201 -> Just OneFactor
@@ -63,7 +63,6 @@ instance FromJSVal SourceFactors where
         207 -> Just OneMinusDstAlphaFactor
         208 -> Just DstColorFactor
         209 -> Just OneMinusDstColorFactor
-        210 -> Just SrcAlphaSaturateFactor
         211 -> Just ConstantColorFactor
         212 -> Just OneMinusConstantColorFactor
         213 -> Just ConstantAlphaFactor

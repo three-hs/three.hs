@@ -2,7 +2,7 @@
 {-# LANGUAGE LambdaCase #-}
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/index.html#api/en/constants/CustomBlendingEquations
-module THREE.Constants.BlendingEquations
+module THREE.Constants.CustomBlendingEquations
   ( -- * Types
     BlendingEquations (..)
   ) where

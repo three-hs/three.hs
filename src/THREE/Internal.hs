@@ -1,16 +1,13 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
-{-# LANGUAGE MultiParamTypeClasses      #-}
-{-# LANGUAGE UndecidableInstances       #-}
-{-# LANGUAGE ScopedTypeVariables        #-}
-{-# LANGUAGE TypeApplications           #-}
-{-# LANGUAGE OverloadedStrings          #-}
-{-# LANGUAGE FlexibleInstances          #-}
-{-# LANGUAGE FlexibleContexts           #-}
-{-# LANGUAGE TemplateHaskell            #-}
-{-# LANGUAGE KindSignatures             #-}
 {-# LANGUAGE DataKinds                  #-}
+{-# LANGUAGE FlexibleContexts           #-}
+{-# LANGUAGE FlexibleInstances          #-}
 {-# LANGUAGE GADTs                      #-}
+{-# LANGUAGE KindSignatures             #-}
+{-# LANGUAGE MultiParamTypeClasses      #-}
+{-# LANGUAGE OverloadedStrings          #-}
+{-# LANGUAGE ScopedTypeVariables        #-}
+{-# LANGUAGE UndecidableInstances       #-}
 -----------------------------------------------------------------------------
 {-# OPTIONS_GHC -fno-warn-orphans       #-}
 -----------------------------------------------------------------------------

@@ -17,14 +17,20 @@ module THREE.WebGLRenderer
   , setAnimationLoop
   , setSize
     -- * Helper functions
+  , onBeforeCompileMaterial
+  , onBeforeRenderMaterial
   ) where
 -----------------------------------------------------------------------------
 import Control.Monad (void)
 import Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import THREE.Camera as THREE
+import THREE.BufferGeometry
+import THREE.Camera
+import THREE.Group
 import THREE.Internal as THREE
-import THREE.Object3D as THREE
+import THREE.Material
+import THREE.Object3D
+import THREE.Scene
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/renderers/WebGLRenderer
 newtype WebGLRenderer
@@ -62,4 +68,19 @@ setAnimationLoop f (WebGLRenderer v) =
 setSize :: (Int, Int, Bool) -> WebGLRenderer -> JSM ()
 setSize (width, height, updateStyle) (WebGLRenderer v) = 
   void $ v # ("setSize" :: JSString) $ (width, height, updateStyle)
+-----------------------------------------------------------------------------
+-- | https://threejs.org/docs/#api/en/materials/Material.onBeforeCompile
+-- 
+-- Wraps Material.onBeforeCompile.
+onBeforeCompileMaterial :: Material material => Method material (Object, WebGLRenderer) ()
+onBeforeCompileMaterial = method "onBeforeCompile" 
+-----------------------------------------------------------------------------
+-- | https://threejs.org/docs/#api/en/materials/Material.onBeforeRender
+--
+-- Wraps Material.onBeforeRender.
+-- Not to be confused with Object3D.onBeforeRender.
+onBeforeRenderMaterial
+  :: (Material material, Camera camera, BufferGeometryClass geometry, Object3D object) 
+  => Method material (WebGLRenderer, Scene, camera, geometry, object, Group) ()
+onBeforeRenderMaterial = method "onBeforeRender" 
 -----------------------------------------------------------------------------
