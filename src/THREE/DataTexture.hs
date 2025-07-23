@@ -22,7 +22,7 @@ import           THREE.EventDispatcher
 import           THREE.Internal as THREE
 import           THREE.Texture
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/materials/LineDashedMaterial
+-- | https://threejs.org/docs/#api/en/textures/DataTexture
 newtype DataTexture
   = DataTexture
   { unDataTexture :: JSVal
@@ -39,7 +39,7 @@ new = THREE.new DataTexture "DataTexture"
 
 class DataTextureNewParams t
 instance DataTextureNewParams ()
-instance DataTextureNewParams Object
+instance DataTextureNewParams Object    -- TODO Object -> TypedArray?
 instance DataTextureNewParams (Object, Int)
 instance DataTextureNewParams (Object, Int, Int)
 instance DataTextureNewParams (Object, Int, Int, Formats)

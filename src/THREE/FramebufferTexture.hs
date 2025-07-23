@@ -1,26 +1,41 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE DeriveAnyClass #-}
+{-# LANGUAGE DerivingVia #-}
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.FramebufferTexture
   ( -- * Types
     FramebufferTexture (..)
-    -- * Methods
+    -- * Constructors
   , THREE.FramebufferTexture.new
-    -- * Properties
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.EventDispatcher
+import           THREE.Internal as THREE
+import           THREE.Texture
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/FramebufferTexture
+-- | https://threejs.org/docs/#api/en/textures/FramebufferTexture
 newtype FramebufferTexture
   = FramebufferTexture
-  { unFramebufferTextureCamera :: JSVal
-  } deriving (MakeObject)
------------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/FramebufferTexture
-new :: THREE.Three FramebufferTexture
-new = THREE.new FramebufferTexture "FramebufferTexture" ([] :: [JSString])
------------------------------------------------------------------------------
+  { unFramebufferTexture :: JSVal
+  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+    deriving anyclass (EventDispatcher, TextureClass)
+
+instance FromJSVal FramebufferTexture where
+  fromJSVal = pure . Just . FramebufferTexture
+
+-- Constructor
+
+new :: (FramebufferTextureNewParams t, MakeArgs t) => t -> THREE.Three FramebufferTexture
+new = THREE.new FramebufferTexture "FramebufferTexture"
+
+class FramebufferTextureNewParams t
+instance FramebufferTextureNewParams ()
+instance FramebufferTextureNewParams Int
+instance FramebufferTextureNewParams (Int, Int)
+
