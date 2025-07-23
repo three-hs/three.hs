@@ -16,7 +16,7 @@ module THREE.SpriteMaterial
   , color
   , fog
   , THREE.SpriteMaterial.map
-  , rotation
+  , THREE.SpriteMaterial.rotation
   , sizeAttenuation
   ) where
 -----------------------------------------------------------------------------

@@ -12,7 +12,7 @@ module THREE.MeshPhysicalMaterial
     -- * Constructors
   , THREE.MeshPhysicalMaterial.new
     -- * Properties
-  , anisotropy
+  , THREE.MeshPhysicalMaterial.anisotropy
   , anisotropyMap
   , anisotropyRotation
   , attenuationColor

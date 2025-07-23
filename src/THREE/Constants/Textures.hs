@@ -18,6 +18,8 @@ module THREE.Constants.Textures
   , InternalFormats (..)
   , DepthPacking (..)
   , ColorSpace (..)
+  , UvChannel (..)
+  , UnpackAlignment (..)
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
@@ -665,6 +667,64 @@ instance FromJSVal ColorSpace where
         ""            -> Just NoColorSpace
         "srgb"        -> Just SRGBColorSpace
         "srgb-linear" -> Just LinearSRGBColorSpace
+        _ -> Nothing
+
+----------------------------------------------------------------------------
+
+data UvChannel
+  = Uv
+  | Uv1
+  | Uv2
+  | Uv3
+
+instance ToJSVal UvChannel where
+  toJSVal = toJSVal . go
+    where
+      go :: UvChannel -> Int
+      go = \case
+        Uv  -> 0
+        Uv1 -> 1
+        Uv2 -> 2
+        Uv3 -> 3
+
+instance FromJSVal UvChannel where
+  fromJSVal = fmap (>>= go) . fromJSVal
+    where
+      go :: Int -> Maybe UvChannel
+      go = \case
+        0 -> Just Uv
+        1 -> Just Uv1
+        2 -> Just Uv2
+        3 -> Just Uv3
+        _ -> Nothing
+
+----------------------------------------------------------------------------
+
+data UnpackAlignment
+  = ByteAlignment
+  | EvenNumberedBytes
+  | WordAlignment
+  | DoubleWordBoundaries
+
+instance ToJSVal UnpackAlignment where
+  toJSVal = toJSVal . go
+    where
+      go :: UnpackAlignment -> Int
+      go = \case
+        ByteAlignment         -> 1
+        EvenNumberedBytes     -> 2
+        WordAlignment         -> 4
+        DoubleWordBoundaries  -> 8
+
+instance FromJSVal UnpackAlignment where
+  fromJSVal = fmap (>>= go) . fromJSVal
+    where
+      go :: Int -> Maybe UnpackAlignment
+      go = \case
+        1 -> Just ByteAlignment
+        2 -> Just EvenNumberedBytes
+        4 -> Just WordAlignment
+        8 -> Just DoubleWordBoundaries
         _ -> Nothing
 
 ----------------------------------------------------------------------------

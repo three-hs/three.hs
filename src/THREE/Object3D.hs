@@ -1,10 +1,8 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE ConstrainedClassMethods #-}
 {-# LANGUAGE DataKinds               #-}
 {-# LANGUAGE FlexibleInstances       #-}
 {-# LANGUAGE MultiParamTypeClasses   #-}
 {-# LANGUAGE OverloadedStrings       #-}
-{-# LANGUAGE TypeApplications        #-}
 -----------------------------------------------------------------------------
 module THREE.Object3D
   ( -- * Class
