@@ -1,26 +1,65 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE ConstrainedClassMethods #-}
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE DeriveAnyClass #-}
+{-# LANGUAGE DerivingVia #-}
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.VideoTexture
   ( -- * Types
     VideoTexture (..)
-    -- * Methods
+  , VideoTextureClass (..)
+    -- * Constructors
   , THREE.VideoTexture.new
-    -- * Properties
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.Constants.Textures
+import           THREE.Constants.Textures.MagnificationFilters
+import           THREE.Constants.Textures.MinificationFilters
+import           THREE.EventDispatcher
+import           THREE.Internal as THREE
+import           THREE.Texture
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/VideoTexture
+-- | https://threejs.org/docs/#api/en/textures/VideoTexture
+class (TextureClass videotexture) => VideoTextureClass videotexture where
+
+  -- Method
+
+  update :: Method videotexture () ()
+  update = method "updateMatrix"
+
+instance VideoTextureClass JSVal
+
+-----------------------------------------------------------------------------
+
 newtype VideoTexture
   = VideoTexture
-  { unVideoTextureCamera :: JSVal
-  } deriving (MakeObject)
------------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/VideoTexture
-new :: THREE.Three VideoTexture
-new = THREE.new VideoTexture "VideoTexture" ([] :: [JSString])
------------------------------------------------------------------------------
+  { unTexture :: JSVal
+  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+    deriving anyclass (EventDispatcher, TextureClass, VideoTextureClass)
+
+instance FromJSVal VideoTexture where
+  fromJSVal = pure . Just . VideoTexture
+
+-- Constructor
+
+new :: (VideoTextureNewParams t, MakeArgs t) => t -> THREE.Three VideoTexture
+new = THREE.new VideoTexture "VideoTexture"
+
+class VideoTextureNewParams t
+instance VideoTextureNewParams ()
+instance VideoTextureNewParams Object  -- TODO HTMLVideoElement?
+instance VideoTextureNewParams (Object, MappingModes)
+instance VideoTextureNewParams (Object, MappingModes, WrappingModes)
+instance VideoTextureNewParams (Object, MappingModes, WrappingModes, WrappingModes)
+instance VideoTextureNewParams (Object, MappingModes, WrappingModes, WrappingModes, MagnificationFilters)
+instance VideoTextureNewParams (Object, MappingModes, WrappingModes, WrappingModes, MagnificationFilters, MinificationFilters)
+instance VideoTextureNewParams (Object, MappingModes, WrappingModes, WrappingModes, MagnificationFilters, MinificationFilters, Formats)
+instance VideoTextureNewParams (Object, MappingModes, WrappingModes, WrappingModes, MagnificationFilters, MinificationFilters, Formats, Types)
+instance VideoTextureNewParams (Object, MappingModes, WrappingModes, WrappingModes, MagnificationFilters, MinificationFilters, Formats, Types, Double)
+
+

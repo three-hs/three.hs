@@ -162,6 +162,19 @@ instance FromJSVal Texture where
 
 -- Constructor
 
-new :: THREE.Three Texture
-new = THREE.new Texture "Texture" ()
+new :: (TextureNewParams t, MakeArgs t) => t -> THREE.Three Texture
+new = THREE.new Texture "Texture"
+
+class TextureNewParams t
+instance TextureNewParams ()
+instance TextureNewParams Object  -- TODO Image?
+instance TextureNewParams (Object, MappingModes)
+instance TextureNewParams (Object, MappingModes, WrappingModes)
+instance TextureNewParams (Object, MappingModes, WrappingModes, WrappingModes)
+instance TextureNewParams (Object, MappingModes, WrappingModes, WrappingModes, MagnificationFilters)
+instance TextureNewParams (Object, MappingModes, WrappingModes, WrappingModes, MagnificationFilters, MinificationFilters)
+instance TextureNewParams (Object, MappingModes, WrappingModes, WrappingModes, MagnificationFilters, MinificationFilters, Formats)
+instance TextureNewParams (Object, MappingModes, WrappingModes, WrappingModes, MagnificationFilters, MinificationFilters, Formats, Types)
+instance TextureNewParams (Object, MappingModes, WrappingModes, WrappingModes, MagnificationFilters, MinificationFilters, Formats, Types, Double)
+instance TextureNewParams (Object, MappingModes, WrappingModes, WrappingModes, MagnificationFilters, MinificationFilters, Formats, Types, Double, ColorSpace)
 

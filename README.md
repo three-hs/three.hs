@@ -265,8 +265,8 @@ $ nix-shell --run 'cabal build'
   - [x] [FramebufferTexture](https://threejs.org/docs/#api/en/textures/FramebufferTexture)
   - [x] [Source](https://threejs.org/docs/#api/en/textures/Source)
   - [x] [Texture](https://threejs.org/docs/#api/en/textures/Texture)
-  - [ ] [VideoFrameTexture](https://threejs.org/docs/#api/en/textures/VideoFrameTexture)
-  - [ ] [VideoTexture](https://threejs.org/docs/#api/en/textures/VideoTexture)
+  - [x] [VideoFrameTexture](https://threejs.org/docs/#api/en/textures/VideoFrameTexture)
+  - [x] [VideoTexture](https://threejs.org/docs/#api/en/textures/VideoTexture)
 
 ### Addons coverage
 
