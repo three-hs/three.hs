@@ -1,9 +1,9 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE DeriveAnyClass #-}
-{-# LANGUAGE DerivingVia #-}
-{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE DerivingVia                #-}
+{-# LANGUAGE DeriveAnyClass             #-}
+{-# LANGUAGE FlexibleInstances          #-}
+{-# LANGUAGE OverloadedStrings          #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
-{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.AmbientLight
   ( -- * Types

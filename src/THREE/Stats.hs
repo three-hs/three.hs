@@ -8,7 +8,10 @@ module THREE.Stats
     -- * Methods
   , THREE.Stats.new
   , showPanel
+  , begin
+  , end
     -- * Property
+  , dom
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle hiding (new)
@@ -31,8 +34,12 @@ new = THREE.new Stats "Stats" ([] :: [JSString])
 showPanel :: THREE.Method Stats Int ()
 showPanel = THREE.method "showPanel"
 -----------------------------------------------------------------------------
--- | Access underlying DOM value
---
-dom :: THREE.Property Stats JSVal ()
+begin :: THREE.Method Stats () ()
+begin = THREE.method "begin"
+-----------------------------------------------------------------------------
+end :: THREE.Method Stats () ()
+end = THREE.method "end"
+-----------------------------------------------------------------------------
+dom :: THREE.Property Stats ()
 dom = THREE.property "dom"
 -----------------------------------------------------------------------------
