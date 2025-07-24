@@ -22,7 +22,10 @@ import qualified THREE.Internal as THREE
 newtype Stats
   = Stats
   { unStatsCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (MakeObject, ToJSVal)
+-----------------------------------------------------------------------------
+instance FromJSVal Stats where
+  fromJSVal = pure . pure . Stats
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Stats
 new :: THREE.Three Stats
