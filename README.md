@@ -254,19 +254,19 @@ $ nix-shell --run 'cabal build'
   - [ ] [Template](https://threejs.org/docs/#api/en/scenes/Template)
 
 #### Textures
-  - [ ] [CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture)
-  - [ ] [CompressedArrayTexture](https://threejs.org/docs/#api/en/textures/CompressedArrayTexture)
-  - [ ] [CompressedTexture](https://threejs.org/docs/#api/en/textures/CompressedTexture)
-  - [ ] [CubeTexture](https://threejs.org/docs/#api/en/textures/CubeTexture)
-  - [ ] [Data3DTexture](https://threejs.org/docs/#api/en/textures/Data3DTexture)
-  - [ ] [DataArrayTexture](https://threejs.org/docs/#api/en/textures/DataArrayTexture)
-  - [ ] [DataTexture](https://threejs.org/docs/#api/en/textures/DataTexture)
-  - [ ] [DepthTexture](https://threejs.org/docs/#api/en/textures/DepthTexture)
-  - [ ] [FramebufferTexture](https://threejs.org/docs/#api/en/textures/FramebufferTexture)
-  - [ ] [Source](https://threejs.org/docs/#api/en/textures/Source)
-  - [ ] [Texture](https://threejs.org/docs/#api/en/textures/Texture)
-  - [ ] [VideoFrameTexture](https://threejs.org/docs/#api/en/textures/VideoFrameTexture)
-  - [ ] [VideoTexture](https://threejs.org/docs/#api/en/textures/VideoTexture)
+  - [x] [CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture)
+  - [x] [CompressedArrayTexture](https://threejs.org/docs/#api/en/textures/CompressedArrayTexture)
+  - [x] [CompressedTexture](https://threejs.org/docs/#api/en/textures/CompressedTexture)
+  - [x] [CubeTexture](https://threejs.org/docs/#api/en/textures/CubeTexture)
+  - [x] [Data3DTexture](https://threejs.org/docs/#api/en/textures/Data3DTexture)
+  - [x] [DataArrayTexture](https://threejs.org/docs/#api/en/textures/DataArrayTexture)
+  - [x] [DataTexture](https://threejs.org/docs/#api/en/textures/DataTexture)
+  - [x] [DepthTexture](https://threejs.org/docs/#api/en/textures/DepthTexture)
+  - [x] [FramebufferTexture](https://threejs.org/docs/#api/en/textures/FramebufferTexture)
+  - [x] [Source](https://threejs.org/docs/#api/en/textures/Source)
+  - [x] [Texture](https://threejs.org/docs/#api/en/textures/Texture)
+  - [x] [VideoFrameTexture](https://threejs.org/docs/#api/en/textures/VideoFrameTexture)
+  - [x] [VideoTexture](https://threejs.org/docs/#api/en/textures/VideoTexture)
 
 ### Addons coverage
 

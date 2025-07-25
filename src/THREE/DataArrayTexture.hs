@@ -1,26 +1,66 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE DeriveAnyClass #-}
+{-# LANGUAGE DerivingVia #-}
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.DataArrayTexture
   ( -- * Types
     DataArrayTexture (..)
-    -- * Methods
+    -- * Constructors
   , THREE.DataArrayTexture.new
     -- * Properties
+  , wrapR
+  , layerUpdates
+    -- * Methods
+  , addLayerUpdate
+  , clearLayerUpdates
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.Constants.Textures
+import           THREE.EventDispatcher
+import           THREE.Internal as THREE
+import           THREE.Texture
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/DataArrayTexture
+-- | https://threejs.org/docs/#api/en/textures/DataArrayTexture
 newtype DataArrayTexture
   = DataArrayTexture
-  { unDataArrayTextureCamera :: JSVal
-  } deriving (MakeObject)
------------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/DataArrayTexture
-new :: THREE.Three DataArrayTexture
-new = THREE.new DataArrayTexture "DataArrayTexture" ([] :: [JSString])
------------------------------------------------------------------------------
+  { unDataArrayTexture :: JSVal
+  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+    deriving anyclass (EventDispatcher, TextureClass)
+
+instance FromJSVal DataArrayTexture where
+  fromJSVal = pure . Just . DataArrayTexture
+
+-- Constructor
+
+new :: (DataArrayTextureNewParams t, MakeArgs t) => t -> THREE.Three DataArrayTexture
+new = THREE.new DataArrayTexture "DataArrayTexture"
+
+class DataArrayTextureNewParams t
+instance DataArrayTextureNewParams ()
+instance DataArrayTextureNewParams Object    -- TODO Object -> TypedArray?
+instance DataArrayTextureNewParams (Object, Int)
+instance DataArrayTextureNewParams (Object, Int, Int)
+instance DataArrayTextureNewParams (Object, Int, Int, Int)
+
+-- Property
+
+wrapR :: Property DataArrayTexture WrappingModes
+wrapR = property "wrapR"
+
+layerUpdates :: Property DataArrayTexture [Int]   -- TODO Set?
+layerUpdates = property "layerUpdates"
+
+-- Method
+
+addLayerUpdate :: Method DataArrayTexture Int ()
+addLayerUpdate = method "addLayerUpdate"
+
+clearLayerUpdates :: Method DataArrayTexture () ()
+clearLayerUpdates = method "clearLayerUpdates"
+

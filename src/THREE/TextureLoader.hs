@@ -19,8 +19,8 @@ module THREE.TextureLoader
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
 import           THREE.Internal as THREE
-import           THREE.Loader as THREE
-import           THREE.Texture as THREE
+import           THREE.Loader
+import           THREE.Texture
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/loaders/TextureLoader
 newtype TextureLoader
