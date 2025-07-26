@@ -72,16 +72,16 @@ new = THREE.new MeshLambertMaterial "MeshLambertMaterial" ()
 
 -- Property
 
-alphaMap :: Property MeshLambertMaterial (Maybe Texture)
+alphaMap :: (TextureClass texture, FromJSVal texture) => Property MeshLambertMaterial (Maybe texture)
 alphaMap = optional "alphaMap"
 
-aoMap :: Property MeshLambertMaterial (Maybe Texture)
+aoMap :: (TextureClass texture, FromJSVal texture) => Property MeshLambertMaterial (Maybe texture)
 aoMap = optional "aoMap"
 
 aoMapIntensity :: Property MeshLambertMaterial Int
 aoMapIntensity = property "aoMapIntensity"
 
-bumpMap :: Property MeshLambertMaterial (Maybe Texture)
+bumpMap :: (TextureClass texture, FromJSVal texture) => Property MeshLambertMaterial (Maybe texture)
 bumpMap = optional "bumpMap"
 
 bumpScale :: Property MeshLambertMaterial Double
@@ -93,7 +93,7 @@ color = property "color"
 combine :: Property MeshLambertMaterial TextureCombineOperations
 combine = property "combine" 
 
-displacementMap :: Property MeshLambertMaterial (Maybe Texture)
+displacementMap :: (TextureClass texture, FromJSVal texture) => Property MeshLambertMaterial (Maybe texture)
 displacementMap = optional "displacementMap"
 
 displacementScale :: Property MeshLambertMaterial Double
@@ -105,13 +105,13 @@ displacementBias = property "displacementBias"
 emissive :: Property MeshLambertMaterial Color
 emissive = property "emissive"
 
-emissiveMap :: Property MeshLambertMaterial (Maybe Texture)
+emissiveMap :: (TextureClass texture, FromJSVal texture) => Property MeshLambertMaterial (Maybe texture)
 emissiveMap = optional "emissiveMap"
 
 emissiveIntensity :: Property MeshLambertMaterial Double
 emissiveIntensity = property "emissiveIntensity"
 
-envMap :: Property MeshLambertMaterial (Maybe Texture)
+envMap :: (TextureClass texture, FromJSVal texture) => Property MeshLambertMaterial (Maybe texture)
 envMap = optional "envMap"
 
 envMapRotation :: Property MeshLambertMaterial Euler
@@ -123,16 +123,16 @@ flatShading = property "flatShading"
 fog :: Property MeshLambertMaterial Bool
 fog = property "fog"
 
-lightMap :: Property MeshLambertMaterial (Maybe Texture)
+lightMap :: (TextureClass texture, FromJSVal texture) => Property MeshLambertMaterial (Maybe texture)
 lightMap = optional "lightMap"
 
 lightMapIntensity :: Property MeshLambertMaterial Double
 lightMapIntensity = property "lightMapIntensity"
 
-map :: Property MeshLambertMaterial (Maybe Texture)
+map :: (TextureClass texture, FromJSVal texture) => Property MeshLambertMaterial (Maybe texture)
 map = optional "map"
 
-normalMap :: Property MeshLambertMaterial (Maybe Texture)
+normalMap :: (TextureClass texture, FromJSVal texture) => Property MeshLambertMaterial (Maybe texture)
 normalMap = optional "normalMap"
 
 normalMapType :: Property MeshLambertMaterial NormalMapType
@@ -147,7 +147,7 @@ reflectivity = property "reflectivity"
 refractionRatio :: Property MeshLambertMaterial Double
 refractionRatio = property "refractionRatio"
 
-specularMap :: Property MeshLambertMaterial (Maybe Texture)
+specularMap :: (TextureClass texture, FromJSVal texture) => Property MeshLambertMaterial (Maybe texture)
 specularMap = optional "specularMap"
 
 wireframe :: Property MeshLambertMaterial Bool

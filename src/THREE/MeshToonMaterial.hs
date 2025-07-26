@@ -65,16 +65,16 @@ new = THREE.new MeshToonMaterial "MeshToonMaterial" ()
 
 -- Property
 
-alphaMap :: Property MeshToonMaterial (Maybe Texture)
+alphaMap :: (TextureClass texture, FromJSVal texture) => Property MeshToonMaterial (Maybe texture)
 alphaMap = optional "alphaMap"
 
-aoMap :: Property MeshToonMaterial (Maybe Texture)
+aoMap :: (TextureClass texture, FromJSVal texture) => Property MeshToonMaterial (Maybe texture)
 aoMap = optional "aoMap"
 
 aoMapIntensity :: Property MeshToonMaterial Int
 aoMapIntensity = property "aoMapIntensity"
 
-bumpMap :: Property MeshToonMaterial (Maybe Texture)
+bumpMap :: (TextureClass texture, FromJSVal texture) => Property MeshToonMaterial (Maybe texture)
 bumpMap = optional "bumpMap"
 
 bumpScale :: Property MeshToonMaterial Double
@@ -83,7 +83,7 @@ bumpScale = property "bumpScale"
 color :: Property MeshToonMaterial Color
 color = property "color" 
 
-displacementMap :: Property MeshToonMaterial (Maybe Texture)
+displacementMap :: (TextureClass texture, FromJSVal texture) => Property MeshToonMaterial (Maybe texture)
 displacementMap = optional "displacementMap"
 
 displacementScale :: Property MeshToonMaterial Double
@@ -95,7 +95,7 @@ displacementBias = property "displacementBias"
 emissive :: Property MeshToonMaterial Color
 emissive = property "emissive"
 
-emissiveMap :: Property MeshToonMaterial (Maybe Texture)
+emissiveMap :: (TextureClass texture, FromJSVal texture) => Property MeshToonMaterial (Maybe texture)
 emissiveMap = optional "emissiveMap"
 
 emissiveIntensity :: Property MeshToonMaterial Double
@@ -104,19 +104,19 @@ emissiveIntensity = property "emissiveIntensity"
 fog :: Property MeshToonMaterial Bool
 fog = property "fog"
 
-gradientMap :: Property MeshToonMaterial (Maybe Texture)
+gradientMap :: (TextureClass texture, FromJSVal texture) => Property MeshToonMaterial (Maybe texture)
 gradientMap = optional "gradientMap"
 
-lightMap :: Property MeshToonMaterial (Maybe Texture)
+lightMap :: (TextureClass texture, FromJSVal texture) => Property MeshToonMaterial (Maybe texture)
 lightMap = optional "lightMap"
 
 lightMapIntensity :: Property MeshToonMaterial Double
 lightMapIntensity = property "lightMapIntensity"
 
-map :: Property MeshToonMaterial (Maybe Texture)
+map :: (TextureClass texture, FromJSVal texture) => Property MeshToonMaterial (Maybe texture)
 map = optional "map"
 
-normalMap :: Property MeshToonMaterial (Maybe Texture)
+normalMap :: (TextureClass texture, FromJSVal texture) => Property MeshToonMaterial (Maybe texture)
 normalMap = optional "normalMap"
 
 normalMapType :: Property MeshToonMaterial NormalMapType

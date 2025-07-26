@@ -48,7 +48,7 @@ class (Material material) => LineBasicMaterialClass material where
   linejoin :: Property material Linejoin
   linejoin = property "linejoin"
 
-  map :: Property material (Maybe Texture)
+  map :: (TextureClass texture, FromJSVal texture) => Property material (Maybe texture)
   map = optional "map"
 
   -- Method

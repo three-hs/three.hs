@@ -47,13 +47,13 @@ new = THREE.new MeshDepthMaterial "MeshDepthMaterial" ()
 
 -- Property
 
-alphaMap :: Property MeshDepthMaterial (Maybe Texture)
+alphaMap :: (TextureClass texture, FromJSVal texture) => Property MeshDepthMaterial (Maybe texture)
 alphaMap = optional "alphaMap"
 
 depthPacking :: Property MeshDepthMaterial DepthPacking
 depthPacking = property "depthPacking"
 
-displacementMap :: Property MeshDepthMaterial (Maybe Texture)
+displacementMap :: (TextureClass texture, FromJSVal texture) => Property MeshDepthMaterial (Maybe texture)
 displacementMap = optional "displacementMap"
 
 displacementScale :: Property MeshDepthMaterial Double
@@ -62,7 +62,7 @@ displacementScale = property "displacementScale"
 displacementBias :: Property MeshDepthMaterial Double
 displacementBias = property "displacementBias"
 
-map :: Property MeshDepthMaterial (Maybe Texture)
+map :: (TextureClass texture, FromJSVal texture) => Property MeshDepthMaterial (Maybe texture)
 map = optional "map"
 
 wireframe :: Property MeshDepthMaterial Bool

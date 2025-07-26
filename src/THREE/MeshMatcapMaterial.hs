@@ -55,10 +55,10 @@ new = THREE.new MeshMatcapMaterial "MeshMatcapMaterial" ()
 
 -- Property
 
-alphaMap :: Property MeshMatcapMaterial (Maybe Texture)
+alphaMap :: (TextureClass texture, FromJSVal texture) => Property MeshMatcapMaterial (Maybe texture)
 alphaMap = optional "alphaMap"
 
-bumpMap :: Property MeshMatcapMaterial (Maybe Texture)
+bumpMap :: (TextureClass texture, FromJSVal texture) => Property MeshMatcapMaterial (Maybe texture)
 bumpMap = optional "bumpMap"
 
 bumpScale :: Property MeshMatcapMaterial Double
@@ -67,7 +67,7 @@ bumpScale = property "bumpScale"
 color :: Property MeshMatcapMaterial Color
 color = property "color" 
 
-displacementMap :: Property MeshMatcapMaterial (Maybe Texture)
+displacementMap :: (TextureClass texture, FromJSVal texture) => Property MeshMatcapMaterial (Maybe texture)
 displacementMap = optional "displacementMap"
 
 displacementScale :: Property MeshMatcapMaterial Double
@@ -82,13 +82,13 @@ flatShading = property "flatShading"
 fog :: Property MeshMatcapMaterial Bool
 fog = property "fog"
 
-map :: Property MeshMatcapMaterial (Maybe Texture)
+map :: (TextureClass texture, FromJSVal texture) => Property MeshMatcapMaterial (Maybe texture)
 map = optional "map"
 
-matcap :: Property MeshMatcapMaterial (Maybe Texture)
+matcap :: (TextureClass texture, FromJSVal texture) => Property MeshMatcapMaterial (Maybe texture)
 matcap = optional "matcap"
 
-normalMap :: Property MeshMatcapMaterial (Maybe Texture)
+normalMap :: (TextureClass texture, FromJSVal texture) => Property MeshMatcapMaterial (Maybe texture)
 normalMap = optional "normalMap"
 
 normalMapType :: Property MeshMatcapMaterial NormalMapType
