@@ -82,6 +82,6 @@ target = property "target"
 -----------------------------------------------------------------------------
 -- Optional properties
 -----------------------------------------------------------------------------
-map :: THREE.Property SpotLight (Maybe Texture)
+map :: (TextureClass texture, FromJSVal texture) => Property SpotLight (Maybe texture)
 map = optional "map"
 -----------------------------------------------------------------------------

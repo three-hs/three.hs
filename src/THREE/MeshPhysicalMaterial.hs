@@ -76,7 +76,7 @@ new = THREE.new MeshPhysicalMaterial "MeshPhysicalMaterial" ()
 anisotropy :: Property MeshPhysicalMaterial Double
 anisotropy = property "anisotropy"
 
-anisotropyMap :: Property MeshPhysicalMaterial (Maybe Texture)
+anisotropyMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhysicalMaterial (Maybe texture)
 anisotropyMap = optional "anisotropyMap"
 
 anisotropyRotation :: Property MeshPhysicalMaterial Double
@@ -91,10 +91,10 @@ attenuationDistance = property "attenuationDistance"
 clearcoat :: Property MeshPhysicalMaterial Double
 clearcoat = property "clearcoat"
 
-clearcoatMap :: Property MeshPhysicalMaterial (Maybe Texture)
+clearcoatMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhysicalMaterial (Maybe texture)
 clearcoatMap = optional "clearcoatMap"
 
-clearcoatNormalMap :: Property MeshPhysicalMaterial (Maybe Texture)
+clearcoatNormalMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhysicalMaterial (Maybe texture)
 clearcoatNormalMap = optional "clearcoatNormalMap"
 
 clearcoatNormalScale :: Property MeshPhysicalMaterial Vector2
@@ -103,7 +103,7 @@ clearcoatNormalScale = property "clearcoatNormalScale"
 clearcoatRoughness :: Property MeshPhysicalMaterial Double
 clearcoatRoughness = property "clearcoatRoughness"
 
-clearcoatRoughnessMap :: Property MeshPhysicalMaterial (Maybe Texture)
+clearcoatRoughnessMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhysicalMaterial (Maybe texture)
 clearcoatRoughnessMap = optional "clearcoatRoughnessMap"
 
 dispersion :: Property MeshPhysicalMaterial Double
@@ -118,7 +118,7 @@ reflectivity = property "reflectivity"
 iridescence :: Property MeshPhysicalMaterial Double
 iridescence = property "iridescence"
 
-iridescenceMap :: Property MeshPhysicalMaterial (Maybe Texture)
+iridescenceMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhysicalMaterial (Maybe texture)
 iridescenceMap = optional "iridescenceMap"
 
 iridescenceIOR :: Property MeshPhysicalMaterial Double
@@ -127,7 +127,7 @@ iridescenceIOR = property "iridescenceIOR"
 iridescenceThicknessRange :: Property MeshPhysicalMaterial [Double]   -- TODO return type should be (Double, Double)
 iridescenceThicknessRange = property "iridescenceThicknessRange"
 
-iridescenceThicknessMap :: Property MeshPhysicalMaterial (Maybe Texture)
+iridescenceThicknessMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhysicalMaterial (Maybe texture)
 iridescenceThicknessMap = optional "iridescenceThicknessMap"
 
 sheen :: Property MeshPhysicalMaterial Double
@@ -136,36 +136,36 @@ sheen = property "sheen"
 sheenRoughness :: Property MeshPhysicalMaterial Double
 sheenRoughness = property "sheenRoughness"
 
-sheenRoughnessMap :: Property MeshPhysicalMaterial (Maybe Texture)
+sheenRoughnessMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhysicalMaterial (Maybe texture)
 sheenRoughnessMap = optional "sheenRoughnessMap"
 
 sheenColor :: Property MeshPhysicalMaterial Color
 sheenColor = property "sheenColor"
 
-sheenColorMap :: Property MeshPhysicalMaterial (Maybe Texture)
+sheenColorMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhysicalMaterial (Maybe texture)
 sheenColorMap = optional "sheenColorMap"
 
 specularIntensity :: Property MeshPhysicalMaterial Double
 specularIntensity = property "specularIntensity"
 
-specularIntensityMap :: Property MeshPhysicalMaterial (Maybe Texture)
+specularIntensityMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhysicalMaterial (Maybe texture)
 specularIntensityMap = optional "specularIntensityMap"
 
 specularColor :: Property MeshPhysicalMaterial Color
 specularColor = property "specularColor"
 
-specularColorMap :: Property MeshPhysicalMaterial (Maybe Texture)
+specularColorMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhysicalMaterial (Maybe texture)
 specularColorMap = optional "specularColorMap"
 
 thickness :: Property MeshPhysicalMaterial Double
 thickness = property "thickness"
 
-thicknessMap :: Property MeshPhysicalMaterial (Maybe Texture)
+thicknessMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhysicalMaterial (Maybe texture)
 thicknessMap = optional "thicknessMap"
 
 transmission :: Property MeshPhysicalMaterial Double
 transmission = property "transmission"
 
-transmissionMap :: Property MeshPhysicalMaterial (Maybe Texture)
+transmissionMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhysicalMaterial (Maybe texture)
 transmissionMap = optional "transmissionMap"
 

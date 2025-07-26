@@ -51,13 +51,13 @@ new = THREE.new MeshNormalMaterial "MeshNormalMaterial" ()
 
 -- Property
 
-bumpMap :: Property MeshNormalMaterial (Maybe Texture)
+bumpMap :: (TextureClass texture, FromJSVal texture) => Property MeshNormalMaterial (Maybe texture)
 bumpMap = optional "bumpMap"
 
 bumpScale :: Property MeshNormalMaterial Double
 bumpScale = property "bumpScale"
 
-displacementMap :: Property MeshNormalMaterial (Maybe Texture)
+displacementMap :: (TextureClass texture, FromJSVal texture) => Property MeshNormalMaterial (Maybe texture)
 displacementMap = optional "displacementMap"
 
 displacementScale :: Property MeshNormalMaterial Double
@@ -69,7 +69,7 @@ displacementBias = property "displacementBias"
 flatShading :: Property MeshNormalMaterial Bool
 flatShading = property "flatShading"
 
-normalMap :: Property MeshNormalMaterial (Maybe Texture)
+normalMap :: (TextureClass texture, FromJSVal texture) => Property MeshNormalMaterial (Maybe texture)
 normalMap = optional "normalMap"
 
 normalMapType :: Property MeshNormalMaterial NormalMapType

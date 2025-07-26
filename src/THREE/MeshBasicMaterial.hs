@@ -59,10 +59,10 @@ new = THREE.new MeshBasicMaterial "MeshBasicMaterial"
 
 -- Property
 
-alphaMap  :: Property MeshBasicMaterial (Maybe Texture)
+alphaMap :: (TextureClass texture, FromJSVal texture) => Property MeshBasicMaterial (Maybe texture)
 alphaMap  = optional "alphaMap"
 
-aoMap  :: Property MeshBasicMaterial (Maybe Texture)
+aoMap :: (TextureClass texture, FromJSVal texture) => Property MeshBasicMaterial (Maybe texture)
 aoMap  = optional "aoMap"
 
 aoMapIntensity :: Property MeshBasicMaterial Int
@@ -74,7 +74,7 @@ color = property "color"
 combine :: Property MeshBasicMaterial TextureCombineOperations
 combine = property "combine" 
 
-envMap :: Property MeshBasicMaterial (Maybe Texture)
+envMap :: (TextureClass texture, FromJSVal texture) => Property MeshBasicMaterial (Maybe texture)
 envMap = optional "envMap"
 
 envMapRotation :: Property MeshBasicMaterial Euler
@@ -83,13 +83,13 @@ envMapRotation = property "envMapRotation"
 fog :: Property MeshBasicMaterial Bool
 fog = property "fog"
 
-lightMap :: Property MeshBasicMaterial (Maybe Texture)
+lightMap :: (TextureClass texture, FromJSVal texture) => Property MeshBasicMaterial (Maybe texture)
 lightMap = optional "lightMap"
 
 lightMapIntensity :: Property MeshBasicMaterial Double
 lightMapIntensity = property "lightMapIntensity"
 
-map :: Property MeshBasicMaterial (Maybe Texture)
+map :: (TextureClass texture, FromJSVal texture) => Property MeshBasicMaterial (Maybe texture)
 map = optional "map"
 
 reflectivity :: Property MeshBasicMaterial Double
@@ -98,7 +98,7 @@ reflectivity = property "reflectivity"
 refractionRatio :: Property MeshBasicMaterial Double
 refractionRatio = property "refractionRatio"
 
-specularMap :: Property MeshBasicMaterial (Maybe Texture)
+specularMap :: (TextureClass texture, FromJSVal texture) => Property MeshBasicMaterial (Maybe texture)
 specularMap = optional "specularMap"
 
 wireframe :: Property MeshBasicMaterial Bool

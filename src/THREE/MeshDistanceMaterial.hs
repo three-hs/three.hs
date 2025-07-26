@@ -43,10 +43,10 @@ new = THREE.new MeshDistanceMaterial "MeshDistanceMaterial" ()
 
 -- Property
 
-alphaMap :: Property MeshDistanceMaterial (Maybe Texture)
+alphaMap :: (TextureClass texture, FromJSVal texture) => Property MeshDistanceMaterial (Maybe texture)
 alphaMap = optional "alphaMap"
 
-displacementMap :: Property MeshDistanceMaterial (Maybe Texture)
+displacementMap :: (TextureClass texture, FromJSVal texture) => Property MeshDistanceMaterial (Maybe texture)
 displacementMap = optional "displacementMap"
 
 displacementScale :: Property MeshDistanceMaterial Double
@@ -55,6 +55,6 @@ displacementScale = property "displacementScale"
 displacementBias :: Property MeshDistanceMaterial Double
 displacementBias = property "displacementBias"
 
-map :: Property MeshDistanceMaterial (Maybe Texture)
+map :: (TextureClass texture, FromJSVal texture) => Property MeshDistanceMaterial (Maybe texture)
 map = optional "map"
 

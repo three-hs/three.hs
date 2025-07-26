@@ -45,7 +45,7 @@ new = THREE.new PointsMaterial "PointsMaterial" ()
 
 -- Property
 
-alphaMap :: Property PointsMaterial (Maybe Texture)
+alphaMap :: (TextureClass texture, FromJSVal texture) => Property PointsMaterial (Maybe texture)
 alphaMap = optional "alphaMap"
 
 color :: Property PointsMaterial Color
@@ -54,7 +54,7 @@ color = property "color"
 fog :: Property PointsMaterial Bool
 fog = property "fog"
 
-map :: Property PointsMaterial (Maybe Texture)
+map :: (TextureClass texture, FromJSVal texture) => Property PointsMaterial (Maybe texture)
 map = optional "map"
 
 size :: Property PointsMaterial Double

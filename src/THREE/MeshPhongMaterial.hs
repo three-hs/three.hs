@@ -78,16 +78,16 @@ new = THREE.new MeshPhongMaterial "MeshPhongMaterial" ()
 
 -- Property
 
-alphaMap :: Property MeshPhongMaterial (Maybe Texture)
+alphaMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhongMaterial (Maybe texture)
 alphaMap = optional "alphaMap"
 
-aoMap :: Property MeshPhongMaterial (Maybe Texture)
+aoMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhongMaterial (Maybe texture)
 aoMap = optional "aoMap"
 
 aoMapIntensity :: Property MeshPhongMaterial Int
 aoMapIntensity = property "aoMapIntensity"
 
-bumpMap :: Property MeshPhongMaterial (Maybe Texture)
+bumpMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhongMaterial (Maybe texture)
 bumpMap = optional "bumpMap"
 
 bumpScale :: Property MeshPhongMaterial Double
@@ -99,7 +99,7 @@ color = property "color"
 combine :: Property MeshPhongMaterial TextureCombineOperations
 combine = property "combine" 
 
-displacementMap :: Property MeshPhongMaterial (Maybe Texture)
+displacementMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhongMaterial (Maybe texture)
 displacementMap = optional "displacementMap"
 
 displacementScale :: Property MeshPhongMaterial Double
@@ -111,13 +111,13 @@ displacementBias = property "displacementBias"
 emissive :: Property MeshPhongMaterial Color
 emissive = property "emissive"
 
-emissiveMap :: Property MeshPhongMaterial (Maybe Texture)
+emissiveMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhongMaterial (Maybe texture)
 emissiveMap = optional "emissiveMap"
 
 emissiveIntensity :: Property MeshPhongMaterial Double
 emissiveIntensity = property "emissiveIntensity"
 
-envMap :: Property MeshPhongMaterial (Maybe Texture)
+envMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhongMaterial (Maybe texture)
 envMap = optional "envMap"
 
 envMapRotation :: Property MeshPhongMaterial Euler
@@ -129,16 +129,16 @@ flatShading = property "flatShading"
 fog :: Property MeshPhongMaterial Bool
 fog = property "fog"
 
-lightMap :: Property MeshPhongMaterial (Maybe Texture)
+lightMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhongMaterial (Maybe texture)
 lightMap = optional "lightMap"
 
 lightMapIntensity :: Property MeshPhongMaterial Double
 lightMapIntensity = property "lightMapIntensity"
 
-map :: Property MeshPhongMaterial (Maybe Texture)
+map :: (TextureClass texture, FromJSVal texture) => Property MeshPhongMaterial (Maybe texture)
 map = optional "map"
 
-normalMap :: Property MeshPhongMaterial (Maybe Texture)
+normalMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhongMaterial (Maybe texture)
 normalMap = optional "normalMap"
 
 normalMapType :: Property MeshPhongMaterial NormalMapType
@@ -159,7 +159,7 @@ shininess = property "shininess"
 specular :: Property MeshPhongMaterial Color
 specular = property "specular" 
 
-specularMap :: Property MeshPhongMaterial (Maybe Texture)
+specularMap :: (TextureClass texture, FromJSVal texture) => Property MeshPhongMaterial (Maybe texture)
 specularMap = optional "specularMap"
 
 wireframe :: Property MeshPhongMaterial Bool

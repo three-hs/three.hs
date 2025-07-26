@@ -45,7 +45,7 @@ new = THREE.new SpriteMaterial "SpriteMaterial" ()
 
 -- Property
 
-alphaMap :: Property SpriteMaterial (Maybe Texture)
+alphaMap :: (TextureClass texture, FromJSVal texture) => Property SpriteMaterial (Maybe texture)
 alphaMap = optional "alphaMap"
 
 color :: Property SpriteMaterial Color
@@ -54,7 +54,7 @@ color = property "color"
 fog :: Property SpriteMaterial Bool
 fog = property "fog"
 
-map :: Property SpriteMaterial (Maybe Texture)
+map :: (TextureClass texture, FromJSVal texture) => Property SpriteMaterial (Maybe texture)
 map = optional "map"
 
 rotation :: Property SpriteMaterial Double

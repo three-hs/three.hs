@@ -35,16 +35,16 @@ class (Material material) => MeshStandardMaterialClass material where
 
   -- Property
 
-  alphaMap :: Property material (Maybe Texture)
+  alphaMap :: (TextureClass texture, FromJSVal texture) => Property material (Maybe texture)
   alphaMap = optional "alphaMap"
 
-  aoMap :: Property material (Maybe Texture)
+  aoMap :: (TextureClass texture, FromJSVal texture) => Property material (Maybe texture)
   aoMap = optional "aoMap"
 
   aoMapIntensity :: Property material Int
   aoMapIntensity = property "aoMapIntensity"
 
-  bumpMap :: Property material (Maybe Texture)
+  bumpMap :: (TextureClass texture, FromJSVal texture) => Property material (Maybe texture)
   bumpMap = optional "bumpMap"
 
   bumpScale :: Property material Double
@@ -56,7 +56,7 @@ class (Material material) => MeshStandardMaterialClass material where
   defines :: Property material Object
   defines = property "defines"
 
-  displacementMap :: Property material (Maybe Texture)
+  displacementMap :: (TextureClass texture, FromJSVal texture) => Property material (Maybe texture)
   displacementMap = optional "displacementMap"
 
   displacementScale :: Property material Double
@@ -68,13 +68,13 @@ class (Material material) => MeshStandardMaterialClass material where
   emissive :: Property material Color
   emissive = property "emissive"
 
-  emissiveMap :: Property material (Maybe Texture)
+  emissiveMap :: (TextureClass texture, FromJSVal texture) => Property material (Maybe texture)
   emissiveMap = optional "emissiveMap"
 
   emissiveIntensity :: Property material Double
   emissiveIntensity = property "emissiveIntensity"
 
-  envMap :: Property material (Maybe Texture)
+  envMap :: (TextureClass texture, FromJSVal texture) => Property material (Maybe texture)
   envMap = optional "envMap"
 
   envMapRotation :: Property material Euler
@@ -89,22 +89,22 @@ class (Material material) => MeshStandardMaterialClass material where
   fog :: Property material Bool
   fog = property "fog"
 
-  lightMap :: Property material (Maybe Texture)
+  lightMap :: (TextureClass texture, FromJSVal texture) => Property material (Maybe texture)
   lightMap = optional "lightMap"
 
   lightMapIntensity :: Property material Double
   lightMapIntensity = property "lightMapIntensity"
 
-  map :: Property material (Maybe Texture)
+  map :: (TextureClass texture, FromJSVal texture) => Property material (Maybe texture)
   map = optional "map"
 
   metalness :: Property material Double
   metalness = property "metalness"
 
-  metalnessMap :: Property material (Maybe Texture)
+  metalnessMap :: (TextureClass texture, FromJSVal texture) => Property material (Maybe texture)
   metalnessMap = optional "metalnessMap"
 
-  normalMap :: Property material (Maybe Texture)
+  normalMap :: (TextureClass texture, FromJSVal texture) => Property material (Maybe texture)
   normalMap = optional "normalMap"
 
   normalMapType :: Property material NormalMapType
@@ -116,7 +116,7 @@ class (Material material) => MeshStandardMaterialClass material where
   roughness :: Property material Double
   roughness = property "roughness"
 
-  roughnessMap :: Property material (Maybe Texture)
+  roughnessMap :: (TextureClass texture, FromJSVal texture) => Property material (Maybe texture)
   roughnessMap = optional "roughnessMap"
 
   wireframe :: Property material Bool
