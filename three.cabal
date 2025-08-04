@@ -240,7 +240,6 @@ library
     THREE.FogExp2
     THREE.Fog
     THREE.Scene
-    THREE.Template
     -- Textures
     THREE.CanvasTexture
     THREE.CompressedArrayTexture

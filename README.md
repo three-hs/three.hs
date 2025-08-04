@@ -248,10 +248,9 @@ $ nix-shell --run 'cabal build'
   - [ ] [WebXRManager](https://threejs.org/docs/#api/en/renderers/WebXRManager)
 
 #### Scenes
-  - [ ] [FogExp2](https://threejs.org/docs/#api/en/scenes/FogExp2)
-  - [ ] [Fog](https://threejs.org/docs/#api/en/scenes/Fog)
-  - [ ] [Scene](https://threejs.org/docs/#api/en/scenes/Scene)
-  - [ ] [Template](https://threejs.org/docs/#api/en/scenes/Template)
+  - [x] [FogExp2](https://threejs.org/docs/#api/en/scenes/FogExp2)
+  - [x] [Fog](https://threejs.org/docs/#api/en/scenes/Fog)
+  - [x] [Scene](https://threejs.org/docs/#api/en/scenes/Scene)
 
 #### Textures
   - [x] [CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture)

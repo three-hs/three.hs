@@ -1,8 +1,8 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE ConstrainedClassMethods    #-}
-{-# LANGUAGE DataKinds                  #-}
-{-# LANGUAGE DerivingVia                #-}
-{-# LANGUAGE OverloadedStrings          #-}
+{-# LANGUAGE ConstrainedClassMethods #-}
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE DerivingVia #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.Material
   ( Material (..)
