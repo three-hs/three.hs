@@ -1,6 +1,8 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.Triangle
   ( -- * Types
@@ -17,8 +19,8 @@ import qualified THREE.Internal as THREE
 -- | https://threejs.org/docs/#api/en/scenes/Triangle
 newtype Triangle
   = Triangle
-  { unTriangleCamera :: JSVal
-  } deriving (MakeObject)
+  { unTriangle :: JSVal
+  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Triangle
 new :: THREE.Three Triangle

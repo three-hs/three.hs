@@ -191,8 +191,8 @@ $ nix-shell --run 'cabal build'
   - [x] [SpriteMaterial](https://threejs.org/docs/#api/en/materials/SpriteMaterial)
 
 #### Math
-  - [ ] [Box2](https://threejs.org/docs/#api/en/math/Box2)
-  - [ ] [Box3](https://threejs.org/docs/#api/en/math/Box3)
+  - [x] [Box2](https://threejs.org/docs/#api/en/math/Box2)
+  - [x] [Box3](https://threejs.org/docs/#api/en/math/Box3)
   - [ ] [Color](https://threejs.org/docs/#api/en/math/Color)
   - [ ] [Cylindrical](https://threejs.org/docs/#api/en/math/Cylindrical)
   - [ ] [Euler](https://threejs.org/docs/#api/en/math/Euler)

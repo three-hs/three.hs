@@ -1,6 +1,8 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.BufferAttribute
   ( -- * Types
@@ -17,8 +19,8 @@ import qualified THREE.Internal as THREE
 -- | https://threejs.org/docs/#api/en/scenes/BufferAttribute
 newtype BufferAttribute
   = BufferAttribute
-  { unBufferAttributeCamera :: JSVal
-  } deriving (MakeObject)
+  { unBufferAttribute :: JSVal
+  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/BufferAttribute
 new :: THREE.Three BufferAttribute

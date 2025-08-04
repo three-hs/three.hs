@@ -1,6 +1,8 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module THREE.Sphere
   ( -- * Types
@@ -17,10 +19,13 @@ import qualified THREE.Internal as THREE
 -- | https://threejs.org/docs/#api/en/scenes/Sphere
 newtype Sphere
   = Sphere
-  { unSphereCamera :: JSVal
-  } deriving (MakeObject)
+  { unSphere :: JSVal
+  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Sphere
 new :: THREE.Three Sphere
 new = THREE.new Sphere "Sphere" ([] :: [JSString])
+-----------------------------------------------------------------------------
+instance FromJSVal Sphere where
+  fromJSVal = pure . pure . Sphere
 -----------------------------------------------------------------------------
