@@ -10,7 +10,7 @@ module THREE.StringKeyframeTrack
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype StringKeyframeTrack
   = StringKeyframeTrack
   { unStringKeyframeTrackCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/StringKeyframeTrack
 new :: THREE.Three StringKeyframeTrack
-new = THREE.new StringKeyframeTrack "StringKeyframeTrack" ([] :: [JSString])
+new = THREE.new StringKeyframeTrack "StringKeyframeTrack" ([] :: [MisoString])
 -----------------------------------------------------------------------------

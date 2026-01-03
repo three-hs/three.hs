@@ -10,7 +10,7 @@ module THREE.Earcut
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype Earcut
   = Earcut
   { unEarcutCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Earcut
 new :: THREE.Three Earcut
-new = THREE.new Earcut "Earcut" ([] :: [JSString])
+new = THREE.new Earcut "Earcut" ([] :: [MisoString])
 -----------------------------------------------------------------------------

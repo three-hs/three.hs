@@ -9,7 +9,7 @@ module THREE.Object3D
     Object3D (..)
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Euler           as THREE
 import           THREE.Internal        as THREE
@@ -55,7 +55,7 @@ class EventDispatcher object => Object3D object where
   matrixWorldNeedsUpdate = property "matrixWorldNeedsUpdate"
   modelViewMatrix :: Property object Matrix4
   modelViewMatrix = property "modelViewMatrix"
-  name :: Property object JSString
+  name :: Property object MisoString
   name = property "name"
   normalMatrix :: Property object Matrix3
   normalMatrix = property "normalMatrix"
@@ -85,7 +85,7 @@ class EventDispatcher object => Object3D object where
   up = property "up"
   userData :: Property object Object
   userData = property "userData"
-  uuid :: Property object JSString
+  uuid :: Property object MisoString
   uuid = property "uuid"
   visible :: Property object Bool
   visible = property "visible"
@@ -95,30 +95,30 @@ class EventDispatcher object => Object3D object where
   defaultMatrixAutoUpdate = property "DEFAULT_MATRIX_AUTO_UPDATE"
   defaultMatrixWorldAutoUpdate :: Property object Bool
   defaultMatrixWorldAutoUpdate = property "DEFAULT_MATRIX_WORLD_AUTO_UPDATE"
-  add :: (MakeArgs arg, FromJSVal object, Object3D arg) => Method object arg object
+  add :: (ToArgs arg, FromJSVal object, Object3D arg) => Method object arg object
   add = method "add"
   applyMatrix4 :: Method object Matrix4 ()
   applyMatrix4 = method "applyMatrix4"
   applyQuaternion :: (FromJSVal object) => Method object Quaternion object
   applyQuaternion = method "applyQuaternion"
-  attach :: (FromJSVal object, MakeArgs arg) => Method object arg object
+  attach :: (FromJSVal object, ToArgs arg) => Method object arg object
   attach = method "attach" 
-  clear :: (MakeArgs arg, FromJSVal object) => Method object arg object
+  clear :: (ToArgs arg, FromJSVal object) => Method object arg object
   clear = method "clear"
-  clone :: (FromJSVal object, Object3DCloneParams t, MakeArgs t) => Method object t object
+  clone :: (FromJSVal object, Object3DCloneParams t, ToArgs t) => Method object t object
   clone = method "clone" 
-  copy :: (MakeArgs object, FromJSVal object, Object3DCopyParams object t, MakeArgs t) => Method object t object
+  copy :: (ToArgs object, FromJSVal object, Object3DCopyParams object t, ToArgs t) => Method object t object
   copy = method "copy"
   -- The getObject* methods don't really make sense in Haskell. It can break the type safety like:
   -- myCamera <- mesh1 & getObjectByName "myGeometry" :: Three PerspectiveCamera
   --
   -- getObjectById :: (FromJSVal return, Object3D return) => Method object Int return
   -- getObjectById = method "getObjectById" 
-  -- getObjectByName :: (FromJSVal return, Object3D return) => Method object JSString return
+  -- getObjectByName :: (FromJSVal return, Object3D return) => Method object MisoString return
   -- getObjectByName = method "getObjectByName" 
-  -- getObjectByProperty :: (ToJSVal a, Object3D return, FromJSVal return) => Method object (JSString, a) return
+  -- getObjectByProperty :: (ToJSVal a, Object3D return, FromJSVal return) => Method object (MisoString, a) return
   -- getObjectByProperty = method  "getObjectByProperty"
-  -- getObjectsByProperty :: (ToJSVal a) => Method object (JSString, a, Maybe [Object]) [Object]
+  -- getObjectsByProperty :: (ToJSVal a) => Method object (MisoString, a, Maybe [Object]) [Object]
   -- getObjectsByProperty = method "getObjectsByProperty"
   getWorldPosition :: Method object Vector3 Vector3
   getWorldPosition = method "getWorldPosition"
@@ -130,11 +130,11 @@ class EventDispatcher object => Object3D object where
   getWorldDirection = method "getWorldDirection"
   localToWorld :: Method object Vector3 Vector3
   localToWorld = method "localToWorld"
-  lookAt :: (MakeArgs arg, Triplet arg) => Method object arg ()
+  lookAt :: (ToArgs arg, Triplet arg) => Method object arg ()
   lookAt = method "lookAt" 
   raycast :: Method object (Raycaster, JSVal) ()
   raycast = method "raycast"
-  remove :: (MakeArgs arg, Object3D arg, FromJSVal object) => Method object arg object
+  remove :: (ToArgs arg, Object3D arg, FromJSVal object) => Method object arg object
   remove = method "remove" 
   removeFromParent :: (FromJSVal object) => Method object () object
   removeFromParent = method "removeFromParent" 

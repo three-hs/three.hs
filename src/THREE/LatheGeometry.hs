@@ -10,7 +10,7 @@ module THREE.LatheGeometry
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,7 +18,7 @@ import qualified THREE.Internal as THREE
 newtype LatheGeometry
   = LatheGeometry
   { unLatheGeometryCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LatheGeometry
 new :: THREE.Three LatheGeometry

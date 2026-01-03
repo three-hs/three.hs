@@ -10,7 +10,7 @@ module THREE.PositionalAudio
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype PositionalAudio
   = PositionalAudio
   { unPositionalAudioCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/PositionalAudio
 new :: THREE.Three PositionalAudio
-new = THREE.new PositionalAudio "PositionalAudio" ([] :: [JSString])
+new = THREE.new PositionalAudio "PositionalAudio" ([] :: [MisoString])
 -----------------------------------------------------------------------------

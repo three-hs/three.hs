@@ -10,7 +10,7 @@ module THREE.Clock
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype Clock
   = Clock
   { unClockCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Clock
 new :: THREE.Three Clock
-new = THREE.new Clock "Clock" ([] :: [JSString])
+new = THREE.new Clock "Clock" ([] :: [MisoString])
 -----------------------------------------------------------------------------

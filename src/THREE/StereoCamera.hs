@@ -10,7 +10,7 @@ module THREE.StereoCamera
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype StereoCamera
   = StereoCamera
   { unStereoCameraCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/StereoCamera
 new :: THREE.Three StereoCamera
-new = THREE.new StereoCamera "StereoCamera" ([] :: [JSString])
+new = THREE.new StereoCamera "StereoCamera" ([] :: [MisoString])
 -----------------------------------------------------------------------------

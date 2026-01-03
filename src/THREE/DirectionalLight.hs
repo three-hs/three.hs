@@ -20,7 +20,7 @@ module THREE.DirectionalLight
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.EventDispatcher
 import           THREE.Internal as THREE
@@ -31,7 +31,7 @@ import           THREE.Object3D
 newtype DirectionalLight
   = DirectionalLight
   { unDirectionalLight :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Light, Object3D, EventDispatcher)
 -----------------------------------------------------------------------------
 instance FromJSVal DirectionalLight where
@@ -41,7 +41,7 @@ class DirectionalLightParams t
 instance DirectionalLightParams ()
 instance DirectionalLightParams Int
 instance DirectionalLightParams (Int, Double)
-new :: (MakeArgs t, DirectionalLightParams t) => t -> THREE.Three DirectionalLight
+new :: (ToArgs t, DirectionalLightParams t) => t -> THREE.Three DirectionalLight
 new = THREE.new DirectionalLight "DirectionalLight"
 -----------------------------------------------------------------------------
 -- Read-only properties

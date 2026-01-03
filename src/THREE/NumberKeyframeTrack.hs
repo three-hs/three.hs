@@ -10,7 +10,7 @@ module THREE.NumberKeyframeTrack
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype NumberKeyframeTrack
   = NumberKeyframeTrack
   { unNumberKeyframeTrackCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/NumberKeyframeTrack
 new :: THREE.Three NumberKeyframeTrack
-new = THREE.new NumberKeyframeTrack "NumberKeyframeTrack" ([] :: [JSString])
+new = THREE.new NumberKeyframeTrack "NumberKeyframeTrack" ([] :: [MisoString])
 -----------------------------------------------------------------------------

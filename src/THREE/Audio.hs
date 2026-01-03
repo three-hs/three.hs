@@ -10,7 +10,7 @@ module THREE.Audio
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype Audio
   = Audio
   { unAudioCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Audio
 new :: THREE.Three Audio
-new = THREE.new Audio "Audio" ([] :: [JSString])
+new = THREE.new Audio "Audio" ([] :: [MisoString])
 -----------------------------------------------------------------------------

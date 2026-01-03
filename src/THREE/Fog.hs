@@ -17,7 +17,7 @@ module THREE.Fog
   , far
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Color
 import           THREE.Internal as THREE
@@ -26,7 +26,7 @@ import           THREE.Internal as THREE
 newtype Fog
   = Fog
   { unFog :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
 -----------------------------------------------------------------------------
 instance FromJSVal Fog where
   fromJSVal = pure . pure . Fog
@@ -35,14 +35,14 @@ class FogNewParams a
 instance FogNewParams Int
 instance FogNewParams (Int, Double)
 instance FogNewParams (Int, Double, Double)
-new :: (FogNewParams a, MakeArgs a) => a -> THREE.Three Fog
+new :: (FogNewParams a, ToArgs a) => a -> THREE.Three Fog
 new = THREE.new Fog "Fog"
 -----------------------------------------------------------------------------
 
 isFog :: ReadOnly Fog Bool
 isFog = readonly "isFog" 
 
-name :: Property Fog JSString
+name :: Property Fog MisoString
 name = property "name"
 
 color :: Property Fog Color

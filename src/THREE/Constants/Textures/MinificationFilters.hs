@@ -6,7 +6,7 @@ module THREE.Constants.Textures.MinificationFilters
   ( MinificationFilters (..)
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 
 data MinificationFilters

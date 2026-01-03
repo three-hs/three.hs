@@ -10,7 +10,7 @@ module THREE.EllipseCurve
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype EllipseCurve
   = EllipseCurve
   { unEllipseCurveCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/EllipseCurve
 new :: THREE.Three EllipseCurve
-new = THREE.new EllipseCurve "EllipseCurve" ([] :: [JSString])
+new = THREE.new EllipseCurve "EllipseCurve" ([] :: [MisoString])
 -----------------------------------------------------------------------------

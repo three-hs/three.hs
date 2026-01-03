@@ -10,7 +10,7 @@ module THREE.SphericalHarmonics3
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,7 +18,7 @@ import qualified THREE.Internal as THREE
 newtype SphericalHarmonics3
   = SphericalHarmonics3
   { unSphericalHarmonics3 :: JSVal
-  } deriving (MakeObject, ToJSVal, MakeArgs)
+  } deriving (ToObject, ToJSVal, ToArgs)
 -----------------------------------------------------------------------------
 instance FromJSVal SphericalHarmonics3 where
   fromJSVal = pure . pure . SphericalHarmonics3

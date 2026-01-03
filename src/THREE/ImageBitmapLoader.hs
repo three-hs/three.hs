@@ -10,7 +10,7 @@ module THREE.ImageBitmapLoader
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype ImageBitmapLoader
   = ImageBitmapLoader
   { unImageBitmapLoaderCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ImageBitmapLoader
 new :: THREE.Three ImageBitmapLoader
-new = THREE.new ImageBitmapLoader "ImageBitmapLoader" ([] :: [JSString])
+new = THREE.new ImageBitmapLoader "ImageBitmapLoader" ([] :: [MisoString])
 -----------------------------------------------------------------------------

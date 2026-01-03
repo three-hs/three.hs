@@ -10,7 +10,7 @@ module THREE.RingGeometry
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype RingGeometry
   = RingGeometry
   { unRingGeometryCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/RingGeometry
 new :: THREE.Three RingGeometry
-new = THREE.new RingGeometry "RingGeometry" ([] :: [JSString])
+new = THREE.new RingGeometry "RingGeometry" ([] :: [MisoString])
 -----------------------------------------------------------------------------

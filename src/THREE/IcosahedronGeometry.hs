@@ -10,7 +10,7 @@ module THREE.IcosahedronGeometry
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype IcosahedronGeometry
   = IcosahedronGeometry
   { unIcosahedronGeometryCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/IcosahedronGeometry
 new :: THREE.Three IcosahedronGeometry
-new = THREE.new IcosahedronGeometry "IcosahedronGeometry" ([] :: [JSString])
+new = THREE.new IcosahedronGeometry "IcosahedronGeometry" ([] :: [MisoString])
 -----------------------------------------------------------------------------

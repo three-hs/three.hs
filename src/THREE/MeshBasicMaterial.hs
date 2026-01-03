@@ -32,7 +32,7 @@ module THREE.MeshBasicMaterial
   , wireframeLinewidth
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle hiding (new)
+import           Miso hiding (new)
 -----------------------------------------------------------------------------
 import           THREE.Color 
 import           THREE.Constants.Materials
@@ -46,7 +46,7 @@ import           THREE.Texture
 newtype MeshBasicMaterial
   = MeshBasicMaterial
   { unMeshBasicMaterial :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Material, EventDispatcher)
 
 instance FromJSVal MeshBasicMaterial where

@@ -10,7 +10,7 @@ module THREE.TubeGeometry
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype TubeGeometry
   = TubeGeometry
   { unTubeGeometryCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/TubeGeometry
 new :: THREE.Three TubeGeometry
-new = THREE.new TubeGeometry "TubeGeometry" ([] :: [JSString])
+new = THREE.new TubeGeometry "TubeGeometry" ([] :: [MisoString])
 -----------------------------------------------------------------------------

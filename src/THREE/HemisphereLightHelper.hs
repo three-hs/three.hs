@@ -10,7 +10,7 @@ module THREE.HemisphereLightHelper
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype HemisphereLightHelper
   = HemisphereLightHelper
   { unHemisphereLightHelperCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/HemisphereLightHelper
 new :: THREE.Three HemisphereLightHelper
-new = THREE.new HemisphereLightHelper "HemisphereLightHelper" ([] :: [JSString])
+new = THREE.new HemisphereLightHelper "HemisphereLightHelper" ([] :: [MisoString])
 -----------------------------------------------------------------------------

@@ -7,7 +7,7 @@ module THREE.Constants.CustomBlendingEquations.SourceFactors
     SourceFactors (..)
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 
 data SourceFactors

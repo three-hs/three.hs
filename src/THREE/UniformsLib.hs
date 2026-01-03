@@ -10,7 +10,7 @@ module THREE.UniformsLib
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype UniformsLib
   = UniformsLib
   { unUniformsLibCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/UniformsLib
 new :: THREE.Three UniformsLib
-new = THREE.new UniformsLib "UniformsLib" ([] :: [JSString])
+new = THREE.new UniformsLib "UniformsLib" ([] :: [MisoString])
 -----------------------------------------------------------------------------

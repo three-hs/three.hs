@@ -10,7 +10,7 @@ module THREE.Uniform
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype Uniform
   = Uniform
   { unUniformCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Uniform
 new :: THREE.Three Uniform
-new = THREE.new Uniform "Uniform" ([] :: [JSString])
+new = THREE.new Uniform "Uniform" ([] :: [MisoString])
 -----------------------------------------------------------------------------

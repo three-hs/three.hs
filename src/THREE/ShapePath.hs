@@ -10,7 +10,7 @@ module THREE.ShapePath
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype ShapePath
   = ShapePath
   { unShapePathCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ShapePath
 new :: THREE.Three ShapePath
-new = THREE.new ShapePath "ShapePath" ([] :: [JSString])
+new = THREE.new ShapePath "ShapePath" ([] :: [MisoString])
 -----------------------------------------------------------------------------

@@ -18,7 +18,7 @@ module THREE.Vector3
   ) where
 -----------------------------------------------------------------------------
 import           Control.Monad (void)
-import           Language.Javascript.JSaddle hiding (new)
+import           Miso hiding (new)
 -----------------------------------------------------------------------------
 import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -26,7 +26,7 @@ import           THREE.Internal as THREE
 newtype Vector3 
   = Vector3
   { unVector3 :: JSVal
-  } deriving (MakeObject, ToJSVal, MakeArgs, X, Y, Z)
+  } deriving (ToObject, ToJSVal, ToArgs, X, Y, Z)
 -----------------------------------------------------------------------------
 instance FromJSVal Vector3 where
   fromJSVal = pure . Just . Vector3
@@ -36,13 +36,13 @@ new x_ y_ z_ = THREE.new Vector3 "Vector3" (x_, y_, z_)
 -----------------------------------------------------------------------------
 setXYZ :: Double -> Double -> Double -> Vector3 -> THREE.Three ()
 setXYZ x_ y_ z_ (Vector3 v) =
-  void $ v # ("set" :: JSString) $ (x_, y_, z_)
+  void $ v # ("set" :: MisoString) $ (x_, y_, z_)
 -----------------------------------------------------------------------------
-vector3ToXYZ :: Vector3 -> JSM (Double, Double, Double)
+vector3ToXYZ :: Vector3 -> IO (Double, Double, Double)
 vector3ToXYZ (Vector3 v) = do
-  x_ <- fromJSValUnchecked =<< v ! ("x" :: JSString)
-  y_ <- fromJSValUnchecked =<< v ! ("y" :: JSString)
-  z_ <- fromJSValUnchecked =<< v ! ("z" :: JSString)
+  x_ <- fromJSValUnchecked =<< v ! ("x" :: MisoString)
+  y_ <- fromJSValUnchecked =<< v ! ("y" :: MisoString)
+  z_ <- fromJSValUnchecked =<< v ! ("z" :: MisoString)
   pure (x_, y_, z_)
 -----------------------------------------------------------------------------
 instance Triplet Vector3 where

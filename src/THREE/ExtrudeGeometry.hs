@@ -10,7 +10,7 @@ module THREE.ExtrudeGeometry
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype ExtrudeGeometry
   = ExtrudeGeometry
   { unExtrudeGeometryCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ExtrudeGeometry
 new :: THREE.Three ExtrudeGeometry
-new = THREE.new ExtrudeGeometry "ExtrudeGeometry" ([] :: [JSString])
+new = THREE.new ExtrudeGeometry "ExtrudeGeometry" ([] :: [MisoString])
 -----------------------------------------------------------------------------

@@ -10,7 +10,7 @@ module THREE.DodecahedronGeometry
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype DodecahedronGeometry
   = DodecahedronGeometry
   { unDodecahedronGeometryCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/DodecahedronGeometry
 new :: THREE.Three DodecahedronGeometry
-new = THREE.new DodecahedronGeometry "DodecahedronGeometry" ([] :: [JSString])
+new = THREE.new DodecahedronGeometry "DodecahedronGeometry" ([] :: [MisoString])
 -----------------------------------------------------------------------------

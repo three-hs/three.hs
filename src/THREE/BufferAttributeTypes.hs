@@ -10,7 +10,7 @@ module THREE.BufferAttributeTypes
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype BufferAttributeTypes
   = BufferAttributeTypes
   { unBufferAttributeTypesCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/BufferAttributeTypes
 new :: THREE.Three BufferAttributeTypes
-new = THREE.new BufferAttributeTypes "BufferAttributeTypes" ([] :: [JSString])
+new = THREE.new BufferAttributeTypes "BufferAttributeTypes" ([] :: [MisoString])
 -----------------------------------------------------------------------------

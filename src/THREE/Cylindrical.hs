@@ -10,7 +10,7 @@ module THREE.Cylindrical
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype Cylindrical
   = Cylindrical
   { unCylindricalCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Cylindrical
 new :: THREE.Three Cylindrical
-new = THREE.new Cylindrical "Cylindrical" ([] :: [JSString])
+new = THREE.new Cylindrical "Cylindrical" ([] :: [MisoString])
 -----------------------------------------------------------------------------

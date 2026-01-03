@@ -10,7 +10,7 @@ module THREE.InstancedMesh
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,7 +18,7 @@ import qualified THREE.Internal as THREE
 newtype InstancedMesh
   = InstancedMesh
   { unInstancedMeshCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/InstancedMesh
 new :: THREE.Three InstancedMesh

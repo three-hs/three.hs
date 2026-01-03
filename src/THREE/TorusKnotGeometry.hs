@@ -10,7 +10,7 @@ module THREE.TorusKnotGeometry
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype TorusKnotGeometry
   = TorusKnotGeometry
   { unTorusKnotGeometryCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/TorusKnotGeometry
 new :: THREE.Three TorusKnotGeometry
-new = THREE.new TorusKnotGeometry "TorusKnotGeometry" ([] :: [JSString])
+new = THREE.new TorusKnotGeometry "TorusKnotGeometry" ([] :: [MisoString])
 -----------------------------------------------------------------------------

@@ -10,7 +10,7 @@ module THREE.PointLightHelper
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype PointLightHelper
   = PointLightHelper
   { unPointLightHelperCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/PointLightHelper
 new :: THREE.Three PointLightHelper
-new = THREE.new PointLightHelper "PointLightHelper" ([] :: [JSString])
+new = THREE.new PointLightHelper "PointLightHelper" ([] :: [MisoString])
 -----------------------------------------------------------------------------

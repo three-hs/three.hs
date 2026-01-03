@@ -20,7 +20,7 @@ module THREE.LightProbe
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.EventDispatcher
 import           THREE.Internal as THREE
@@ -32,7 +32,7 @@ import           THREE.SphericalHarmonics3
 newtype LightProbe
   = LightProbe
   { unLightProbe :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Light, Object3D, EventDispatcher)
 -----------------------------------------------------------------------------
 instance FromJSVal LightProbe where
@@ -42,7 +42,7 @@ class LightProbeParams t
 instance LightProbeParams ()
 instance LightProbeParams SphericalHarmonics3
 instance LightProbeParams (SphericalHarmonics3, Double)
-new :: (MakeArgs t, LightProbeParams t) => t -> THREE.Three LightProbe
+new :: (ToArgs t, LightProbeParams t) => t -> THREE.Three LightProbe
 new = THREE.new LightProbe "LightProbe"
 -----------------------------------------------------------------------------
 -- Read-only properties

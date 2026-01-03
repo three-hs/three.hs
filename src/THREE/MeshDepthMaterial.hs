@@ -22,7 +22,7 @@ module THREE.MeshDepthMaterial
   , wireframeLinewidth
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Constants.Textures
 import           THREE.EventDispatcher
@@ -34,7 +34,7 @@ import           THREE.Texture
 newtype MeshDepthMaterial
   = MeshDepthMaterial
   { unMeshDepthMaterial :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Material, EventDispatcher)
 
 instance FromJSVal MeshDepthMaterial where

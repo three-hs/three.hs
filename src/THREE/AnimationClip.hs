@@ -10,7 +10,7 @@ module THREE.AnimationClip
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,12 +18,12 @@ import qualified THREE.Internal as THREE
 newtype AnimationClip
   = AnimationClip
   { unAnimationClipCamera :: JSVal
-  } deriving (ToJSVal, MakeObject)
+  } deriving (ToJSVal, ToObject)
 -----------------------------------------------------------------------------
 instance FromJSVal AnimationClip where
   fromJSVal = pure . pure . AnimationClip
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AnimationClip
 new :: THREE.Three AnimationClip
-new = THREE.new AnimationClip "AnimationClip" ([] :: [JSString])
+new = THREE.new AnimationClip "AnimationClip" ([] :: [MisoString])
 -----------------------------------------------------------------------------

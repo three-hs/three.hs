@@ -10,7 +10,7 @@ module THREE.ShapeUtils
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype ShapeUtils
   = ShapeUtils
   { unShapeUtilsCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ShapeUtils
 new :: THREE.Three ShapeUtils
-new = THREE.new ShapeUtils "ShapeUtils" ([] :: [JSString])
+new = THREE.new ShapeUtils "ShapeUtils" ([] :: [MisoString])
 -----------------------------------------------------------------------------

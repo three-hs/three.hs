@@ -13,7 +13,7 @@ module THREE.DataTexture
   , THREE.DataTexture.new
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Constants.Textures
 import           THREE.Constants.Textures.MagnificationFilters
@@ -26,7 +26,7 @@ import           THREE.Texture
 newtype DataTexture
   = DataTexture
   { unDataTexture :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (EventDispatcher, TextureClass)
 
 instance FromJSVal DataTexture where
@@ -34,7 +34,7 @@ instance FromJSVal DataTexture where
 
 -- Constructor
 
-new :: (DataTextureNewParams t, MakeArgs t) => t -> THREE.Three DataTexture
+new :: (DataTextureNewParams t, ToArgs t) => t -> THREE.Three DataTexture
 new = THREE.new DataTexture "DataTexture"
 
 class DataTextureNewParams t

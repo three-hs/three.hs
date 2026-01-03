@@ -13,13 +13,13 @@ module THREE.Loader
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/loaders/Loader
-class (MakeObject loader, ToJSVal loader) => Loader loader where
-  path :: Property loader JSString
+class (ToObject loader, ToJSVal loader) => Loader loader where
+  path :: Property loader MisoString
   path = property "path" 
 -----------------------------------------------------------------------------
 instance Loader JSVal

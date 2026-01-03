@@ -10,7 +10,7 @@ module THREE.WebGLCubeRenderTarget
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype WebGLCubeRenderTarget
   = WebGLCubeRenderTarget
   { unWebGLCubeRenderTargetCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/WebGLCubeRenderTarget
 new :: THREE.Three WebGLCubeRenderTarget
-new = THREE.new WebGLCubeRenderTarget "WebGLCubeRenderTarget" ([] :: [JSString])
+new = THREE.new WebGLCubeRenderTarget "WebGLCubeRenderTarget" ([] :: [MisoString])
 -----------------------------------------------------------------------------

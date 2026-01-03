@@ -10,7 +10,7 @@ module THREE.WireframeGeometry
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype WireframeGeometry
   = WireframeGeometry
   { unWireframeGeometryCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/WireframeGeometry
 new :: THREE.Three WireframeGeometry
-new = THREE.new WireframeGeometry "WireframeGeometry" ([] :: [JSString])
+new = THREE.new WireframeGeometry "WireframeGeometry" ([] :: [MisoString])
 -----------------------------------------------------------------------------

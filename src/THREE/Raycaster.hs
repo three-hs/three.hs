@@ -10,7 +10,7 @@ module THREE.Raycaster
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,12 +18,12 @@ import qualified THREE.Internal as THREE
 newtype Raycaster
   = Raycaster
   { unRaycasterCamera :: JSVal
-  } deriving (ToJSVal, MakeObject)
+  } deriving (ToJSVal, ToObject)
 -----------------------------------------------------------------------------
 instance FromJSVal Raycaster where
   fromJSVal = pure . pure . Raycaster
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Raycaster
 new :: THREE.Three Raycaster
-new = THREE.new Raycaster "Raycaster" ([] :: [JSString])
+new = THREE.new Raycaster "Raycaster" ([] :: [MisoString])
 -----------------------------------------------------------------------------

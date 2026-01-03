@@ -10,7 +10,7 @@ module THREE.CatmullRomCurve3
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype CatmullRomCurve3
   = CatmullRomCurve3
   { unCatmullRomCurve3Camera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CatmullRomCurve3
 new :: THREE.Three CatmullRomCurve3
-new = THREE.new CatmullRomCurve3 "CatmullRomCurve3" ([] :: [JSString])
+new = THREE.new CatmullRomCurve3 "CatmullRomCurve3" ([] :: [MisoString])
 -----------------------------------------------------------------------------

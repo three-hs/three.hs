@@ -19,7 +19,7 @@ module THREE.LineDashedMaterial
     -- * Methods
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.EventDispatcher
 import           THREE.LineBasicMaterial
@@ -30,7 +30,7 @@ import           THREE.Material
 newtype LineDashedMaterial
   = LineDashedMaterial
   { unLineDashedMaterial :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Material, EventDispatcher, LineBasicMaterialClass)
 
 instance FromJSVal LineDashedMaterial where

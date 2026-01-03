@@ -10,7 +10,7 @@ module THREE.PMREMGenerator
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype PMREMGenerator
   = PMREMGenerator
   { unPMREMGeneratorCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/PMREMGenerator
 new :: THREE.Three PMREMGenerator
-new = THREE.new PMREMGenerator "PMREMGenerator" ([] :: [JSString])
+new = THREE.new PMREMGenerator "PMREMGenerator" ([] :: [MisoString])
 -----------------------------------------------------------------------------

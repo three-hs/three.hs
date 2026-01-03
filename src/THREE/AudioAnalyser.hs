@@ -10,7 +10,7 @@ module THREE.AudioAnalyser
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype AudioAnalyser
   = AudioAnalyser
   { unAudioAnalyserCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AudioAnalyser
 new :: THREE.Three AudioAnalyser
-new = THREE.new AudioAnalyser "AudioAnalyser" ([] :: [JSString])
+new = THREE.new AudioAnalyser "AudioAnalyser" ([] :: [MisoString])
 -----------------------------------------------------------------------------

@@ -10,7 +10,7 @@ module THREE.AxesHelper
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype AxesHelper
   = AxesHelper
   { unAxesHelperCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AxesHelper
 new :: THREE.Three AxesHelper
-new = THREE.new AxesHelper "AxesHelper" ([] :: [JSString])
+new = THREE.new AxesHelper "AxesHelper" ([] :: [MisoString])
 -----------------------------------------------------------------------------

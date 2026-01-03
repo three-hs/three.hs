@@ -15,7 +15,7 @@ module THREE.SphereGeometry
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle hiding (new)
+import           Miso hiding (new)
 -----------------------------------------------------------------------------
 import           THREE.BufferGeometry (BufferGeometryClass)
 import           THREE.Internal as THREE
@@ -24,7 +24,7 @@ import           THREE.Internal as THREE
 newtype SphereGeometry
   = SphereGeometry
   { unSphereGeometry :: JSVal
-  } deriving (MakeArgs, MakeObject, ToJSVal) 
+  } deriving (ToArgs, ToObject, ToJSVal) 
     deriving newtype BufferGeometryClass
 -----------------------------------------------------------------------------
 -- Constructors

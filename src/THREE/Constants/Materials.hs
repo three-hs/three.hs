@@ -17,7 +17,7 @@ module THREE.Constants.Materials
   , Linejoin (..)
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 
 data Side
@@ -260,7 +260,7 @@ data GlslVersion
 instance ToJSVal GlslVersion where
   toJSVal = toJSVal . go
     where
-      go :: GlslVersion -> JSString
+      go :: GlslVersion -> MisoString
       go = \case
         GLSL1 -> "100"
         GLSL3 -> "300 es"
@@ -268,7 +268,7 @@ instance ToJSVal GlslVersion where
 instance FromJSVal GlslVersion where
   fromJSVal = fmap (>>= go) . fromJSVal
     where
-      go :: JSString -> Maybe GlslVersion
+      go :: MisoString -> Maybe GlslVersion
       go = \case
         "100"    -> Just GLSL1 
         "300 es" -> Just GLSL3 
@@ -284,7 +284,7 @@ data Linecap
 instance ToJSVal Linecap where
   toJSVal = toJSVal . go
     where
-      go :: Linecap -> JSString
+      go :: Linecap -> MisoString
       go = \case
         LinecapButt   -> "butt"
         LinecapRound  -> "round"
@@ -293,7 +293,7 @@ instance ToJSVal Linecap where
 instance FromJSVal Linecap where
   fromJSVal = fmap (>>= go) . fromJSVal
     where
-      go :: JSString -> Maybe Linecap
+      go :: MisoString -> Maybe Linecap
       go = \case
         "butt"    -> Just LinecapButt 
         "round"   -> Just LinecapRound
@@ -310,7 +310,7 @@ data Linejoin
 instance ToJSVal Linejoin where
   toJSVal = toJSVal . go
     where
-      go :: Linejoin -> JSString
+      go :: Linejoin -> MisoString
       go = \case
         LinejoinBevel -> "bevel"
         LinejoinMiter -> "miter"
@@ -319,7 +319,7 @@ instance ToJSVal Linejoin where
 instance FromJSVal Linejoin where
   fromJSVal = fmap (>>= go) . fromJSVal
     where
-      go :: JSString -> Maybe Linejoin
+      go :: MisoString -> Maybe Linejoin
       go = \case
         "bevel" -> Just LinejoinBevel 
         "miter" -> Just LinejoinMiter

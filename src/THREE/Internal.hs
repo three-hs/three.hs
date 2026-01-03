@@ -42,10 +42,10 @@ module THREE.Internal
 import           Control.Monad
 import           Data.Kind
 import           Unsafe.Coerce (unsafeCoerce)
-import           Language.Javascript.JSaddle hiding (new)
-import qualified Language.Javascript.JSaddle as J
+import           Miso hiding (new, getProperty, Property)
+import qualified Miso.DSL as J
 -----------------------------------------------------------------------------
-type Three = JSM
+type Three = IO
 -----------------------------------------------------------------------------
 class GetField (field :: Type -> Type -> Type) where
   getField :: field object return -> object -> Three return
@@ -94,33 +94,33 @@ type Method object args return = args -> object -> Three return
 -----------------------------------------------------------------------------
 data Property object field
   = Property
-  { setProperty :: object -> field -> JSM ()
-  , getProperty :: object -> JSM field
+  { setProperty :: object -> field -> IO ()
+  , getProperty :: object -> IO field
   }
 -----------------------------------------------------------------------------
 property
   :: forall object field
-  . (MakeObject object, ToJSVal field, FromJSVal field)
-  => JSString -> Property object field
+  . (ToObject object, ToJSVal field, FromJSVal field)
+  => MisoString -> Property object field
 property name
   = Property
-  { setProperty = \object -> (object <# name)
+  { setProperty = \object -> setField object name
   , getProperty = \object -> fromJSValUnchecked =<< object ! name
   }
 -----------------------------------------------------------------------------
 optional
   :: forall object field
-  . (MakeObject object, ToJSVal field, FromJSVal field)
-  => JSString -> Property object (Maybe field)
+  . (ToObject object, ToJSVal field, FromJSVal field)
+  => MisoString -> Property object (Maybe field)
 optional name = Property
-  { setProperty = \object -> (object <# name)
+  { setProperty = \object -> setField object name
   , getProperty = \object -> fromJSVal =<< object ! name
   }
 -----------------------------------------------------------------------------
 method
   :: forall object return args
-  . (FromJSVal return, MakeArgs args, MakeObject object)
-  => JSString
+  . (FromJSVal return, ToArgs args, ToObject object)
+  => MisoString
   -> Method object args return
 method name = \args object ->
   fromJSValUnchecked =<< do
@@ -128,19 +128,19 @@ method name = \args object ->
 -----------------------------------------------------------------------------
 readonly
   :: forall object return
-   . ( FromJSVal return, MakeObject object)
-  => JSString -> ReadOnly object return
+   . ( FromJSVal return, ToObject object)
+  => MisoString -> ReadOnly object return
 readonly name = ReadOnly $ \object ->
   fromJSValUnchecked =<< object ! name
 -----------------------------------------------------------------------------
 new
-  :: MakeArgs args
+  :: ToArgs args
   => (JSVal -> con)
-  -> JSString
+  -> MisoString
   -> args
   -> Three con
 new f name args = do
-  v <- jsg ("THREE" :: JSString) ! name
+  v <- jsg ("THREE" :: MisoString) ! name
   f <$> J.new v args
 -----------------------------------------------------------------------------
 -- | This is how we compose 'Property', can be used for getting and setting fields
@@ -151,18 +151,18 @@ new f name args = do
 --
 (!.)
   :: forall a b c
-  . ( MakeObject a
-    , MakeObject b
+  . ( ToObject a
+    , ToObject b
     )
   => Property a b
   -> Property b c
   -> Property a c
 prop1 !. prop2 = Property setter getter
     where
-      getter :: a -> JSM c
+      getter :: a -> IO c
       getter = getProperty prop2 <=< getProperty prop1
 
-      setter :: a -> c -> JSM ()
+      setter :: a -> c -> IO ()
       setter record target = do
         field_ <- getProperty prop1 record
         setProperty prop2 field_ target
@@ -180,25 +180,25 @@ infixl 1 !..
   -> Three result
 (!..) = (>>=)
 -----------------------------------------------------------------------------
-class MakeObject object => X object where
+class ToObject object => X object where
   x :: Property object Double
   x = property "x"
 -----------------------------------------------------------------------------
 instance X JSVal
 -----------------------------------------------------------------------------
-class MakeObject object => Y object where
+class ToObject object => Y object where
   y :: Property object Double
   y = property "y"
 -----------------------------------------------------------------------------
 instance Y JSVal
 -----------------------------------------------------------------------------
-class MakeObject object => Z object where
+class ToObject object => Z object where
   z :: Property object Double
   z = property "z"
 -----------------------------------------------------------------------------
 instance Z JSVal
 -----------------------------------------------------------------------------
-class MakeObject object => W object where
+class ToObject object => W object where
   w :: Property object Double
   w = property "w"
 -----------------------------------------------------------------------------
@@ -207,7 +207,7 @@ instance W JSVal
 -- | Class for dealing with overloaded triplet like arguments
 -- (e.g. 'Vector3', '(Int,Int,Int)'), see use in 'Object3D', 'lookAt'
 class ToJSVal args => Triplet args where
-  triplet :: args -> JSM JSVal
+  triplet :: args -> IO JSVal
 -----------------------------------------------------------------------------
 instance ToJSVal (x,y,z) => Triplet (x,y,z) where
   triplet = toJSVal
@@ -215,31 +215,27 @@ instance ToJSVal (x,y,z) => Triplet (x,y,z) where
 -- Some orphans, please put these back into `jsaddle`
 -----------------------------------------------------------------------------
 -- | This belongs in 'jsaddle'
-instance FromJSVal Function where
-  fromJSVal = pure . Just . unsafeCoerce
------------------------------------------------------------------------------
--- | This belongs in 'jsaddle'
 instance FromJSVal Object where
   fromJSVal = pure . Just . unsafeCoerce
 -----------------------------------------------------------------------------
 -- | This belongs in 'jsaddle'
-instance MakeArgs Int where
-  makeArgs k = (:[]) <$> toJSVal k
+instance ToArgs Int where
+  toArgs k = (:[]) <$> toJSVal k
 -----------------------------------------------------------------------------
 -- | This belongs in 'jsaddle'
-instance MakeArgs Object where
-  makeArgs k = (:[]) <$> toJSVal k
+instance ToArgs Function where
+  toArgs k = (:[]) <$> toJSVal k
 -----------------------------------------------------------------------------
 -- | This belongs in 'jsaddle'
-instance MakeArgs args => MakeArgs (Maybe args) where
-  makeArgs (Just args) = makeArgs args
-  makeArgs Nothing     = pure []
+instance ToArgs Bool where
+  toArgs k = (:[]) <$> toJSVal k
 -----------------------------------------------------------------------------
 -- | This belongs in 'jsaddle'
-instance MakeArgs JSString where
-  makeArgs k = (:[]) <$> toJSVal k
+instance ToArgs Object where
+  toArgs k = (:[]) <$> toJSVal k
 -----------------------------------------------------------------------------
 -- | This belongs in 'jsaddle'
-instance MakeArgs Function where
-  makeArgs k = (:[]) <$> toJSVal k
+instance ToArgs args => ToArgs (Maybe args) where
+  toArgs (Just args) = toArgs args
+  toArgs Nothing     = pure []
 -----------------------------------------------------------------------------

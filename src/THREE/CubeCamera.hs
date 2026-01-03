@@ -10,7 +10,7 @@ module THREE.CubeCamera
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype CubeCamera
   = CubeCamera
   { unCubeCameraCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CubeCamera
 new :: THREE.Three CubeCamera
-new = THREE.new CubeCamera "CubeCamera" ([] :: [JSString])
+new = THREE.new CubeCamera "CubeCamera" ([] :: [MisoString])
 -----------------------------------------------------------------------------

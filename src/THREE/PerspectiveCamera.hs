@@ -16,7 +16,7 @@ module THREE.PerspectiveCamera
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Camera          as THREE
 import           THREE.Internal        as THREE
@@ -27,7 +27,7 @@ import           THREE.EventDispatcher as THREE
 newtype PerspectiveCamera
   = PerspectiveCamera
   { unPerspectiveCamera :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Object3D, EventDispatcher, Camera)
 -----------------------------------------------------------------------------
 instance FromJSVal PerspectiveCamera where

@@ -28,7 +28,7 @@ module THREE.MeshMatcapMaterial
   , normalScale
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Color
 import           THREE.Constants.Materials
@@ -42,7 +42,7 @@ import           THREE.Vector2
 newtype MeshMatcapMaterial
   = MeshMatcapMaterial
   { unMeshMatcapMaterial :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Material, EventDispatcher)
 
 instance FromJSVal MeshMatcapMaterial where

@@ -20,7 +20,7 @@ module THREE.PointsMaterial
   , sizeAttenuation
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Color
 import           THREE.EventDispatcher
@@ -32,7 +32,7 @@ import           THREE.Texture
 newtype PointsMaterial
   = PointsMaterial
   { unPointsMaterial :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Material, EventDispatcher)
 
 instance FromJSVal PointsMaterial where

@@ -10,7 +10,7 @@ module THREE.WebGL3DRenderTarget
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype WebGL3DRenderTarget
   = WebGL3DRenderTarget
   { unWebGL3DRenderTargetCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/WebGL3DRenderTarget
 new :: THREE.Three WebGL3DRenderTarget
-new = THREE.new WebGL3DRenderTarget "WebGL3DRenderTarget" ([] :: [JSString])
+new = THREE.new WebGL3DRenderTarget "WebGL3DRenderTarget" ([] :: [MisoString])
 -----------------------------------------------------------------------------

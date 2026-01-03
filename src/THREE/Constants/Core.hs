@@ -10,7 +10,7 @@ module THREE.Constants.Core
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype Core
   = Core
   { unCoreCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Core
 new :: THREE.Three Core
-new = THREE.new Core "Core" ([] :: [JSString])
+new = THREE.new Core "Core" ([] :: [MisoString])
 -----------------------------------------------------------------------------

@@ -10,7 +10,7 @@ module THREE.WebXRManager
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype WebXRManager
   = WebXRManager
   { unWebXRManagerCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/WebXRManager
 new :: THREE.Three WebXRManager
-new = THREE.new WebXRManager "WebXRManager" ([] :: [JSString])
+new = THREE.new WebXRManager "WebXRManager" ([] :: [MisoString])
 -----------------------------------------------------------------------------

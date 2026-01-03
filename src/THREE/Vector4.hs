@@ -10,7 +10,7 @@ module THREE.Vector4
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype Vector4
   = Vector4
   { unVector4Camera :: JSVal
-  } deriving (MakeObject, THREE.X, THREE.Y, THREE.Z, THREE.W)
+  } deriving (ToObject, THREE.X, THREE.Y, THREE.Z, THREE.W)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Vector4
 new :: THREE.Three Vector4
-new = THREE.new Vector4 "Vector4" ([] :: [JSString])
+new = THREE.new Vector4 "Vector4" ([] :: [MisoString])
 -----------------------------------------------------------------------------

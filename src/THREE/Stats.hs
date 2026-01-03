@@ -13,7 +13,8 @@ module THREE.Stats
   , dom
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle as J
+import Miso hiding (update)
+import qualified Miso as J
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -21,14 +22,14 @@ import qualified THREE.Internal as THREE
 newtype Stats
   = Stats
   { unStats :: JSVal
-  } deriving (MakeObject, ToJSVal)
+  } deriving (ToObject, ToJSVal)
 -----------------------------------------------------------------------------
 instance FromJSVal Stats where
   fromJSVal = pure . pure . Stats
 -----------------------------------------------------------------------------
 new :: () -> THREE.Three Stats
 new () = do
-  v <- jsg ("Stats" :: JSString)
+  v <- jsg ("Stats" :: MisoString)
   Stats <$> J.new v ()
 -----------------------------------------------------------------------------
 -- | stats.showPanel(1);

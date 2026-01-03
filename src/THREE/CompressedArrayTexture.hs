@@ -19,7 +19,7 @@ module THREE.CompressedArrayTexture
   , clearLayerUpdates
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Constants.Textures
 import           THREE.CompressedTexture
@@ -31,7 +31,7 @@ import           THREE.Texture
 newtype CompressedArrayTexture
   = CompressedArrayTexture
   { unCompressedArrayTexture :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (EventDispatcher, TextureClass, CompressedTextureClass)
 
 instance FromJSVal CompressedArrayTexture where
@@ -39,7 +39,7 @@ instance FromJSVal CompressedArrayTexture where
 
 -- Constructor
 
-new :: (CompressedArrayTextureNewParams t, MakeArgs t) => t -> THREE.Three CompressedArrayTexture
+new :: (CompressedArrayTextureNewParams t, ToArgs t) => t -> THREE.Three CompressedArrayTexture
 new = THREE.new CompressedArrayTexture "CompressedArrayTexture"
 
 class CompressedArrayTextureNewParams t

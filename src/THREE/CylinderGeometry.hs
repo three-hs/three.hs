@@ -10,7 +10,7 @@ module THREE.CylinderGeometry
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype CylinderGeometry
   = CylinderGeometry
   { unCylinderGeometryCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CylinderGeometry
 new :: THREE.Three CylinderGeometry
-new = THREE.new CylinderGeometry "CylinderGeometry" ([] :: [JSString])
+new = THREE.new CylinderGeometry "CylinderGeometry" ([] :: [MisoString])
 -----------------------------------------------------------------------------

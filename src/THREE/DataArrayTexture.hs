@@ -19,7 +19,7 @@ module THREE.DataArrayTexture
   , clearLayerUpdates
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Constants.Textures
 import           THREE.EventDispatcher
@@ -30,7 +30,7 @@ import           THREE.Texture
 newtype DataArrayTexture
   = DataArrayTexture
   { unDataArrayTexture :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (EventDispatcher, TextureClass)
 
 instance FromJSVal DataArrayTexture where
@@ -38,7 +38,7 @@ instance FromJSVal DataArrayTexture where
 
 -- Constructor
 
-new :: (DataArrayTextureNewParams t, MakeArgs t) => t -> THREE.Three DataArrayTexture
+new :: (DataArrayTextureNewParams t, ToArgs t) => t -> THREE.Three DataArrayTexture
 new = THREE.new DataArrayTexture "DataArrayTexture"
 
 class DataArrayTextureNewParams t

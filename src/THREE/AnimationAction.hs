@@ -10,7 +10,7 @@ module THREE.AnimationAction
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype AnimationAction
   = AnimationAction
   { unAnimationActionCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AnimationAction
 new :: THREE.Three AnimationAction
-new = THREE.new AnimationAction "AnimationAction" ([] :: [JSString])
+new = THREE.new AnimationAction "AnimationAction" ([] :: [MisoString])
 -----------------------------------------------------------------------------

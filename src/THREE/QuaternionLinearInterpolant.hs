@@ -10,7 +10,7 @@ module THREE.QuaternionLinearInterpolant
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype QuaternionLinearInterpolant
   = QuaternionLinearInterpolant
   { unQuaternionLinearInterpolantCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/QuaternionLinearInterpolant
 new :: THREE.Three QuaternionLinearInterpolant
-new = THREE.new QuaternionLinearInterpolant "QuaternionLinearInterpolant" ([] :: [JSString])
+new = THREE.new QuaternionLinearInterpolant "QuaternionLinearInterpolant" ([] :: [MisoString])
 -----------------------------------------------------------------------------

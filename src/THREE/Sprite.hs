@@ -10,7 +10,7 @@ module THREE.Sprite
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype Sprite
   = Sprite
   { unSpriteCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Sprite
 new :: THREE.Three Sprite
-new = THREE.new Sprite "Sprite" ([] :: [JSString])
+new = THREE.new Sprite "Sprite" ([] :: [MisoString])
 -----------------------------------------------------------------------------

@@ -15,7 +15,7 @@ module THREE.Data3DTexture
   , wrapR
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Constants.Textures
 import           THREE.EventDispatcher
@@ -26,7 +26,7 @@ import           THREE.Texture
 newtype Data3DTexture
   = Data3DTexture
   { unData3DTexture :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (EventDispatcher, TextureClass)
 
 instance FromJSVal Data3DTexture where
@@ -34,7 +34,7 @@ instance FromJSVal Data3DTexture where
 
 -- Constructor
 
-new :: (Data3DTextureNewParams t, MakeArgs t) => t -> THREE.Three Data3DTexture
+new :: (Data3DTextureNewParams t, ToArgs t) => t -> THREE.Three Data3DTexture
 new = THREE.new Data3DTexture "Data3DTexture"
 
 class Data3DTextureNewParams t

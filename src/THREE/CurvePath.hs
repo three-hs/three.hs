@@ -10,7 +10,7 @@ module THREE.CurvePath
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype CurvePath
   = CurvePath
   { unCurvePathCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CurvePath
 new :: THREE.Three CurvePath
-new = THREE.new CurvePath "CurvePath" ([] :: [JSString])
+new = THREE.new CurvePath "CurvePath" ([] :: [MisoString])
 -----------------------------------------------------------------------------

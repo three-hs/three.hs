@@ -10,7 +10,7 @@ module THREE.WebGLProgram
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype WebGLProgram
   = WebGLProgram
   { unWebGLProgramCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/WebGLProgram
 new :: THREE.Three WebGLProgram
-new = THREE.new WebGLProgram "WebGLProgram" ([] :: [JSString])
+new = THREE.new WebGLProgram "WebGLProgram" ([] :: [MisoString])
 -----------------------------------------------------------------------------

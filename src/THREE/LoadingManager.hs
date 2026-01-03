@@ -10,7 +10,7 @@ module THREE.LoadingManager
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype LoadingManager
   = LoadingManager
   { unLoadingManagerCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LoadingManager
 new :: THREE.Three LoadingManager
-new = THREE.new LoadingManager "LoadingManager" ([] :: [JSString])
+new = THREE.new LoadingManager "LoadingManager" ([] :: [MisoString])
 -----------------------------------------------------------------------------

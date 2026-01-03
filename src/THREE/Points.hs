@@ -10,7 +10,7 @@ module THREE.Points
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype Points
   = Points
   { unPointsCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Points
 new :: THREE.Three Points
-new = THREE.new Points "Points" ([] :: [JSString])
+new = THREE.new Points "Points" ([] :: [MisoString])
 -----------------------------------------------------------------------------

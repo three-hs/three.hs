@@ -9,7 +9,7 @@ module THREE.BoxGeometry
   , THREE.BoxGeometry.new
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle hiding (new)
+import           Miso hiding (new)
 -----------------------------------------------------------------------------
 import           THREE.BufferGeometry (BufferGeometryClass)
 import           THREE.Internal as THREE
@@ -18,7 +18,7 @@ import           THREE.Internal as THREE
 newtype BoxGeometry
   = BoxGeometry
   { unBoxGeometry :: JSVal
-  } deriving (MakeArgs, MakeObject, ToJSVal) 
+  } deriving (ToArgs, ToObject, ToJSVal) 
     deriving newtype BufferGeometryClass
 -----------------------------------------------------------------------------
 new

@@ -10,7 +10,7 @@ module THREE.DiscreteInterpolant
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype DiscreteInterpolant
   = DiscreteInterpolant
   { unDiscreteInterpolantCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/DiscreteInterpolant
 new :: THREE.Three DiscreteInterpolant
-new = THREE.new DiscreteInterpolant "DiscreteInterpolant" ([] :: [JSString])
+new = THREE.new DiscreteInterpolant "DiscreteInterpolant" ([] :: [MisoString])
 -----------------------------------------------------------------------------

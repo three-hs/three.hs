@@ -8,7 +8,7 @@ module THREE.Light
     Light (..)
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Color as THREE
 import           THREE.Internal as THREE

@@ -10,7 +10,7 @@ module THREE.ConeGeometry
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype ConeGeometry
   = ConeGeometry
   { unConeGeometryCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ConeGeometry
 new :: THREE.Three ConeGeometry
-new = THREE.new ConeGeometry "ConeGeometry" ([] :: [JSString])
+new = THREE.new ConeGeometry "ConeGeometry" ([] :: [MisoString])
 -----------------------------------------------------------------------------

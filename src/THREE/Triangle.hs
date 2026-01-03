@@ -12,7 +12,7 @@ module THREE.Triangle
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -20,9 +20,9 @@ import qualified THREE.Internal as THREE
 newtype Triangle
   = Triangle
   { unTriangle :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Triangle
 new :: THREE.Three Triangle
-new = THREE.new Triangle "Triangle" ([] :: [JSString])
+new = THREE.new Triangle "Triangle" ([] :: [MisoString])
 -----------------------------------------------------------------------------

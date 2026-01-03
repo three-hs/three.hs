@@ -26,7 +26,7 @@ module THREE.SpotLight
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.EventDispatcher
 import           THREE.Internal as THREE
@@ -38,7 +38,7 @@ import           THREE.Texture
 newtype SpotLight
   = SpotLight
   { unSpotLight :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Light, Object3D, EventDispatcher)
 -----------------------------------------------------------------------------
 instance FromJSVal SpotLight where
@@ -52,7 +52,7 @@ instance SpotLightParams (Int, Double, Double)
 instance SpotLightParams (Int, Double, Double, Double)
 instance SpotLightParams (Int, Double, Double, Double, Double)
 instance SpotLightParams (Int, Double, Double, Double, Double, Double)
-new :: (MakeArgs t, SpotLightParams t) => t -> THREE.Three SpotLight
+new :: (ToArgs t, SpotLightParams t) => t -> THREE.Three SpotLight
 new = THREE.new SpotLight "SpotLight" 
 -----------------------------------------------------------------------------
 -- Read-only properties

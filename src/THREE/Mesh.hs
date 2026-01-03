@@ -16,7 +16,7 @@ module THREE.Mesh
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle hiding (new)
+import           Miso hiding (new)
 -----------------------------------------------------------------------------
 import           THREE.BufferGeometry (BufferGeometryClass)
 import qualified THREE.Internal as THREE
@@ -28,7 +28,7 @@ import           THREE.EventDispatcher as THREE
 newtype Mesh
   = Mesh
   { unMesh :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Object3D, EventDispatcher)
 -----------------------------------------------------------------------------
 instance FromJSVal Mesh where

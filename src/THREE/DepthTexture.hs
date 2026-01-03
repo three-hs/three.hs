@@ -15,7 +15,7 @@ module THREE.DepthTexture
   , compareFunction
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Constants.Textures
 import           THREE.Constants.Textures.MagnificationFilters
@@ -28,7 +28,7 @@ import           THREE.Texture
 newtype DepthTexture
   = DepthTexture
   { unDepthTexture :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (EventDispatcher, TextureClass)
 
 instance FromJSVal DepthTexture where
@@ -36,7 +36,7 @@ instance FromJSVal DepthTexture where
 
 -- Constructor
 
-new :: (DepthTextureNewParams t, MakeArgs t) => t -> THREE.Three DepthTexture
+new :: (DepthTextureNewParams t, ToArgs t) => t -> THREE.Three DepthTexture
 new = THREE.new DepthTexture "DepthTexture"
 
 class DepthTextureNewParams t

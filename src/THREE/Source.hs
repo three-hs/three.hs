@@ -17,7 +17,7 @@ module THREE.Source
   , toJSON
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -25,7 +25,7 @@ import           THREE.Internal as THREE
 newtype Source
   = Source
   { unSource :: JSVal
-  } deriving (MakeObject, ToJSVal, MakeArgs)
+  } deriving (ToObject, ToJSVal, ToArgs)
 
 instance FromJSVal Source where
   fromJSVal = pure . Just . Source
@@ -35,12 +35,12 @@ instance FromJSVal Source where
 -- Constructor
 
 -- TODO define a typeclass for source data? 
-new :: (MakeArgs a) => a -> THREE.Three Source
+new :: (ToArgs a) => a -> THREE.Three Source
 new = THREE.new Source "Source"
 
 -- ReadOnly
 
-uuid :: ReadOnly Source JSString
+uuid :: ReadOnly Source MisoString
 uuid = readonly "uuid"
 
 -----------------------------------------------------------------------------

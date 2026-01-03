@@ -10,7 +10,7 @@ module THREE.Curve
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype Curve
   = Curve
   { unCurveCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Curve
 new :: THREE.Three Curve
-new = THREE.new Curve "Curve" ([] :: [JSString])
+new = THREE.new Curve "Curve" ([] :: [MisoString])
 -----------------------------------------------------------------------------

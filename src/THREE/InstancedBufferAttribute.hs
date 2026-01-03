@@ -10,7 +10,7 @@ module THREE.InstancedBufferAttribute
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype InstancedBufferAttribute
   = InstancedBufferAttribute
   { unInstancedBufferAttributeCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/InstancedBufferAttribute
 new :: THREE.Three InstancedBufferAttribute
-new = THREE.new InstancedBufferAttribute "InstancedBufferAttribute" ([] :: [JSString])
+new = THREE.new InstancedBufferAttribute "InstancedBufferAttribute" ([] :: [MisoString])
 -----------------------------------------------------------------------------

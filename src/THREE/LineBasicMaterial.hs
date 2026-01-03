@@ -17,7 +17,7 @@ module THREE.LineBasicMaterial
     -- * Methods
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Color
 import           THREE.Constants.Materials
@@ -60,7 +60,7 @@ instance LineBasicMaterialClass JSVal
 newtype LineBasicMaterial
   = LineBasicMaterial
   { unLineBasicMaterial :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Material, EventDispatcher, LineBasicMaterialClass)
 
 instance FromJSVal LineBasicMaterial where

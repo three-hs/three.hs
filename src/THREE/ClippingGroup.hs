@@ -10,7 +10,7 @@ module THREE.ClippingGroup
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype ClippingGroup
   = ClippingGroup
   { unClippingGroupCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ClippingGroup
 new :: THREE.Three ClippingGroup
-new = THREE.new ClippingGroup "ClippingGroup" ([] :: [JSString])
+new = THREE.new ClippingGroup "ClippingGroup" ([] :: [MisoString])
 -----------------------------------------------------------------------------

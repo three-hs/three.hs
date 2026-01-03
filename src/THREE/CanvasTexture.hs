@@ -13,7 +13,7 @@ module THREE.CanvasTexture
   , THREE.CanvasTexture.new
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Constants.Textures
 import           THREE.Constants.Textures.MagnificationFilters
@@ -26,7 +26,7 @@ import           THREE.Texture
 newtype CanvasTexture
   = CanvasTexture
   { unCanvasTexture :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (EventDispatcher, TextureClass)
 
 instance FromJSVal CanvasTexture where
@@ -34,7 +34,7 @@ instance FromJSVal CanvasTexture where
 
 -- Constructor
 
-new :: (CanvasTextureNewParams t, MakeArgs t) => t -> THREE.Three CanvasTexture
+new :: (CanvasTextureNewParams t, ToArgs t) => t -> THREE.Three CanvasTexture
 new = THREE.new CanvasTexture "CanvasTexture"
 
 class CanvasTextureNewParams t

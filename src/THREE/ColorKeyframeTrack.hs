@@ -10,7 +10,7 @@ module THREE.ColorKeyframeTrack
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype ColorKeyframeTrack
   = ColorKeyframeTrack
   { unColorKeyframeTrackCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ColorKeyframeTrack
 new :: THREE.Three ColorKeyframeTrack
-new = THREE.new ColorKeyframeTrack "ColorKeyframeTrack" ([] :: [JSString])
+new = THREE.new ColorKeyframeTrack "ColorKeyframeTrack" ([] :: [MisoString])
 -----------------------------------------------------------------------------

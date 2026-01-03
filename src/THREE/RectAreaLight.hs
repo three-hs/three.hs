@@ -22,7 +22,7 @@ module THREE.RectAreaLight
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.EventDispatcher
 import           THREE.Internal as THREE
@@ -33,7 +33,7 @@ import           THREE.Object3D
 newtype RectAreaLight
   = RectAreaLight
   { unRectAreaLight :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Light, Object3D, EventDispatcher)
 -----------------------------------------------------------------------------
 instance FromJSVal RectAreaLight where
@@ -45,7 +45,7 @@ instance RectAreaLightParams Int
 instance RectAreaLightParams (Int, Double)
 instance RectAreaLightParams (Int, Double, Double)
 instance RectAreaLightParams (Int, Double, Double, Double)
-new :: (MakeArgs t, RectAreaLightParams t) => t -> THREE.Three RectAreaLight
+new :: (ToArgs t, RectAreaLightParams t) => t -> THREE.Three RectAreaLight
 new = THREE.new RectAreaLight "RectAreaLight"
 -----------------------------------------------------------------------------
 -- Read-only properties

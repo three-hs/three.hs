@@ -12,7 +12,7 @@ module THREE.Sphere
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -20,11 +20,11 @@ import qualified THREE.Internal as THREE
 newtype Sphere
   = Sphere
   { unSphere :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Sphere
 new :: THREE.Three Sphere
-new = THREE.new Sphere "Sphere" ([] :: [JSString])
+new = THREE.new Sphere "Sphere" ([] :: [MisoString])
 -----------------------------------------------------------------------------
 instance FromJSVal Sphere where
   fromJSVal = pure . pure . Sphere

@@ -15,7 +15,7 @@ module THREE.VideoTexture
   , THREE.VideoTexture.new
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Constants.Textures
 import           THREE.Constants.Textures.MagnificationFilters
@@ -39,7 +39,7 @@ instance VideoTextureClass JSVal
 newtype VideoTexture
   = VideoTexture
   { unTexture :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (EventDispatcher, TextureClass, VideoTextureClass)
 
 instance FromJSVal VideoTexture where
@@ -47,7 +47,7 @@ instance FromJSVal VideoTexture where
 
 -- Constructor
 
-new :: (VideoTextureNewParams t, MakeArgs t) => t -> THREE.Three VideoTexture
+new :: (VideoTextureNewParams t, ToArgs t) => t -> THREE.Three VideoTexture
 new = THREE.new VideoTexture "VideoTexture"
 
 class VideoTextureNewParams t

@@ -10,7 +10,7 @@ module THREE.Frustum
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype Frustum
   = Frustum
   { unFrustumCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Frustum
 new :: THREE.Three Frustum
-new = THREE.new Frustum "Frustum" ([] :: [JSString])
+new = THREE.new Frustum "Frustum" ([] :: [MisoString])
 -----------------------------------------------------------------------------

@@ -10,7 +10,7 @@ module THREE.BooleanKeyframeTrack
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype BooleanKeyframeTrack
   = BooleanKeyframeTrack
   { unBooleanKeyframeTrackCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/BooleanKeyframeTrack
 new :: THREE.Three BooleanKeyframeTrack
-new = THREE.new BooleanKeyframeTrack "BooleanKeyframeTrack" ([] :: [JSString])
+new = THREE.new BooleanKeyframeTrack "BooleanKeyframeTrack" ([] :: [MisoString])
 -----------------------------------------------------------------------------

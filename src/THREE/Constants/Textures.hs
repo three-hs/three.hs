@@ -22,7 +22,7 @@ module THREE.Constants.Textures
   , UnpackAlignment (..)
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 
 data MappingModes
@@ -490,7 +490,7 @@ data InternalFormats
 instance ToJSVal InternalFormats where
   toJSVal = toJSVal . go
     where
-      go :: InternalFormats -> JSString
+      go :: InternalFormats -> MisoString
       go = \case
         ALPHA               -> "ALPHA"
         RGB                 -> "RGB"
@@ -556,7 +556,7 @@ instance ToJSVal InternalFormats where
 instance FromJSVal InternalFormats where
   fromJSVal = fmap (>>= go) . fromJSVal
     where
-      go :: JSString -> Maybe InternalFormats
+      go :: MisoString -> Maybe InternalFormats
       go = \case
         "ALPHA"               -> Just ALPHA
         "RGB"                 -> Just RGB
@@ -653,7 +653,7 @@ data ColorSpace
 instance ToJSVal ColorSpace where
   toJSVal = toJSVal . go
     where
-      go :: ColorSpace -> JSString
+      go :: ColorSpace -> MisoString
       go = \case
         NoColorSpace          -> ""
         SRGBColorSpace        -> "srgb"
@@ -662,7 +662,7 @@ instance ToJSVal ColorSpace where
 instance FromJSVal ColorSpace where
   fromJSVal = fmap (>>= go) . fromJSVal
     where
-      go :: JSString -> Maybe ColorSpace
+      go :: MisoString -> Maybe ColorSpace
       go = \case
         ""            -> Just NoColorSpace
         "srgb"        -> Just SRGBColorSpace

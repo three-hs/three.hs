@@ -7,7 +7,7 @@ module THREE.Constants.CustomBlendingEquations.DestinationFactors
     DestinationFactors (..)
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 
 -- same as SourceFactors, w/o SrcAlphaSaturateFactor

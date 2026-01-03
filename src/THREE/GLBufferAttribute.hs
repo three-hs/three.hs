@@ -10,7 +10,7 @@ module THREE.GLBufferAttribute
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype GLBufferAttribute
   = GLBufferAttribute
   { unGLBufferAttributeCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/GLBufferAttribute
 new :: THREE.Three GLBufferAttribute
-new = THREE.new GLBufferAttribute "GLBufferAttribute" ([] :: [JSString])
+new = THREE.new GLBufferAttribute "GLBufferAttribute" ([] :: [MisoString])
 -----------------------------------------------------------------------------

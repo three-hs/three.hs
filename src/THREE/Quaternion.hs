@@ -10,7 +10,7 @@ module THREE.Quaternion
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,12 +18,12 @@ import qualified THREE.Internal as THREE
 newtype Quaternion
   = Quaternion
   { unQuaternionCamera :: JSVal
-  } deriving (ToJSVal, MakeObject, MakeArgs)
+  } deriving (ToJSVal, ToObject, ToArgs)
 -----------------------------------------------------------------------------
 instance FromJSVal Quaternion where
   fromJSVal = pure . pure . Quaternion
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Quaternion
 new :: THREE.Three Quaternion
-new = THREE.new Quaternion "Quaternion" ([] :: [JSString])
+new = THREE.new Quaternion "Quaternion" ([] :: [MisoString])
 -----------------------------------------------------------------------------

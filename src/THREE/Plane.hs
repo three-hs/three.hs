@@ -10,7 +10,7 @@ module THREE.Plane
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,7 +18,7 @@ import qualified THREE.Internal as THREE
 newtype Plane
   = Plane
   { unPlane :: JSVal
-  } deriving (MakeObject, ToJSVal, MakeArgs)
+  } deriving (ToObject, ToJSVal, ToArgs)
 -----------------------------------------------------------------------------
 instance FromJSVal Plane where
   fromJSVal = pure . Just . Plane

@@ -10,7 +10,7 @@ module THREE.ShaderChunk
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype ShaderChunk
   = ShaderChunk
   { unShaderChunkCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ShaderChunk
 new :: THREE.Three ShaderChunk
-new = THREE.new ShaderChunk "ShaderChunk" ([] :: [JSString])
+new = THREE.new ShaderChunk "ShaderChunk" ([] :: [MisoString])
 -----------------------------------------------------------------------------

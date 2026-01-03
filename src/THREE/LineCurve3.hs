@@ -10,7 +10,7 @@ module THREE.LineCurve3
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype LineCurve3
   = LineCurve3
   { unLineCurve3Camera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LineCurve3
 new :: THREE.Three LineCurve3
-new = THREE.new LineCurve3 "LineCurve3" ([] :: [JSString])
+new = THREE.new LineCurve3 "LineCurve3" ([] :: [MisoString])
 -----------------------------------------------------------------------------

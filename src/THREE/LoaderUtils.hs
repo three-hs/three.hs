@@ -10,7 +10,7 @@ module THREE.LoaderUtils
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype LoaderUtils
   = LoaderUtils
   { unLoaderUtilsCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LoaderUtils
 new :: THREE.Three LoaderUtils
-new = THREE.new LoaderUtils "LoaderUtils" ([] :: [JSString])
+new = THREE.new LoaderUtils "LoaderUtils" ([] :: [MisoString])
 -----------------------------------------------------------------------------

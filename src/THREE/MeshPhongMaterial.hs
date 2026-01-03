@@ -48,7 +48,7 @@ module THREE.MeshPhongMaterial
     -- * Methods
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Color
 import           THREE.Constants.Materials
@@ -63,7 +63,7 @@ import           THREE.Vector2
 newtype MeshPhongMaterial
   = MeshPhongMaterial
   { unMeshPhongMaterial :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Material, EventDispatcher)
 
 instance FromJSVal MeshPhongMaterial where

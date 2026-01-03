@@ -10,7 +10,7 @@ module THREE.SplineCurve
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype SplineCurve
   = SplineCurve
   { unSplineCurveCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/SplineCurve
 new :: THREE.Three SplineCurve
-new = THREE.new SplineCurve "SplineCurve" ([] :: [JSString])
+new = THREE.new SplineCurve "SplineCurve" ([] :: [MisoString])
 -----------------------------------------------------------------------------

@@ -14,7 +14,7 @@ module THREE.ShaderMaterial
   , THREE.ShaderMaterial.new
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Constants.Materials
 import           THREE.EventDispatcher
@@ -41,13 +41,13 @@ class (Material material) => ShaderMaterialClass material where
   fog :: Property material Bool
   fog = property "fog"
 
-  fragmentShader :: Property material JSString
+  fragmentShader :: Property material MisoString
   fragmentShader = property "fragmentShader"
 
   glslVersion :: Property material GlslVersion
   glslVersion = property "glslVersion"
 
-  index0AttributeName :: Property material (Maybe JSString)
+  index0AttributeName :: Property material (Maybe MisoString)
   index0AttributeName = optional "index0AttributeName"
 
   lights :: Property material Bool
@@ -68,7 +68,7 @@ class (Material material) => ShaderMaterialClass material where
   vertexColors :: Property material Bool
   vertexColors = property "vertexColors"
 
-  vertexShader :: Property material JSString
+  vertexShader :: Property material MisoString
   vertexShader = property "vertexShader"
 
   wireframe :: Property material Bool
@@ -84,7 +84,7 @@ instance ShaderMaterialClass JSVal
 newtype ShaderMaterial
   = ShaderMaterial
   { unShaderMaterial :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Material, EventDispatcher, ShaderMaterialClass)
 
 instance FromJSVal ShaderMaterial where

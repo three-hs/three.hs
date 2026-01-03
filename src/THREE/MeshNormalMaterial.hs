@@ -25,7 +25,7 @@ module THREE.MeshNormalMaterial
   , wireframeLinewidth
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Constants.Materials
 import           THREE.EventDispatcher
@@ -38,7 +38,7 @@ import           THREE.Vector2
 newtype MeshNormalMaterial
   = MeshNormalMaterial
   { unMeshNormalMaterial :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Material, EventDispatcher)
 
 instance FromJSVal MeshNormalMaterial where

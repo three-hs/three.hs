@@ -8,7 +8,7 @@ module THREE.Material
   ( Material (..)
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Color
 import           THREE.Constants.CustomBlendingEquations
@@ -20,14 +20,14 @@ import           THREE.Internal as THREE
 import           THREE.Plane
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/materials/Material
-class (EventDispatcher material, ToJSVal material, MakeObject material) => Material material where
+class (EventDispatcher material, ToJSVal material, ToObject material) => Material material where
 
   -- ReadOnly
 
-  type_ :: ReadOnly material JSString
+  type_ :: ReadOnly material MisoString
   type_ = readonly "type"
 
-  uuid :: ReadOnly material JSString
+  uuid :: ReadOnly material MisoString
   uuid = readonly "uuid"
 
   isMaterial :: ReadOnly material Bool
@@ -125,7 +125,7 @@ class (EventDispatcher material, ToJSVal material, MakeObject material) => Mater
   id :: Property material Int
   id = property "id"
 
-  name :: Property material JSString
+  name :: Property material MisoString
   name = property "name"
 
   needsUpdate :: Property material Bool
@@ -143,7 +143,7 @@ class (EventDispatcher material, ToJSVal material, MakeObject material) => Mater
   polygonOffsetUnits :: Property material Int
   polygonOffsetUnits = property "polygonOffsetUnits"
 
-  precision :: Property material (Maybe JSString)
+  precision :: Property material (Maybe MisoString)
   precision = optional "precision"
 
   premultipliedAlpha :: Property material Bool
@@ -181,7 +181,7 @@ class (EventDispatcher material, ToJSVal material, MakeObject material) => Mater
   clone :: FromJSVal material => Method material () material
   clone = method "clone" 
 
-  copy :: (FromJSVal material, MakeArgs material) => Method material material material
+  copy :: (FromJSVal material, ToArgs material) => Method material material material
   copy = method "copy" 
 
   dispose :: Method material () ()
@@ -191,7 +191,7 @@ class (EventDispatcher material, ToJSVal material, MakeObject material) => Mater
   -- See onBeforeCompileMaterial and onBeforeRenderMaterial in WebGLRenderer.
   -- (cannot be defined here because of circular module dependencies)
 
-  customProgramCacheKey :: Method material () JSString
+  customProgramCacheKey :: Method material () MisoString
   customProgramCacheKey = method "customProgramCacheKey" 
 
   setValues :: Method material Object ()

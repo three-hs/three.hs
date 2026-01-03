@@ -14,7 +14,7 @@ module THREE.Euler
   -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle hiding (new)
+import           Miso hiding (new)
 -----------------------------------------------------------------------------
 import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -22,7 +22,7 @@ import           THREE.Internal as THREE
 newtype Euler 
   = Euler
   { unEuler :: JSVal
-  } deriving (ToJSVal, MakeArgs, MakeObject, X, Y, Z)
+  } deriving (ToJSVal, ToArgs, ToObject, X, Y, Z)
 -----------------------------------------------------------------------------
 instance FromJSVal Euler where
   fromJSVal = pure . Just . Euler

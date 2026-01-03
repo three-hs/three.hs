@@ -10,7 +10,7 @@ module THREE.ImageLoader
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype ImageLoader
   = ImageLoader
   { unImageLoaderCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ImageLoader
 new :: THREE.Three ImageLoader
-new = THREE.new ImageLoader "ImageLoader" ([] :: [JSString])
+new = THREE.new ImageLoader "ImageLoader" ([] :: [MisoString])
 -----------------------------------------------------------------------------

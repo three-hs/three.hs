@@ -13,7 +13,7 @@ module THREE.RawShaderMaterial
   , THREE.RawShaderMaterial.new
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.EventDispatcher
 import           THREE.Internal as THREE
@@ -24,7 +24,7 @@ import           THREE.ShaderMaterial
 newtype RawShaderMaterial
   = RawShaderMaterial
   { unRawShaderMaterial :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Material, EventDispatcher, ShaderMaterialClass)
 
 instance FromJSVal RawShaderMaterial where

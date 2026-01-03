@@ -22,7 +22,7 @@ module THREE.WebGLRenderer
   ) where
 -----------------------------------------------------------------------------
 import Control.Monad (void)
-import Language.Javascript.JSaddle
+import Miso
 -----------------------------------------------------------------------------
 import THREE.BufferGeometry
 import THREE.Camera
@@ -36,7 +36,7 @@ import THREE.Scene
 newtype WebGLRenderer
   = WebGLRenderer
   { unWebGLRenderer :: JSVal
-  } deriving (MakeArgs, MakeObject, ToJSVal) 
+  } deriving (ToArgs, ToObject, ToJSVal) 
 -----------------------------------------------------------------------------
 instance FromJSVal WebGLRenderer where
   fromJSVal = pure . pure . WebGLRenderer
@@ -59,15 +59,15 @@ render
   -> WebGLRenderer
   -> Three ()
 render args (WebGLRenderer v) =
-  void $ v # ("render" :: JSString) $ args
+  void $ v # ("render" :: MisoString) $ args
 -----------------------------------------------------------------------------
-setAnimationLoop :: JSCallAsFunction -> WebGLRenderer -> JSM ()
+setAnimationLoop :: Function -> WebGLRenderer -> IO ()
 setAnimationLoop f (WebGLRenderer v) =
-  void $  v # ("setAnimationLoop" :: JSString) $ f
+  void $  v # ("setAnimationLoop" :: MisoString) $ f
 -----------------------------------------------------------------------------
-setSize :: (Int, Int, Bool) -> WebGLRenderer -> JSM ()
+setSize :: (Int, Int, Bool) -> WebGLRenderer -> IO ()
 setSize (width, height, updateStyle) (WebGLRenderer v) = 
-  void $ v # ("setSize" :: JSString) $ (width, height, updateStyle)
+  void $ v # ("setSize" :: MisoString) $ (width, height, updateStyle)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/materials/Material.onBeforeCompile
 -- 

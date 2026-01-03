@@ -7,7 +7,7 @@ module THREE.Constants.CustomBlendingEquations
     BlendingEquations (..)
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 
 data BlendingEquations

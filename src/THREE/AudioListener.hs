@@ -10,7 +10,7 @@ module THREE.AudioListener
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype AudioListener
   = AudioListener
   { unAudioListenerCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AudioListener
 new :: THREE.Three AudioListener
-new = THREE.new AudioListener "AudioListener" ([] :: [JSString])
+new = THREE.new AudioListener "AudioListener" ([] :: [MisoString])
 -----------------------------------------------------------------------------

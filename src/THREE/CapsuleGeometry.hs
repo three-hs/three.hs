@@ -10,7 +10,7 @@ module THREE.CapsuleGeometry
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype CapsuleGeometry
   = CapsuleGeometry
   { unCapsuleGeometryCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CapsuleGeometry
 new :: THREE.Three CapsuleGeometry
-new = THREE.new CapsuleGeometry "CapsuleGeometry" ([] :: [JSString])
+new = THREE.new CapsuleGeometry "CapsuleGeometry" ([] :: [MisoString])
 -----------------------------------------------------------------------------

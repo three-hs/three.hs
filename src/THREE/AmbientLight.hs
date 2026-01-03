@@ -14,7 +14,7 @@ module THREE.AmbientLight
   , isAmbientLight
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.EventDispatcher as THREE
 import           THREE.Internal as THREE
@@ -25,7 +25,7 @@ import           THREE.Object3D as THREE
 newtype AmbientLight
   = AmbientLight
   { unAmbientLight :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Light, Object3D, EventDispatcher)
 -----------------------------------------------------------------------------
 instance FromJSVal AmbientLight where
@@ -35,7 +35,7 @@ class AmbientLightParams t
 instance AmbientLightParams ()
 instance AmbientLightParams Int
 instance AmbientLightParams (Int, Double)
-new :: (MakeArgs t, AmbientLightParams t) => t -> THREE.Three AmbientLight
+new :: (ToArgs t, AmbientLightParams t) => t -> THREE.Three AmbientLight
 new = THREE.new AmbientLight "AmbientLight"
 -----------------------------------------------------------------------------
 -- Read-only properties

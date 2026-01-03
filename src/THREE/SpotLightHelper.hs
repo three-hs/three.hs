@@ -10,7 +10,7 @@ module THREE.SpotLightHelper
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype SpotLightHelper
   = SpotLightHelper
   { unSpotLightHelperCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/SpotLightHelper
 new :: THREE.Three SpotLightHelper
-new = THREE.new SpotLightHelper "SpotLightHelper" ([] :: [JSString])
+new = THREE.new SpotLightHelper "SpotLightHelper" ([] :: [MisoString])
 -----------------------------------------------------------------------------

@@ -10,7 +10,7 @@ module THREE.DataUtils
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype DataUtils
   = DataUtils
   { unDataUtilsCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/DataUtils
 new :: THREE.Three DataUtils
-new = THREE.new DataUtils "DataUtils" ([] :: [JSString])
+new = THREE.new DataUtils "DataUtils" ([] :: [MisoString])
 -----------------------------------------------------------------------------

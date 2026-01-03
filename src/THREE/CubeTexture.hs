@@ -13,7 +13,7 @@ module THREE.CubeTexture
   , THREE.CubeTexture.new
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Constants.Textures
 import           THREE.Constants.Textures.MagnificationFilters
@@ -26,7 +26,7 @@ import           THREE.Texture
 newtype CubeTexture
   = CubeTexture
   { unCubeTexture :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (EventDispatcher, TextureClass)
 
 instance FromJSVal CubeTexture where
@@ -34,7 +34,7 @@ instance FromJSVal CubeTexture where
 
 -- Constructor
 
-new :: (CubeTextureNewParams t, MakeArgs t) => t -> THREE.Three CubeTexture
+new :: (CubeTextureNewParams t, ToArgs t) => t -> THREE.Three CubeTexture
 new = THREE.new CubeTexture "CubeTexture"
 
 class CubeTextureNewParams t

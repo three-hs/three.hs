@@ -25,7 +25,7 @@ module THREE.Scene
     -- * Methods
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Color
 import           THREE.Euler
@@ -41,7 +41,7 @@ import           THREE.Texture
 newtype Scene
   = Scene
   { unScene :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (EventDispatcher, Object3D)
 -----------------------------------------------------------------------------
 instance FromJSVal Scene where

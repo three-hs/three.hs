@@ -22,7 +22,7 @@ module THREE.PointLight
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.EventDispatcher as THREE
 import           THREE.Internal as THREE
@@ -33,7 +33,7 @@ import           THREE.Object3D as THREE
 newtype PointLight
   = PointLight
   { unPointLight :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Light, Object3D, EventDispatcher)
 -----------------------------------------------------------------------------
 instance FromJSVal PointLight where
@@ -45,7 +45,7 @@ instance PointLightParams Int
 instance PointLightParams (Int, Double)
 instance PointLightParams (Int, Double, Double)
 instance PointLightParams (Int, Double, Double, Double)
-new :: (MakeArgs t, PointLightParams t) => t -> THREE.Three PointLight
+new :: (ToArgs t, PointLightParams t) => t -> THREE.Three PointLight
 new = THREE.new PointLight "PointLight"
 -----------------------------------------------------------------------------
 -- Read-only properties

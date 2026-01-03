@@ -16,7 +16,7 @@ module THREE.FogExp2
   , density
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Color
 import           THREE.Internal as THREE
@@ -25,7 +25,7 @@ import           THREE.Internal as THREE
 newtype FogExp2
   = FogExp2
   { unFogExp2 :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
 -----------------------------------------------------------------------------
 instance FromJSVal FogExp2 where
   fromJSVal = pure . pure . FogExp2
@@ -34,14 +34,14 @@ class FogNewParams a
 instance FogNewParams Int
 instance FogNewParams (Int, Double)
 instance FogNewParams (Int, Double, Double)
-new :: (FogNewParams a, MakeArgs a) => a -> THREE.Three FogExp2
+new :: (FogNewParams a, ToArgs a) => a -> THREE.Three FogExp2
 new = THREE.new FogExp2 "FogExp2"
 -----------------------------------------------------------------------------
 
 isFogExp2 :: ReadOnly FogExp2 Bool
 isFogExp2 = readonly "isFogExp2" 
 
-name :: Property FogExp2 JSString
+name :: Property FogExp2 MisoString
 name = property "name"
 
 color :: Property FogExp2 Color

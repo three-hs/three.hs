@@ -19,7 +19,7 @@ module THREE.MeshDistanceMaterial
   , THREE.MeshDistanceMaterial.map
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.EventDispatcher
 import           THREE.Internal as THREE
@@ -30,7 +30,7 @@ import           THREE.Texture
 newtype MeshDistanceMaterial
   = MeshDistanceMaterial
   { unMeshDistanceMaterial :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Material, EventDispatcher)
 
 instance FromJSVal MeshDistanceMaterial where

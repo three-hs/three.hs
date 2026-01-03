@@ -38,7 +38,7 @@ module THREE.MeshToonMaterial
   , wireframeLinewidth
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Color
 import           THREE.Constants.Materials
@@ -52,7 +52,7 @@ import           THREE.Vector2
 newtype MeshToonMaterial
   = MeshToonMaterial
   { unMeshToonMaterial :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Material, EventDispatcher)
 
 instance FromJSVal MeshToonMaterial where

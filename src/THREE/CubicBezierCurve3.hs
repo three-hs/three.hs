@@ -10,7 +10,7 @@ module THREE.CubicBezierCurve3
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype CubicBezierCurve3
   = CubicBezierCurve3
   { unCubicBezierCurve3Camera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CubicBezierCurve3
 new :: THREE.Three CubicBezierCurve3
-new = THREE.new CubicBezierCurve3 "CubicBezierCurve3" ([] :: [JSString])
+new = THREE.new CubicBezierCurve3 "CubicBezierCurve3" ([] :: [MisoString])
 -----------------------------------------------------------------------------

@@ -10,7 +10,7 @@ module THREE.DirectionalLightHelper
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype DirectionalLightHelper
   = DirectionalLightHelper
   { unDirectionalLightHelperCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/DirectionalLightHelper
 new :: THREE.Three DirectionalLightHelper
-new = THREE.new DirectionalLightHelper "DirectionalLightHelper" ([] :: [JSString])
+new = THREE.new DirectionalLightHelper "DirectionalLightHelper" ([] :: [MisoString])
 -----------------------------------------------------------------------------

@@ -10,7 +10,7 @@ module THREE.Constants.Animation
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype Animation
   = Animation
   { unAnimationCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Animation
 new :: THREE.Three Animation
-new = THREE.new Animation "Animation" ([] :: [JSString])
+new = THREE.new Animation "Animation" ([] :: [MisoString])
 -----------------------------------------------------------------------------

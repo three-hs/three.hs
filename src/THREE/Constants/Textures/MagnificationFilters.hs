@@ -6,7 +6,7 @@ module THREE.Constants.Textures.MagnificationFilters
   ( MagnificationFilters (..)
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 
 data MagnificationFilters

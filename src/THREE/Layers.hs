@@ -10,7 +10,7 @@ module THREE.Layers
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,7 +18,7 @@ import qualified THREE.Internal as THREE
 newtype Layers
   = Layers
   { unLayersCamera :: JSVal
-  } deriving (ToJSVal, MakeObject)
+  } deriving (ToJSVal, ToObject)
 -----------------------------------------------------------------------------
 instance FromJSVal Layers where
   fromJSVal = pure . pure . Layers

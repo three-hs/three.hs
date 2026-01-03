@@ -46,7 +46,7 @@ module THREE.MeshPhysicalMaterial
   , transmissionMap
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Color
 import           THREE.EventDispatcher
@@ -60,7 +60,7 @@ import           THREE.Vector2
 newtype MeshPhysicalMaterial
   = MeshPhysicalMaterial
   { unMeshPhysicalMaterial :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Material, EventDispatcher, MeshStandardMaterialClass)
 
 instance FromJSVal MeshPhysicalMaterial where

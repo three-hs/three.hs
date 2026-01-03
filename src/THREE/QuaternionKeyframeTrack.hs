@@ -10,7 +10,7 @@ module THREE.QuaternionKeyframeTrack
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype QuaternionKeyframeTrack
   = QuaternionKeyframeTrack
   { unQuaternionKeyframeTrackCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/QuaternionKeyframeTrack
 new :: THREE.Three QuaternionKeyframeTrack
-new = THREE.new QuaternionKeyframeTrack "QuaternionKeyframeTrack" ([] :: [JSString])
+new = THREE.new QuaternionKeyframeTrack "QuaternionKeyframeTrack" ([] :: [MisoString])
 -----------------------------------------------------------------------------

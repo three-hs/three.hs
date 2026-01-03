@@ -10,7 +10,7 @@ module THREE.Path
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype Path
   = Path
   { unPathCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Path
 new :: THREE.Three Path
-new = THREE.new Path "Path" ([] :: [JSString])
+new = THREE.new Path "Path" ([] :: [MisoString])
 -----------------------------------------------------------------------------

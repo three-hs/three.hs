@@ -10,7 +10,7 @@ module THREE.BufferGeometryLoader
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype BufferGeometryLoader
   = BufferGeometryLoader
   { unBufferGeometryLoaderCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/BufferGeometryLoader
 new :: THREE.Three BufferGeometryLoader
-new = THREE.new BufferGeometryLoader "BufferGeometryLoader" ([] :: [JSString])
+new = THREE.new BufferGeometryLoader "BufferGeometryLoader" ([] :: [MisoString])
 -----------------------------------------------------------------------------

@@ -10,7 +10,7 @@ module THREE.InstancedInterleavedBuffer
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype InstancedInterleavedBuffer
   = InstancedInterleavedBuffer
   { unInstancedInterleavedBufferCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/InstancedInterleavedBuffer
 new :: THREE.Three InstancedInterleavedBuffer
-new = THREE.new InstancedInterleavedBuffer "InstancedInterleavedBuffer" ([] :: [JSString])
+new = THREE.new InstancedInterleavedBuffer "InstancedInterleavedBuffer" ([] :: [MisoString])
 -----------------------------------------------------------------------------

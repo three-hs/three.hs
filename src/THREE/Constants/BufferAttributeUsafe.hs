@@ -10,7 +10,7 @@ module THREE.Constants.BufferAttributeUsafe
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype BufferAttributeUsafe
   = BufferAttributeUsafe
   { unBufferAttributeUsafeCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/BufferAttributeUsafe
 new :: THREE.Three BufferAttributeUsafe
-new = THREE.new BufferAttributeUsafe "BufferAttributeUsafe" ([] :: [JSString])
+new = THREE.new BufferAttributeUsafe "BufferAttributeUsafe" ([] :: [MisoString])
 -----------------------------------------------------------------------------

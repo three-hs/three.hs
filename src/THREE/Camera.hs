@@ -14,7 +14,7 @@ module THREE.Camera
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Internal as THREE
 import           THREE.Object3D as THREE

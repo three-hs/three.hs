@@ -10,7 +10,7 @@ module THREE.GridHelper
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype GridHelper
   = GridHelper
   { unGridHelperCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/GridHelper
 new :: THREE.Three GridHelper
-new = THREE.new GridHelper "GridHelper" ([] :: [JSString])
+new = THREE.new GridHelper "GridHelper" ([] :: [MisoString])
 -----------------------------------------------------------------------------

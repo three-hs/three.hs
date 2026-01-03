@@ -10,7 +10,7 @@ module THREE.ShaderLib
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype ShaderLib
   = ShaderLib
   { unShaderLibCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ShaderLib
 new :: THREE.Three ShaderLib
-new = THREE.new ShaderLib "ShaderLib" ([] :: [JSString])
+new = THREE.new ShaderLib "ShaderLib" ([] :: [MisoString])
 -----------------------------------------------------------------------------

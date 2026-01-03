@@ -10,7 +10,7 @@ module THREE.Matrix3
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,12 +18,12 @@ import qualified THREE.Internal as THREE
 newtype Matrix3
   = Matrix3
   { unMatrix3Camera :: JSVal
-  } deriving (ToJSVal, MakeObject)
+  } deriving (ToJSVal, ToObject)
 -----------------------------------------------------------------------------
 instance FromJSVal Matrix3 where
   fromJSVal = pure . pure . Matrix3
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Matrix3
 new :: THREE.Three Matrix3
-new = THREE.new Matrix3 "Matrix3" ([] :: [JSString])
+new = THREE.new Matrix3 "Matrix3" ([] :: [MisoString])
 -----------------------------------------------------------------------------

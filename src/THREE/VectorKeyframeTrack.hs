@@ -10,7 +10,7 @@ module THREE.VectorKeyframeTrack
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype VectorKeyframeTrack
   = VectorKeyframeTrack
   { unVectorKeyframeTrackCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/VectorKeyframeTrack
 new :: THREE.Three VectorKeyframeTrack
-new = THREE.new VectorKeyframeTrack "VectorKeyframeTrack" ([] :: [JSString])
+new = THREE.new VectorKeyframeTrack "VectorKeyframeTrack" ([] :: [MisoString])
 -----------------------------------------------------------------------------

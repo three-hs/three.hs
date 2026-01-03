@@ -10,7 +10,7 @@ module THREE.LineLoop
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype LineLoop
   = LineLoop
   { unLineLoopCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LineLoop
 new :: THREE.Three LineLoop
-new = THREE.new LineLoop "LineLoop" ([] :: [JSString])
+new = THREE.new LineLoop "LineLoop" ([] :: [MisoString])
 -----------------------------------------------------------------------------

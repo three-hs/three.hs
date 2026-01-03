@@ -15,7 +15,7 @@ module THREE.CompressedTexture
   , THREE.CompressedTexture.new
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Constants.Textures
 import           THREE.Constants.Textures.MagnificationFilters
@@ -34,7 +34,7 @@ instance CompressedTextureClass JSVal
 newtype CompressedTexture
   = CompressedTexture
   { unTexture :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (EventDispatcher, TextureClass, CompressedTextureClass)
 
 instance FromJSVal CompressedTexture where
@@ -42,7 +42,7 @@ instance FromJSVal CompressedTexture where
 
 -- Constructor
 
-new :: (CompressedTextureNewParams t, MakeArgs t) => t -> THREE.Three CompressedTexture
+new :: (CompressedTextureNewParams t, ToArgs t) => t -> THREE.Three CompressedTexture
 new = THREE.new CompressedTexture "CompressedTexture"
 
 class CompressedTextureNewParams t

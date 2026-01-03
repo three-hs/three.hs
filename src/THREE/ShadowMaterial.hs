@@ -16,7 +16,7 @@ module THREE.ShadowMaterial
   , fog
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Color
 import           THREE.EventDispatcher
@@ -27,7 +27,7 @@ import           THREE.Material
 newtype ShadowMaterial
   = ShadowMaterial
   { unShadowMaterial :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Material, EventDispatcher)
 
 instance FromJSVal ShadowMaterial where

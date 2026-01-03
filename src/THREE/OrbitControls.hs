@@ -17,18 +17,19 @@ module THREE.OrbitControls
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle as J
+import qualified Miso as J
+import           Miso hiding (update)
 -----------------------------------------------------------------------------
-import           THREE.Camera          as THREE
-import           THREE.Controls        as THREE
-import           THREE.Internal        as THREE
+import           THREE.Camera as THREE
+import           THREE.Controls as THREE
+import           THREE.Internal as THREE
 import           THREE.EventDispatcher as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/PerspectiveCamera
 newtype OrbitControls
   = OrbitControls
   { unOrbitControls :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Controls, EventDispatcher)
 -----------------------------------------------------------------------------
 instance FromJSVal OrbitControls where
@@ -39,7 +40,7 @@ new
   => (camera, JSVal)
   -> THREE.Three OrbitControls
 new (cam, elt) = do
-  v <- jsg ("OrbitControls" :: JSString)
+  v <- jsg ("OrbitControls" :: MisoString)
   OrbitControls <$> J.new v (cam, elt)
 -----------------------------------------------------------------------------
 update :: Method OrbitControls () Bool    -- TODO () -> (Maybe Double)

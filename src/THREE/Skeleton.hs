@@ -10,7 +10,7 @@ module THREE.Skeleton
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype Skeleton
   = Skeleton
   { unSkeletonCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Skeleton
 new :: THREE.Three Skeleton
-new = THREE.new Skeleton "Skeleton" ([] :: [JSString])
+new = THREE.new Skeleton "Skeleton" ([] :: [MisoString])
 -----------------------------------------------------------------------------

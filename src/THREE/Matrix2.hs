@@ -10,7 +10,7 @@ module THREE.Matrix2
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype Matrix2
   = Matrix2
   { unMatrix2Camera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Matrix2
 new :: THREE.Three Matrix2
-new = THREE.new Matrix2 "Matrix2" ([] :: [JSString])
+new = THREE.new Matrix2 "Matrix2" ([] :: [MisoString])
 -----------------------------------------------------------------------------

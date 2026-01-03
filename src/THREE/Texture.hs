@@ -18,7 +18,7 @@ module THREE.Texture
     -- * Methods
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Constants.Textures
 import           THREE.Constants.Textures.MagnificationFilters
@@ -37,12 +37,12 @@ class (EventDispatcher texture) => TextureClass texture where
   id :: ReadOnly texture Int
   id = readonly "id"
 
-  uuid :: ReadOnly texture JSString
+  uuid :: ReadOnly texture MisoString
   uuid = readonly "uuid"
 
   -- Property
 
-  name :: Property texture JSString
+  name :: Property texture MisoString
   name = property "name"
 
   -- TODO write a typeclass for Image?
@@ -154,7 +154,7 @@ instance TextureClass JSVal
 newtype Texture
   = Texture
   { unTexture :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (EventDispatcher, TextureClass)
 
 instance FromJSVal Texture where
@@ -162,7 +162,7 @@ instance FromJSVal Texture where
 
 -- Constructor
 
-new :: (TextureNewParams t, MakeArgs t) => t -> THREE.Three Texture
+new :: (TextureNewParams t, ToArgs t) => t -> THREE.Three Texture
 new = THREE.new Texture "Texture"
 
 class TextureNewParams t

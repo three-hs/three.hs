@@ -10,7 +10,7 @@ module THREE.AnimationLoader
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype AnimationLoader
   = AnimationLoader
   { unAnimationLoaderCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/AnimationLoader
 new :: THREE.Three AnimationLoader
-new = THREE.new AnimationLoader "AnimationLoader" ([] :: [JSString])
+new = THREE.new AnimationLoader "AnimationLoader" ([] :: [MisoString])
 -----------------------------------------------------------------------------

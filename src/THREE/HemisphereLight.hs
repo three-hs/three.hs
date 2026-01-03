@@ -20,7 +20,7 @@ module THREE.HemisphereLight
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Color
 import           THREE.EventDispatcher
@@ -32,7 +32,7 @@ import           THREE.Object3D
 newtype HemisphereLight
   = HemisphereLight
   { unHemisphereLight :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Light, Object3D, EventDispatcher)
 -----------------------------------------------------------------------------
 instance FromJSVal HemisphereLight where
@@ -42,7 +42,7 @@ class HemisphereLightParams t
 instance HemisphereLightParams ()
 instance HemisphereLightParams Int
 instance HemisphereLightParams (Int, Double)
-new :: (MakeArgs t, HemisphereLightParams t) => t -> THREE.Three HemisphereLight
+new :: (ToArgs t, HemisphereLightParams t) => t -> THREE.Three HemisphereLight
 new = THREE.new HemisphereLight "HemisphereLight" 
 -----------------------------------------------------------------------------
 -- Read-only properties

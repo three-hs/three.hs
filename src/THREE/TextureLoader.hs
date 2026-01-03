@@ -16,7 +16,7 @@ module THREE.TextureLoader
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Internal as THREE
 import           THREE.Loader
@@ -26,7 +26,7 @@ import           THREE.Texture
 newtype TextureLoader
   = TextureLoader
   { unTextureLoader :: JSVal
-  } deriving (MakeArgs, MakeObject, ToJSVal) 
+  } deriving (ToArgs, ToObject, ToJSVal) 
     deriving newtype Loader
 -----------------------------------------------------------------------------
 -- Constructors
@@ -42,8 +42,8 @@ new = THREE.new TextureLoader "TextureLoader" ()
 -----------------------------------------------------------------------------
 -- Methods
 -----------------------------------------------------------------------------
-load :: JSString -> TextureLoader -> JSM Texture
-load url (TextureLoader v) = Texture <$> (v # ("load" :: JSString) $ [url])
+load :: MisoString -> TextureLoader -> IO Texture
+load url (TextureLoader v) = Texture <$> (v # ("load" :: MisoString) $ [url])
 -----------------------------------------------------------------------------
 -- Helper functions
 -----------------------------------------------------------------------------

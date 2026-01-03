@@ -10,7 +10,7 @@ module THREE.ArrayCamera
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype ArrayCamera
   = ArrayCamera
   { unArrayCameraCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/ArrayCamera
 new :: THREE.Three ArrayCamera
-new = THREE.new ArrayCamera "ArrayCamera" ([] :: [JSString])
+new = THREE.new ArrayCamera "ArrayCamera" ([] :: [MisoString])
 -----------------------------------------------------------------------------

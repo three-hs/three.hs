@@ -13,7 +13,7 @@ module THREE.FramebufferTexture
   , THREE.FramebufferTexture.new
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.EventDispatcher
 import           THREE.Internal as THREE
@@ -23,7 +23,7 @@ import           THREE.Texture
 newtype FramebufferTexture
   = FramebufferTexture
   { unFramebufferTexture :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (EventDispatcher, TextureClass)
 
 instance FromJSVal FramebufferTexture where
@@ -31,7 +31,7 @@ instance FromJSVal FramebufferTexture where
 
 -- Constructor
 
-new :: (FramebufferTextureNewParams t, MakeArgs t) => t -> THREE.Three FramebufferTexture
+new :: (FramebufferTextureNewParams t, ToArgs t) => t -> THREE.Three FramebufferTexture
 new = THREE.new FramebufferTexture "FramebufferTexture"
 
 class FramebufferTextureNewParams t

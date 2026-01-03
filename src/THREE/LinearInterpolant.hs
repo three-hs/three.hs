@@ -10,7 +10,7 @@ module THREE.LinearInterpolant
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype LinearInterpolant
   = LinearInterpolant
   { unLinearInterpolantCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/LinearInterpolant
 new :: THREE.Three LinearInterpolant
-new = THREE.new LinearInterpolant "LinearInterpolant" ([] :: [JSString])
+new = THREE.new LinearInterpolant "LinearInterpolant" ([] :: [MisoString])
 -----------------------------------------------------------------------------

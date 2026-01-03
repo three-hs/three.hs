@@ -10,7 +10,7 @@ module THREE.QuadraticBezierCurve
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype QuadraticBezierCurve
   = QuadraticBezierCurve
   { unQuadraticBezierCurveCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/QuadraticBezierCurve
 new :: THREE.Three QuadraticBezierCurve
-new = THREE.new QuadraticBezierCurve "QuadraticBezierCurve" ([] :: [JSString])
+new = THREE.new QuadraticBezierCurve "QuadraticBezierCurve" ([] :: [MisoString])
 -----------------------------------------------------------------------------

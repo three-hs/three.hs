@@ -38,7 +38,7 @@ module THREE.Box2
   , union
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso hiding (set)
 -----------------------------------------------------------------------------
 import           THREE.Internal as THREE
 import           THREE.Vector2
@@ -47,7 +47,7 @@ import           THREE.Vector2
 newtype Box2
   = Box2
   { unBox2 :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
 -----------------------------------------------------------------------------
 instance FromJSVal Box2 where
   fromJSVal = pure . pure . Box2
@@ -56,7 +56,7 @@ class Box2NewParams a
 instance Box2NewParams ()
 instance Box2NewParams Vector2
 instance Box2NewParams (Vector2, Vector2)
-new :: (Box2NewParams a, MakeArgs a) => a -> THREE.Three Box2
+new :: (Box2NewParams a, ToArgs a) => a -> THREE.Three Box2
 new = THREE.new Box2 "Box2"
 -----------------------------------------------------------------------------
 

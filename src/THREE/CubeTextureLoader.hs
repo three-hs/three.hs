@@ -10,7 +10,7 @@ module THREE.CubeTextureLoader
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype CubeTextureLoader
   = CubeTextureLoader
   { unCubeTextureLoaderCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CubeTextureLoader
 new :: THREE.Three CubeTextureLoader
-new = THREE.new CubeTextureLoader "CubeTextureLoader" ([] :: [JSString])
+new = THREE.new CubeTextureLoader "CubeTextureLoader" ([] :: [MisoString])
 -----------------------------------------------------------------------------

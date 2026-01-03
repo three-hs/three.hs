@@ -17,7 +17,7 @@ module THREE.MeshStandardMaterial
     -- * Methods
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import           THREE.Color
 import           THREE.Constants.Materials
@@ -138,7 +138,7 @@ instance MeshStandardMaterialClass JSVal
 newtype MeshStandardMaterial
   = MeshStandardMaterial
   { unMeshStandardMaterial :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
     deriving anyclass (Material, EventDispatcher, MeshStandardMaterialClass)
 
 instance FromJSVal MeshStandardMaterial where

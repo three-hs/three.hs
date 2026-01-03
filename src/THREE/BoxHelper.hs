@@ -10,7 +10,7 @@ module THREE.BoxHelper
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype BoxHelper
   = BoxHelper
   { unBoxHelperCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/BoxHelper
 new :: THREE.Three BoxHelper
-new = THREE.new BoxHelper "BoxHelper" ([] :: [JSString])
+new = THREE.new BoxHelper "BoxHelper" ([] :: [MisoString])
 -----------------------------------------------------------------------------

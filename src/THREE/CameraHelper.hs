@@ -10,7 +10,7 @@ module THREE.CameraHelper
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype CameraHelper
   = CameraHelper
   { unCameraHelperCamera :: JSVal
-  } deriving (MakeObject)
+  } deriving (ToObject)
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/CameraHelper
 new :: THREE.Three CameraHelper
-new = THREE.new CameraHelper "CameraHelper" ([] :: [JSString])
+new = THREE.new CameraHelper "CameraHelper" ([] :: [MisoString])
 -----------------------------------------------------------------------------

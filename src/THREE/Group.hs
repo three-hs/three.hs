@@ -10,7 +10,7 @@ module THREE.Group
     -- * Properties
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso
 -----------------------------------------------------------------------------
 import qualified THREE.Internal as THREE
 -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ import qualified THREE.Internal as THREE
 newtype Group
   = Group
   { unGroupCamera :: JSVal
-  } deriving (MakeArgs, MakeObject, ToJSVal) 
+  } deriving (ToArgs, ToObject, ToJSVal) 
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/cameras/Group
 new :: THREE.Three Group
-new = THREE.new Group "Group" ([] :: [JSString])
+new = THREE.new Group "Group" ([] :: [MisoString])
 -----------------------------------------------------------------------------

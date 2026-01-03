@@ -48,7 +48,7 @@ module THREE.Box3
   , union
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Miso hiding (set)
 -----------------------------------------------------------------------------
 import           THREE.BufferAttribute
 import           THREE.Internal as THREE
@@ -63,7 +63,7 @@ import           THREE.Vector3
 newtype Box3
   = Box3
   { unBox3 :: JSVal
-  } deriving newtype (MakeArgs, MakeObject, ToJSVal)
+  } deriving newtype (ToArgs, ToObject, ToJSVal)
 -----------------------------------------------------------------------------
 instance FromJSVal Box3 where
   fromJSVal = pure . pure . Box3
@@ -72,7 +72,7 @@ class Box3NewParams a
 instance Box3NewParams ()
 instance Box3NewParams Vector3
 instance Box3NewParams (Vector3, Vector3)
-new :: (Box3NewParams a, MakeArgs a) => a -> THREE.Three Box3
+new :: (Box3NewParams a, ToArgs a) => a -> THREE.Three Box3
 new = THREE.new Box3 "Box3"
 -----------------------------------------------------------------------------
 
@@ -114,7 +114,7 @@ equals = method "equals"
 class Box3ExpandByObjectParams a
 instance Object3D a => Box3ExpandByObjectParams a
 instance Object3D a => Box3ExpandByObjectParams (a, Bool)
-expandByObject :: (Box3ExpandByObjectParams a, MakeArgs a) => Method Box3 a Box3
+expandByObject :: (Box3ExpandByObjectParams a, ToArgs a) => Method Box3 a Box3
 expandByObject = method "expandByObject"
 
 expandByPoint :: Method Box3 Vector3 Box3
@@ -174,7 +174,7 @@ setFromCenterAndSize = method "setFromCenterAndSize"
 class Box3SetFromObjectParams a
 instance Object3D a => Box3SetFromObjectParams a
 instance Object3D a => Box3SetFromObjectParams (a, Bool)
-setFromObject :: (Box3SetFromObjectParams a, MakeArgs a) => Method Box3 a Box3
+setFromObject :: (Box3SetFromObjectParams a, ToArgs a) => Method Box3 a Box3
 setFromObject = method "setFromObject"
 
 setFromPoints :: Method Box3 [Vector3] Box3
