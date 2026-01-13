@@ -29,8 +29,8 @@ class EventDispatcher object => Object3D object where
   animations = property "animations"
   castShadow :: Property object Bool
   castShadow = property "castShadow"
-  children :: (FromJSVal objects, Object3D objects) => Property object [objects]
-  children = property "children"
+  -- children :: (FromJSVal objects, Object3D objects) => Property object [objects]
+  -- children = property "children"
   customDepthMaterial :: (Material material, FromJSVal material)  => Property object material
   customDepthMaterial = property "customDepthMaterial"
   customDistanceMaterial :: (Material material, FromJSVal material) => Property object material
